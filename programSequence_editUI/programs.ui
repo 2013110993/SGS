@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>programs</class>
+ <widget class="QWidget" name="programs">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>900</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">border-radius: 5px;
+background-color:#70808c
+</string>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>90</y>
+     <width>741</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:#449cd3</string>
+   </property>
+   <widget class="QLabel" name="programSequenceLabel_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>192</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Program Sequence</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>80</y>
+      <width>491</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QLabel" name="SearchSequenceLabel_2">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>Search Sequence</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="sequenceLineEdit_2">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #000000;
+background-color:#ffffff</string>
+         </property>
+         <property name="clearButtonEnabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="sequenceLabel2_2">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>Program Sequence</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="FacultyComboBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>10</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #000000;
+background-color:#ffffff</string>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <property name="maxVisibleItems">
+          <number>12</number>
+         </property>
+         <property name="minimumContentsLength">
+          <number>2</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>-Program Sequence-</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Accounting, BACC, Belize City</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Accounting, BACC, Belmopan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Applied Agriculture, AAGR, Central Farm</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Applied Agriculture, CAGR, Central Farm</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Applied Agriculture, CAGR, Punta Gorda</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Applied Agriculture, BAGR, Central Farm</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Architecture, AARC, Belize City</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Biology, ABIO, Belmopan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Biology, BBIO, Belmopan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Biology and Chemistry, ABCB, Belmopan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Biology and Math, ABMB, Belmopan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Biology Education, BBIE, Belmopan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Biology/Chemistry/Math, ABCM, Belmopan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Biology/Math/Physics, ABMP, Belmopan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Building &amp; Civil Engineering, ABCE, Belize City</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Administration (Entrepreneurship), BBEN, </string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Administration (Finance), BBFN, Belize City</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Administration (Finance), BBFN, Belmopan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Administration (Management), BBMN, Belize City</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Administration (Management), BBMN, Belmopan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Administration (Management), BBMN, Punta Gorda</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Administration (Management), BBMN, Corozal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Administration (Management), BBMN, San Pedro</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Administration (Marketing), BBMK, Belize </string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Administration (Marketing), BBMK, Corozal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Education (Accounting), BBUE, Belmopan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Education (Information Technology), BBUE,</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Education (Management), BBUE, Belmopan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Science, ABUS, Belmopan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Science, ABUS, Punta Gorda</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Business Science, ABUS, Belize City</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="sequenceClearPushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>160</y>
+      <width>80</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #000000;
+background-color:#ffffff</string>
+    </property>
+    <property name="text">
+     <string>Clear Search</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="sequenceSearchPushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>160</y>
+      <width>80</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #000000;
+background-color:#ffffff</string>
+    </property>
+    <property name="text">
+     <string>Search</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ContinuepushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>270</y>
+      <width>80</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #000000;
+background-color:#ffffff</string>
+    </property>
+    <property name="text">
+     <string>Continue</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>21</x>
+      <y>270</y>
+      <width>80</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #000000;
+background-color:#ffffff</string>
+    </property>
+    <property name="text">
+     <string>Back</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
