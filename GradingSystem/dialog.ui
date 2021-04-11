@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>560</width>
-    <height>361</height>
+    <width>613</width>
+    <height>474</height>
    </rect>
   </property>
   <property name="palette">
@@ -242,8 +242,8 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>310</y>
+     <x>70</x>
+     <y>400</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -258,9 +258,9 @@
   <widget class="QTextEdit" name="textEdit">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>280</y>
-     <width>331</width>
+     <x>40</x>
+     <y>300</y>
+     <width>541</width>
      <height>71</height>
     </rect>
    </property>
@@ -281,9 +281,9 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>9</x>
+     <x>-30</x>
      <y>10</y>
-     <width>541</width>
+     <width>651</width>
      <height>80</height>
     </rect>
    </property>
@@ -363,7 +363,7 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>290</x>
       <y>30</y>
       <width>81</width>
       <height>20</height>
@@ -386,9 +386,9 @@
   <widget class="QFrame" name="frame_2">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>100</y>
-     <width>521</width>
+     <width>591</width>
      <height>171</height>
     </rect>
    </property>
@@ -848,7 +848,7 @@
      <rect>
       <x>0</x>
       <y>30</y>
-      <width>521</width>
+      <width>575</width>
       <height>111</height>
      </rect>
     </property>
