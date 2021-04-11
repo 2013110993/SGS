@@ -156,64 +156,6 @@ border: 0;</string>
        <property name="title">
         <string>Main Menu</string>
        </property>
-       <widget class="QWidget" name="layoutWidget_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>40</y>
-          <width>128</width>
-          <height>54</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <layout class="QFormLayout" name="formLayout">
-           <property name="labelAlignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-           <property name="formAlignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-           </property>
-           <item row="0" column="0">
-            <widget class="QPushButton" name="dashboard_pushButton">
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color:#fff;</string>
-             </property>
-             <property name="text">
-              <string>Dashboard</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QFormLayout" name="formLayout_2">
-           <property name="labelAlignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-           <property name="formAlignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-           </property>
-           <item row="0" column="0">
-            <widget class="QPushButton" name="courseSearch_pushButton">
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color:#fff;</string>
-             </property>
-             <property name="text">
-              <string>Course Search</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
        <widget class="QGroupBox" name="accounts_groupBox">
         <property name="geometry">
          <rect>
@@ -229,64 +171,6 @@ border: 0;</string>
         <property name="title">
          <string>My Account</string>
         </property>
-        <widget class="QWidget" name="layoutWidget_3">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>40</y>
-           <width>117</width>
-           <height>54</height>
-          </rect>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <layout class="QFormLayout" name="formLayout_5">
-            <property name="labelAlignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="formAlignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-            </property>
-            <item row="0" column="0">
-             <widget class="QPushButton" name="studentAccount">
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color:#fff;</string>
-              </property>
-              <property name="text">
-               <string>My Account Home</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QFormLayout" name="formLayout_4">
-            <property name="labelAlignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="formAlignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-            </property>
-            <item row="0" column="0">
-             <widget class="QPushButton" name="AddProgramSequence_pushButton_2">
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color:#fff;</string>
-              </property>
-              <property name="text">
-               <string>Registrations</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
         <widget class="QGroupBox" name="mainMenu_groupBox_2">
          <property name="geometry">
           <rect>
@@ -306,61 +190,123 @@ border: 0;</string>
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>40</y>
-            <width>128</width>
-            <height>48</height>
+            <y>20</y>
+            <width>141</width>
+            <height>69</height>
            </rect>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_3">
+          <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
-            <layout class="QFormLayout" name="formLayout_3">
-             <property name="labelAlignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            <widget class="QPushButton" name="pushButton_5">
+             <property name="styleSheet">
+              <string notr="true">background-color:#b6e1fc;
+color: #065485;
+border:0;
+height:30px;
+border-radius:5px;</string>
              </property>
-             <property name="formAlignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             <property name="text">
+              <string>View Profile</string>
              </property>
-             <item row="0" column="0">
-              <widget class="QPushButton" name="dashboard_pushButton_2">
-               <property name="layoutDirection">
-                <enum>Qt::LeftToRight</enum>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color:#fff;</string>
-               </property>
-               <property name="text">
-                <string>View Profile</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
+            </widget>
            </item>
            <item>
-            <layout class="QFormLayout" name="formLayout_6">
-             <property name="labelAlignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            <widget class="QPushButton" name="pushButton_6">
+             <property name="styleSheet">
+              <string notr="true">background-color:#b6e1fc;
+color: #065485;
+border:0;
+height:30px;
+border-radius:5px;</string>
              </property>
-             <property name="formAlignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             <property name="text">
+              <string>Reset Password</string>
              </property>
-             <item row="0" column="0">
-              <widget class="QPushButton" name="AddProgramSequence_pushButton_3">
-               <property name="layoutDirection">
-                <enum>Qt::LeftToRight</enum>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color:#fff;</string>
-               </property>
-               <property name="text">
-                <string>Reset Password</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
+            </widget>
            </item>
           </layout>
          </widget>
         </widget>
+        <widget class="QWidget" name="layoutWidget_3">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>141</width>
+           <height>69</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <widget class="QPushButton" name="pushButton_9">
+            <property name="styleSheet">
+             <string notr="true">background-color:#b6e1fc;
+color: #065485;
+border:0;
+height:30px;
+border-radius:5px;</string>
+            </property>
+            <property name="text">
+             <string>My Account Home</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_10">
+            <property name="styleSheet">
+             <string notr="true">background-color:#b6e1fc;
+color: #065485;
+border:0;
+height:30px;
+border-radius:5px;</string>
+            </property>
+            <property name="text">
+             <string>Registrations</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="layoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>141</width>
+          <height>69</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QPushButton" name="pushButton_11">
+           <property name="styleSheet">
+            <string notr="true">background-color:#b6e1fc;
+color: #065485;
+border:0;
+height:30px;
+border-radius:5px;</string>
+           </property>
+           <property name="text">
+            <string>Dashboard</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_12">
+           <property name="styleSheet">
+            <string notr="true">background-color:#b6e1fc;
+color: #065485;
+border:0;
+height:30px;
+border-radius:5px;</string>
+           </property>
+           <property name="text">
+            <string>Course Search</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
      </item>
@@ -635,7 +581,7 @@ border: 0;</string>
      <rect>
       <x>40</x>
       <y>0</y>
-      <width>171</width>
+      <width>211</width>
       <height>41</height>
      </rect>
     </property>
@@ -651,27 +597,22 @@ border: 0;</string>
    <widget class="QComboBox" name="myAccount_ComboBox">
     <property name="geometry">
      <rect>
-      <x>890</x>
+      <x>750</x>
       <y>10</y>
-      <width>151</width>
+      <width>291</width>
       <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(57, 135, 180);
 /*  color: white;
-  padding: 16px; 
-  
-  border: none;*/
+  padding: 16px; */
+border: 1px solid #aaa; 
+border-radius: .2em;
 cursor: pointer;
 font-size: 15px;
 </string>
     </property>
-    <item>
-     <property name="text">
-      <string/>
-     </property>
-    </item>
     <item>
      <property name="text">
       <string>My Account Home</string>
@@ -697,27 +638,6 @@ font-size: 15px;
       <string>Log Out</string>
      </property>
     </item>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>910</x>
-      <y>10</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: none;</string>
-    </property>
-    <property name="text">
-     <string>My Acount</string>
-    </property>
    </widget>
   </widget>
   <widget class="QGroupBox" name="groupBox">
