@@ -5,6 +5,7 @@
 #include <QString>
 #include <QStringList>
 
+
 #include <fstream>
 using std::ostream;
 using std::istream;
@@ -49,9 +50,9 @@ void faculty::on_clearPushButton_clicked()
 
 void faculty::on_searchpushButton_clicked()
 {
+
     int currIndex = ui->sequenceComboBox_2->currentIndex();
     QString originalText = ui->aatextEdit->toPlainText();
-  // int wordCount = ui->aatextEdit->toPlainText().split(QRegExp("(\\s|\\n|\\r)+"), QString::SkipEmptyParts).count();
    if(originalText.isEmpty() &&  currIndex == 0)
    {
 
@@ -59,8 +60,8 @@ void faculty::on_searchpushButton_clicked()
    }
    else
    {
-       seqPtr = new sequence;
-       seqPtr->show();
+       progPtr = new programs;
+       progPtr->show();
    }
 
 
@@ -68,8 +69,8 @@ void faculty::on_searchpushButton_clicked()
 
 void faculty::on_conitnuepushButton_clicked()
 {
-    progPtr = new programs;
-    progPtr->show();
+//    progPtr = new programs;
+//    progPtr->show();
 
 }
 

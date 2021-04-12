@@ -31,5 +31,6 @@ private:
     Ui::faculty *ui;
     sequence *seqPtr;
     programs *progPtr;
+
 };
 #endif // FACULTY_H

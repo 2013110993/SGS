@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <sequence.h>
+#include "sequence.h"
 
 namespace Ui {
 class programs;

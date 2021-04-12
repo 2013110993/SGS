@@ -87,8 +87,7 @@ background-color:white
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">
-background-color: #33b5e5
+    <string notr="true">background-color: #33b5e5
 
 
 </string>
