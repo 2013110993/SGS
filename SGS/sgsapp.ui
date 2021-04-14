@@ -126,6 +126,10 @@ border-radius:5px;</string>
          <property name="text">
           <string>SIGN IN</string>
          </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/images/lock.png</normaloff>:/images/lock.png</iconset>
+         </property>
         </widget>
         <widget class="QPushButton" name="signUpButton">
          <property name="geometry">
@@ -369,7 +373,7 @@ border: 0;</string>
          <property name="geometry">
           <rect>
            <x>40</x>
-           <y>570</y>
+           <y>730</y>
            <width>191</width>
            <height>61</height>
           </rect>
@@ -406,9 +410,9 @@ border: 0;</string>
              <property name="geometry">
               <rect>
                <x>10</x>
-               <y>40</y>
+               <y>30</y>
                <width>128</width>
-               <height>48</height>
+               <height>91</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -430,6 +434,10 @@ border: 0;</string>
                   </property>
                   <property name="text">
                    <string>Dashboard</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/user.png</normaloff>:/images/user.png</iconset>
                   </property>
                  </widget>
                 </item>
@@ -692,6 +700,8 @@ border:0;</string>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>
