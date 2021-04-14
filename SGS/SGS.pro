@@ -9,13 +9,16 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    register.cpp \
     main.cpp \
     sgsapp.cpp
 
 HEADERS += \
+    register.h \
     sgsapp.h
 
 FORMS += \
+    register.ui \
     sgsapp.ui
 
 # Default rules for deployment.
