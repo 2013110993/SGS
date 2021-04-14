@@ -108,7 +108,7 @@ background: none;</string>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="personInfo">
     <widget class="QGroupBox" name="userInfogroupBox_2">
@@ -1011,7 +1011,7 @@ background-color:none;</string>
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>540</y>
+       <y>550</y>
        <width>800</width>
        <height>60</height>
       </rect>
