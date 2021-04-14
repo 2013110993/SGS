@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>sgsApp</class>
+ <widget class="QMainWindow" name="sgsApp">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1400</width>
+    <height>850</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1400</width>
+    <height>850</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1400</width>
+    <height>850</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Student Grading System</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QStackedWidget" name="SGS">
+      <widget class="QWidget" name="loginScreen">
+       <property name="styleSheet">
+        <string notr="true">background:url(:/images/background.jpg);
+background-position:center;
+background-repeat: no-repeat;</string>
+       </property>
+       <widget class="QFrame" name="loginBox">
+        <property name="geometry">
+         <rect>
+          <x>940</x>
+          <y>250</y>
+          <width>291</width>
+          <height>351</height>
+         </rect>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 1px solid #8a1738;
+border-radius:10px;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLineEdit" name="usernameInput">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>90</y>
+           <width>181</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#fff;
+border:0px; 
+border-top-right-radius:5px;
+border-bottom-right-radius:5px;
+border-top-left-radius:0px;
+border-bottom-left-radius:0px;</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="passwordInput">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>140</y>
+           <width>181</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#fff;
+border:0px; 
+border-top-right-radius:5px;
+border-bottom-right-radius:5px;
+border-top-left-radius:0px;
+border-bottom-left-radius:0px;</string>
+         </property>
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="signInButton">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>200</y>
+           <width>113</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SIGN IN</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="signUpButton">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>280</y>
+           <width>113</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border:0px; color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>SIGN UP</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="forgetPasswordButton">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>280</y>
+           <width>113</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border:0px; color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>Forget Password</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_4">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>30</y>
+           <width>81</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #fff; font-size:28px; border:0px;</string>
+         </property>
+         <property name="text">
+          <string>Login</string>
+         </property>
+        </widget>
+        <widget class="QFrame" name="usernameIcon">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>90</y>
+           <width>31</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#fff url(:/images/user.png);
+border:0px;
+border:0px;
+border-top-left-radius:5px;
+border-bottom-left-radius:5px;
+border-top-right-radius:0px;
+border-bottom-right-radius:0px; 
+</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+        <widget class="QFrame" name="passwordIcon">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>140</y>
+           <width>31</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#fff url(:/images/lock.png);
+border:0px;
+border-radius:0px;
+border-top-left-radius:5px;
+border-bottom-left-radius:5px;
+border-top-right-radius:0px;
+border-bottom-right-radius:0px;</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QFrame" name="footerLogo">
+        <property name="geometry">
+         <rect>
+          <x>990</x>
+          <y>180</y>
+          <width>191</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>191</width>
+          <height>61</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>191</width>
+          <height>61</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:url(:/images/sideBarLogo.png);
+background-position:center;
+background-repeat: no-repeat;
+border: 0px;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+       <widget class="QFrame" name="frame_2">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>260</y>
+          <width>462</width>
+          <height>281</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>462</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:url(:/images/logo.png);
+border:0px;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="adminDashboard">
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>210</y>
+          <width>221</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Admin Dashboard</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="lecturerDashboard">
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>439</x>
+          <y>230</y>
+          <width>171</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Lecturer Dashboard</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="studentDashboard">
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>250</y>
+          <width>211</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Student Dashboard</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
