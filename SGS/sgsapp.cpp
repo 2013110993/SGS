@@ -46,6 +46,7 @@ void sgsApp::on_signUpButton_clicked()
     delete reg;
 }
 
+
 //Login Button
 void sgsApp::on_signInButton_clicked()
 {
@@ -59,4 +60,15 @@ void sgsApp::on_signInButton_clicked()
         else {
             ui->loginErrorLabel->setText("~ Invalid Credentials! ~");
            }
+}
+
+void sgsApp::on_forgotPasswordButton_clicked()
+{
+    //create a new instance of reg
+    forgot = new forgotPassword(this);
+
+    //Modal Approach
+    forgot->setModal(true);
+    forgot->show();
+
 }
