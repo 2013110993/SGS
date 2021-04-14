@@ -7,6 +7,8 @@ forgotPassword::forgotPassword(QWidget *parent) :
     ui(new Ui::forgotPassword)
 {
     ui->setupUi(this);
+    //ui->studentAccountTypeRadioButton->
+    ui->lecturerForgotFormLineEdit->hide();
 }
 
 forgotPassword::~forgotPassword()
@@ -24,4 +26,16 @@ void forgotPassword::on_forgotPasswordResetButton_clicked()
 void forgotPassword::on_forgotPasswordCancelButton_clicked()
 {
     this->close();
+}
+
+void forgotPassword::on_studentAccountTypeRadioButton_clicked()
+{
+    ui->studentIdForgotFormLineEdit->show();
+    ui->lecturerForgotFormLineEdit->hide();
+}
+
+void forgotPassword::on_lecturerAccountTypeRadioButton_clicked()
+{
+    ui->studentIdForgotFormLineEdit->hide();
+    ui->lecturerForgotFormLineEdit->show();
 }

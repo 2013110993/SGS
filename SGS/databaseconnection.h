@@ -25,6 +25,7 @@ public:
     void insertNewUser(student &student);
     bool loginUser(QString, QString);
     void logoutUser(Dashboard *);
+    void resetPassword();
     void suspendUser();
     bool isconnected();
 

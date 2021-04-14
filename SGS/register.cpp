@@ -39,7 +39,7 @@ void Register::on_signUpNextButton_clicked()
     QString id =  ui->studentIdRegFormLineEdit->text();
     int ID = id.toInt();
     const int studentRole=1;
-    databaseconnection * connection;
+    databaseconnection * connection = new databaseconnection;
     //QString m =  ui->middleName_RegFormLineEdit->text();
     user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(studentRole));
     connection->insertNewUser(*user);
