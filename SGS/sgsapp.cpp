@@ -43,7 +43,7 @@ void sgsApp::on_signUpButton_clicked()
     //Modal Approach
     reg->setModal(true);
     reg->show();
-    delete reg;
+    //delete reg;
 }
 
 

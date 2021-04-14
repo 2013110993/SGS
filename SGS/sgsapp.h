@@ -3,12 +3,11 @@
 
 #include <QMainWindow>
 #include "register.h"
-<<<<<<< HEAD
+
 #include "databaseconnection.h"
 
-=======
 #include "forgotpassword.h"
->>>>>>> 7e630ac98acc01afa541de3a7b22e01f8e4ee867
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class sgsApp; }

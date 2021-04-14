@@ -13,12 +13,6 @@ Register::Register(QWidget *parent) :
     ui->setupUi(this);
     ui->stackedWidgetRegister->setCurrentIndex(0);
     ui->studentIdRegFormLineEdit->hide();
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 7e630ac98acc01afa541de3a7b22e01f8e4ee867
-
 }
 
 Register::~Register()
