@@ -18,6 +18,8 @@ public:
 private slots:
     void on_forgotPasswordResetButton_clicked();
 
+    void on_forgotPasswordCancelButton_clicked();
+
 private:
     Ui::forgotPassword *ui;
 };
