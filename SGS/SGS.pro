@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -11,15 +11,37 @@ CONFIG += c++11
 SOURCES += \
     register.cpp \
     main.cpp \
-    sgsapp.cpp
+    sgsapp.cpp \
+    academicprogram.cpp \
+    coursecomments.cpp \
+    courses.cpp \
+    coursesequence.cpp \
+    dashboard.cpp \
+    dashboardstudent.cpp \
+    databaseconnection.cpp \
+    lecture.cpp \
+    users.cpp \
+    student.cpp
 
 HEADERS += \
     register.h \
-    sgsapp.h
+    sgsapp.h \
+    academicprogram.h \
+    coursecomments.h \
+    courses.h \
+    coursesequence.h \
+    dashboard.h \
+    dashboardstudent.h \
+    databaseconnection.h \
+    lecture.h \
+    users.h \
+    student.h
 
 FORMS += \
     register.ui \
-    sgsapp.ui
+    sgsapp.ui \
+    dashboard.ui \
+    dashboardstudent.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -28,3 +50,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     images.qrc
+
+DISTFILES +=

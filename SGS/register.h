@@ -2,6 +2,7 @@
 #define REGISTER_H
 
 #include <QDialog>
+#include "student.h"
 
 namespace Ui {
 class Register;
@@ -26,8 +27,11 @@ private slots:
 
     void on_lecturerRadioButton_clicked();
 
+    void on_middleNamecheckBox_stateChanged(int arg1);
+
 private:
     Ui::Register *ui;
+    student * user;
 };
 
 #endif // REGISTER_H
