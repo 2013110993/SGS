@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Sign Up</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color:#ffffff;</string>
@@ -139,7 +139,7 @@ background-color:none;</string>
      <property name="title">
       <string>Security Questions</string>
      </property>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -780,7 +780,7 @@ color: #333;</string>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QPushButton" name="cancelSignUpButton_3">
+        <widget class="QPushButton" name="cancelSignUpButton">
          <property name="styleSheet">
           <string notr="true">color: #ffffff;
 border:0;
@@ -879,7 +879,7 @@ color: #333;</string>
        <string>(Student ID)</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>30</x>

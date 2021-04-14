@@ -10,6 +10,7 @@ Register::Register(QWidget *parent) :
     ui->setupUi(this);
     ui->stackedWidgetRegister->setCurrentIndex(0);
     ui->middleName_RegFormLineEdit->hide();
+    ui->studentIdRegFormLineEdit->hide();
 
 //    if(ui->studentRadioButton->isChecked())
 //    {
@@ -47,4 +48,12 @@ void Register::on_backSignUpButton_clicked()
 }
 
 
+void Register::on_studentRadioButton_clicked()
+{
+    ui->studentIdRegFormLineEdit->show();
+}
 
+void Register::on_lecturerRadioButton_clicked()
+{
+    ui->studentIdRegFormLineEdit->hide();
+}

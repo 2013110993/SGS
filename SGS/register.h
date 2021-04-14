@@ -16,11 +16,15 @@ public:
     ~Register();
 
 private slots:
-    void on_cancelSignUpButton_clicked();
     void on_signUpNextButton_clicked();
 
     void on_backSignUpButton_clicked();
 
+    void on_cancelSignUpButton_clicked();
+
+    void on_studentRadioButton_clicked();
+
+    void on_lecturerRadioButton_clicked();
 
 private:
     Ui::Register *ui;
