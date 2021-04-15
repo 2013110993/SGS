@@ -20,10 +20,6 @@ private slots:
 
     void on_forgotPasswordCancelButton_clicked();
 
-    void on_studentAccountTypeRadioButton_clicked();
-
-    void on_lecturerAccountTypeRadioButton_clicked();
-
 private:
     Ui::forgotPassword *ui;
 };
