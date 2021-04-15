@@ -1,5 +1,6 @@
 #include "sgsapp.h"
 #include "ui_sgsapp.h"
+#include <QDebug>
 
 sgsApp::sgsApp(QWidget *parent)
     : QMainWindow(parent)
@@ -51,5 +52,18 @@ void sgsApp::on_forgotPasswordButton_clicked()
     //Modal Approach
     forgot->setModal(true);
     forgot->show();
+
+}
+
+//Login Form to Change echo mode for Password
+void sgsApp::on_pushButton_clicked()
+{
+    //Checks which echo mode and switch it
+    if(ui->passwordInput->echoMode() == QLineEdit::Password )
+    {
+        ui->passwordInput->setEchoMode(QLineEdit::Normal);
+    }else{
+        ui->passwordInput->setEchoMode(QLineEdit::Password);
+    }
 
 }
