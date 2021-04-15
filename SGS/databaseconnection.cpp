@@ -216,6 +216,6 @@ bool databaseconnection::isconnected()
 
 bool test()
 {
-
+    return false;
 }
 

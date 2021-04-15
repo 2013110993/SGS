@@ -29,6 +29,8 @@ private slots:
 
     void on_middleNamecheckBox_stateChanged(int arg1);
 
+    void on_signUpButton_clicked();
+
 private:
     Ui::Register *ui;
     student * user;

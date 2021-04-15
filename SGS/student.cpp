@@ -19,6 +19,7 @@ void student::setID(int ID)
 float student::getRoleID()
 {
 
+    return 0;
 }
 
 void student::seRoletID(int)
