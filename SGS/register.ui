@@ -165,7 +165,7 @@ background-color:none;</string>
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox">
+        <widget class="QComboBox" name="question_1_comboBox">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -185,31 +185,6 @@ color:#333;</string>
          <item>
           <property name="text">
            <string>Select Question</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question one here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question two here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question three here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question four here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question five here DEMO</string>
           </property>
          </item>
         </widget>
@@ -251,7 +226,7 @@ color: #333;</string>
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox_3">
+        <widget class="QComboBox" name="question_2_comboBox">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -271,31 +246,6 @@ color:#333;</string>
          <item>
           <property name="text">
            <string>Select Question</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question one here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question two here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question three here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question four here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question five here DEMO</string>
           </property>
          </item>
         </widget>
@@ -337,7 +287,7 @@ color: #333;</string>
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox_2">
+        <widget class="QComboBox" name="question_3_comboBox">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -357,31 +307,6 @@ color:#333;</string>
          <item>
           <property name="text">
            <string>Select Question</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question one here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question two here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question three here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question four here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question five here DEMO</string>
           </property>
          </item>
         </widget>
@@ -739,6 +664,9 @@ color: #333;</string>
       <property name="text">
        <string>Middle Name</string>
       </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
      </widget>
     </widget>
     <widget class="QGroupBox" name="Footer">
@@ -964,8 +892,8 @@ color: #333;</string>
     <widget class="QGroupBox" name="academicGroupBox">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>30</y>
+       <x>40</x>
+       <y>110</y>
        <width>231</width>
        <height>123</height>
       </rect>
@@ -1064,7 +992,7 @@ background-color:none;</string>
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>540</y>
+       <y>550</y>
        <width>800</width>
        <height>60</height>
       </rect>
@@ -1145,6 +1073,36 @@ border-radius:5px;</string>
        <width>461</width>
        <height>501</height>
       </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="filterSearchButton">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>270</y>
+       <width>121</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:#fbaf01;
+color: #ffffff;
+border:0;
+height:30px;
+border-radius:5px;</string>
+     </property>
+     <property name="text">
+      <string>Filter Search</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>:/images/userAdd.png</normaloff>:/images/userAdd.png</iconset>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+     <property name="default">
+      <bool>false</bool>
      </property>
     </widget>
    </widget>

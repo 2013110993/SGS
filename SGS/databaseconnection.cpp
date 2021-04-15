@@ -6,7 +6,7 @@ databaseconnection::databaseconnection()
 {
    currentUserID = "test";
 
-    qDebug()<<"construc";
+    qDebug()<<"construcT";
   // dash = &createDash;
 
 }
@@ -64,6 +64,14 @@ void databaseconnection::insertNewUser(student &student)
         query.bindValue(":firstname", fname);
         query.bindValue(":lastname", lname);
 
+        QString answer1 = student.getQuestion1();
+        QString answer2 = student.getQuestion2();
+        QString answer3 = student.getQuestion3();
+
+        int quesId1 = student.getQuesId1();
+        int quesId2 = student.getQuesId2();
+        int quesId3 = student.getQuesId3();
+
 
         if(query.exec())
         {
@@ -76,20 +84,14 @@ void databaseconnection::insertNewUser(student &student)
             query2.bindValue(":email", email);
             query2.bindValue(":activeUser", 1);
             query2.bindValue(":roleId", roleID);
-             qDebug()<<id;
 
-            if(query2.exec())
-            {
-                qDebug()<<"successaddingUser";
-            }
-            else {
-                 qDebug()<<query.lastError().text();
-            }
+            qDebug()<<id;
 
-
+            query2.exec();
 
         }
-        else {
+        else
+        {
              qDebug()<<query.lastError().text();
         }
 
@@ -213,9 +215,24 @@ bool databaseconnection::isconnected()
     return connected;
 }
 
+QSqlQuery databaseconnection::updateQuestion()
+{
+    QSqlQuery * query = new QSqlQuery;
+    query->prepare("SELECT * FROM quetions");
+    qDebug()<<"test0000";
+    query->exec();
+
+    return *query;
+
+
+
+}
+
 
 bool test()
 {
-    return false;
+
+    return true;
+
 }
 

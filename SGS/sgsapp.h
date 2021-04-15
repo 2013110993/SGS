@@ -21,6 +21,9 @@ public:
     sgsApp(QWidget *parent = nullptr);
     ~sgsApp();
 
+signals:
+     void sendQuestion(QSqlQuery);
+
 private slots:
     void on_signUpButton_clicked();
     void on_signInButton_clicked();
@@ -33,5 +36,6 @@ private:
     forgotPassword * forgot;
     Register *reg;
     databaseconnection * connection;
+    QSqlQuery queries;
 };
 #endif // SGSAPP_H

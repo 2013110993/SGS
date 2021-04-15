@@ -1,6 +1,7 @@
 #include "sgsapp.h"
 #include "ui_sgsapp.h"
 #include "databaseconnection.h"
+#include <QtSql>
 
 
 sgsApp::sgsApp(QWidget *parent)
@@ -8,11 +9,14 @@ sgsApp::sgsApp(QWidget *parent)
     , ui(new Ui::sgsApp)
 
 {
-    connection = new databaseconnection;
+
 
     ui->setupUi(this);
+    connection = new databaseconnection;
     //Default landing Page for StackedWidget
     ui->stackedWidgetSGS->setCurrentIndex(0);
+
+    qDebug()<<"about to connect";
 
 
 
@@ -23,6 +27,7 @@ sgsApp::~sgsApp()
 {
     delete connection;
     delete ui;
+
 
 }
 
@@ -39,12 +44,32 @@ void sgsApp::on_signUpButton_clicked()
     //create a new instance of reg
 
     reg = new Register(this);
+    qDebug()<<"!queries.next";;
+    qDebug()<< !(queries.next());
+
+    if(!(queries.next()))
+    {
+        queries = connection->updateQuestion();
+        qDebug()<<"here1";
+
+    }
+    else {
+          qDebug()<<"debug queries.next";;
+        qDebug()<<queries.lastError();
+    }
+
+    if (queries.size() > 0)
+    {
+     connect(this,SIGNAL(sendQuestion(QSqlQuery)), reg , SLOT(recieveQuestion(QSqlQuery)));
+     emit sendQuestion(queries);
+    }
+
 
     //Modal Approach
     reg->setModal(true);
     reg->show();
-    //delete reg;
 }
+
 
 
 //Login Button

@@ -28,6 +28,7 @@ public:
     void resetPassword();
     void suspendUser();
     bool isconnected();
+    QSqlQuery updateQuestion();
 
 private:
     bool connected;
