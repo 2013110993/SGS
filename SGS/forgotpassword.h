@@ -20,12 +20,15 @@ private slots:
 
     void on_forgotPasswordCancelButton_clicked();
 
+<<<<<<< HEAD
     void on_studentAccountTypeRadioButton_clicked();
 
     void on_lecturerAccountTypeRadioButton_clicked();
 
     void on_searchAccountButton_clicked();
 
+=======
+>>>>>>> 9f4a76a785e1dbcf101c8a1edcdd7e13a53938c6
 private:
     Ui::forgotPassword *ui;
 };

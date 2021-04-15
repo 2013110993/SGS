@@ -53,7 +53,7 @@ background-repeat: no-repeat;</string>
         <x>940</x>
         <y>250</y>
         <width>291</width>
-        <height>351</height>
+        <height>331</height>
        </rect>
       </property>
       <property name="mouseTracking">
@@ -72,9 +72,9 @@ border-radius:10px;</string>
       <widget class="QLineEdit" name="usernameInput">
        <property name="geometry">
         <rect>
-         <x>70</x>
+         <x>60</x>
          <y>90</y>
-         <width>181</width>
+         <width>201</width>
          <height>31</height>
         </rect>
        </property>
@@ -94,7 +94,7 @@ border-bottom-left-radius:0px;</string>
       <widget class="QLineEdit" name="passwordInput">
        <property name="geometry">
         <rect>
-         <x>70</x>
+         <x>60</x>
          <y>140</y>
          <width>181</width>
          <height>31</height>
@@ -104,8 +104,8 @@ border-bottom-left-radius:0px;</string>
         <string notr="true">background:#fff;
 color: #333;
 border:0px; 
-border-top-right-radius:5px;
-border-bottom-right-radius:5px;
+border-top-right-radius:0px;
+border-bottom-right-radius:0px;
 border-top-left-radius:0px;
 border-bottom-left-radius:0px;</string>
        </property>
@@ -116,9 +116,9 @@ border-bottom-left-radius:0px;</string>
       <widget class="QPushButton" name="signInButton">
        <property name="geometry">
         <rect>
-         <x>40</x>
+         <x>30</x>
          <y>190</y>
-         <width>211</width>
+         <width>231</width>
          <height>32</height>
         </rect>
        </property>
@@ -190,7 +190,7 @@ text-decoration:underline;</string>
       <widget class="QFrame" name="usernameIcon">
        <property name="geometry">
         <rect>
-         <x>40</x>
+         <x>30</x>
          <y>90</y>
          <width>31</width>
          <height>31</height>
@@ -216,7 +216,7 @@ border-bottom-right-radius:0px;
       <widget class="QFrame" name="passwordIcon">
        <property name="geometry">
         <rect>
-         <x>40</x>
+         <x>30</x>
          <y>140</y>
          <width>31</width>
          <height>31</height>
@@ -258,6 +258,33 @@ background: transparent;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>140</y>
+         <width>21</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>31</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:#fff;
+border:0px; 
+border-top-right-radius:5px;
+border-bottom-right-radius:5px;
+border-top-left-radius:0px;
+border-bottom-left-radius:0px;</string>
+       </property>
+       <property name="text">
+        <string>0</string>
        </property>
       </widget>
      </widget>

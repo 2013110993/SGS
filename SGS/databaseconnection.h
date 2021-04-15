@@ -30,6 +30,8 @@ public:
     bool isconnected();
     QSqlQuery updateQuestion();
     QSqlQuery getLostAccount(QString lostAccount);
+    void setAccountID(QString);
+    QString getAccountID();
 
 
 private:
