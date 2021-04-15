@@ -8,7 +8,8 @@ using std::string;
 class users
 {
 public:
-    users(QString,QString,QString,QString,QChar,QString,QString,QString,QString,int,QString);
+    users(QString,QString,QString,QString,QChar,QString,QString,QString,QString,int,QString,
+          int questionId1, int questionId2,int questionId3, QString question1, QString question2, QString question3));
     QString getFName();
     QString getLName();
     QString getMName();
@@ -31,6 +32,19 @@ public:
     void setAddress(QString);
     void setEmail(QString);
     void setMName(QString);
+    void setQuestion1(QString);
+    QString getQuestion1();
+    void setQuestion2(QString);
+    QString getQuestion2();
+    void setQuestion3(QString);
+    QString getQuestion3();
+
+    void setQuesId1(int);
+    void setQuesId2(int);
+    void setQuesId3(int);
+    int getQuesId1();
+    int getQuesId2();
+    int getQuesId3();
 private:
     int UBid;
     QString userName;
@@ -43,6 +57,12 @@ private:
     QString address;
     QString email;
     QString role;
+    QString Question1;
+    QString Question2;
+    QString Question3;
+    int quesId1;
+    int quesId2;
+    int quesId3;
 };
 
 #endif // USERS_H
