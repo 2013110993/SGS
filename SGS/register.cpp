@@ -48,7 +48,7 @@ void Register::on_signUpNextButton_clicked()
 
 
     //QString m =  ui->middleName_RegFormLineEdit->text();
-    databaseconnection * connection = new databaseconnection;
+    //databaseconnection * connection = new databaseconnection;
    // qDebug()<<"is not empty";
     //user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(studentRole));
 
@@ -111,15 +111,6 @@ void Register::on_signUpNextButton_clicked()
         msgBox.exec();
 
     }
-
-
-   // connection->insertNewUser(*user);
-
-
-
-    //ui->stackedWidgetRegister->setCurrentIndex( ui->stackedWidgetRegister->currentIndex() + 1 );
-//    ui->stackedWidgetRegister->setCurrentIndex(1);
-
 }
 
 //Register Back page
@@ -159,51 +150,50 @@ void Register::on_signUpButton_clicked()
 
     int currIndex = ui->programComboBox->currentIndex();       // program combo box
     int currIndex2 = ui->facultyComboBox->currentIndex();  //faculty combo box
-    if(currIndex == 0 || currIndex2 == 0)
+//    if(currIndex == 0 || currIndex2 == 0)
+//    {
+//        QMessageBox msgBox1;
+//        msgBox1.setText("Please fill the missing data!");
+//        msgBox1.exec();
+//    }
+//    else
     {
-        QMessageBox msgBox1;
-        msgBox1.setText("Please fill the missing data!");
-        msgBox1.exec();
+
+
+        QString f = ui->firstName_RegFormLineEdit->text();
+        QString l = ui->lastName_RegFormLineEdit->text();
+        QString m =  ui->userName_RegFormLineEdit->text();
+        QString u =  ui->userName_RegFormLineEdit->text();
+        QString e =  ui->email_RegFormLineEdit->text();
+        QString p =  ui->password_RegFormLineEdit->text();
+        QString id =  ui->studentIdRegFormLineEdit->text();
+        int ID = id.toInt();
+
+        QString ques1 =  ui->firtstQuestionAnswer_RegFormLineEdit->text();
+        qDebug()<<ques1;
+
+        QString ques2 =  ui->secondQuestionAnswer_RegFormLineEdit->text();
+        qDebug()<<ques2;
+
+        QString ques3 =  ui->thirdQuestionAnswer_RegFormLineEdit->text();
+        qDebug()<<ques3;
+
+        int quesId1 =  ui->question_1_comboBox->currentIndex();
+        int quesId2 =  ui->question_2_comboBox->currentIndex();
+        int quesId3 =  ui->question_3_comboBox->currentIndex();
+
+        qDebug()<<quesId1;
+        qDebug()<<quesId2;
+        qDebug()<<quesId3;
+
+        databaseconnection * connection = new databaseconnection;
+
+        user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
+
+        connection->insertNewUser(*user);
+
     }
 
-    QString f = ui->firstName_RegFormLineEdit->text();
-    QString l = ui->lastName_RegFormLineEdit->text();
-    QString m =  ui->userName_RegFormLineEdit->text();
-    QString u =  ui->userName_RegFormLineEdit->text();
-    QString e =  ui->email_RegFormLineEdit->text();
-    QString p =  ui->password_RegFormLineEdit->text();
-    QString id =  ui->studentIdRegFormLineEdit->text();
-    int ID = id.toInt();
-
-    QString ques1 =  ui->firtstQuestionAnswer_RegFormLineEdit->text();
-    qDebug()<<ques1;
-
-    QString ques2 =  ui->secondQuestionAnswer_RegFormLineEdit->text();
-    qDebug()<<ques2;
-
-    QString ques3 =  ui->thirdQuestionAnswer_RegFormLineEdit->text();
-    qDebug()<<ques3;
-
-    int quesId1 =  ui->question_1_comboBox->currentIndex();
-    int quesId2 =  ui->question_2_comboBox->currentIndex();
-    int quesId3 =  ui->question_3_comboBox->currentIndex();
-
-    qDebug()<<quesId1;
-    qDebug()<<quesId2;
-    qDebug()<<quesId3;
-
-    databaseconnection * connection = new databaseconnection;
-    //QString m =  ui->middleName_RegFormLineEdit->text();
-
-    //user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),ques1,ques2,ques3);
-
-    user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
-
-    connection->insertNewUser(*user);
-    QMessageBox msgBox;
-    msgBox.setText("Your Account has been created successfully!");
-    msgBox.exec();
-    this->close();
 }
 
 void Register::recieveQuestion(QSqlQuery question)

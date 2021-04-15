@@ -23,7 +23,7 @@ void databaseconnection::connect()
     setConnection.setPort(3366);
     setConnection.setUserName("root");
     setConnection.setPassword("");
-    setConnection.setDatabaseName("test");
+    setConnection.setDatabaseName("studentgradingsystem");
     connected = setConnection.open();
     try
     {
@@ -57,6 +57,9 @@ void databaseconnection::insertNewUser(student &student)
         QString roleID = student.getRole();
         QString studentID = QString::number(id);
         QSqlQuery query;
+        QTime ct = QTime::currentTime();
+        QString currentTime =ct.toString();
+
         query.prepare("INSERT INTO person (id, firstname, lastname) "
                       "VALUES (:id, :firstname, :lastname)");
 
@@ -64,37 +67,101 @@ void databaseconnection::insertNewUser(student &student)
         query.bindValue(":firstname", fname);
         query.bindValue(":lastname", lname);
 
-        QString answer1 = student.getQuestion1();
-        QString answer2 = student.getQuestion2();
-        QString answer3 = student.getQuestion3();
+        QString answer[questionAsk];
+        answer[0] = student.getQuestion1();
+        answer[1]  = student.getQuestion2();
+        answer[2] = student.getQuestion3();
 
-        int quesId1 = student.getQuesId1();
-        int quesId2 = student.getQuesId2();
-        int quesId3 = student.getQuesId3();
+        int quesId[questionAsk];
 
+        quesId[0] = student.getQuesId1();
+        quesId[1] = student.getQuesId2();
+        quesId[2] = student.getQuesId3();
 
+        qDebug()<<"id : "<<studentID<<" asd";
         if(query.exec())
         {
-            QSqlQuery query2;
-            query2.prepare("INSERT INTO users (personId, username, password, email,activeUser,roleId) "
-                          "VALUES (:personId, :username, :password, :email,:activeUser,:roleId)");
-            query2.bindValue(":personId", id);
-            query2.bindValue(":username", username);
-            query2.bindValue(":password", password);
-            query2.bindValue(":email", email);
-            query2.bindValue(":activeUser", 1);
-            query2.bindValue(":roleId", roleID);
-
+            qDebug()<<"add person, going to user";
+            QSqlQuery query3;
+            query3.prepare("INSERT INTO users (personId, username, password, email,activeUser,roleId, createdAt) "
+                          "VALUES (:personId, :username, :password, :email,:activeUser,:roleId, :createdAt)");
+            query3.bindValue(":personId", id);
+            query3.bindValue(":username", username);
+            query3.bindValue(":password", password);
+            query3.bindValue(":email", email);
+            query3.bindValue(":activeUser", 1);
+            query3.bindValue(":roleId", roleID);
+            query3.bindValue(":createdAt", ct);
             qDebug()<<id;
 
-            query2.exec();
+           if(query3.exec())
             qDebug()<<"created user";
+           else {
+               qDebug()<<query3.lastError().text();
+           }
+
+            QSqlQuery getID;
+           // getID.clear();
+           //getID.prepare("SELECT id FROM users (userId , questionId , answer) "
+                     //     "VALUES (:userId, :questionId, :answer)");
+//            getID.bindValue(":userId", studentID);
+//            query2.bindValue(":questionId", quesId[var]);
+//            query2.bindValue(":answer", answer[var]);
+            QString stu;
+            if(getID.exec("SELECT id FROM users WHERE personid = " + studentID))
+            {
+                while (getID.next())
+                {
+                    stu = getID.value(0).toString();
+
+                        qDebug()<<"created user right : ";
+
+                        qDebug()<<stu;
+                         qDebug()<<" ^created user right : ";
+
+                }
+
+            }
+
+            else
+            {
+               qDebug()<< "lasterror";
+                qDebug()<<getID.lastError().text();
+            }
+
+
+            for (int var = 0; var < questionAsk; ++var)
+            {
+                QSqlQuery query2;
+                query2.clear();
+                query2.prepare("INSERT INTO securityquestions (userId , questionId , answer) "
+                              "VALUES (:userId, :questionId, :answer)");
+                query2.bindValue(":userId", stu);
+                query2.bindValue(":questionId", quesId[var]);
+                query2.bindValue(":answer", answer[var]);
+                if(query2.exec())
+                {
+
+                     qDebug()<<"adding ques"<<stu;
+                }
+
+                else {
+                    qDebug()<<"errororor";
+                    getID.lastError().text();
+                }
+
+            }
+
+
 
         }
         else
         {
              qDebug()<<query.lastError().text();
         }
+
+
+
 
 
 
@@ -148,7 +215,7 @@ bool databaseconnection::loginUser(QString username, QString password)
                             //delete  studDash;
                             return true;
                         }
-                        else if (role == "2") {
+                        else if (role == "3") {
                             qDebug()<<"creating dashStud";
                              dash = new Dashboard;
                             qDebug()<<"creating dashStud";
@@ -219,7 +286,7 @@ bool databaseconnection::isconnected()
 QSqlQuery databaseconnection::updateQuestion()
 {
     QSqlQuery * query = new QSqlQuery;
-    query->prepare("SELECT * FROM quetions");
+    query->prepare("SELECT * FROM questions");
     qDebug()<<"test0000";
     query->exec();
 
