@@ -36,6 +36,7 @@ private:
     Dashboard *dash;
     Dashboard createDash;
     QString currentUserID;
+    int const questionAsk = 3;
 };
 
 #endif // DATABASECONNECTION_H

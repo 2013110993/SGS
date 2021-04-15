@@ -508,7 +508,7 @@ public:
 
         retranslateUi(Register);
 
-        stackedWidgetRegister->setCurrentIndex(1);
+        stackedWidgetRegister->setCurrentIndex(0);
         signUpNextButton->setDefault(false);
         signUpButton->setDefault(false);
         filterSearchButton->setDefault(false);
