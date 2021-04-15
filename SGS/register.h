@@ -32,11 +32,8 @@ private slots:
 
     void on_signUpButton_clicked();
 
-//<<<<<<< HEAD
-//=======
-    //void recieveQuestion(QSqlQuery);
+    void recieveQuestion(QSqlQuery);
 
-//>>>>>>> 6e55ea39285c72030f3f0f13d596730ccc047a7b
 private:
     Ui::Register *ui;
     student * user;

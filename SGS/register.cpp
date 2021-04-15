@@ -36,20 +36,20 @@ void Register::on_cancelSignUpButton_clicked()
 //Register Next page
 void Register::on_signUpNextButton_clicked()
 {
-    QString f = ui->firstName_RegFormLineEdit->text();
-    QString l = ui->lastName_RegFormLineEdit->text();
-    QString m =  ui->userName_RegFormLineEdit->text();
-    QString u =  ui->userName_RegFormLineEdit->text();
-    QString e =  ui->email_RegFormLineEdit->text();
-    QString p =  ui->password_RegFormLineEdit->text();
-    QString id =  ui->studentIdRegFormLineEdit->text();
-    int ID = id.toInt();
-    const int studentRole=1;
+//    QString f = ui->firstName_RegFormLineEdit->text();
+//    QString l = ui->lastName_RegFormLineEdit->text();
+//    QString m =  ui->userName_RegFormLineEdit->text();
+//    QString u =  ui->userName_RegFormLineEdit->text();
+//    QString e =  ui->email_RegFormLineEdit->text();
+//    QString p =  ui->password_RegFormLineEdit->text();
+//    QString id =  ui->studentIdRegFormLineEdit->text();
+//    int ID = id.toInt();
+//    const int studentRole=1;
 
 
     //QString m =  ui->middleName_RegFormLineEdit->text();
     databaseconnection * connection = new databaseconnection;
-    qDebug()<<"is not empty";
+   // qDebug()<<"is not empty";
     //user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(studentRole));
 
 
@@ -104,13 +104,16 @@ void Register::on_signUpNextButton_clicked()
     }
     else
     {
-        connection->insertNewUser(*user);
+
         ui->stackedWidgetRegister->setCurrentIndex(1); //executes if there's no error
         QMessageBox msgBox;
         msgBox.setText("Your Account has been created successfully!");
         msgBox.exec();
 
     }
+
+
+   // connection->insertNewUser(*user);
 
 
 
@@ -191,11 +194,11 @@ void Register::on_signUpButton_clicked()
 
     databaseconnection * connection = new databaseconnection;
     //QString m =  ui->middleName_RegFormLineEdit->text();
-<<<<<<< HEAD
+
     //user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),ques1,ques2,ques3);
-=======
+
     user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
->>>>>>> 76cb73e9e2b14a46393b7a7259b9f3514303fad1
+
     connection->insertNewUser(*user);
     QMessageBox msgBox;
     msgBox.setText("Your Account has been created successfully!");
@@ -203,17 +206,17 @@ void Register::on_signUpButton_clicked()
     this->close();
 }
 
-//void Register::recieveQuestion(QSqlQuery question)
-//{
-//        question.seek(-1);
-//       while (question.next())
-//                    {
-//                        QString questions = question.value(1).toString();
-//                        qDebug()<<questions;
-//                        ui->question_1_comboBox->addItem(questions);
-//                          ui->question_2_comboBox->addItem(questions);
-//                            ui->question_3_comboBox->addItem(questions);
+void Register::recieveQuestion(QSqlQuery question)
+{
+        question.seek(-1);
+       while (question.next())
+                    {
+                        QString questions = question.value(1).toString();
+                        qDebug()<<questions;
+                        ui->question_1_comboBox->addItem(questions);
+                          ui->question_2_comboBox->addItem(questions);
+                            ui->question_3_comboBox->addItem(questions);
 
-//                    }
+                    }
 
-//}
+}

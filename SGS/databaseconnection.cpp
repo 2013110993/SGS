@@ -88,6 +88,7 @@ void databaseconnection::insertNewUser(student &student)
             qDebug()<<id;
 
             query2.exec();
+            qDebug()<<"created user";
 
         }
         else
