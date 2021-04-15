@@ -9,7 +9,7 @@ class users
 {
 public:
     users(QString,QString,QString,QString,QChar,QString,QString,QString,QString,int,QString,
-          int questionId1, int questionId2,int questionId3, QString question1, QString question2, QString question3));
+          int questionId1, int questionId2,int questionId3, QString question1, QString question2, QString question3);
     QString getFName();
     QString getLName();
     QString getMName();

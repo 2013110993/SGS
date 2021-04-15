@@ -97,7 +97,7 @@ void Register::on_signUpButton_clicked()
 
     databaseconnection * connection = new databaseconnection;
     //QString m =  ui->middleName_RegFormLineEdit->text();
-    user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),ques1,ques2,ques3);
+    user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
     connection->insertNewUser(*user);
     QMessageBox msgBox;
     msgBox.setText("Your Account has been created successfully!");
