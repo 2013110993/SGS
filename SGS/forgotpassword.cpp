@@ -39,3 +39,12 @@ void forgotPassword::on_lecturerAccountTypeRadioButton_clicked()
     ui->studentIdForgotFormLineEdit->hide();
     ui->lecturerForgotFormLineEdit->show();
 }
+
+void forgotPassword::on_searchAccountButton_clicked()
+{
+
+    QString lostAccount = ui->studentIdForgotFormLineEdit->text();
+
+
+
+}

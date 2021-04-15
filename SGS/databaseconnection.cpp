@@ -4,7 +4,7 @@
 
 databaseconnection::databaseconnection()
 {
-   currentUserID = "test";
+   currentUserID = "";
 
     qDebug()<<"construcT";
   // dash = &createDash;
@@ -99,14 +99,7 @@ void databaseconnection::insertNewUser(student &student)
            else {
                qDebug()<<query3.lastError().text();
            }
-
             QSqlQuery getID;
-           // getID.clear();
-           //getID.prepare("SELECT id FROM users (userId , questionId , answer) "
-                     //     "VALUES (:userId, :questionId, :answer)");
-//            getID.bindValue(":userId", studentID);
-//            query2.bindValue(":questionId", quesId[var]);
-//            query2.bindValue(":answer", answer[var]);
             QString stu;
             if(getID.exec("SELECT id FROM users WHERE personid = " + studentID))
             {
@@ -129,7 +122,6 @@ void databaseconnection::insertNewUser(student &student)
                 qDebug()<<getID.lastError().text();
             }
 
-
             for (int var = 0; var < questionAsk; ++var)
             {
                 QSqlQuery query2;
@@ -151,22 +143,11 @@ void databaseconnection::insertNewUser(student &student)
                 }
 
             }
-
-
-
         }
         else
         {
              qDebug()<<query.lastError().text();
         }
-
-
-
-
-
-
-
-
 
 }
 
@@ -186,7 +167,8 @@ bool databaseconnection::loginUser(QString username, QString password)
                         QString userID;
                             while (query.next())
                             {
-                               currentUserID = userID = query.value(0).toString();
+                                userID = query.value(0).toString();
+                                setAccountID(userID);
                                 role = query.value(1).toString();
                                qDebug() <<"role "<< role <<" here";
                            }
@@ -254,8 +236,8 @@ void databaseconnection::logoutUser(Dashboard * dash)
     QSqlQuery query3;
     query3.prepare("INSERT INTO loginstatus (id, lastLogin) "
                   "VALUES (:id,:lastLogin)");
-    qDebug()<<"here check: "<<currentUserID<<"here check: ";
-    query3.bindValue(":id",currentUserID);
+    qDebug()<<"here check: "<<getAccountID()<<"here check: ";
+    query3.bindValue(":id",getAccountID());
      qDebug()<<ct;
     query3.bindValue(":lastLogin",ct);
     if(query3.exec())
@@ -263,13 +245,10 @@ void databaseconnection::logoutUser(Dashboard * dash)
         qDebug()<<"update log status";
         //emit userLogOut();
     }
-    else {
+    else
+    {
         qDebug()<<query3.lastError().text();
     }
-
-
-//    sgsApp * loginScreen = new sgsApp;
-//    loginScreen->show();
 
 }
 
@@ -294,6 +273,27 @@ QSqlQuery databaseconnection::updateQuestion()
 
 
 
+}
+
+QSqlQuery databaseconnection::getLostAccount(QString lostAccount)
+{
+    QSqlQuery * query = new QSqlQuery;
+    // ques id, ans, where id es id
+    query->prepare("SELECT  FROM users WHERE personId = " + lostAccount);
+    qDebug()<<"test0000";
+    query->exec();
+
+    return *query;
+}
+
+void databaseconnection::setAccountID(QString accID)
+{
+    currentUserID = accID;
+}
+
+QString databaseconnection::getAccountID()
+{
+    return currentUserID;
 }
 
 

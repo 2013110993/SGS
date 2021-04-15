@@ -29,6 +29,8 @@ public:
     void suspendUser();
     bool isconnected();
     QSqlQuery updateQuestion();
+    QSqlQuery getLostAccount(QString lostAccount);
+
 
 private:
     bool connected;

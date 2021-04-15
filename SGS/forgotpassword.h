@@ -24,6 +24,8 @@ private slots:
 
     void on_lecturerAccountTypeRadioButton_clicked();
 
+    void on_searchAccountButton_clicked();
+
 private:
     Ui::forgotPassword *ui;
 };

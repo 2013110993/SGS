@@ -91,6 +91,7 @@ void sgsApp::on_forgotPasswordButton_clicked()
 {
     //create a new instance of reg
     forgot = new forgotPassword(this);
+
    // QSqlQuery query = connection->updateQuestion();
     //Modal Approach
     forgot->setModal(true);
