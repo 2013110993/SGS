@@ -1,26 +1,69 @@
 #include "sgsapp.h"
 #include "ui_sgsapp.h"
+#include "databaseconnection.h"
+#include <QtSql>
+
 
 sgsApp::sgsApp(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::sgsApp)
-{
-    ui->setupUi(this);
 
+{
+
+
+    ui->setupUi(this);
+    connection = new databaseconnection;
     //Default landing Page for StackedWidget
     ui->stackedWidgetSGS->setCurrentIndex(0);
+
+    qDebug()<<"about to connect";
+
+
+
+
 }
 
 sgsApp::~sgsApp()
 {
+    delete connection;
     delete ui;
+
+
+}
+
+void sgsApp::logout()
+{
+    qDebug()<<"showed";
+        this->show();
+
 }
 
 //Register Button
 void sgsApp::on_signUpButton_clicked()
 {
     //create a new instance of reg
+
     reg = new Register(this);
+    qDebug()<<"!queries.next";;
+    qDebug()<< !(queries.next());
+
+    if(!(queries.next()))
+    {
+        queries = connection->updateQuestion();
+        qDebug()<<"here1";
+
+    }
+    else {
+          qDebug()<<"debug queries.next";;
+        qDebug()<<queries.lastError();
+    }
+
+    if (queries.size() > 0)
+    {
+     connect(this,SIGNAL(sendQuestion(QSqlQuery)), reg , SLOT(recieveQuestion(QSqlQuery)));
+     emit sendQuestion(queries);
+    }
+
 
     //Modal Approach
     reg->setModal(true);
@@ -28,19 +71,20 @@ void sgsApp::on_signUpButton_clicked()
 }
 
 
+
 //Login Button
 void sgsApp::on_signInButton_clicked()
 {
-    QString username = ui->usernameInput->text();
+        QString username = ui->usernameInput->text();
         QString password = ui->passwordInput->text();
 
-        if( username == "admin" && password == "admin")
-        {
-           ui->stackedWidgetSGS->setCurrentIndex(1);
-        }
+
+        bool checking = connection->loginUser(username,password);
+        if (checking)
+        this->close();
         else {
-           ui->loginErrorLabel->setText("~ Invalid Credentials! ~");
-        }
+            ui->loginErrorLabel->setText("~ Invalid Credentials! ~");
+           }
 }
 
 void sgsApp::on_forgotPasswordButton_clicked()

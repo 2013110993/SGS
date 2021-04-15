@@ -80,7 +80,6 @@ background-repeat: no-repeat;</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>19</pointsize>
       <weight>62</weight>
       <bold>true</bold>
      </font>
@@ -166,7 +165,7 @@ background-color:none;</string>
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox">
+        <widget class="QComboBox" name="question_1_comboBox">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -186,31 +185,6 @@ color:#333;</string>
          <item>
           <property name="text">
            <string>Select Question</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question one here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question two here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question three here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question four here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question five here DEMO</string>
           </property>
          </item>
         </widget>
@@ -252,7 +226,7 @@ color: #333;</string>
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox_3">
+        <widget class="QComboBox" name="question_2_comboBox">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -272,31 +246,6 @@ color:#333;</string>
          <item>
           <property name="text">
            <string>Select Question</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question one here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question two here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question three here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question four here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question five here DEMO</string>
           </property>
          </item>
         </widget>
@@ -338,7 +287,7 @@ color: #333;</string>
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox_2">
+        <widget class="QComboBox" name="question_3_comboBox">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -358,31 +307,6 @@ color:#333;</string>
          <item>
           <property name="text">
            <string>Select Question</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question one here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question two here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question three here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question four here DEMO</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Question five here DEMO</string>
           </property>
          </item>
         </widget>
@@ -414,7 +338,7 @@ color: #333;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>280</y>
+       <y>250</y>
        <width>371</width>
        <height>245</height>
       </rect>
@@ -740,6 +664,9 @@ color: #333;</string>
       <property name="text">
        <string>Middle Name</string>
       </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
      </widget>
     </widget>
     <widget class="QGroupBox" name="Footer">
@@ -885,7 +812,7 @@ color: #333;</string>
         <x>30</x>
         <y>30</y>
         <width>161</width>
-        <height>20</height>
+        <height>22</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -893,6 +820,9 @@ color: #333;</string>
         <widget class="QRadioButton" name="studentRadioButton">
          <property name="text">
           <string>Student</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -906,13 +836,64 @@ color: #333;</string>
       </layout>
      </widget>
     </widget>
+    <widget class="QLineEdit" name="confirmEmail_RegFormLineEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>520</y>
+       <width>349</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:#ffffff;
+color: #333;</string>
+     </property>
+     <property name="placeholderText">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="confirmEmail_RegForm_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>490</y>
+       <width>349</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:none;</string>
+     </property>
+     <property name="text">
+      <string>confirm Email:</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="academic">
     <widget class="QGroupBox" name="academicGroupBox">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>30</y>
+       <x>40</x>
+       <y>110</y>
        <width>231</width>
        <height>123</height>
       </rect>
@@ -1092,6 +1073,36 @@ border-radius:5px;</string>
        <width>461</width>
        <height>501</height>
       </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="filterSearchButton">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>270</y>
+       <width>121</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:#fbaf01;
+color: #ffffff;
+border:0;
+height:30px;
+border-radius:5px;</string>
+     </property>
+     <property name="text">
+      <string>Filter Search</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>:/images/userAdd.png</normaloff>:/images/userAdd.png</iconset>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+     <property name="default">
+      <bool>false</bool>
      </property>
     </widget>
    </widget>

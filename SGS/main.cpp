@@ -5,6 +5,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    databaseconnection connection;
+    connection.connect();
     sgsApp login;
     login.show();
     return a.exec();
