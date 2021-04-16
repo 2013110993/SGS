@@ -24,16 +24,11 @@ public:
     void searchStudent();
     void insertNewUser(student &student);
     bool loginUser(QString, QString);
-    void logoutUser();
+    void logoutUser(Dashboard *);
     void resetPassword();
     void suspendUser();
     bool isconnected();
     QSqlQuery updateQuestion();
-    QSqlQuery getUserInfo(QString);
-    QSqlQuery getLecturerInfo(QString);
-    QString getUserId();
-    void setUserId(QString);
-    void resetPassword(QString);
 
 private:
     bool connected;

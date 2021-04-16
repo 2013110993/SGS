@@ -2,7 +2,6 @@
 #define FORGOTPASSWORD_H
 
 #include <QDialog>
-#include "databaseconnection.h"
 
 namespace Ui {
 class forgotPassword;
@@ -25,14 +24,8 @@ private slots:
 
     void on_lecturerAccountTypeRadioButton_clicked();
 
-    void on_accountLostResetButton_clicked();
-
-    void on_checkAnswerResetButton_clicked();
-
 private:
     Ui::forgotPassword *ui;
-    QString correctanswer[3];
-    databaseconnection connect;
 };
 
 #endif // FORGOTPASSWORD_H

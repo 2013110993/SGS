@@ -36,6 +36,7 @@ void Register::on_cancelSignUpButton_clicked()
 //Register Next page
 void Register::on_signUpNextButton_clicked()
 {
+
     //EMAIL VALIDATION
     QLineEdit *emailLineEdit = new QLineEdit;
     QLineEdit *confirmEmailLineEdit = new QLineEdit;
@@ -88,9 +89,6 @@ void Register::on_signUpNextButton_clicked()
     {
 
         ui->stackedWidgetRegister->setCurrentIndex(1); //executes if there's no error
-        QMessageBox msgBox;
-        msgBox.setText("Your Account has been created successfully!");
-        msgBox.exec();
 
     }
 }
@@ -175,6 +173,7 @@ void Register::on_signUpButton_clicked()
         connection->insertNewUser(*user);
 
     }
+    this->close();
 
 }
 
