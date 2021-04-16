@@ -66,7 +66,7 @@ void forgotPassword::on_accountLostResetButton_clicked()
     if(ui->studentAccountTypeRadioButton->isChecked())
     {
 
-        QSqlQuery accountInfo = connect.getUserInfo(ui->studentIdForgotFormLineEdit->text());
+        QSqlQuery accountInfo = connect.getUserInfo(ui->studentIdForgotFormLineEdit->text(), 0);
         if (accountInfo.size() > 0)
         {
             QMessageBox msgBox;
@@ -81,14 +81,15 @@ void forgotPassword::on_accountLostResetButton_clicked()
                 var ++;
             }
         }
-        else {
+        else
+        {
             QMessageBox::warning(this,"Error","No Such account found on the system, please enter a correct ID");
         }
 
     }
     else
     {
-        QSqlQuery accountInfo = connect.getUserInfo(ui->studentIdForgotFormLineEdit->text());
+        QSqlQuery accountInfo = connect.getUserInfo(ui->lecturerForgotFormLineEdit->text(), 1);
         if (accountInfo.size() > 0)
         {
             QMessageBox msgBox;

@@ -18,9 +18,6 @@ sgsApp::sgsApp(QWidget *parent)
 
     qDebug()<<"about to connect";
 
-
-
-
 }
 
 sgsApp::~sgsApp()

@@ -88,9 +88,6 @@ void Register::on_signUpNextButton_clicked()
     {
 
         ui->stackedWidgetRegister->setCurrentIndex(1); //executes if there's no error
-        QMessageBox msgBox;
-        msgBox.setText("Your Account has been created successfully!");
-        msgBox.exec();
 
     }
 }
@@ -173,6 +170,7 @@ void Register::on_signUpButton_clicked()
         user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
 
         connection->insertNewUser(*user);
+        this->close();
 
     }
 

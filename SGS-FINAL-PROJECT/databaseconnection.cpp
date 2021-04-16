@@ -60,29 +60,53 @@ void databaseconnection::insertNewUser(student &student)
     QTime ct = QTime::currentTime();
     QString currentTime =ct.toString();
 
-    if(id == 0)
-    {
+  //  if(id == 0)
+   // {
         query.prepare("INSERT INTO person ( firstname, lastname) "
                       "VALUES ( :firstname, :lastname)");
         query.bindValue(":firstname", fname);
         query.bindValue(":lastname", lname);
 
+        if(!query.exec())
+        {
+            qDebug()<<query.lastError().text();
+        }
+
         QSqlQuery newQuery ;
-        newQuery.prepare("SELECT id INTO person ( firstname, lastname) "
-                      "VALUES ( :firstname, :lastname)");
-        newQuery.bindValue(":firstname", fname);
-        newQuery.bindValue(":lastname", lname);
+
+        QString userID;
+        //if (query.exec( "SELECT id, roleid from users WHERE username = '" + username + "' AND password = '" +
+        //                password + "' AND activeUser = '" + logIn + "' "))
 
 
-    }
-    else
-    {
-        query.prepare("INSERT INTO person (id, firstname, lastname) "
-                      "VALUES (:id, :firstname, :lastname)");
-        query.bindValue(":id", id);
-        query.bindValue(":firstname", fname);
-        query.bindValue(":lastname", lname);
-    }
+        if(newQuery.exec("SELECT id FROM person WHERE firstname = '" + fname + "' AND lastname = '" + lname   + "' "))
+        {
+            while (newQuery.next())
+            {
+                userID = newQuery.value(0).toString();
+
+                qDebug()<<"got id from person ";
+                qDebug()<<userID;
+                qDebug()<<" ^got id from person  ";
+            }
+        }
+
+
+        //newQuery.prepare("SELECT id FROM person WHERE  "
+//                      "VALUES ( :firstname, :lastname)");
+//        newQuery.bindValue(":firstname", fname);
+//        newQuery.bindValue(":lastname", lname);
+
+
+//    }
+//    else
+//    {
+//        query.prepare("INSERT INTO person (id, firstname, lastname) "
+//                      "VALUES (:id, :firstname, :lastname)");
+//        query.bindValue(":id", id);
+//        query.bindValue(":firstname", fname);
+//        query.bindValue(":lastname", lname);
+//    }
 
     QString answer[questionAsk];
     answer[0] = student.getQuestion1();
@@ -98,16 +122,23 @@ void databaseconnection::insertNewUser(student &student)
     qDebug()<<"id : "<<studentID<<" asd";
     if(query.exec())
     {
+        qDebug()<<"Going to insert into users";
         QSqlQuery query3;
-        query3.prepare("INSERT INTO users (personId, username, password, email,activeUser,roleId, createdAt) "
-                       "VALUES (:personId, :username, :password, :email,:activeUser,:roleId, :createdAt)");
-        query3.bindValue(":personId", id);
+        query3.prepare("INSERT INTO users (id, personId, username, password, email,activeUser,roleId, createdAt) "
+                       "VALUES (:id,:personId, :username, :password, :email,:activeUser,:roleId, :createdAt)");
+        query3.bindValue(":id", id);
+        query3.bindValue(":personId", userID);
         query3.bindValue(":username", username);
         query3.bindValue(":password", password);
         query3.bindValue(":email", email);
+        if (roleID == 2)
         query3.bindValue(":activeUser", 1);
+        else
+        query3.bindValue(":activeUser", 0);
+
         query3.bindValue(":roleId", roleID);
         query3.bindValue(":createdAt", ct);
+
 
 
         if(query3.exec())
@@ -115,14 +146,13 @@ void databaseconnection::insertNewUser(student &student)
             QSqlQuery getID;
 
             QString stu;
-            if(getID.exec("SELECT id FROM users WHERE personid = " + studentID))
+            if(getID.exec("SELECT id FROM users WHERE personid = " + userID))
             {
                 while (getID.next())
                 {
                     stu = getID.value(0).toString();
 
                     qDebug()<<"created user right : ";
-
                     qDebug()<<stu;
                     qDebug()<<" ^created user right : ";
                 }
@@ -133,7 +163,7 @@ void databaseconnection::insertNewUser(student &student)
                 qDebug()<<getID.lastError().text();
             }
 
-
+            qDebug()<<"Will enter for"<<userID;
             for (int var = 0; var < questionAsk; ++var)
             {
                 QSqlQuery query2;
@@ -145,7 +175,6 @@ void databaseconnection::insertNewUser(student &student)
                 query2.bindValue(":answer", answer[var]);
                 if(!query2.exec())
                 {
-
                     QMessageBox::warning(NULL,"ERROR",query.lastError().text());
                 }
             }
@@ -284,25 +313,48 @@ QSqlQuery databaseconnection::updateQuestion()
 
 }
 
-QSqlQuery databaseconnection::getUserInfo(QString lostAccount)
+QSqlQuery databaseconnection::getUserInfo(QString lostAccount, int role)
 {
-
-    QSqlQuery * query = new QSqlQuery;
-    query->prepare("SELECT id FROM `users` WHERE users.personId =" +lostAccount );
-
-    if(query->exec())
-        while (query->next())
-        {
-            setUserId(query->value(0).toString());
-        }
+     QSqlQuery * query = new QSqlQuery;
+     QSqlQuery * query1 = new QSqlQuery;
+    if (role == 0)
+    {
 
 
-    qDebug()<<"getid: "<<getUserId()<<" ::";
-    QSqlQuery * query1 = new QSqlQuery;
-    query1->prepare("SELECT questionId, answer,  questions FROM  questions, securityquestions WHERE securityquestions.questionId = questions.id "
-                    "AND securityquestions.userId = " + getUserId());
+        query->prepare("SELECT id FROM `users` WHERE users.id =" +lostAccount );
 
-    query1->exec();
+        if(query->exec())
+            while (query->next())
+            {
+                setUserId(query->value(0).toString());
+            }
+
+
+        qDebug()<<"getid: "<<getUserId()<<" ::";
+
+        query1->prepare("SELECT questionId, answer,  questions FROM  questions, securityquestions WHERE securityquestions.questionId = questions.id "
+                        "AND securityquestions.userId = " + getUserId());
+
+        query1->exec();
+    }
+    else
+    {
+        query->prepare("SELECT id FROM users WHERE username = '" + lostAccount + "'" );
+
+        if(query->exec())
+            while (query->next())
+            {
+                setUserId(query->value(0).toString());
+            }
+
+
+        qDebug()<<"getid: "<<getUserId()<<" ::";
+
+        query1->prepare("SELECT questionId, answer,  questions FROM  questions, securityquestions WHERE securityquestions.questionId = questions.id "
+                        "AND securityquestions.userId = " + getUserId());
+        query1->exec();
+    }
+
 
 
     return *query1;

@@ -29,7 +29,7 @@ public:
     void suspendUser();
     bool isconnected();
     QSqlQuery updateQuestion();
-    QSqlQuery getUserInfo(QString);
+    QSqlQuery getUserInfo(QString , int);
     QSqlQuery getLecturerInfo(QString);
     QString getUserId();
     void setUserId(QString);
