@@ -90,6 +90,9 @@ border-bottom-right-radius:5px;
 border-top-left-radius:0px;
 border-bottom-left-radius:0px;</string>
        </property>
+       <property name="placeholderText">
+        <string>Username</string>
+       </property>
       </widget>
       <widget class="QLineEdit" name="passwordInput">
        <property name="geometry">
@@ -111,6 +114,9 @@ border-bottom-left-radius:0px;</string>
        </property>
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
+       </property>
+       <property name="placeholderText">
+        <string>Password</string>
        </property>
       </widget>
       <widget class="QPushButton" name="signInButton">
@@ -241,7 +247,7 @@ border-bottom-right-radius:0px;</string>
       <widget class="QLabel" name="loginErrorLabel">
        <property name="geometry">
         <rect>
-         <x>49</x>
+         <x>40</x>
          <y>240</y>
          <width>211</width>
          <height>21</height>
@@ -260,7 +266,7 @@ background: transparent;</string>
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="passwordShowButton">
        <property name="geometry">
         <rect>
          <x>240</x>
@@ -284,7 +290,11 @@ border-top-left-radius:0px;
 border-bottom-left-radius:0px;</string>
        </property>
        <property name="text">
-        <string>0</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/iconsGray/Icons/Gray/Eye ON.png</normaloff>:/iconsGray/Icons/Gray/Eye ON.png</iconset>
        </property>
       </widget>
      </widget>

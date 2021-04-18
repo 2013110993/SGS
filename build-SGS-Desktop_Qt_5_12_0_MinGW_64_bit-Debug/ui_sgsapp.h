@@ -41,7 +41,7 @@ public:
     QFrame *usernameIcon;
     QFrame *passwordIcon;
     QLabel *loginErrorLabel;
-    QPushButton *pushButton;
+    QPushButton *passwordShowButton;
     QFrame *footerLogo;
     QFrame *frame_2;
     QWidget *Dashboard;
@@ -180,22 +180,25 @@ public:
         passwordIcon->setFrameShadow(QFrame::Raised);
         loginErrorLabel = new QLabel(loginBox);
         loginErrorLabel->setObjectName(QString::fromUtf8("loginErrorLabel"));
-        loginErrorLabel->setGeometry(QRect(49, 240, 211, 21));
+        loginErrorLabel->setGeometry(QRect(40, 240, 211, 21));
         loginErrorLabel->setStyleSheet(QString::fromUtf8("border:0px;\n"
 "color:#b50009;\n"
 "text-align:center;\n"
 "background: transparent;"));
         loginErrorLabel->setAlignment(Qt::AlignCenter);
-        pushButton = new QPushButton(loginBox);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(240, 140, 21, 31));
-        pushButton->setMaximumSize(QSize(16777215, 31));
-        pushButton->setStyleSheet(QString::fromUtf8("background:#fff;\n"
+        passwordShowButton = new QPushButton(loginBox);
+        passwordShowButton->setObjectName(QString::fromUtf8("passwordShowButton"));
+        passwordShowButton->setGeometry(QRect(240, 140, 21, 31));
+        passwordShowButton->setMaximumSize(QSize(16777215, 31));
+        passwordShowButton->setStyleSheet(QString::fromUtf8("background:#fff;\n"
 "border:0px; \n"
 "border-top-right-radius:5px;\n"
 "border-bottom-right-radius:5px;\n"
 "border-top-left-radius:0px;\n"
 "border-bottom-left-radius:0px;"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/iconsGray/Icons/Gray/Eye ON.png"), QSize(), QIcon::Normal, QIcon::Off);
+        passwordShowButton->setIcon(icon1);
         footerLogo = new QFrame(loginScreen);
         footerLogo->setObjectName(QString::fromUtf8("footerLogo"));
         footerLogo->setGeometry(QRect(990, 180, 191, 61));
@@ -264,9 +267,9 @@ public:
         dashboard_pushButton->setObjectName(QString::fromUtf8("dashboard_pushButton"));
         dashboard_pushButton->setLayoutDirection(Qt::LeftToRight);
         dashboard_pushButton->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/images/user.png"), QSize(), QIcon::Normal, QIcon::Off);
-        dashboard_pushButton->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/images/user.png"), QSize(), QIcon::Normal, QIcon::Off);
+        dashboard_pushButton->setIcon(icon2);
 
         formLayout->setWidget(0, QFormLayout::LabelRole, dashboard_pushButton);
 
@@ -419,12 +422,14 @@ public:
     void retranslateUi(QMainWindow *sgsApp)
     {
         sgsApp->setWindowTitle(QApplication::translate("sgsApp", "Student Grading System", nullptr));
+        usernameInput->setPlaceholderText(QApplication::translate("sgsApp", "Username", nullptr));
+        passwordInput->setPlaceholderText(QApplication::translate("sgsApp", "Password", nullptr));
         signInButton->setText(QApplication::translate("sgsApp", "SIGN IN", nullptr));
         signUpButton->setText(QApplication::translate("sgsApp", "SIGN UP", nullptr));
         forgotPasswordButton->setText(QApplication::translate("sgsApp", "Forgot Password?", nullptr));
         label_4->setText(QApplication::translate("sgsApp", "Login", nullptr));
         loginErrorLabel->setText(QString());
-        pushButton->setText(QApplication::translate("sgsApp", "0", nullptr));
+        passwordShowButton->setText(QString());
         mainMenu_groupBox->setTitle(QApplication::translate("sgsApp", "Main Menu", nullptr));
         dashboard_pushButton->setText(QApplication::translate("sgsApp", "Dashboard", nullptr));
         AddProgramSequence_pushButton->setText(QApplication::translate("sgsApp", "Program Sequence", nullptr));

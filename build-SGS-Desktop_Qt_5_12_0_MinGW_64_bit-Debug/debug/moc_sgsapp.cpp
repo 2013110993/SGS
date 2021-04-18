@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_sgsApp_t {
     QByteArrayData data[9];
-    char stringdata0[140];
+    char stringdata0[148];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,13 +39,13 @@ QT_MOC_LITERAL(4, 31, 23), // "on_signUpButton_clicked"
 QT_MOC_LITERAL(5, 55, 23), // "on_signInButton_clicked"
 QT_MOC_LITERAL(6, 79, 6), // "logout"
 QT_MOC_LITERAL(7, 86, 31), // "on_forgotPasswordButton_clicked"
-QT_MOC_LITERAL(8, 118, 21) // "on_pushButton_clicked"
+QT_MOC_LITERAL(8, 118, 29) // "on_passwordShowButton_clicked"
 
     },
     "sgsApp\0sendQuestion\0\0QSqlQuery\0"
     "on_signUpButton_clicked\0on_signInButton_clicked\0"
     "logout\0on_forgotPasswordButton_clicked\0"
-    "on_pushButton_clicked"
+    "on_passwordShowButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -96,7 +96,7 @@ void sgsApp::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 2: _t->on_signInButton_clicked(); break;
         case 3: _t->logout(); break;
         case 4: _t->on_forgotPasswordButton_clicked(); break;
-        case 5: _t->on_pushButton_clicked(); break;
+        case 5: _t->on_passwordShowButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

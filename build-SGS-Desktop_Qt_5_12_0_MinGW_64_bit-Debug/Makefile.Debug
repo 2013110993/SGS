@@ -159,7 +159,47 @@ debug/qrc_images.cpp: ../SGS-FINAL-PROJECT/images.qrc \
 		../SGS-FINAL-PROJECT/logo.png \
 		../SGS-FINAL-PROJECT/lock.png \
 		../SGS-FINAL-PROJECT/user.png \
-		../SGS-FINAL-PROJECT/background.jpg
+		../SGS-FINAL-PROJECT/background.jpg \
+		../SGS-FINAL-PROJECT/Icons/White/Download.png \
+		../SGS-FINAL-PROJECT/Icons/White/Single\ Arrow\ RIGHT.png \
+		../SGS-FINAL-PROJECT/Icons/White/Graduation\ Cap.png \
+		../SGS-FINAL-PROJECT/Icons/White/Single\ Arrow\ LEFT.png \
+		../SGS-FINAL-PROJECT/Icons/White/Add\ User.png \
+		../SGS-FINAL-PROJECT/Icons/White/User.png \
+		../SGS-FINAL-PROJECT/Icons/White/Double\ Arrow\ LEFT.png \
+		../SGS-FINAL-PROJECT/Icons/White/Edit.png \
+		../SGS-FINAL-PROJECT/Icons/White/Search.png \
+		../SGS-FINAL-PROJECT/Icons/White/Settings.png \
+		../SGS-FINAL-PROJECT/Icons/White/Add.png \
+		../SGS-FINAL-PROJECT/Icons/White/Double\ Arrow\ RIGHT.png \
+		../SGS-FINAL-PROJECT/Icons/White/Eye\ ON.png \
+		../SGS-FINAL-PROJECT/Icons/White/Eye\ OFF.png \
+		../SGS-FINAL-PROJECT/Icons/White/Passsword.png \
+		../SGS-FINAL-PROJECT/Icons/White/Student.png \
+		../SGS-FINAL-PROJECT/Icons/White/Lecturer.png \
+		../SGS-FINAL-PROJECT/Icons/White/Upload.png \
+		../SGS-FINAL-PROJECT/Icons/White/Dashboard.png \
+		../SGS-FINAL-PROJECT/Icons/White/Delete.png \
+		../SGS-FINAL-PROJECT/Icons/Black/password.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Download.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Single\ Arrow\ RIGHT.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Graduation\ Cap.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Eyes\ On.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Single\ Arrow\ LEFT.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Add\ User.png \
+		../SGS-FINAL-PROJECT/Icons/Black/User.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Double\ Arrow\ LEFT.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Edit.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Search.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Eyes\ Off.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Settings.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Add.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Double\ Arrow\ RIGHT.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Student.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Lecturer.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Upload.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Dashboard.png \
+		../SGS-FINAL-PROJECT/Icons/Black/Delete.png
 	C:\Qt\Qt5.12.0\5.12.0\mingw73_64\bin\rcc.exe -name images ..\SGS-FINAL-PROJECT\images.qrc -o debug\qrc_images.cpp
 
 compiler_moc_predefs_make_all: debug/moc_predefs.h

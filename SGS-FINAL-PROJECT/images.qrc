@@ -6,4 +6,70 @@
         <file>user.png</file>
         <file>lock.png</file>
     </qresource>
+    <qresource prefix="/icons White">
+        <file>Icons/White/Add User.png</file>
+        <file>Icons/White/Add.png</file>
+        <file>Icons/White/Dashboard.png</file>
+        <file>Icons/White/Delete.png</file>
+        <file>Icons/White/Double Arrow LEFT.png</file>
+        <file>Icons/White/Double Arrow RIGHT.png</file>
+        <file>Icons/White/Download.png</file>
+        <file>Icons/White/Edit.png</file>
+        <file>Icons/White/Eye OFF.png</file>
+        <file>Icons/White/Eye ON.png</file>
+        <file>Icons/White/Graduation Cap.png</file>
+        <file>Icons/White/Lecturer.png</file>
+        <file>Icons/White/Passsword.png</file>
+        <file>Icons/White/Search.png</file>
+        <file>Icons/White/Settings.png</file>
+        <file>Icons/White/Single Arrow LEFT.png</file>
+        <file>Icons/White/Single Arrow RIGHT.png</file>
+        <file>Icons/White/Student.png</file>
+        <file>Icons/White/Upload.png</file>
+        <file>Icons/White/User.png</file>
+    </qresource>
+    <qresource prefix="/iconsBlack">
+        <file>Icons/Black/Add User.png</file>
+        <file>Icons/Black/Add.png</file>
+        <file>Icons/Black/Dashboard.png</file>
+        <file>Icons/Black/Delete.png</file>
+        <file>Icons/Black/Double Arrow LEFT.png</file>
+        <file>Icons/Black/Double Arrow RIGHT.png</file>
+        <file>Icons/Black/Download.png</file>
+        <file>Icons/Black/Edit.png</file>
+        <file>Icons/Black/Eyes Off.png</file>
+        <file>Icons/Black/Eyes On.png</file>
+        <file>Icons/Black/Graduation Cap.png</file>
+        <file>Icons/Black/Lecturer.png</file>
+        <file>Icons/Black/password.png</file>
+        <file>Icons/Black/Search.png</file>
+        <file>Icons/Black/Settings.png</file>
+        <file>Icons/Black/Single Arrow LEFT.png</file>
+        <file>Icons/Black/Single Arrow RIGHT.png</file>
+        <file>Icons/Black/Student.png</file>
+        <file>Icons/Black/Upload.png</file>
+        <file>Icons/Black/User.png</file>
+    </qresource>
+    <qresource prefix="/iconsGray">
+        <file>Icons/Gray/Add User.png</file>
+        <file>Icons/Gray/Add.png</file>
+        <file>Icons/Gray/Dashboard.png</file>
+        <file>Icons/Gray/Delete.png</file>
+        <file>Icons/Gray/Double Arrow LEFT.png</file>
+        <file>Icons/Gray/Double Arrow RIGHT.png</file>
+        <file>Icons/Gray/Download.png</file>
+        <file>Icons/Gray/Edit.png</file>
+        <file>Icons/Gray/Eye OFF.png</file>
+        <file>Icons/Gray/Eye ON.png</file>
+        <file>Icons/Gray/Graduation Cap.png</file>
+        <file>Icons/Gray/Lecturer.png</file>
+        <file>Icons/Gray/Password.png</file>
+        <file>Icons/Gray/Search.png</file>
+        <file>Icons/Gray/Settings.png</file>
+        <file>Icons/Gray/Single Arrow LEFT.png</file>
+        <file>Icons/Gray/Single Arrow RIGHT.png</file>
+        <file>Icons/Gray/Student.png</file>
+        <file>Icons/Gray/Upload.png</file>
+        <file>Icons/Gray/User.png</file>
+    </qresource>
 </RCC>

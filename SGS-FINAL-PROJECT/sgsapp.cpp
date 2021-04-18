@@ -81,6 +81,7 @@ void sgsApp::on_signInButton_clicked()
         this->close();
         else {
             ui->loginErrorLabel->setText("~ Invalid Credentials! ~");
+            ui->loginErrorLabel->setStyleSheet("border:1px solid #b50009; color:#b50009;height:30px;border-radius:5px;");
            }
 }
 
@@ -96,14 +97,17 @@ void sgsApp::on_forgotPasswordButton_clicked()
 }
 
 //Login Form to Change echo mode for Password
-void sgsApp::on_pushButton_clicked()
+void sgsApp::on_passwordShowButton_clicked()
 {
     //Checks which echo mode and switch it
     if(ui->passwordInput->echoMode() == QLineEdit::Password )
     {
         ui->passwordInput->setEchoMode(QLineEdit::Normal);
+        ui->passwordShowButton->setIcon(QIcon(":/iconsGray/Icons/Gray/Eye OFF.png"));
     }else{
         ui->passwordInput->setEchoMode(QLineEdit::Password);
+        ui->passwordShowButton->setIcon(QIcon(":/iconsGray/Icons/Gray/Eye ON.png"));
     }
 
 }
+

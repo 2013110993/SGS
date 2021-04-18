@@ -31,7 +31,7 @@ private slots:
 
     void on_forgotPasswordButton_clicked();
 
-    void on_pushButton_clicked();
+    void on_passwordShowButton_clicked();
 
 private:
     Ui::sgsApp *ui;
