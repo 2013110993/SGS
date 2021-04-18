@@ -103,7 +103,7 @@ background: none;</string>
      <x>10</x>
      <y>60</y>
      <width>811</width>
-     <height>651</height>
+     <height>661</height>
     </rect>
    </property>
    <property name="currentIndex">
@@ -143,7 +143,7 @@ background-color:none;</string>
        <rect>
         <x>10</x>
         <y>40</y>
-        <width>351</width>
+        <width>802</width>
         <height>381</height>
        </rect>
       </property>
@@ -817,6 +817,87 @@ color: #333;</string>
       </layout>
      </widget>
     </widget>
+    <widget class="QGroupBox" name="Footer">
+     <property name="geometry">
+      <rect>
+       <x>-10</x>
+       <y>600</y>
+       <width>800</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>800</width>
+       <height>60</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>800</width>
+       <height>60</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:#3a444c;</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QWidget" name="layoutWidget1_6">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>10</y>
+        <width>251</width>
+        <height>42</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QPushButton" name="cancelSignUpButton">
+         <property name="styleSheet">
+          <string notr="true">color: #ffffff;
+border:0;
+height:30px;
+border-radius:5px;</string>
+         </property>
+         <property name="text">
+          <string>Sign instead</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Passsword.png</normaloff>:/icons White/Icons/White/Passsword.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="signUpNextButton">
+         <property name="styleSheet">
+          <string notr="true">background:#fbaf01;
+color: #ffffff;
+border:0;
+height:30px;
+border-radius:5px;</string>
+         </property>
+         <property name="text">
+          <string>Next</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Double Arrow RIGHT.png</normaloff>:/icons White/Icons/White/Double Arrow RIGHT.png</iconset>
+         </property>
+         <property name="autoDefault">
+          <bool>false</bool>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </widget>
    <widget class="QWidget" name="academic">
     <widget class="QGroupBox" name="academicGroupBox">
@@ -842,7 +923,7 @@ color: #333;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">color:#666;
-background-color:none;</string>
+background:#f1f1f1;</string>
      </property>
      <property name="title">
       <string>Academic Info</string>
@@ -863,6 +944,9 @@ background-color:none;</string>
           </property>
           <property name="text">
            <string>Faculty:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
@@ -892,6 +976,9 @@ background-color:none;</string>
           </property>
           <property name="text">
            <string>Program:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
@@ -929,8 +1016,8 @@ border-radius:5px;</string>
          <string>Filter Search</string>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>:/images/userAdd.png</normaloff>:/images/userAdd.png</iconset>
+         <iconset resource="images.qrc">
+          <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
         </property>
         <property name="autoDefault">
          <bool>false</bool>
@@ -952,163 +1039,92 @@ border-radius:5px;</string>
       </rect>
      </property>
     </widget>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="Footer">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>660</y>
-     <width>800</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>800</width>
-     <height>60</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>800</width>
-     <height>60</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background:#3a444c;</string>
-   </property>
-   <property name="title">
-    <string/>
-   </property>
-   <widget class="QWidget" name="layoutWidget1_6">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>10</y>
-      <width>251</width>
-      <height>42</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <widget class="QPushButton" name="cancelSignUpButton">
-       <property name="styleSheet">
-        <string notr="true">color: #ffffff;
-border:0;
-height:30px;
-border-radius:5px;</string>
-       </property>
-       <property name="text">
-        <string>Sign instead</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="signUpNextButton">
-       <property name="styleSheet">
-        <string notr="true">background:#fbaf01;
-color: #ffffff;
-border:0;
-height:30px;
-border-radius:5px;</string>
-       </property>
-       <property name="text">
-        <string>Next</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>:/images/userAdd.png</normaloff>:/images/userAdd.png</iconset>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QGroupBox" name="groupBoxRegBottom">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>800</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>800</width>
-      <height>60</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>800</width>
-      <height>60</height>
-     </size>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background:#3a444c;</string>
-    </property>
-    <property name="title">
-     <string/>
-    </property>
-    <widget class="QWidget" name="layoutWidget1">
+    <widget class="QGroupBox" name="groupBoxRegBottom">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>10</y>
-       <width>251</width>
-       <height>42</height>
+       <x>-10</x>
+       <y>590</y>
+       <width>800</width>
+       <height>60</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QPushButton" name="backSignUpButton">
-        <property name="styleSheet">
-         <string notr="true">color: #ffffff;
+     <property name="minimumSize">
+      <size>
+       <width>800</width>
+       <height>60</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>800</width>
+       <height>60</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:#3a444c;</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QWidget" name="layoutWidget1">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>10</y>
+        <width>251</width>
+        <height>42</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="backSignUpButton">
+         <property name="styleSheet">
+          <string notr="true">color: #ffffff;
 border:0;
 height:30px;
 border-radius:5px;</string>
-        </property>
-        <property name="text">
-         <string>Back</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="signUpButton">
-        <property name="styleSheet">
-         <string notr="true">background:#fbaf01;
+         </property>
+         <property name="text">
+          <string>Back</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Single Arrow LEFT.png</normaloff>:/icons White/Icons/White/Single Arrow LEFT.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="signUpButton">
+         <property name="styleSheet">
+          <string notr="true">background:#fbaf01;
 color: #ffffff;
 border:0;
 height:30px;
 border-radius:5px;</string>
-        </property>
-        <property name="text">
-         <string>  Create</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>:/images/userAdd.png</normaloff>:/images/userAdd.png</iconset>
-        </property>
-        <property name="autoDefault">
-         <bool>false</bool>
-        </property>
-        <property name="default">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
+         </property>
+         <property name="text">
+          <string>  Create</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Add User.png</normaloff>:/icons White/Icons/White/Add User.png</iconset>
+         </property>
+         <property name="autoDefault">
+          <bool>false</bool>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

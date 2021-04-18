@@ -14,6 +14,10 @@ forgotPassword::forgotPassword(QWidget *parent) :
 
     //ui->studentAccountTypeRadioButton->
     ui->lecturerForgotFormLineEdit->hide();
+
+    //Hides securityQuestions & resetPassword Sections
+    ui->securityQuestiongroupBox->hide();
+    ui->resetPasswordGroupBox->hide();
 }
 
 forgotPassword::~forgotPassword()
@@ -33,7 +37,6 @@ void forgotPassword::on_forgotPasswordResetButton_clicked()
         msgBox.setText("Reset successfully!");
         msgBox.exec();
         this->close();
-
     }
     else
     {
@@ -72,6 +75,10 @@ void forgotPassword::on_accountLostResetButton_clicked()
             QMessageBox msgBox;
             msgBox.setText("Account Found, Select question and input your answer");
             msgBox.exec();
+
+            //show Security Questions after Search
+            ui->securityQuestiongroupBox->show();
+
              int var =0;
             while (accountInfo.next())
             {
@@ -127,6 +134,9 @@ void forgotPassword::on_checkAnswerResetButton_clicked()
         QMessageBox msgBox;
         msgBox.setText("Answer accepted");
         msgBox.exec();
+
+        //show Security Questions after Search
+        ui->resetPasswordGroupBox->show();
     }
     else
     {

@@ -39,7 +39,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="loginScreen">
      <property name="styleSheet">
@@ -128,6 +128,13 @@ border-bottom-left-radius:0px;</string>
          <height>32</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">background:#fbaf01;
 color: #ffffff;
@@ -137,10 +144,6 @@ border-radius:5px;</string>
        </property>
        <property name="text">
         <string>SIGN IN</string>
-       </property>
-       <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/lock.png</normaloff>:/images/lock.png</iconset>
        </property>
       </widget>
       <widget class="QPushButton" name="signUpButton">
@@ -157,6 +160,10 @@ border-radius:5px;</string>
        </property>
        <property name="text">
         <string>SIGN UP</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/icons White/Icons/White/Add User.png</normaloff>:/icons White/Icons/White/Add User.png</iconset>
        </property>
       </widget>
       <widget class="QPushButton" name="forgotPasswordButton">

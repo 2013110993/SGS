@@ -39,15 +39,15 @@ public:
     QRadioButton *studentAccountTypeRadioButton;
     QRadioButton *lecturerAccountTypeRadioButton;
     QLineEdit *studentIdForgotFormLineEdit;
-    QGroupBox *accountTypegroupBox_2;
+    QGroupBox *securityQuestiongroupBox;
     QLineEdit *QuestionAnswer_forgotFormLineEdit;
     QLabel *Question_ForgotForm;
     QComboBox *securityQuestionsForgotFormcomboBox;
-    QGroupBox *resetPasswordgroupBox;
+    QPushButton *checkAnswerResetButton;
+    QGroupBox *resetPasswordGroupBox;
     QLineEdit *newPassword_forgotFormLineEdit;
     QLineEdit *confirmPassword_forgotFormLineEdit;
     QPushButton *accountLostResetButton;
-    QPushButton *checkAnswerResetButton;
 
     void setupUi(QDialog *forgotPassword)
     {
@@ -83,7 +83,7 @@ public:
 "height:30px;\n"
 "border-radius:5px;"));
         QIcon icon;
-        icon.addFile(QString::fromUtf8(":/images/userAdd.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
         forgotPasswordResetButton->setIcon(icon);
         forgotPasswordResetButton->setAutoDefault(false);
 
@@ -141,17 +141,17 @@ public:
         studentIdForgotFormLineEdit->setMaximumSize(QSize(16777215, 30));
         studentIdForgotFormLineEdit->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
 "color: #333;"));
-        accountTypegroupBox_2 = new QGroupBox(forgotPassword);
-        accountTypegroupBox_2->setObjectName(QString::fromUtf8("accountTypegroupBox_2"));
-        accountTypegroupBox_2->setGeometry(QRect(20, 280, 301, 131));
-        QuestionAnswer_forgotFormLineEdit = new QLineEdit(accountTypegroupBox_2);
+        securityQuestiongroupBox = new QGroupBox(forgotPassword);
+        securityQuestiongroupBox->setObjectName(QString::fromUtf8("securityQuestiongroupBox"));
+        securityQuestiongroupBox->setGeometry(QRect(20, 280, 301, 171));
+        QuestionAnswer_forgotFormLineEdit = new QLineEdit(securityQuestiongroupBox);
         QuestionAnswer_forgotFormLineEdit->setObjectName(QString::fromUtf8("QuestionAnswer_forgotFormLineEdit"));
         QuestionAnswer_forgotFormLineEdit->setGeometry(QRect(10, 90, 281, 30));
         QuestionAnswer_forgotFormLineEdit->setMinimumSize(QSize(0, 30));
         QuestionAnswer_forgotFormLineEdit->setMaximumSize(QSize(16777215, 30));
         QuestionAnswer_forgotFormLineEdit->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
 "color: #333;"));
-        Question_ForgotForm = new QLabel(accountTypegroupBox_2);
+        Question_ForgotForm = new QLabel(securityQuestiongroupBox);
         Question_ForgotForm->setObjectName(QString::fromUtf8("Question_ForgotForm"));
         Question_ForgotForm->setGeometry(QRect(10, 20, 271, 31));
         QFont font1;
@@ -159,7 +159,7 @@ public:
         font1.setWeight(75);
         Question_ForgotForm->setFont(font1);
         Question_ForgotForm->setStyleSheet(QString::fromUtf8("background-color:none;"));
-        securityQuestionsForgotFormcomboBox = new QComboBox(accountTypegroupBox_2);
+        securityQuestionsForgotFormcomboBox = new QComboBox(securityQuestiongroupBox);
         securityQuestionsForgotFormcomboBox->addItem(QString());
         securityQuestionsForgotFormcomboBox->setObjectName(QString::fromUtf8("securityQuestionsForgotFormcomboBox"));
         securityQuestionsForgotFormcomboBox->setGeometry(QRect(10, 50, 291, 30));
@@ -167,17 +167,29 @@ public:
         securityQuestionsForgotFormcomboBox->setMaximumSize(QSize(16777215, 30));
         securityQuestionsForgotFormcomboBox->setStyleSheet(QString::fromUtf8("background:#ffffff;\n"
 "color:#333;"));
-        resetPasswordgroupBox = new QGroupBox(forgotPassword);
-        resetPasswordgroupBox->setObjectName(QString::fromUtf8("resetPasswordgroupBox"));
-        resetPasswordgroupBox->setGeometry(QRect(20, 460, 301, 131));
-        newPassword_forgotFormLineEdit = new QLineEdit(resetPasswordgroupBox);
+        checkAnswerResetButton = new QPushButton(securityQuestiongroupBox);
+        checkAnswerResetButton->setObjectName(QString::fromUtf8("checkAnswerResetButton"));
+        checkAnswerResetButton->setGeometry(QRect(90, 130, 121, 30));
+        checkAnswerResetButton->setStyleSheet(QString::fromUtf8("background:#fbaf01;\n"
+"color: #ffffff;\n"
+"border:0;\n"
+"height:30px;\n"
+"border-radius:5px;"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/icons White/Icons/White/Single Arrow RIGHT.png"), QSize(), QIcon::Normal, QIcon::Off);
+        checkAnswerResetButton->setIcon(icon1);
+        checkAnswerResetButton->setAutoDefault(false);
+        resetPasswordGroupBox = new QGroupBox(forgotPassword);
+        resetPasswordGroupBox->setObjectName(QString::fromUtf8("resetPasswordGroupBox"));
+        resetPasswordGroupBox->setGeometry(QRect(20, 460, 301, 131));
+        newPassword_forgotFormLineEdit = new QLineEdit(resetPasswordGroupBox);
         newPassword_forgotFormLineEdit->setObjectName(QString::fromUtf8("newPassword_forgotFormLineEdit"));
         newPassword_forgotFormLineEdit->setGeometry(QRect(10, 40, 281, 30));
         newPassword_forgotFormLineEdit->setMinimumSize(QSize(0, 30));
         newPassword_forgotFormLineEdit->setMaximumSize(QSize(16777215, 30));
         newPassword_forgotFormLineEdit->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
 "color: #333;"));
-        confirmPassword_forgotFormLineEdit = new QLineEdit(resetPasswordgroupBox);
+        confirmPassword_forgotFormLineEdit = new QLineEdit(resetPasswordGroupBox);
         confirmPassword_forgotFormLineEdit->setObjectName(QString::fromUtf8("confirmPassword_forgotFormLineEdit"));
         confirmPassword_forgotFormLineEdit->setGeometry(QRect(10, 80, 281, 30));
         confirmPassword_forgotFormLineEdit->setMinimumSize(QSize(0, 30));
@@ -186,30 +198,22 @@ public:
 "color: #333;"));
         accountLostResetButton = new QPushButton(forgotPassword);
         accountLostResetButton->setObjectName(QString::fromUtf8("accountLostResetButton"));
-        accountLostResetButton->setGeometry(QRect(100, 230, 121, 30));
+        accountLostResetButton->setGeometry(QRect(110, 230, 121, 30));
         accountLostResetButton->setStyleSheet(QString::fromUtf8("background:#fbaf01;\n"
 "color: #ffffff;\n"
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        accountLostResetButton->setIcon(icon);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/icons White/Icons/White/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
+        accountLostResetButton->setIcon(icon2);
         accountLostResetButton->setAutoDefault(false);
-        checkAnswerResetButton = new QPushButton(forgotPassword);
-        checkAnswerResetButton->setObjectName(QString::fromUtf8("checkAnswerResetButton"));
-        checkAnswerResetButton->setGeometry(QRect(100, 420, 121, 30));
-        checkAnswerResetButton->setStyleSheet(QString::fromUtf8("background:#fbaf01;\n"
-"color: #ffffff;\n"
-"border:0;\n"
-"height:30px;\n"
-"border-radius:5px;"));
-        checkAnswerResetButton->setIcon(icon);
-        checkAnswerResetButton->setAutoDefault(false);
 
         retranslateUi(forgotPassword);
 
         forgotPasswordResetButton->setDefault(false);
-        accountLostResetButton->setDefault(false);
         checkAnswerResetButton->setDefault(false);
+        accountLostResetButton->setDefault(false);
 
 
         QMetaObject::connectSlotsByName(forgotPassword);
@@ -224,20 +228,20 @@ public:
         Header->setTitle(QString());
         label_2->setText(QApplication::translate("forgotPassword", "Reset Password", nullptr));
         accountTypegroupBox->setTitle(QApplication::translate("forgotPassword", "Account Type", nullptr));
-        lecturerForgotFormLineEdit->setPlaceholderText(QApplication::translate("forgotPassword", "(Enter Username)", nullptr));
+        lecturerForgotFormLineEdit->setPlaceholderText(QApplication::translate("forgotPassword", "Lecturer Username", nullptr));
         studentAccountTypeRadioButton->setText(QApplication::translate("forgotPassword", "Student", nullptr));
         lecturerAccountTypeRadioButton->setText(QApplication::translate("forgotPassword", "Lecturer", nullptr));
-        studentIdForgotFormLineEdit->setPlaceholderText(QApplication::translate("forgotPassword", "(Eter Student ID)", nullptr));
-        accountTypegroupBox_2->setTitle(QApplication::translate("forgotPassword", "Security Questions", nullptr));
+        studentIdForgotFormLineEdit->setPlaceholderText(QApplication::translate("forgotPassword", "Student ID #", nullptr));
+        securityQuestiongroupBox->setTitle(QApplication::translate("forgotPassword", "Security Questions", nullptr));
         QuestionAnswer_forgotFormLineEdit->setPlaceholderText(QApplication::translate("forgotPassword", "(Enter your Answer)", nullptr));
         Question_ForgotForm->setText(QApplication::translate("forgotPassword", "Question:", nullptr));
         securityQuestionsForgotFormcomboBox->setItemText(0, QApplication::translate("forgotPassword", "Select Question", nullptr));
 
-        resetPasswordgroupBox->setTitle(QApplication::translate("forgotPassword", "Reset Password", nullptr));
+        checkAnswerResetButton->setText(QApplication::translate("forgotPassword", "Check My Answer", nullptr));
+        resetPasswordGroupBox->setTitle(QApplication::translate("forgotPassword", "Reset Password", nullptr));
         newPassword_forgotFormLineEdit->setPlaceholderText(QApplication::translate("forgotPassword", "(Enter new password)", nullptr));
         confirmPassword_forgotFormLineEdit->setPlaceholderText(QApplication::translate("forgotPassword", "( Confirm password)", nullptr));
         accountLostResetButton->setText(QApplication::translate("forgotPassword", "Search Account", nullptr));
-        checkAnswerResetButton->setText(QApplication::translate("forgotPassword", "Check My Answer", nullptr));
     } // retranslateUi
 
 };

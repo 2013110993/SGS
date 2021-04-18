@@ -131,18 +131,23 @@ public:
         signInButton = new QPushButton(loginBox);
         signInButton->setObjectName(QString::fromUtf8("signInButton"));
         signInButton->setGeometry(QRect(30, 190, 231, 32));
+        QFont font;
+        font.setPointSize(9);
+        font.setBold(true);
+        font.setWeight(75);
+        signInButton->setFont(font);
         signInButton->setStyleSheet(QString::fromUtf8("background:#fbaf01;\n"
 "color: #ffffff;\n"
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/images/lock.png"), QSize(), QIcon::Normal, QIcon::Off);
-        signInButton->setIcon(icon);
         signUpButton = new QPushButton(loginBox);
         signUpButton->setObjectName(QString::fromUtf8("signUpButton"));
         signUpButton->setGeometry(QRect(20, 280, 113, 32));
         signUpButton->setStyleSheet(QString::fromUtf8("border:0px; color:#fff;"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icons White/Icons/White/Add User.png"), QSize(), QIcon::Normal, QIcon::Off);
+        signUpButton->setIcon(icon);
         forgotPasswordButton = new QPushButton(loginBox);
         forgotPasswordButton->setObjectName(QString::fromUtf8("forgotPasswordButton"));
         forgotPasswordButton->setGeometry(QRect(150, 280, 113, 32));
@@ -413,7 +418,7 @@ public:
 
         retranslateUi(sgsApp);
 
-        stackedWidgetSGS->setCurrentIndex(0);
+        stackedWidgetSGS->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(sgsApp);

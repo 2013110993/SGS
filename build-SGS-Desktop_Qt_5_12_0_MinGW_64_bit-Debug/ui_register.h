@@ -72,6 +72,11 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QRadioButton *studentRadioButton;
     QRadioButton *lecturerRadioButton;
+    QGroupBox *Footer;
+    QWidget *layoutWidget1_6;
+    QHBoxLayout *horizontalLayout_3;
+    QPushButton *cancelSignUpButton;
+    QPushButton *signUpNextButton;
     QWidget *academic;
     QGroupBox *academicGroupBox;
     QHBoxLayout *horizontalLayout_6;
@@ -83,11 +88,6 @@ public:
     QComboBox *programComboBox;
     QPushButton *filterSearchButton;
     QTableView *tableView;
-    QGroupBox *Footer;
-    QWidget *layoutWidget1_6;
-    QHBoxLayout *horizontalLayout_3;
-    QPushButton *cancelSignUpButton;
-    QPushButton *signUpNextButton;
     QGroupBox *groupBoxRegBottom;
     QWidget *layoutWidget11;
     QHBoxLayout *horizontalLayout;
@@ -125,7 +125,7 @@ public:
         label->setAlignment(Qt::AlignCenter);
         stackedWidgetRegister = new QStackedWidget(Register);
         stackedWidgetRegister->setObjectName(QString::fromUtf8("stackedWidgetRegister"));
-        stackedWidgetRegister->setGeometry(QRect(10, 60, 811, 651));
+        stackedWidgetRegister->setGeometry(QRect(10, 60, 811, 661));
         personInfo = new QWidget();
         personInfo->setObjectName(QString::fromUtf8("personInfo"));
         userInfogroupBox_2 = new QGroupBox(personInfo);
@@ -137,7 +137,7 @@ public:
 "background-color:none;"));
         layoutWidget = new QWidget(userInfogroupBox_2);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 40, 351, 381));
+        layoutWidget->setGeometry(QRect(10, 40, 802, 381));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -380,6 +380,44 @@ public:
 
         horizontalLayout_4->addWidget(lecturerRadioButton);
 
+        Footer = new QGroupBox(personInfo);
+        Footer->setObjectName(QString::fromUtf8("Footer"));
+        Footer->setGeometry(QRect(-10, 600, 800, 60));
+        Footer->setMinimumSize(QSize(800, 60));
+        Footer->setMaximumSize(QSize(800, 60));
+        Footer->setStyleSheet(QString::fromUtf8("background:#3a444c;"));
+        layoutWidget1_6 = new QWidget(Footer);
+        layoutWidget1_6->setObjectName(QString::fromUtf8("layoutWidget1_6"));
+        layoutWidget1_6->setGeometry(QRect(220, 10, 251, 42));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget1_6);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        cancelSignUpButton = new QPushButton(layoutWidget1_6);
+        cancelSignUpButton->setObjectName(QString::fromUtf8("cancelSignUpButton"));
+        cancelSignUpButton->setStyleSheet(QString::fromUtf8("color: #ffffff;\n"
+"border:0;\n"
+"height:30px;\n"
+"border-radius:5px;"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
+        cancelSignUpButton->setIcon(icon);
+
+        horizontalLayout_3->addWidget(cancelSignUpButton);
+
+        signUpNextButton = new QPushButton(layoutWidget1_6);
+        signUpNextButton->setObjectName(QString::fromUtf8("signUpNextButton"));
+        signUpNextButton->setStyleSheet(QString::fromUtf8("background:#fbaf01;\n"
+"color: #ffffff;\n"
+"border:0;\n"
+"height:30px;\n"
+"border-radius:5px;"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/icons White/Icons/White/Double Arrow RIGHT.png"), QSize(), QIcon::Normal, QIcon::Off);
+        signUpNextButton->setIcon(icon1);
+        signUpNextButton->setAutoDefault(false);
+
+        horizontalLayout_3->addWidget(signUpNextButton);
+
         stackedWidgetRegister->addWidget(personInfo);
         academic = new QWidget();
         academic->setObjectName(QString::fromUtf8("academic"));
@@ -389,7 +427,7 @@ public:
         academicGroupBox->setMinimumSize(QSize(0, 0));
         academicGroupBox->setMaximumSize(QSize(16777215, 16777215));
         academicGroupBox->setStyleSheet(QString::fromUtf8("color:#666;\n"
-"background-color:none;"));
+"background:#f1f1f1;"));
         horizontalLayout_6 = new QHBoxLayout(academicGroupBox);
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
         horizontalLayout_2 = new QHBoxLayout();
@@ -398,6 +436,7 @@ public:
         facultyLabel->setObjectName(QString::fromUtf8("facultyLabel"));
         facultyLabel->setFont(font1);
         facultyLabel->setStyleSheet(QString::fromUtf8("background-color:none;"));
+        facultyLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         horizontalLayout_2->addWidget(facultyLabel);
 
@@ -416,6 +455,7 @@ public:
         programLabel->setObjectName(QString::fromUtf8("programLabel"));
         programLabel->setFont(font1);
         programLabel->setStyleSheet(QString::fromUtf8("background-color:none;"));
+        programLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         horizontalLayout_5->addWidget(programLabel);
 
@@ -437,9 +477,9 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/images/userAdd.png"), QSize(), QIcon::Normal, QIcon::Off);
-        filterSearchButton->setIcon(icon);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/icons White/Icons/White/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
+        filterSearchButton->setIcon(icon2);
         filterSearchButton->setAutoDefault(false);
 
         horizontalLayout_6->addWidget(filterSearchButton);
@@ -447,43 +487,9 @@ public:
         tableView = new QTableView(academic);
         tableView->setObjectName(QString::fromUtf8("tableView"));
         tableView->setGeometry(QRect(0, 80, 771, 511));
-        stackedWidgetRegister->addWidget(academic);
-        Footer = new QGroupBox(Register);
-        Footer->setObjectName(QString::fromUtf8("Footer"));
-        Footer->setGeometry(QRect(0, 660, 800, 60));
-        Footer->setMinimumSize(QSize(800, 60));
-        Footer->setMaximumSize(QSize(800, 60));
-        Footer->setStyleSheet(QString::fromUtf8("background:#3a444c;"));
-        layoutWidget1_6 = new QWidget(Footer);
-        layoutWidget1_6->setObjectName(QString::fromUtf8("layoutWidget1_6"));
-        layoutWidget1_6->setGeometry(QRect(220, 10, 251, 42));
-        horizontalLayout_3 = new QHBoxLayout(layoutWidget1_6);
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        cancelSignUpButton = new QPushButton(layoutWidget1_6);
-        cancelSignUpButton->setObjectName(QString::fromUtf8("cancelSignUpButton"));
-        cancelSignUpButton->setStyleSheet(QString::fromUtf8("color: #ffffff;\n"
-"border:0;\n"
-"height:30px;\n"
-"border-radius:5px;"));
-
-        horizontalLayout_3->addWidget(cancelSignUpButton);
-
-        signUpNextButton = new QPushButton(layoutWidget1_6);
-        signUpNextButton->setObjectName(QString::fromUtf8("signUpNextButton"));
-        signUpNextButton->setStyleSheet(QString::fromUtf8("background:#fbaf01;\n"
-"color: #ffffff;\n"
-"border:0;\n"
-"height:30px;\n"
-"border-radius:5px;"));
-        signUpNextButton->setIcon(icon);
-        signUpNextButton->setAutoDefault(false);
-
-        horizontalLayout_3->addWidget(signUpNextButton);
-
-        groupBoxRegBottom = new QGroupBox(Footer);
+        groupBoxRegBottom = new QGroupBox(academic);
         groupBoxRegBottom->setObjectName(QString::fromUtf8("groupBoxRegBottom"));
-        groupBoxRegBottom->setGeometry(QRect(0, 0, 800, 60));
+        groupBoxRegBottom->setGeometry(QRect(-10, 590, 800, 60));
         groupBoxRegBottom->setMinimumSize(QSize(800, 60));
         groupBoxRegBottom->setMaximumSize(QSize(800, 60));
         groupBoxRegBottom->setStyleSheet(QString::fromUtf8("background:#3a444c;"));
@@ -499,6 +505,9 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/icons White/Icons/White/Single Arrow LEFT.png"), QSize(), QIcon::Normal, QIcon::Off);
+        backSignUpButton->setIcon(icon3);
 
         horizontalLayout->addWidget(backSignUpButton);
 
@@ -509,17 +518,20 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        signUpButton->setIcon(icon);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/icons White/Icons/White/Add User.png"), QSize(), QIcon::Normal, QIcon::Off);
+        signUpButton->setIcon(icon4);
         signUpButton->setAutoDefault(false);
 
         horizontalLayout->addWidget(signUpButton);
 
+        stackedWidgetRegister->addWidget(academic);
 
         retranslateUi(Register);
 
         stackedWidgetRegister->setCurrentIndex(0);
-        filterSearchButton->setDefault(false);
         signUpNextButton->setDefault(false);
+        filterSearchButton->setDefault(false);
         signUpButton->setDefault(false);
 
 
@@ -560,6 +572,9 @@ public:
         studentIdRegFormLineEdit->setPlaceholderText(QApplication::translate("Register", "Enter Student ID", nullptr));
         studentRadioButton->setText(QApplication::translate("Register", "Student", nullptr));
         lecturerRadioButton->setText(QApplication::translate("Register", "Lecturer", nullptr));
+        Footer->setTitle(QString());
+        cancelSignUpButton->setText(QApplication::translate("Register", "Sign instead", nullptr));
+        signUpNextButton->setText(QApplication::translate("Register", "Next", nullptr));
         academicGroupBox->setTitle(QApplication::translate("Register", "Academic Info", nullptr));
         facultyLabel->setText(QApplication::translate("Register", "Faculty:", nullptr));
         facultyComboBox->setItemText(0, QApplication::translate("Register", "Select Faculty", nullptr));
@@ -570,9 +585,6 @@ public:
         programComboBox->setItemText(2, QApplication::translate("Register", "Bachelors", nullptr));
 
         filterSearchButton->setText(QApplication::translate("Register", "Filter Search", nullptr));
-        Footer->setTitle(QString());
-        cancelSignUpButton->setText(QApplication::translate("Register", "Sign instead", nullptr));
-        signUpNextButton->setText(QApplication::translate("Register", "Next", nullptr));
         groupBoxRegBottom->setTitle(QString());
         backSignUpButton->setText(QApplication::translate("Register", "Back", nullptr));
         signUpButton->setText(QApplication::translate("Register", "  Create", nullptr));
