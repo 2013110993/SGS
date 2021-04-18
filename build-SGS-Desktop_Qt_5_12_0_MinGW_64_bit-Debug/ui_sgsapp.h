@@ -75,6 +75,10 @@ public:
     QFormLayout *formLayout_11;
     QPushButton *addProgamSeqSettings_pushButton_2;
     QFrame *headBar;
+    QLabel *userRoleLable;
+    QLabel *usernameTopBarLable;
+    QPushButton *logoutTopBarButton;
+    QLabel *userRoleLable_2;
     QWidget *lecturerDashboard;
     QLabel *label_2;
     QWidget *studentDashboard;
@@ -93,6 +97,7 @@ public:
         stackedWidgetSGS = new QStackedWidget(centralwidget);
         stackedWidgetSGS->setObjectName(QString::fromUtf8("stackedWidgetSGS"));
         stackedWidgetSGS->setGeometry(QRect(-3, -3, 1451, 911));
+        stackedWidgetSGS->setStyleSheet(QString::fromUtf8("color:#fff;"));
         loginScreen = new QWidget();
         loginScreen->setObjectName(QString::fromUtf8("loginScreen"));
         loginScreen->setStyleSheet(QString::fromUtf8("background:url(:/images/background.jpg);\n"
@@ -239,7 +244,7 @@ public:
         Sidebar->setGeometry(QRect(0, 40, 260, 900));
         Sidebar->setMinimumSize(QSize(260, 900));
         Sidebar->setMaximumSize(QSize(260, 900));
-        Sidebar->setStyleSheet(QString::fromUtf8("background-color:#3a444c;\n"
+        Sidebar->setStyleSheet(QString::fromUtf8("background-color:#292f38;\n"
 "border: 0;"));
         Sidebar->setFrameShape(QFrame::StyledPanel);
         Sidebar->setFrameShadow(QFrame::Raised);
@@ -397,10 +402,36 @@ public:
         headBar->setGeometry(QRect(0, 0, 1440, 50));
         headBar->setMinimumSize(QSize(1440, 50));
         headBar->setMaximumSize(QSize(260, 50));
-        headBar->setStyleSheet(QString::fromUtf8("background-color:#3c8dbc;\n"
+        headBar->setStyleSheet(QString::fromUtf8("background-image: url(:/images/background.jpg);\n"
 "border:0;"));
         headBar->setFrameShape(QFrame::StyledPanel);
         headBar->setFrameShadow(QFrame::Raised);
+        userRoleLable = new QLabel(headBar);
+        userRoleLable->setObjectName(QString::fromUtf8("userRoleLable"));
+        userRoleLable->setGeometry(QRect(1140, 20, 61, 16));
+        QFont font1;
+        font1.setPointSize(9);
+        font1.setBold(false);
+        font1.setWeight(50);
+        userRoleLable->setFont(font1);
+        usernameTopBarLable = new QLabel(headBar);
+        usernameTopBarLable->setObjectName(QString::fromUtf8("usernameTopBarLable"));
+        usernameTopBarLable->setGeometry(QRect(1210, 20, 91, 16));
+        usernameTopBarLable->setFont(font);
+        logoutTopBarButton = new QPushButton(headBar);
+        logoutTopBarButton->setObjectName(QString::fromUtf8("logoutTopBarButton"));
+        logoutTopBarButton->setGeometry(QRect(1290, 12, 91, 31));
+        QFont font2;
+        font2.setPointSize(9);
+        logoutTopBarButton->setFont(font2);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
+        logoutTopBarButton->setIcon(icon3);
+        userRoleLable_2 = new QLabel(headBar);
+        userRoleLable_2->setObjectName(QString::fromUtf8("userRoleLable_2"));
+        userRoleLable_2->setGeometry(QRect(1280, 20, 16, 16));
+        userRoleLable_2->setFont(font1);
+        userRoleLable_2->setAlignment(Qt::AlignCenter);
         stackedWidgetSGS->addWidget(Dashboard);
         lecturerDashboard = new QWidget();
         lecturerDashboard->setObjectName(QString::fromUtf8("lecturerDashboard"));
@@ -445,6 +476,10 @@ public:
         resetPasswd_pushButton->setText(QApplication::translate("sgsApp", "Reset Password", nullptr));
         addProgamSeqSettings_pushButton->setText(QApplication::translate("sgsApp", "Program Sequence", nullptr));
         addProgamSeqSettings_pushButton_2->setText(QApplication::translate("sgsApp", "Suspend User", nullptr));
+        userRoleLable->setText(QApplication::translate("sgsApp", "STUDENT:", nullptr));
+        usernameTopBarLable->setText(QApplication::translate("sgsApp", "Username", nullptr));
+        logoutTopBarButton->setText(QApplication::translate("sgsApp", " Logout", nullptr));
+        userRoleLable_2->setText(QApplication::translate("sgsApp", "|", nullptr));
         label_2->setText(QApplication::translate("sgsApp", "Lecturer Dashboard", nullptr));
         label_3->setText(QApplication::translate("sgsApp", "Student Dashboard", nullptr));
     } // retranslateUi
