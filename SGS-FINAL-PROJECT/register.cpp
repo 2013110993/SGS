@@ -19,7 +19,7 @@ Register::Register(QWidget *parent) :
     ui->setupUi(this);
     ui->stackedWidgetRegister->setCurrentIndex(0);
     userRole=1;
-    //ui->middleName_RegFormLineEdit->hide();
+   // ui->middleName_RegFormLineEdit->hide();
 }
 
 Register::~Register()
@@ -116,7 +116,6 @@ void Register::on_middleNamecheckBox_stateChanged(int arg1)
 {
     if(arg1)
     {
-        qDebug()<<arg1;
         ui->middleName_RegFormLineEdit->show();
     }
     else{
