@@ -60,53 +60,53 @@ void databaseconnection::insertNewUser(student &student)
     QTime ct = QTime::currentTime();
     QString currentTime =ct.toString();
 
-  //  if(id == 0)
-   // {
-        query.prepare("INSERT INTO person ( firstname, lastname) "
-                      "VALUES ( :firstname, :lastname)");
-        query.bindValue(":firstname", fname);
-        query.bindValue(":lastname", lname);
+    //  if(id == 0)
+    // {
+    query.prepare("INSERT INTO person ( firstname, lastname) "
+                  "VALUES ( :firstname, :lastname)");
+    query.bindValue(":firstname", fname);
+    query.bindValue(":lastname", lname);
 
-        if(!query.exec())
+    if(!query.exec())
+    {
+        qDebug()<<query.lastError().text();
+    }
+
+    QSqlQuery newQuery ;
+
+    QString userID;
+    //if (query.exec( "SELECT id, roleid from users WHERE username = '" + username + "' AND password = '" +
+    //                password + "' AND activeUser = '" + logIn + "' "))
+
+
+    if(newQuery.exec("SELECT id FROM person WHERE firstname = '" + fname + "' AND lastname = '" + lname   + "' "))
+    {
+        while (newQuery.next())
         {
-            qDebug()<<query.lastError().text();
+            userID = newQuery.value(0).toString();
+
+            qDebug()<<"got id from person ";
+            qDebug()<<userID;
+            qDebug()<<" ^got id from person  ";
         }
-
-        QSqlQuery newQuery ;
-
-        QString userID;
-        //if (query.exec( "SELECT id, roleid from users WHERE username = '" + username + "' AND password = '" +
-        //                password + "' AND activeUser = '" + logIn + "' "))
+    }
 
 
-        if(newQuery.exec("SELECT id FROM person WHERE firstname = '" + fname + "' AND lastname = '" + lname   + "' "))
-        {
-            while (newQuery.next())
-            {
-                userID = newQuery.value(0).toString();
-
-                qDebug()<<"got id from person ";
-                qDebug()<<userID;
-                qDebug()<<" ^got id from person  ";
-            }
-        }
+    //newQuery.prepare("SELECT id FROM person WHERE  "
+    //                      "VALUES ( :firstname, :lastname)");
+    //        newQuery.bindValue(":firstname", fname);
+    //        newQuery.bindValue(":lastname", lname);
 
 
-        //newQuery.prepare("SELECT id FROM person WHERE  "
-//                      "VALUES ( :firstname, :lastname)");
-//        newQuery.bindValue(":firstname", fname);
-//        newQuery.bindValue(":lastname", lname);
-
-
-//    }
-//    else
-//    {
-//        query.prepare("INSERT INTO person (id, firstname, lastname) "
-//                      "VALUES (:id, :firstname, :lastname)");
-//        query.bindValue(":id", id);
-//        query.bindValue(":firstname", fname);
-//        query.bindValue(":lastname", lname);
-//    }
+    //    }
+    //    else
+    //    {
+    //        query.prepare("INSERT INTO person (id, firstname, lastname) "
+    //                      "VALUES (:id, :firstname, :lastname)");
+    //        query.bindValue(":id", id);
+    //        query.bindValue(":firstname", fname);
+    //        query.bindValue(":lastname", lname);
+    //    }
 
     QString answer[questionAsk];
     answer[0] = student.getQuestion1();
@@ -132,9 +132,9 @@ void databaseconnection::insertNewUser(student &student)
         query3.bindValue(":password", password);
         query3.bindValue(":email", email);
         if (roleID == 2)
-        query3.bindValue(":activeUser", 1);
+            query3.bindValue(":activeUser", 1);
         else
-        query3.bindValue(":activeUser", 0);
+            query3.bindValue(":activeUser", 0);
 
         query3.bindValue(":roleId", roleID);
         query3.bindValue(":createdAt", ct);
@@ -214,6 +214,7 @@ bool databaseconnection::loginUser(QString username, QString password)
                 setUserId(userID);
                 role = query.value(1).toString();
                 qDebug() <<"role "<< role <<" here";
+                setRole(role);
             }
 
             QSqlQuery query4;
@@ -229,25 +230,29 @@ bool databaseconnection::loginUser(QString username, QString password)
 
 
             logSatus=true;
+            //Debug here..
 
-            if(role == "1")
+            switch (getRole().toInt())
             {
-                qDebug()<<"creating dashStud";
-                dashboardStudent * studDash = new dashboardStudent;
-                qDebug()<<"creating dashStud";
-                // studDash->getUserLabel()->setText(username);
-                studDash->show();
-                //delete  studDash;
+                case 1:
+                {
+                qDebug()<<"Student";
+
                 return true;
+                }
+
+                case 2:
+                {
+                qDebug()<<"Lecture";
+                return true;
+                }
+            case 3:
+            {
+                qDebug()<<"Admin";
+                return true;
+
             }
-            else if (role == "3") {
-                qDebug()<<"creating dashStud";
-                dash = new Dashboard;
-                qDebug()<<"creating dashStud";
-                dash->getUserLabel()->setText(username);
-                dash->show();
-                //delete dash;
-                return true;
+
             }
 
         }
@@ -315,8 +320,8 @@ QSqlQuery databaseconnection::updateQuestion()
 
 QSqlQuery databaseconnection::getUserInfo(QString lostAccount, int role)
 {
-     QSqlQuery * query = new QSqlQuery;
-     QSqlQuery * query1 = new QSqlQuery;
+    QSqlQuery * query = new QSqlQuery;
+    QSqlQuery * query1 = new QSqlQuery;
     if (role == 0)
     {
 
@@ -405,5 +410,15 @@ void databaseconnection::resetPassword(QString newPass)
         QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
     }
 
+}
+
+void databaseconnection::setRole(QString role)
+{
+    UserRole = role;
+}
+
+QString databaseconnection::getRole()
+{
+    return UserRole;
 }
 

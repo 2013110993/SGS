@@ -113,7 +113,7 @@ background: none;</string>
     <widget class="QGroupBox" name="userInfogroupBox_2">
      <property name="geometry">
       <rect>
-       <x>420</x>
+       <x>410</x>
        <y>150</y>
        <width>371</width>
        <height>430</height>
@@ -138,18 +138,18 @@ background-color:none;</string>
      <property name="title">
       <string>Security Questions</string>
      </property>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="layoutWidget_5">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>40</y>
-        <width>802</width>
-        <height>381</height>
+        <x>20</x>
+        <y>30</y>
+        <width>331</width>
+        <height>391</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="QLabel" name="firstQuestion_RegForm">
+        <widget class="QLabel" name="firstQuestion_RegForm_3">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -213,7 +213,7 @@ color: #333;</string>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="secondQuestion_RegForm">
+        <widget class="QLabel" name="secondQuestion_RegForm_3">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -277,7 +277,7 @@ color: #333;</string>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="thirdQuestion_RegForm">
+        <widget class="QLabel" name="thirdQuestion_RegForm_3">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -346,7 +346,7 @@ color: #333;</string>
     <widget class="QGroupBox" name="userInfogroupBox">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>0</x>
        <y>280</y>
        <width>371</width>
        <height>300</height>
@@ -377,7 +377,7 @@ background-color:none;</string>
         <x>10</x>
         <y>40</y>
         <width>351</width>
-        <height>233</height>
+        <height>249</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -550,7 +550,7 @@ color: #333;</string>
     <widget class="QGroupBox" name="personalInfogroupBox">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>0</x>
        <y>20</y>
        <width>371</width>
        <height>241</height>
@@ -730,7 +730,7 @@ color: #333;</string>
     <widget class="QGroupBox" name="accountTypegroupBox">
      <property name="geometry">
       <rect>
-       <x>420</x>
+       <x>410</x>
        <y>20</y>
        <width>371</width>
        <height>100</height>

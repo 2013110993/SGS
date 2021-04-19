@@ -15,7 +15,7 @@ sgsApp::sgsApp(QWidget *parent)
     connection = new databaseconnection;
     //Default landing Page for StackedWidget
     ui->stackedWidgetSGS->setCurrentIndex(0);
-
+    buttonClick = true;
     qDebug()<<"about to connect";
 
 }
@@ -26,6 +26,31 @@ sgsApp::~sgsApp()
     delete ui;
 
 
+}
+
+void sgsApp::disableStudentFeature()
+{
+    ui->accounts_groupBox->hide();
+   // ui->formLayout_9->resetFormAlignment();
+    ui->addProgamSeqSettings_pushButton->hide();
+    ui->suspendSetting_pushButton->hide();
+}
+
+void sgsApp::hideFeature()
+{
+    ui->AddProgramSequence_Button->hide();
+    ui->addCourse_Button->hide();
+    ui->addInstitution_Button->hide();
+    ui->addInstitution_Button_2->hide();
+
+}
+
+void sgsApp::showFeature()
+{
+    ui->AddProgramSequence_Button->show();
+    ui->addCourse_Button->show();
+    ui->addInstitution_Button->show();
+    ui->addInstitution_Button_2->show();
 }
 
 void sgsApp::logout()
@@ -41,17 +66,14 @@ void sgsApp::on_signUpButton_clicked()
     //create a new instance of reg
 
     reg = new Register(this);
-    qDebug()<<"!queries.next";;
     qDebug()<< !(queries.next());
 
     if(!(queries.next()))
     {
         queries = connection->updateQuestion();
-        qDebug()<<"here1";
-
     }
-    else {
-          qDebug()<<"debug queries.next";;
+    else
+    {
         qDebug()<<queries.lastError();
     }
 
@@ -60,7 +82,6 @@ void sgsApp::on_signUpButton_clicked()
      connect(this,SIGNAL(sendQuestion(QSqlQuery)), reg , SLOT(recieveQuestion(QSqlQuery)));
      emit sendQuestion(queries);
     }
-
 
     //Modal Approach
     reg->setModal(true);
@@ -77,8 +98,39 @@ void sgsApp::on_signInButton_clicked()
 
 
         bool checking = connection->loginUser(username,password);
+        qDebug()<<connection->getRole();
+        int role =  connection->getRole().toInt();
+        qDebug()<<role;
         if (checking)
-        this->close();
+        {
+            switch (role)
+            {
+            case 1:
+            {
+                ui->stackedWidgetSGS->setCurrentIndex(1);
+                disableStudentFeature();
+                ui->userRoleLable->setText(username);
+            }
+                break;
+            case 2:
+            {
+                ui->stackedWidgetSGS->setCurrentIndex(1);
+                ui->userRoleLable->setText(username);
+            }
+                break;
+            case 3:
+            {
+                ui->stackedWidgetSGS->setCurrentIndex(1);
+                ui->userRoleLable->setText(username);
+            }
+                break;
+            default:
+                qDebug()<<"error! ! 404";
+            }
+
+
+        }
+
         else {
             ui->loginErrorLabel->setText("~ Invalid Credentials! ~");
             ui->loginErrorLabel->setStyleSheet("border:1px solid #b50009; color:#b50009;height:30px;border-radius:5px;");
@@ -89,7 +141,6 @@ void sgsApp::on_forgotPasswordButton_clicked()
 {
     //create a new instance of reg
     forgot = new forgotPassword(this);
-   // QSqlQuery query = connection->updateQuestion();
     //Modal Approach
     forgot->setModal(true);
     forgot->show();
@@ -109,5 +160,53 @@ void sgsApp::on_passwordShowButton_clicked()
         ui->passwordShowButton->setIcon(QIcon(":/iconsGray/Icons/Gray/Eye ON.png"));
     }
 
+}
+
+
+void sgsApp::on_logoutTopBarButton_clicked()
+{
+    ui->stackedWidgetSGS->setCurrentIndex(0);
+}
+
+
+void sgsApp::on_new_Account_pushButton_clicked()
+{
+    Register * registerNewStudent = new Register;
+    //Modal approach
+    registerNewStudent->setModal(true);
+    registerNewStudent->show();
+}
+
+void sgsApp::on_resetPasswd_pushButton_clicked()
+{
+    //create a new instance of reg
+    forgot = new forgotPassword(this);
+   // QSqlQuery query = connection->updateQuestion();
+    //Modal Approach
+    forgot->setModal(true);
+    forgot->show();
+}
+
+void sgsApp::on_suspendSetting_pushButton_clicked()
+{
+
+
+}
+
+void sgsApp::on_dashboard_pushButton_clicked()
+{
+    if (buttonClick)
+    {
+        buttonClick = false;
+        qDebug("clicked");
+          ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow LEFT.png"));
+          hideFeature();
+    }
+    else
+    {
+        ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow RIGHT.png"));
+        buttonClick = true;
+        showFeature();
+    }
 }
 

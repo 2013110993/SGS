@@ -11,11 +11,7 @@ forgotPassword::forgotPassword(QWidget *parent) :
     ui(new Ui::forgotPassword)
 {
     ui->setupUi(this);
-
-    //ui->studentAccountTypeRadioButton->
     ui->lecturerForgotFormLineEdit->hide();
-
-    //Hides securityQuestions & resetPassword Sections
     ui->securityQuestiongroupBox->hide();
     ui->resetPasswordGroupBox->hide();
 }
@@ -87,6 +83,8 @@ void forgotPassword::on_accountLostResetButton_clicked()
                 ui->securityQuestionsForgotFormcomboBox->addItem(accountInfo.value(2).toString());
                 var ++;
             }
+            ui->securityQuestiongroupBox->show();
+            ui->accountLostResetButton->hide();
         }
         else
         {
@@ -110,6 +108,7 @@ void forgotPassword::on_accountLostResetButton_clicked()
                 ui->securityQuestionsForgotFormcomboBox->addItem(accountInfo.value(2).toString());
                 var ++;
             }
+            ui->securityQuestiongroupBox->show();
         }
         else {
             QMessageBox::warning(this,"Error","No Such account found on the system, please enter a correct ID");
@@ -126,8 +125,6 @@ void forgotPassword::on_checkAnswerResetButton_clicked()
     qDebug()<<answer;
     selectQuestion--;
     qDebug()<<correctanswer[selectQuestion];
-   // QString c = correctanswer[selectQuestion];
-   //int x = QString::compare(correctanswer[selectQuestion], answer, Qt::CaseInsensitive);
     qDebug()<<(correctanswer[selectQuestion] == answer);
     if(correctanswer[selectQuestion] == answer)
     {
@@ -137,11 +134,17 @@ void forgotPassword::on_checkAnswerResetButton_clicked()
 
         //show Security Questions after Search
         ui->resetPasswordGroupBox->show();
+        ui->checkAnswerResetButton->hide();
     }
     else
     {
         qDebug()<<"error";
     }
 
+
+}
+
+void forgotPassword::on_forgotPassword_accepted()
+{
 
 }

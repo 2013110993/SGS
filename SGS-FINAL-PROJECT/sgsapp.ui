@@ -470,7 +470,7 @@ border: 0;</string>
              <x>10</x>
              <y>30</y>
              <width>145</width>
-             <height>131</height>
+             <height>134</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -623,8 +623,8 @@ border: 0;</string>
                <property name="formAlignment">
                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                </property>
-               <item row="0" column="0">
-                <widget class="QPushButton" name="dashboard_pushButton_2">
+               <item row="0" column="0" colspan="2">
+                <widget class="QPushButton" name="new_Account_pushButton">
                  <property name="layoutDirection">
                   <enum>Qt::LeftToRight</enum>
                  </property>
@@ -632,30 +632,7 @@ border: 0;</string>
                   <string notr="true">color:#fff;</string>
                  </property>
                  <property name="text">
-                  <string>Student Account</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QFormLayout" name="formLayout_4">
-               <property name="labelAlignment">
-                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-               </property>
-               <property name="formAlignment">
-                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-               </property>
-               <item row="0" column="0">
-                <widget class="QPushButton" name="AddProgramSequence_pushButton_2">
-                 <property name="layoutDirection">
-                  <enum>Qt::LeftToRight</enum>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color:#fff;</string>
-                 </property>
-                 <property name="text">
-                  <string>Lecturer Account</string>
+                  <string>New Account</string>
                  </property>
                 </widget>
                </item>
@@ -744,7 +721,7 @@ border: 0;</string>
                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                </property>
                <item row="0" column="0">
-                <widget class="QPushButton" name="addProgamSeqSettings_pushButton_2">
+                <widget class="QPushButton" name="suspendSetting_pushButton">
                  <property name="layoutDirection">
                   <enum>Qt::LeftToRight</enum>
                  </property>
@@ -846,7 +823,7 @@ border:0;</string>
       <widget class="QPushButton" name="usernameTopBar">
        <property name="geometry">
         <rect>
-         <x>1100</x>
+         <x>1070</x>
          <y>12</y>
          <width>111</width>
          <height>31</height>
@@ -870,9 +847,9 @@ border:0;</string>
       <widget class="QLabel" name="userRoleLable">
        <property name="geometry">
         <rect>
-         <x>1210</x>
+         <x>1180</x>
          <y>20</y>
-         <width>61</width>
+         <width>91</width>
          <height>16</height>
         </rect>
        </property>

@@ -29,6 +29,8 @@ private slots:
 
     void on_checkAnswerResetButton_clicked();
 
+    void on_forgotPassword_accepted();
+
 private:
     Ui::forgotPassword *ui;
     QString correctanswer[3];

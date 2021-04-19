@@ -20,6 +20,9 @@ class sgsApp : public QMainWindow
 public:
     sgsApp(QWidget *parent = nullptr);
     ~sgsApp();
+    void disableStudentFeature();
+    void showFeature();
+    void hideFeature();
 
 signals:
      void sendQuestion(QSqlQuery);
@@ -33,11 +36,23 @@ private slots:
 
     void on_passwordShowButton_clicked();
 
+    void on_logoutTopBarButton_clicked();
+
+    void on_new_Account_pushButton_clicked();
+
+    void on_resetPasswd_pushButton_clicked();
+
+    void on_suspendSetting_pushButton_clicked();
+
+    void on_dashboard_pushButton_clicked();
+
+
 private:
     Ui::sgsApp *ui;
     forgotPassword * forgot;
     Register *reg;
     databaseconnection * connection;
     QSqlQuery queries;
+    bool buttonClick;
 };
 #endif // SGSAPP_H

@@ -34,6 +34,8 @@ public:
     QString getUserId();
     void setUserId(QString);
     void resetPassword(QString);
+    void setRole(QString);
+    QString getRole();
 
 private:
     bool connected;
@@ -41,6 +43,7 @@ private:
     Dashboard *dash;
     Dashboard createDash;
     QString currentUserID;
+    QString UserRole;
     int const questionAsk = 3;
 };
 
