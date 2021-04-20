@@ -83,7 +83,9 @@ void forgotPassword::on_accountLostResetButton_clicked()
                 ui->securityQuestionsForgotFormcomboBox->addItem(accountInfo.value(2).toString());
                 var ++;
             }
-            ui->securityQuestiongroupBox->show();
+
+            ui->stackedWidgetResetPassword->setCurrentIndex(1);
+            //ui->securityQuestiongroupBox->show();
             ui->accountLostResetButton->hide();
         }
         else
@@ -133,8 +135,10 @@ void forgotPassword::on_checkAnswerResetButton_clicked()
         msgBox.exec();
 
         //show Security Questions after Search
+        ui->stackedWidgetResetPassword->setCurrentIndex(2);
         ui->resetPasswordGroupBox->show();
-        ui->checkAnswerResetButton->hide();
+        //ui->checkAnswerResetButton->hide();
+
     }
     else
     {
