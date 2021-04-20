@@ -30,27 +30,27 @@ sgsApp::~sgsApp()
 
 void sgsApp::disableStudentFeature()
 {
-    ui->accounts_groupBox->hide();
+   // ui->accounts_groupBox->hide();
    // ui->formLayout_9->resetFormAlignment();
-    ui->addProgamSeqSettings_pushButton->hide();
-    ui->suspendSetting_pushButton->hide();
+    //ui->addProgamSeqSettings_pushButton->hide();
+   // ui->suspendSetting_pushButton->hide();
 }
 
 void sgsApp::hideFeature()
 {
-    ui->AddProgramSequence_Button->hide();
-    ui->addCourse_Button->hide();
-    ui->addInstitution_Button->hide();
-    ui->addInstitution_Button_2->hide();
+//    ui->AddProgramSequence_Button->hide();
+//    ui->addCourse_Button->hide();
+//    ui->addInstitution_Button->hide();
+//    ui->addInstitution_Button_2->hide();
 
 }
 
 void sgsApp::showFeature()
 {
-    ui->AddProgramSequence_Button->show();
-    ui->addCourse_Button->show();
-    ui->addInstitution_Button->show();
-    ui->addInstitution_Button_2->show();
+//    ui->AddProgramSequence_Button->show();
+//    ui->addCourse_Button->show();
+//    ui->addInstitution_Button->show();
+//    ui->addInstitution_Button_2->show();
 }
 
 void sgsApp::logout()
