@@ -47,6 +47,14 @@ private slots:
     void on_dashboard_pushButton_clicked();
 
 
+    void on_logoutButton_clicked();
+
+    void on_changePassword_Button_clicked();
+
+    void on_addUser_Button_clicked();
+
+    void on_viewProgramSequence_Button_clicked();
+
 private:
     Ui::sgsApp *ui;
     forgotPassword * forgot;

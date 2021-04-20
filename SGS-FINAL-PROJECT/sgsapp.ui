@@ -616,8 +616,8 @@ border: 0;</string>
         <widget class="QPushButton" name="addInstitution_Button">
          <property name="geometry">
           <rect>
-           <x>11</x>
-           <y>41</y>
+           <x>10</x>
+           <y>70</y>
            <width>81</width>
            <height>16</height>
           </rect>
@@ -642,8 +642,8 @@ border: 0;</string>
         <widget class="QPushButton" name="addCourse_Button">
          <property name="geometry">
           <rect>
-           <x>11</x>
-           <y>71</y>
+           <x>10</x>
+           <y>100</y>
            <width>64</width>
            <height>16</height>
           </rect>
@@ -668,8 +668,8 @@ border: 0;</string>
         <widget class="QPushButton" name="AddProgramSequence_Button">
          <property name="geometry">
           <rect>
-           <x>11</x>
-           <y>101</y>
+           <x>10</x>
+           <y>130</y>
            <width>136</width>
            <height>16</height>
           </rect>
@@ -686,32 +686,6 @@ border: 0;</string>
          <property name="icon">
           <iconset resource="images.qrc">
            <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="changePassword_Button">
-         <property name="geometry">
-          <rect>
-           <x>11</x>
-           <y>131</y>
-           <width>130</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="toolTip">
-          <string>Add Institution</string>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color:#fff;</string>
-         </property>
-         <property name="text">
-          <string>Change Password</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Edit.png</normaloff>:/icons White/Icons/White/Edit.png</iconset>
          </property>
         </widget>
         <widget class="QPushButton" name="addUser_Button">
@@ -766,6 +740,32 @@ border: 0;</string>
            <normaloff>:/icons White/Icons/White/Eye OFF.png</normaloff>:/icons White/Icons/White/Eye OFF.png</iconset>
          </property>
         </widget>
+        <widget class="QPushButton" name="changePassword_Button">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>40</y>
+           <width>130</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>Add Institution</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>Change Password</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Edit.png</normaloff>:/icons White/Icons/White/Edit.png</iconset>
+         </property>
+        </widget>
        </widget>
       </widget>
      </widget>
@@ -803,7 +803,7 @@ border:0;</string>
       <widget class="QPushButton" name="logoutButton">
        <property name="geometry">
         <rect>
-         <x>1290</x>
+         <x>1330</x>
          <y>20</y>
          <width>71</width>
          <height>31</height>
@@ -826,7 +826,7 @@ border:0;</string>
       <widget class="QLabel" name="userRoleLable_2">
        <property name="geometry">
         <rect>
-         <x>1280</x>
+         <x>1310</x>
          <y>20</y>
          <width>16</width>
          <height>31</height>
@@ -873,9 +873,9 @@ border:0;</string>
       <widget class="QLabel" name="userRoleLable">
        <property name="geometry">
         <rect>
-         <x>1230</x>
+         <x>1220</x>
          <y>28</y>
-         <width>51</width>
+         <width>81</width>
          <height>16</height>
         </rect>
        </property>
@@ -927,7 +927,7 @@ background-repeat: no-repeat;</string>
         </font>
        </property>
        <property name="text">
-        <string>Federico</string>
+        <string>USER:</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
