@@ -23,6 +23,7 @@ sgsApp::sgsApp(QWidget *parent)
 sgsApp::~sgsApp()
 {
     delete connection;
+    delete forgot;
     delete ui;
 
 
@@ -214,7 +215,6 @@ void sgsApp::on_changePassword_Button_clicked()
 {
     //create a new instance of reg
     forgot = new forgotPassword(this);
-   // QSqlQuery query = connection->updateQuestion();
     //Modal Approach
     forgot->setModal(true);
     forgot->show();
@@ -222,10 +222,28 @@ void sgsApp::on_changePassword_Button_clicked()
 
 void sgsApp::on_addUser_Button_clicked()
 {
-    Register * registerNewStudent = new Register;
+    //reg = new Register(this);
+    Register * registerNewStudent = new Register(this);
     //Modal approach
-    registerNewStudent->setModal(true);
+    if(!(queries.next()))
+    {
+        queries = connection->updateQuestion();
+        qDebug()<<"here1";
+
+    }
+    else {
+          qDebug()<<"debug queries.next";;
+        qDebug()<<queries.lastError();
+    }
+
+    if (queries.size() > 0)
+    {
+     connect(this,SIGNAL(sendQuestion(QSqlQuery)), registerNewStudent , SLOT(recieveQuestion(QSqlQuery)));
+     emit sendQuestion(queries);
+    }
+
     registerNewStudent->show();
+
 }
 
 void sgsApp::on_viewProgramSequence_Button_clicked()
