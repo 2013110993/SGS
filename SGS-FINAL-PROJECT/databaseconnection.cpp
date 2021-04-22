@@ -33,8 +33,16 @@ void databaseconnection::connect()
 
         }
         else
+<<<<<<< HEAD
             throw "The connection to phpMyAdmin Failed!";
         // Lets the program know that it didnt connect to the server
+=======
+        {
+            QString error = setConnection.lastError().text();
+            throw error.toStdString().c_str();
+        }
+
+>>>>>>> f93401377a49adcdcf0939e8f124878332e0790d
     }
     catch(const char * message)
     {
@@ -316,7 +324,11 @@ QSqlQuery databaseconnection::updateQuestion()
     QSqlQuery * query = new QSqlQuery;
     query->prepare("SELECT * FROM questions");
     query->exec();
-    return *query;
+
+    QSqlQuery info = *query;
+    delete query;
+    return info;
+
 
 
 }
@@ -364,8 +376,10 @@ QSqlQuery databaseconnection::getUserInfo(QString lostAccount, int role)
     }
 
 
-
-    return *query1;
+    delete query;
+    QSqlQuery info = *query1;
+    delete query1;
+    return info;
 
 
 }
@@ -389,7 +403,9 @@ QSqlQuery databaseconnection::getLecturerInfo(QString lecturer)
 
         }
     }
-    return *query1;
+     QSqlQuery info = *query1;
+     delete query1;
+    return info;
 }
 
 QString databaseconnection::getUserId()
@@ -404,7 +420,6 @@ void databaseconnection::setUserId(QString userId)
 
 void databaseconnection::resetPassword(QString newPass)
 {
-
     QSqlQuery * query1 = new QSqlQuery;
     query1->prepare("UPDATE users SET password = '" + newPass + "' WHERE id = '" + getUserId() + " '");
 
@@ -412,7 +427,7 @@ void databaseconnection::resetPassword(QString newPass)
     {
         QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
     }
-
+    delete query1;
 }
 
 void databaseconnection::setRole(QString role)
