@@ -61,7 +61,7 @@ void forgotPassword::on_lecturerAccountTypeRadioButton_clicked()
 
 void forgotPassword::on_accountLostResetButton_clicked()
 {
-
+    //displays window for full account reset
     if(ui->studentAccountTypeRadioButton->isChecked())
     {
 
@@ -120,6 +120,7 @@ void forgotPassword::on_accountLostResetButton_clicked()
 
 void forgotPassword::on_checkAnswerResetButton_clicked()
 {
+   //Creates and displays security questions stored with the user to allow for updating of password
     int selectQuestion = ui->securityQuestionsForgotFormcomboBox->currentIndex();
     QString answer = ui->QuestionAnswer_forgotFormLineEdit->text();
     qDebug()<<answer;
@@ -146,5 +147,5 @@ void forgotPassword::on_checkAnswerResetButton_clicked()
 
 void forgotPassword::on_forgotPassword_accepted()
 {
-
+    //opens the window to apply to reset password
 }

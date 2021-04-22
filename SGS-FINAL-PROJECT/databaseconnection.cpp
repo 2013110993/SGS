@@ -34,6 +34,7 @@ void databaseconnection::connect()
         }
         else
             throw "The connection to phpMyAdmin Failed!";
+        // Lets the program know that it didnt connect to the server
     }
     catch(const char * message)
     {
@@ -45,7 +46,7 @@ void databaseconnection::connect()
 
 void databaseconnection::insertNewUser(student &student)
 {
-
+    // creates an entry in the database for a new student
     int id = student.getID();
     qDebug()<<id;
 
@@ -279,11 +280,13 @@ void databaseconnection::logoutUser()
 {
     logSatus=false;
     //dash->close();
+    //sets last login time on the current user and logs them out
     QTime ct = QTime::currentTime();
     QString currentTime =ct.toString();
     QSqlQuery query3;
     query3.prepare("INSERT INTO loginstatus (id, lastLogin) "
                    "VALUES (:id,:lastLogin)");
+
     query3.bindValue(":id",getUserId());
     qDebug()<<ct;
     query3.bindValue(":lastLogin",ct);

@@ -26,6 +26,7 @@ Dashboard::~Dashboard()
 QLabel * Dashboard::getUserLabel()
 {
     return ui->userLabel;
+    //updates the window with the info of the user cuurently logged in;
 
 }
 
@@ -45,6 +46,7 @@ void Dashboard::on_logout_pushButton_clicked()
 
 void Dashboard::on_dashboard_pushButton_2_clicked()
 {
+   //creates a new registration window
     Register * registerNewStudent = new Register;
     //Modal approach
     registerNewStudent->setModal(true);
