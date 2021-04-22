@@ -54,6 +54,7 @@ private slots:
     void on_addUser_Button_clicked();
 
     void on_viewProgramSequence_Button_clicked();
+    void programSequenceList();
 
 private:
     Ui::sgsApp *ui;

@@ -2,6 +2,7 @@
 #include "ui_sgsapp.h"
 #include "databaseconnection.h"
 #include <QtSql>
+#include <QTableWidget>
 
 
 sgsApp::sgsApp(QWidget *parent)
@@ -17,6 +18,9 @@ sgsApp::sgsApp(QWidget *parent)
     ui->stackedWidgetSGS->setCurrentIndex(0);
     buttonClick = true;
     qDebug()<<"about to connect";
+
+    //Talbe for progam Sequence List
+    programSequenceList();
 
 }
 
@@ -254,5 +258,32 @@ void sgsApp::on_addUser_Button_clicked()
 
 void sgsApp::on_viewProgramSequence_Button_clicked()
 {
-    ui->stackedWidgetPages->setCurrentIndex(0);
+    //ui->stackedWidgetPages->setCurrentIndex(0);
+}
+
+void sgsApp::programSequenceList()
+{
+    ui->programSequenceTableWidget->setColumnCount(5);
+    ui->programSequenceTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
+
+    QStringList header;
+    header << "Course Code"<< "Course Name" <<"Credits" << "Grade" <<"Pre-requisites";
+    ui->programSequenceTableWidget->setHorizontalHeaderLabels(header);
+    ui->programSequenceTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
+
+    ui->programSequenceTableWidget->setColumnWidth(0,80);
+    ui->programSequenceTableWidget->setColumnWidth(1,150);
+
+    QTableWidgetItem *courseCode = new QTableWidgetItem();
+    QTableWidgetItem *courseName = new QTableWidgetItem;
+    QTableWidgetItem *credits = new QTableWidgetItem;
+    QTableWidgetItem *grade = new QTableWidgetItem;
+    QTableWidgetItem *prerequisites = new QTableWidgetItem;
+
+   courseCode->setText("CMPS3151");
+   courseName->setText("Telecommunications Systems");
+   credits->setText("3");
+   grade->setText("A");
+   prerequisites->setText("CMPS1191");
+
 }

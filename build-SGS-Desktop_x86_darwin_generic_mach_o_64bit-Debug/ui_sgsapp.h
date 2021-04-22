@@ -14,11 +14,13 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -59,9 +61,9 @@ public:
     QPushButton *addInstitution_Button;
     QPushButton *addCourse_Button;
     QPushButton *AddProgramSequence_Button;
-    QPushButton *changePassword_Button;
     QPushButton *addUser_Button;
     QPushButton *disableUser_Button;
+    QPushButton *changePassword_Button;
     QFrame *headBar;
     QPushButton *logoutButton;
     QLabel *userRoleLable_2;
@@ -69,6 +71,12 @@ public:
     QLabel *userRoleLable;
     QFrame *topBarLogo;
     QLabel *usernameLable;
+    QStackedWidget *stackedWidgetPages;
+    QWidget *ViewProgramSequence;
+    QFrame *addCourseGrade;
+    QLabel *label;
+    QTableWidget *programSequenceTableWidget;
+    QWidget *AddProgramSequence;
 
     void setupUi(QMainWindow *sgsApp)
     {
@@ -286,7 +294,7 @@ public:
         settingGroupBox->setGeometry(QRect(0, 340, 160, 231));
         addInstitution_Button = new QPushButton(settingGroupBox);
         addInstitution_Button->setObjectName(QString::fromUtf8("addInstitution_Button"));
-        addInstitution_Button->setGeometry(QRect(11, 41, 81, 16));
+        addInstitution_Button->setGeometry(QRect(10, 70, 81, 16));
         addInstitution_Button->setLayoutDirection(Qt::LeftToRight);
         addInstitution_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
         QIcon icon4;
@@ -294,24 +302,16 @@ public:
         addInstitution_Button->setIcon(icon4);
         addCourse_Button = new QPushButton(settingGroupBox);
         addCourse_Button->setObjectName(QString::fromUtf8("addCourse_Button"));
-        addCourse_Button->setGeometry(QRect(11, 71, 64, 16));
+        addCourse_Button->setGeometry(QRect(10, 100, 64, 16));
         addCourse_Button->setLayoutDirection(Qt::LeftToRight);
         addCourse_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
         addCourse_Button->setIcon(icon4);
         AddProgramSequence_Button = new QPushButton(settingGroupBox);
         AddProgramSequence_Button->setObjectName(QString::fromUtf8("AddProgramSequence_Button"));
-        AddProgramSequence_Button->setGeometry(QRect(11, 101, 136, 16));
+        AddProgramSequence_Button->setGeometry(QRect(10, 130, 136, 16));
         AddProgramSequence_Button->setLayoutDirection(Qt::LeftToRight);
         AddProgramSequence_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
         AddProgramSequence_Button->setIcon(icon4);
-        changePassword_Button = new QPushButton(settingGroupBox);
-        changePassword_Button->setObjectName(QString::fromUtf8("changePassword_Button"));
-        changePassword_Button->setGeometry(QRect(11, 131, 130, 16));
-        changePassword_Button->setLayoutDirection(Qt::LeftToRight);
-        changePassword_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        QIcon icon5;
-        icon5.addFile(QString::fromUtf8(":/icons White/Icons/White/Edit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        changePassword_Button->setIcon(icon5);
         addUser_Button = new QPushButton(settingGroupBox);
         addUser_Button->setObjectName(QString::fromUtf8("addUser_Button"));
         addUser_Button->setGeometry(QRect(11, 161, 102, 16));
@@ -323,9 +323,17 @@ public:
         disableUser_Button->setGeometry(QRect(11, 191, 102, 16));
         disableUser_Button->setLayoutDirection(Qt::LeftToRight);
         disableUser_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/icons White/Icons/White/Eye OFF.png"), QSize(), QIcon::Normal, QIcon::Off);
+        disableUser_Button->setIcon(icon5);
+        changePassword_Button = new QPushButton(settingGroupBox);
+        changePassword_Button->setObjectName(QString::fromUtf8("changePassword_Button"));
+        changePassword_Button->setGeometry(QRect(10, 40, 130, 16));
+        changePassword_Button->setLayoutDirection(Qt::LeftToRight);
+        changePassword_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
         QIcon icon6;
-        icon6.addFile(QString::fromUtf8(":/icons White/Icons/White/Eye OFF.png"), QSize(), QIcon::Normal, QIcon::Off);
-        disableUser_Button->setIcon(icon6);
+        icon6.addFile(QString::fromUtf8(":/icons White/Icons/White/Edit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        changePassword_Button->setIcon(icon6);
         headBar = new QFrame(Dashboard);
         headBar->setObjectName(QString::fromUtf8("headBar"));
         headBar->setGeometry(QRect(0, 0, 1440, 65));
@@ -337,7 +345,7 @@ public:
         headBar->setFrameShadow(QFrame::Raised);
         logoutButton = new QPushButton(headBar);
         logoutButton->setObjectName(QString::fromUtf8("logoutButton"));
-        logoutButton->setGeometry(QRect(1290, 20, 71, 31));
+        logoutButton->setGeometry(QRect(1330, 20, 71, 31));
         QFont font1;
         font1.setPointSize(9);
         font1.setUnderline(true);
@@ -347,7 +355,7 @@ public:
         logoutButton->setIcon(icon7);
         userRoleLable_2 = new QLabel(headBar);
         userRoleLable_2->setObjectName(QString::fromUtf8("userRoleLable_2"));
-        userRoleLable_2->setGeometry(QRect(1280, 20, 16, 31));
+        userRoleLable_2->setGeometry(QRect(1310, 20, 16, 31));
         QFont font2;
         font2.setPointSize(9);
         font2.setBold(false);
@@ -363,7 +371,7 @@ public:
         userIconTopBar->setIcon(icon8);
         userRoleLable = new QLabel(headBar);
         userRoleLable->setObjectName(QString::fromUtf8("userRoleLable"));
-        userRoleLable->setGeometry(QRect(1230, 28, 51, 16));
+        userRoleLable->setGeometry(QRect(1220, 28, 81, 16));
         userRoleLable->setFont(font2);
         topBarLogo = new QFrame(headBar);
         topBarLogo->setObjectName(QString::fromUtf8("topBarLogo"));
@@ -374,9 +382,37 @@ public:
         topBarLogo->setFrameShadow(QFrame::Raised);
         usernameLable = new QLabel(headBar);
         usernameLable->setObjectName(QString::fromUtf8("usernameLable"));
-        usernameLable->setGeometry(QRect(1160, 30, 61, 16));
+        usernameLable->setGeometry(QRect(1160, 25, 61, 21));
         usernameLable->setFont(font2);
         usernameLable->setAlignment(Qt::AlignCenter);
+        stackedWidgetPages = new QStackedWidget(Dashboard);
+        stackedWidgetPages->setObjectName(QString::fromUtf8("stackedWidgetPages"));
+        stackedWidgetPages->setGeometry(QRect(260, 70, 1171, 821));
+        ViewProgramSequence = new QWidget();
+        ViewProgramSequence->setObjectName(QString::fromUtf8("ViewProgramSequence"));
+        addCourseGrade = new QFrame(ViewProgramSequence);
+        addCourseGrade->setObjectName(QString::fromUtf8("addCourseGrade"));
+        addCourseGrade->setGeometry(QRect(620, 40, 541, 231));
+        addCourseGrade->setFrameShape(QFrame::StyledPanel);
+        addCourseGrade->setFrameShadow(QFrame::Raised);
+        label = new QLabel(addCourseGrade);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(0, 0, 541, 41));
+        QFont font3;
+        font3.setPointSize(14);
+        font3.setBold(true);
+        font3.setWeight(75);
+        label->setFont(font3);
+        label->setStyleSheet(QString::fromUtf8("background:#70808c;"));
+        label->setAlignment(Qt::AlignCenter);
+        programSequenceTableWidget = new QTableWidget(ViewProgramSequence);
+        programSequenceTableWidget->setObjectName(QString::fromUtf8("programSequenceTableWidget"));
+        programSequenceTableWidget->setGeometry(QRect(15, 40, 591, 241));
+        programSequenceTableWidget->setStyleSheet(QString::fromUtf8("background:#fff"));
+        stackedWidgetPages->addWidget(ViewProgramSequence);
+        AddProgramSequence = new QWidget();
+        AddProgramSequence->setObjectName(QString::fromUtf8("AddProgramSequence"));
+        stackedWidgetPages->addWidget(AddProgramSequence);
         stackedWidgetSGS->addWidget(Dashboard);
         sgsApp->setCentralWidget(centralwidget);
 
@@ -432,10 +468,6 @@ public:
         addCourse_Button->setText(QCoreApplication::translate("sgsApp", "Course", nullptr));
         AddProgramSequence_Button->setText(QCoreApplication::translate("sgsApp", "Program Sequence", nullptr));
 #if QT_CONFIG(tooltip)
-        changePassword_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
-#endif // QT_CONFIG(tooltip)
-        changePassword_Button->setText(QCoreApplication::translate("sgsApp", "Change Password", nullptr));
-#if QT_CONFIG(tooltip)
         addUser_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
 #endif // QT_CONFIG(tooltip)
         addUser_Button->setText(QCoreApplication::translate("sgsApp", "User Account", nullptr));
@@ -443,11 +475,16 @@ public:
         disableUser_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
 #endif // QT_CONFIG(tooltip)
         disableUser_Button->setText(QCoreApplication::translate("sgsApp", "User Account", nullptr));
+#if QT_CONFIG(tooltip)
+        changePassword_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
+#endif // QT_CONFIG(tooltip)
+        changePassword_Button->setText(QCoreApplication::translate("sgsApp", "Change Password", nullptr));
         logoutButton->setText(QCoreApplication::translate("sgsApp", " Logout", nullptr));
         userRoleLable_2->setText(QCoreApplication::translate("sgsApp", "|", nullptr));
         userIconTopBar->setText(QString());
         userRoleLable->setText(QCoreApplication::translate("sgsApp", ", STUDENT", nullptr));
-        usernameLable->setText(QCoreApplication::translate("sgsApp", "Federico", nullptr));
+        usernameLable->setText(QCoreApplication::translate("sgsApp", "USER:", nullptr));
+        label->setText(QCoreApplication::translate("sgsApp", "Add Course Widget", nullptr));
     } // retranslateUi
 
 };
