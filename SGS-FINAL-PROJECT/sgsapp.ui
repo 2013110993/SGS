@@ -1010,6 +1010,48 @@ background-repeat: no-repeat;</string>
          </property>
         </item>
        </widget>
+       <widget class="QFrame" name="addCourseGrade">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>40</y>
+          <width>541</width>
+          <height>231</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLabel" name="label">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>541</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#70808c;</string>
+         </property>
+         <property name="text">
+          <string>Add Course Widget</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </widget>
       </widget>
       <widget class="QWidget" name="AddProgramSequence"/>
      </widget>
