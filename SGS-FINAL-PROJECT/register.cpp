@@ -19,7 +19,7 @@ Register::Register(QWidget *parent) :
     ui->setupUi(this);
     ui->stackedWidgetRegister->setCurrentIndex(0);
     userRole=1;
-   // ui->middleName_RegFormLineEdit->hide();
+    // ui->middleName_RegFormLineEdit->hide();
 }
 
 Register::~Register()
@@ -37,29 +37,15 @@ void Register::on_cancelSignUpButton_clicked()
 void Register::on_signUpNextButton_clicked()
 {
     //EMAIL VALIDATION
+    QLineEdit *fNameLineEdit = new QLineEdit;
     QLineEdit *emailLineEdit = new QLineEdit;
     QLineEdit *confirmEmailLineEdit = new QLineEdit;
+    fNameLineEdit = ui->firstName_RegFormLineEdit;
     emailLineEdit = ui->email_RegFormLineEdit;
     confirmEmailLineEdit = ui->confirmEmail_RegFormLineEdit_2;  //
     QRegularExpression rx("\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b",
                           QRegularExpression::CaseInsensitiveOption);
     emailLineEdit->setValidator(new QRegularExpressionValidator(rx, this));
-
-    if(!emailLineEdit->hasAcceptableInput())            //displays warning message box if email format is incorrect
-    {
-        QMessageBox::warning(this, tr("Email verification"),
-                             tr("Email Format is incorrect."), QMessageBox::Ok);
-        return;
-    }
-    else if(emailLineEdit->text() != confirmEmailLineEdit->text()) //displays warning message box if the email line edit is not equal to confirm email line edit
-    {
-        QMessageBox::warning(this, tr("Email verification"),
-                             tr("Email Format does not Match."), QMessageBox::Ok);
-        return;
-
-    }
-
-
 
     //question validations
     int currIndex = ui->question_1_comboBox->currentIndex();       //first question combo box
@@ -71,25 +57,84 @@ void Register::on_signUpNextButton_clicked()
     int currIndex3 = ui->question_3_comboBox->currentIndex();       //third question combo box
     QString questionText3 = ui->thirdQuestionAnswer_RegFormLineEdit->text(); //third question answer line edit
 
-    if( questionText.isEmpty() ||  currIndex == 0 || questionText2.isEmpty() || currIndex2 == 0 || questionText3.isEmpty() || currIndex3 == 0)
+    //checks for any empty data in inside the form
+    try
     {
-        QMessageBox msgBox1;
-        msgBox1.setText("Your Account is not completed, Please fill the missing data!");
-        msgBox1.exec();
-        qDebug()<<"is empty";
+        if (fNameLineEdit->text() == NULL || ui->lastName_RegFormLineEdit->text() == NULL || ui->userName_RegFormLineEdit->text()==NULL ||
+                ui->password_RegFormLineEdit->text() == NULL || ui->passwordConfirm_RegFormLineEdit->text() == NULL ||
+                ui->confirmEmail_RegFormLineEdit_2->text() == NULL || ui->email_RegFormLineEdit->text() == NULL ||
+                ui->studentIdRegFormLineEdit->text() == NULL || ui->question_1_comboBox->currentIndex() == 0 ||
+                ui->firtstQuestionAnswer_RegFormLineEdit->text() == NULL || ui->question_2_comboBox->currentIndex() == 0 ||
+                ui->secondQuestionAnswer_RegFormLineEdit->text() == NULL || ui->question_3_comboBox->currentIndex() == 0 ||
+                ui->thirdQuestionAnswer_RegFormLineEdit->text() == NULL || ui->studentIdRegFormLineEdit->text() == NULL
+                )
+        {
+            throw "Fill in the missing Data";
+        }
+        else if (ui->password_RegFormLineEdit->text() != ui->passwordConfirm_RegFormLineEdit->text())
+        {
+            throw "Password MissMatched!";
+        }
+        else if (!emailLineEdit->hasAcceptableInput())            //displays warning message box if email format is incorrect
+        {
+           throw "Email Format is Incorrect";
+        }
+        else if (emailLineEdit->text() != confirmEmailLineEdit->text()) //displays warning message box if the email line edit is not equal to confirm email line edit
+        {
+           throw "Email Format does not match!";
+        }
+        else if(currIndex == currIndex2 || currIndex == currIndex3 || currIndex2 == currIndex3) //checks if questions are repeated
+        {
+           throw "Questions are repeated!";
+        }
+        else
+        {
+             ui->stackedWidgetRegister->setCurrentIndex(1); //executes if there's no error
+        }
     }
-    else if(currIndex == currIndex2 || currIndex == currIndex3 || currIndex2 == currIndex3) //checks if questions are repeated
+    catch (const char *message)
     {
-        QMessageBox msgBox1;
-        msgBox1.setText("Questions are repeated!");
-        msgBox1.exec();
+        QMessageBox messagebox;
+        messagebox.warning(NULL,"Error",message);
     }
-    else
-    {
 
-        ui->stackedWidgetRegister->setCurrentIndex(1); //executes if there's no error
 
-    }
+
+//    if(!emailLineEdit->hasAcceptableInput())            //displays warning message box if email format is incorrect
+//    {
+//        QMessageBox::warning(this, tr("Email verification"),
+//                             tr("Email Format is incorrect."), QMessageBox::Ok);
+//        return;
+//    }
+//    else if(emailLineEdit->text() != confirmEmailLineEdit->text()) //displays warning message box if the email line edit is not equal to confirm email line edit
+//    {
+//        QMessageBox::warning(this, tr("Email verification"),
+//                             tr("Email Format does not Match."), QMessageBox::Ok);
+//        return;
+
+//    }
+
+
+
+//    if( questionText.isEmpty() ||  currIndex == 0 || questionText2.isEmpty() || currIndex2 == 0 || questionText3.isEmpty() || currIndex3 == 0)
+//    {
+//        QMessageBox msgBox1;
+//        msgBox1.setText("Your Account is not completed, Please fill the missing data!");
+//        msgBox1.exec();
+//        qDebug()<<"is empty";
+//    }
+//    else if(currIndex == currIndex2 || currIndex == currIndex3 || currIndex2 == currIndex3) //checks if questions are repeated
+//    {
+//        QMessageBox msgBox1;
+//        msgBox1.setText("Questions are repeated!");
+//        msgBox1.exec();
+//    }
+//    else
+//    {
+
+//        ui->stackedWidgetRegister->setCurrentIndex(1); //executes if there's no error
+
+//    }
 }
 
 //Register Back page
@@ -128,13 +173,13 @@ void Register::on_signUpButton_clicked()
 
     int currIndex = ui->programComboBox->currentIndex();       // program combo box
     int currIndex2 = ui->facultyComboBox->currentIndex();  //faculty combo box
-//    if(currIndex == 0 || currIndex2 == 0)
-//    {
-//        QMessageBox msgBox1;
-//        msgBox1.setText("Please fill the missing data!");
-//        msgBox1.exec();
-//    }
-//    else
+    //    if(currIndex == 0 || currIndex2 == 0)
+    //    {
+    //        QMessageBox msgBox1;
+    //        msgBox1.setText("Please fill the missing data!");
+    //        msgBox1.exec();
+    //    }
+    //    else
     {
 
 
@@ -177,15 +222,15 @@ void Register::on_signUpButton_clicked()
 
 void Register::recieveQuestion(QSqlQuery question)
 {
-        question.seek(-1);
-       while (question.next())
-                    {
-                        QString questions = question.value(1).toString();
-                        qDebug()<<questions;
-                        ui->question_1_comboBox->addItem(questions);
-                          ui->question_2_comboBox->addItem(questions);
-                            ui->question_3_comboBox->addItem(questions);
+    question.seek(-1);
+    while (question.next())
+    {
+        QString questions = question.value(1).toString();
+        qDebug()<<questions;
+        ui->question_1_comboBox->addItem(questions);
+        ui->question_2_comboBox->addItem(questions);
+        ui->question_3_comboBox->addItem(questions);
 
-                    }
+    }
 
 }
