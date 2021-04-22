@@ -23,6 +23,7 @@ sgsApp::sgsApp(QWidget *parent)
 sgsApp::~sgsApp()
 {
     delete connection;
+    delete forgot;
     delete ui;
 
 
@@ -30,27 +31,28 @@ sgsApp::~sgsApp()
 
 void sgsApp::disableStudentFeature()
 {
-    ui->accounts_groupBox->hide();
-   // ui->formLayout_9->resetFormAlignment();
-    ui->addProgamSeqSettings_pushButton->hide();
-    ui->suspendSetting_pushButton->hide();
+    ui->AddProgramSequence_Button->hide();
+    ui->addCourse_Button->hide();
+    ui->disableUser_Button->hide();
+    ui->addUser_Button->hide();
+    ui->addInstitution_Button->hide();
 }
 
 void sgsApp::hideFeature()
 {
-    ui->AddProgramSequence_Button->hide();
-    ui->addCourse_Button->hide();
-    ui->addInstitution_Button->hide();
-    ui->addInstitution_Button_2->hide();
+//    ui->AddProgramSequence_Button->hide();
+//    ui->addCourse_Button->hide();
+//    ui->addInstitution_Button->hide();
+//    ui->addInstitution_Button_2->hide();
 
 }
 
 void sgsApp::showFeature()
 {
-    ui->AddProgramSequence_Button->show();
-    ui->addCourse_Button->show();
-    ui->addInstitution_Button->show();
-    ui->addInstitution_Button_2->show();
+//    ui->AddProgramSequence_Button->show();
+//    ui->addCourse_Button->show();
+//    ui->addInstitution_Button->show();
+//    ui->addInstitution_Button_2->show();
 }
 
 void sgsApp::logout()
@@ -171,20 +173,12 @@ void sgsApp::on_logoutTopBarButton_clicked()
 
 void sgsApp::on_new_Account_pushButton_clicked()
 {
-    Register * registerNewStudent = new Register;
-    //Modal approach
-    registerNewStudent->setModal(true);
-    registerNewStudent->show();
+
 }
 
 void sgsApp::on_resetPasswd_pushButton_clicked()
 {
-    //create a new instance of reg
-    forgot = new forgotPassword(this);
-   // QSqlQuery query = connection->updateQuestion();
-    //Modal Approach
-    forgot->setModal(true);
-    forgot->show();
+
 }
 
 void sgsApp::on_suspendSetting_pushButton_clicked()
@@ -195,18 +189,64 @@ void sgsApp::on_suspendSetting_pushButton_clicked()
 
 void sgsApp::on_dashboard_pushButton_clicked()
 {
-    if (buttonClick)
-    {
-        buttonClick = false;
-        qDebug("clicked");
-          ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow LEFT.png"));
-          hideFeature();
-    }
-    else
-    {
-        ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow RIGHT.png"));
-        buttonClick = true;
-        showFeature();
-    }
+    //New functionality comming soon
+//    if (buttonClick)
+//    {
+//        buttonClick = false;
+//        qDebug("clicked");
+//          ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow LEFT.png"));
+//          hideFeature();
+//    }
+//    else
+//    {
+//        ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow RIGHT.png"));
+//        buttonClick = true;
+//        showFeature();
+//    }
 }
 
+//New Buttons
+void sgsApp::on_logoutButton_clicked()
+{
+    ui->stackedWidgetSGS->setCurrentIndex(0);
+}
+
+void sgsApp::on_changePassword_Button_clicked()
+{
+    //create a new instance of reg
+    forgot = new forgotPassword(this);
+    //Modal Approach
+    forgot->setModal(true);
+    forgot->show();
+}
+
+void sgsApp::on_addUser_Button_clicked()
+{
+    //reg = new Register(this);
+    Register * registerNewStudent = new Register(this);
+    //Modal approach
+    if(!(queries.next()))
+    {
+        queries = connection->updateQuestion();
+        qDebug()<<"here1";
+
+    }
+    else {
+          qDebug()<<"debug queries.next";;
+        qDebug()<<queries.lastError();
+    }
+
+    if (queries.size() > 0)
+    {
+     connect(this,SIGNAL(sendQuestion(QSqlQuery)), registerNewStudent , SLOT(recieveQuestion(QSqlQuery)));
+     emit sendQuestion(queries);
+    }
+
+    registerNewStudent->show();
+
+}
+
+void sgsApp::on_viewProgramSequence_Button_clicked()
+{
+
+}

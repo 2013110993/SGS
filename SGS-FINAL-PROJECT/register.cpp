@@ -215,6 +215,7 @@ void Register::on_signUpButton_clicked()
 
         connection->insertNewUser(*user);
         this->close();
+        delete connection;
 
     }
 

@@ -358,7 +358,7 @@ border: 0px;</string>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">background:url(:/images/logo.png);
+       <string notr="true">background-image: url(:/images/SGS LOGO.png);
 border:0px;</string>
       </property>
       <property name="frameShape">
@@ -446,301 +446,327 @@ border: 0;</string>
         <enum>QFrame::Raised</enum>
        </property>
       </widget>
-      <widget class="QWidget" name="layoutWidget_2">
+      <widget class="QGroupBox" name="groupBox">
        <property name="geometry">
         <rect>
          <x>40</x>
-         <y>30</y>
-         <width>181</width>
-         <height>401</height>
+         <y>50</y>
+         <width>191</width>
+         <height>641</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_6">
-        <item>
-         <widget class="QGroupBox" name="mainMenu_groupBox">
-          <property name="styleSheet">
-           <string notr="true">color:#70808c;</string>
-          </property>
-          <property name="title">
-           <string>DASHBOARD</string>
-          </property>
-          <widget class="QWidget" name="layoutWidget_3">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>30</y>
-             <width>145</width>
-             <height>134</height>
-            </rect>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_2">
-            <item>
-             <layout class="QFormLayout" name="formLayout">
-              <property name="labelAlignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-              </property>
-              <property name="formAlignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-              </property>
-              <item row="0" column="0">
-               <widget class="QPushButton" name="dashboard_pushButton">
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color:#fff;</string>
-                </property>
-                <property name="text">
-                 <string>My Dashboard</string>
-                </property>
-                <property name="icon">
-                 <iconset resource="images.qrc">
-                  <normaloff>:/icons White/Icons/White/Single Arrow RIGHT.png</normaloff>:/icons White/Icons/White/Single Arrow RIGHT.png</iconset>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QFormLayout" name="formLayout_2">
-              <property name="labelAlignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-              </property>
-              <property name="formAlignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-              </property>
-              <item row="0" column="0">
-               <widget class="QPushButton" name="AddProgramSequence_Button">
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color:#fff;</string>
-                </property>
-                <property name="text">
-                 <string>Program Sequence</string>
-                </property>
-                <property name="icon">
-                 <iconset resource="images.qrc">
-                  <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QPushButton" name="addCourse_Button">
-                <property name="toolTip">
-                 <string>Add Cours</string>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color:#fff;</string>
-                </property>
-                <property name="text">
-                 <string>Course</string>
-                </property>
-                <property name="icon">
-                 <iconset resource="images.qrc">
-                  <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QPushButton" name="addInstitution_Button">
-                <property name="toolTip">
-                 <string>Add Institution</string>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color:#fff;</string>
-                </property>
-                <property name="text">
-                 <string>Institution</string>
-                </property>
-                <property name="icon">
-                 <iconset resource="images.qrc">
-                  <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QPushButton" name="addInstitution_Button_2">
-                <property name="toolTip">
-                 <string>Add Institution</string>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color:#fff;</string>
-                </property>
-                <property name="text">
-                 <string>Institution</string>
-                </property>
-                <property name="icon">
-                 <iconset resource="images.qrc">
-                  <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QGroupBox" name="accounts_groupBox">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>170</y>
-             <width>179</width>
-             <height>129</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color:#70808c;</string>
-           </property>
-           <property name="title">
-            <string>Accounts</string>
-           </property>
-           <widget class="QWidget" name="layoutWidget_4">
-            <property name="geometry">
-             <rect>
-              <x>10</x>
-              <y>40</y>
-              <width>117</width>
-              <height>48</height>
-             </rect>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_3">
-             <item>
-              <layout class="QFormLayout" name="formLayout_5">
-               <property name="labelAlignment">
-                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-               </property>
-               <property name="formAlignment">
-                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-               </property>
-               <item row="0" column="0" colspan="2">
-                <widget class="QPushButton" name="new_Account_pushButton">
-                 <property name="layoutDirection">
-                  <enum>Qt::LeftToRight</enum>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color:#fff;</string>
-                 </property>
-                 <property name="text">
-                  <string>New Account</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
-          </widget>
-          <widget class="QGroupBox" name="settings_groupBox">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>280</y>
-             <width>179</width>
-             <height>196</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color:#70808c;</string>
-           </property>
-           <property name="title">
-            <string>Settings</string>
-           </property>
-           <widget class="QWidget" name="layoutWidget_5">
-            <property name="geometry">
-             <rect>
-              <x>10</x>
-              <y>42</y>
-              <width>128</width>
-              <height>76</height>
-             </rect>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_5">
-             <item>
-              <layout class="QFormLayout" name="formLayout_8">
-               <property name="labelAlignment">
-                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-               </property>
-               <property name="formAlignment">
-                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-               </property>
-               <item row="0" column="0">
-                <widget class="QPushButton" name="resetPasswd_pushButton">
-                 <property name="layoutDirection">
-                  <enum>Qt::LeftToRight</enum>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color:#fff;</string>
-                 </property>
-                 <property name="text">
-                  <string>Reset Password</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QFormLayout" name="formLayout_9">
-               <property name="labelAlignment">
-                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-               </property>
-               <property name="formAlignment">
-                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-               </property>
-               <item row="0" column="0">
-                <widget class="QPushButton" name="addProgamSeqSettings_pushButton">
-                 <property name="layoutDirection">
-                  <enum>Qt::LeftToRight</enum>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color:#fff;</string>
-                 </property>
-                 <property name="text">
-                  <string>Program Sequence</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QFormLayout" name="formLayout_11">
-               <property name="labelAlignment">
-                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-               </property>
-               <property name="formAlignment">
-                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-               </property>
-               <item row="0" column="0">
-                <widget class="QPushButton" name="suspendSetting_pushButton">
-                 <property name="layoutDirection">
-                  <enum>Qt::LeftToRight</enum>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color:#fff;</string>
-                 </property>
-                 <property name="text">
-                  <string>Suspend User</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
-          </widget>
-         </widget>
-        </item>
-       </layout>
+       <property name="styleSheet">
+        <string notr="true">color:#70808c;</string>
+       </property>
+       <property name="title">
+        <string>Main Menu</string>
+       </property>
+       <widget class="QPushButton" name="dashboard_pushButton">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>40</y>
+          <width>86</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#fff;</string>
+        </property>
+        <property name="text">
+         <string>Dashboard</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/icons White/Icons/White/Dashboard.png</normaloff>:/icons White/Icons/White/Dashboard.png</iconset>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>110</y>
+          <width>161</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Reports</string>
+        </property>
+        <widget class="QPushButton" name="viewComments_Button">
+         <property name="geometry">
+          <rect>
+           <x>11</x>
+           <y>41</y>
+           <width>86</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>Add Institution</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>Comments</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Eye ON.png</normaloff>:/icons White/Icons/White/Eye ON.png</iconset>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="viewCoursesPending_Button">
+         <property name="geometry">
+          <rect>
+           <x>11</x>
+           <y>71</y>
+           <width>118</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>Add Institution</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>Pending Course</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Eye ON.png</normaloff>:/icons White/Icons/White/Eye ON.png</iconset>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="viewCourses_Button">
+         <property name="geometry">
+          <rect>
+           <x>11</x>
+           <y>101</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>Add Institution</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>Courses</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Eye ON.png</normaloff>:/icons White/Icons/White/Eye ON.png</iconset>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="viewProgramSequence_Button">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>130</y>
+           <width>141</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>Add Institution</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>Program Sequence</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Eye ON.png</normaloff>:/icons White/Icons/White/Eye ON.png</iconset>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="settingGroupBox">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>340</y>
+          <width>160</width>
+          <height>231</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Settings</string>
+        </property>
+        <widget class="QPushButton" name="addInstitution_Button">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>70</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>Add Institution</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>Institution</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="addCourse_Button">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>100</y>
+           <width>64</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>Add Cours</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>Course</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="AddProgramSequence_Button">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>130</y>
+           <width>136</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>Program Sequence</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="addUser_Button">
+         <property name="geometry">
+          <rect>
+           <x>11</x>
+           <y>161</y>
+           <width>102</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>Add Institution</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>User Account</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Add User.png</normaloff>:/icons White/Icons/White/Add User.png</iconset>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="disableUser_Button">
+         <property name="geometry">
+          <rect>
+           <x>11</x>
+           <y>191</y>
+           <width>102</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>Add Institution</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>User Account</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Eye OFF.png</normaloff>:/icons White/Icons/White/Eye OFF.png</iconset>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="changePassword_Button">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>40</y>
+           <width>130</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>Add Institution</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>Change Password</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Edit.png</normaloff>:/icons White/Icons/White/Edit.png</iconset>
+         </property>
+        </widget>
+       </widget>
       </widget>
      </widget>
      <widget class="QFrame" name="headBar">
@@ -749,13 +775,13 @@ border: 0;</string>
         <x>0</x>
         <y>0</y>
         <width>1440</width>
-        <height>50</height>
+        <height>65</height>
        </rect>
       </property>
       <property name="minimumSize">
        <size>
         <width>1440</width>
-        <height>50</height>
+        <height>65</height>
        </size>
       </property>
       <property name="maximumSize">
@@ -774,12 +800,12 @@ border:0;</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPushButton" name="logoutTopBarButton">
+      <widget class="QPushButton" name="logoutButton">
        <property name="geometry">
         <rect>
-         <x>1290</x>
-         <y>12</y>
-         <width>91</width>
+         <x>1330</x>
+         <y>20</y>
+         <width>71</width>
          <height>31</height>
         </rect>
        </property>
@@ -800,10 +826,10 @@ border:0;</string>
       <widget class="QLabel" name="userRoleLable_2">
        <property name="geometry">
         <rect>
-         <x>1280</x>
+         <x>1310</x>
          <y>20</y>
          <width>16</width>
-         <height>16</height>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
@@ -820,12 +846,12 @@ border:0;</string>
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QPushButton" name="usernameTopBar">
+      <widget class="QPushButton" name="userIconTopBar">
        <property name="geometry">
         <rect>
-         <x>1070</x>
-         <y>12</y>
-         <width>111</width>
+         <x>1130</x>
+         <y>20</y>
+         <width>41</width>
          <height>31</height>
         </rect>
        </property>
@@ -837,7 +863,7 @@ border:0;</string>
         </font>
        </property>
        <property name="text">
-        <string>Username</string>
+        <string/>
        </property>
        <property name="icon">
         <iconset resource="images.qrc">
@@ -847,9 +873,9 @@ border:0;</string>
       <widget class="QLabel" name="userRoleLable">
        <property name="geometry">
         <rect>
-         <x>1180</x>
-         <y>20</y>
-         <width>91</width>
+         <x>1220</x>
+         <y>28</y>
+         <width>81</width>
          <height>16</height>
         </rect>
        </property>
@@ -864,36 +890,49 @@ border:0;</string>
         <string>, STUDENT</string>
        </property>
       </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="lecturerDashboard">
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>439</x>
-        <y>230</y>
-        <width>171</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Lecturer Dashboard</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="studentDashboard">
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>590</x>
-        <y>250</y>
-        <width>211</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Student Dashboard</string>
-      </property>
+      <widget class="QFrame" name="topBarLogo">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>10</y>
+         <width>191</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-image: url(:/images/SGS Logo Dashboard.png);
+background-repeat: no-repeat;</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="usernameLable">
+       <property name="geometry">
+        <rect>
+         <x>1160</x>
+         <y>30</y>
+         <width>61</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>USER:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>
