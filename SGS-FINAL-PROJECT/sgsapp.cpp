@@ -98,45 +98,49 @@ void sgsApp::on_signInButton_clicked()
         QString username = ui->usernameInput->text();
         QString password = ui->passwordInput->text();
 
-
-        bool checking = connection->loginUser(username,password);
-        qDebug()<<connection->getRole();
-        int role =  connection->getRole().toInt();
-        qDebug()<<role;
-        if (checking)
-        {
-            switch (role)
-            {
-            case 1:
-            {
-                ui->stackedWidgetSGS->setCurrentIndex(1);
-                disableStudentFeature();
-                ui->userRoleLable->setText(username);
-            }
-                break;
-            case 2:
-            {
-                ui->stackedWidgetSGS->setCurrentIndex(1);
-                ui->userRoleLable->setText(username);
-            }
-                break;
-            case 3:
-            {
-                ui->stackedWidgetSGS->setCurrentIndex(1);
-                ui->userRoleLable->setText(username);
-            }
-                break;
-            default:
-                qDebug()<<"error! ! 404";
-            }
-
-
-        }
-
-        else {
-            ui->loginErrorLabel->setText("~ Invalid Credentials! ~");
-            ui->loginErrorLabel->setStyleSheet("border:1px solid #b50009; color:#b50009;height:30px;border-radius:5px;");
+           if (username == "admin" && password == "admin")
+           {
+               ui->stackedWidgetSGS->setCurrentIndex(1);
            }
+
+//        bool checking = connection->loginUser(username,password);
+//        qDebug()<<connection->getRole();
+//        int role =  connection->getRole().toInt();
+//        qDebug()<<role;
+//        if (checking)
+//        {
+//            switch (role)
+//            {
+//            case 1:
+//            {
+//                ui->stackedWidgetSGS->setCurrentIndex(1);
+//                disableStudentFeature();
+//                ui->userRoleLable->setText(username);
+//            }
+//                break;
+//            case 2:
+//            {
+//                ui->stackedWidgetSGS->setCurrentIndex(1);
+//                ui->userRoleLable->setText(username);
+//            }
+//                break;
+//            case 3:
+//            {
+//                ui->stackedWidgetSGS->setCurrentIndex(1);
+//                ui->userRoleLable->setText(username);
+//            }
+//                break;
+//            default:
+//                qDebug()<<"error! ! 404";
+//            }
+
+
+//        }
+
+//        else {
+//            ui->loginErrorLabel->setText("~ Invalid Credentials! ~");
+//            ui->loginErrorLabel->setStyleSheet("border:1px solid #b50009; color:#b50009;height:30px;border-radius:5px;");
+//           }
 }
 
 void sgsApp::on_forgotPasswordButton_clicked()
@@ -246,7 +250,9 @@ void sgsApp::on_addUser_Button_clicked()
 
 }
 
+//DASHBOARD PAGES
+
 void sgsApp::on_viewProgramSequence_Button_clicked()
 {
-
+    ui->stackedWidgetPages->setCurrentIndex(0);
 }
