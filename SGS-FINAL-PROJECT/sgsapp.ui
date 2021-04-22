@@ -943,12 +943,82 @@ background-repeat: no-repeat;</string>
         <height>821</height>
        </rect>
       </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
       <widget class="QWidget" name="ViewProgramSequence">
+       <widget class="QTableWidget" name="programSequenceTableWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>130</y>
+          <width>571</width>
+          <height>691</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#fff</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="programSequenceFacultyName">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>571</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#70808c;</string>
+        </property>
+        <property name="text">
+         <string>Faculty of Science &amp; Technology Math, Physics and IT Department</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="programSequenceProgramName">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>100</y>
+          <width>571</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#333;border:1px solid #999;background:#fff;</string>
+        </property>
+        <property name="text">
+         <string>Bachelor Degree (Information Technology)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="AddProgramSequence">
        <widget class="QFrame" name="addCourseGrade">
         <property name="geometry">
          <rect>
-          <x>620</x>
-          <y>40</y>
+          <x>410</x>
+          <y>190</y>
           <width>541</width>
           <height>231</height>
          </rect>
@@ -986,73 +1056,7 @@ background-repeat: no-repeat;</string>
          </property>
         </widget>
        </widget>
-       <widget class="QTableWidget" name="programSequenceTableWidget">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>110</y>
-          <width>591</width>
-          <height>241</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:#fff</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_2">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>40</y>
-          <width>591</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:#70808c;</string>
-        </property>
-        <property name="text">
-         <string>YEAR 1</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_3">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>80</y>
-          <width>591</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color:#333;border:1px solid #999;</string>
-        </property>
-        <property name="text">
-         <string>Semester 1 - Aug</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
       </widget>
-      <widget class="QWidget" name="AddProgramSequence"/>
      </widget>
     </widget>
    </widget>

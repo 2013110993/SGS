@@ -73,10 +73,12 @@ public:
     QLabel *usernameLable;
     QStackedWidget *stackedWidgetPages;
     QWidget *ViewProgramSequence;
+    QTableWidget *programSequenceTableWidget;
+    QLabel *programSequenceFacultyName;
+    QLabel *programSequenceProgramName;
+    QWidget *AddProgramSequence;
     QFrame *addCourseGrade;
     QLabel *label;
-    QTableWidget *programSequenceTableWidget;
-    QWidget *AddProgramSequence;
 
     void setupUi(QMainWindow *sgsApp)
     {
@@ -390,28 +392,44 @@ public:
         stackedWidgetPages->setGeometry(QRect(260, 70, 1171, 821));
         ViewProgramSequence = new QWidget();
         ViewProgramSequence->setObjectName(QString::fromUtf8("ViewProgramSequence"));
-        addCourseGrade = new QFrame(ViewProgramSequence);
+        programSequenceTableWidget = new QTableWidget(ViewProgramSequence);
+        programSequenceTableWidget->setObjectName(QString::fromUtf8("programSequenceTableWidget"));
+        programSequenceTableWidget->setGeometry(QRect(10, 130, 571, 691));
+        programSequenceTableWidget->setStyleSheet(QString::fromUtf8("background:#fff"));
+        programSequenceFacultyName = new QLabel(ViewProgramSequence);
+        programSequenceFacultyName->setObjectName(QString::fromUtf8("programSequenceFacultyName"));
+        programSequenceFacultyName->setGeometry(QRect(10, 60, 571, 41));
+        QFont font3;
+        font3.setPointSize(14);
+        font3.setBold(true);
+        font3.setWeight(75);
+        programSequenceFacultyName->setFont(font3);
+        programSequenceFacultyName->setStyleSheet(QString::fromUtf8("background:#70808c;"));
+        programSequenceFacultyName->setAlignment(Qt::AlignCenter);
+        programSequenceProgramName = new QLabel(ViewProgramSequence);
+        programSequenceProgramName->setObjectName(QString::fromUtf8("programSequenceProgramName"));
+        programSequenceProgramName->setGeometry(QRect(10, 100, 571, 31));
+        QFont font4;
+        font4.setPointSize(14);
+        font4.setBold(false);
+        font4.setWeight(50);
+        programSequenceProgramName->setFont(font4);
+        programSequenceProgramName->setStyleSheet(QString::fromUtf8("color:#333;border:1px solid #999;background:#fff;"));
+        programSequenceProgramName->setAlignment(Qt::AlignCenter);
+        stackedWidgetPages->addWidget(ViewProgramSequence);
+        AddProgramSequence = new QWidget();
+        AddProgramSequence->setObjectName(QString::fromUtf8("AddProgramSequence"));
+        addCourseGrade = new QFrame(AddProgramSequence);
         addCourseGrade->setObjectName(QString::fromUtf8("addCourseGrade"));
-        addCourseGrade->setGeometry(QRect(620, 40, 541, 231));
+        addCourseGrade->setGeometry(QRect(410, 190, 541, 231));
         addCourseGrade->setFrameShape(QFrame::StyledPanel);
         addCourseGrade->setFrameShadow(QFrame::Raised);
         label = new QLabel(addCourseGrade);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(0, 0, 541, 41));
-        QFont font3;
-        font3.setPointSize(14);
-        font3.setBold(true);
-        font3.setWeight(75);
         label->setFont(font3);
         label->setStyleSheet(QString::fromUtf8("background:#70808c;"));
         label->setAlignment(Qt::AlignCenter);
-        programSequenceTableWidget = new QTableWidget(ViewProgramSequence);
-        programSequenceTableWidget->setObjectName(QString::fromUtf8("programSequenceTableWidget"));
-        programSequenceTableWidget->setGeometry(QRect(15, 40, 591, 241));
-        programSequenceTableWidget->setStyleSheet(QString::fromUtf8("background:#fff"));
-        stackedWidgetPages->addWidget(ViewProgramSequence);
-        AddProgramSequence = new QWidget();
-        AddProgramSequence->setObjectName(QString::fromUtf8("AddProgramSequence"));
         stackedWidgetPages->addWidget(AddProgramSequence);
         stackedWidgetSGS->addWidget(Dashboard);
         sgsApp->setCentralWidget(centralwidget);
@@ -419,6 +437,7 @@ public:
         retranslateUi(sgsApp);
 
         stackedWidgetSGS->setCurrentIndex(1);
+        stackedWidgetPages->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(sgsApp);
@@ -484,6 +503,8 @@ public:
         userIconTopBar->setText(QString());
         userRoleLable->setText(QCoreApplication::translate("sgsApp", ", STUDENT", nullptr));
         usernameLable->setText(QCoreApplication::translate("sgsApp", "USER:", nullptr));
+        programSequenceFacultyName->setText(QCoreApplication::translate("sgsApp", "Faculty of Science & Technology Math, Physics and IT Department", nullptr));
+        programSequenceProgramName->setText(QCoreApplication::translate("sgsApp", "Bachelor Degree (Information Technology)", nullptr));
         label->setText(QCoreApplication::translate("sgsApp", "Add Course Widget", nullptr));
     } // retranslateUi
 

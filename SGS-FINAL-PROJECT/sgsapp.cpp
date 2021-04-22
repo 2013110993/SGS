@@ -263,27 +263,36 @@ void sgsApp::on_viewProgramSequence_Button_clicked()
 
 void sgsApp::programSequenceList()
 {
-    ui->programSequenceTableWidget->setColumnCount(5);
+    ui->programSequenceTableWidget->setColumnCount(7);
     ui->programSequenceTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
 
     QStringList header;
-    header << "Course Code"<< "Course Name" <<"Credits" << "Grade" <<"Pre-requisites";
+    header << "Code"<< "Course Name" <<"Credits" << "Grade" <<"Pre-requisites" << "Semester" << "Year";
     ui->programSequenceTableWidget->setHorizontalHeaderLabels(header);
     ui->programSequenceTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
 
     ui->programSequenceTableWidget->setColumnWidth(0,80);
     ui->programSequenceTableWidget->setColumnWidth(1,150);
+    ui->programSequenceTableWidget->setColumnWidth(2,48);
+    ui->programSequenceTableWidget->setColumnWidth(3,40);
+    ui->programSequenceTableWidget->setColumnWidth(4,150);
+    ui->programSequenceTableWidget->setColumnWidth(5,60);
+    ui->programSequenceTableWidget->setColumnWidth(6,40);
 
     QTableWidgetItem *courseCode = new QTableWidgetItem();
     QTableWidgetItem *courseName = new QTableWidgetItem;
     QTableWidgetItem *credits = new QTableWidgetItem;
     QTableWidgetItem *grade = new QTableWidgetItem;
     QTableWidgetItem *prerequisites = new QTableWidgetItem;
+    QTableWidgetItem *semester = new QTableWidgetItem;
+    QTableWidgetItem *year = new QTableWidgetItem;
 
    courseCode->setText("CMPS3151");
    courseName->setText("Telecommunications Systems");
    credits->setText("3");
    grade->setText("A");
    prerequisites->setText("CMPS1191");
+   semester->setText("1");
+   year->setText("1");
 
 }
