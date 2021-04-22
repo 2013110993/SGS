@@ -279,7 +279,7 @@ void sgsApp::programSequenceList()
     ui->programSequenceTableWidget->setColumnWidth(5,60);
     ui->programSequenceTableWidget->setColumnWidth(6,40);
 
-    QTableWidgetItem *courseCode = new QTableWidgetItem();
+    QTableWidgetItem *courseCode = new QTableWidgetItem;
     QTableWidgetItem *courseName = new QTableWidgetItem;
     QTableWidgetItem *credits = new QTableWidgetItem;
     QTableWidgetItem *grade = new QTableWidgetItem;
@@ -294,5 +294,15 @@ void sgsApp::programSequenceList()
    prerequisites->setText("CMPS1191");
    semester->setText("1");
    year->setText("1");
+
+   //            QComboBox *combo = new QComboBox;
+   //            combo->insertItem(0,"Select");
+   //            combo->insertItem(1,"NO");
+   //            combo->insertItem(2,"Yes");
+   //            ui->tableWidget->setCellWidget(rowCount,8,combo);
+   //            ui->tableWidget->setItem(rowCount,8,is_intrested);
+
+
+   //ui->programSequenceTableWidget->setItem(courseCode,courseName,credits,grade,prerequisites,semester,year);
 
 }
