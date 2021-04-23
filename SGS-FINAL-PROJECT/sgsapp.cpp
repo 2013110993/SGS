@@ -277,7 +277,8 @@ void sgsApp::programSequenceList()
     int rowCount = 0;
 
     for(int i = 0; i< 5; i++){
-        rowCount++;
+
+         ui->programSequenceTableWidget->insertRow(rowCount);
 
         QTableWidgetItem *courseCode = new QTableWidgetItem;
         QTableWidgetItem *courseName = new QTableWidgetItem;
@@ -304,8 +305,7 @@ void sgsApp::programSequenceList()
         ui->programSequenceTableWidget->setColumnWidth(4,150);
         ui->programSequenceTableWidget->setColumnWidth(5,60);
         ui->programSequenceTableWidget->setColumnWidth(6,40);
-
-
+        rowCount++;
     }
 
 }

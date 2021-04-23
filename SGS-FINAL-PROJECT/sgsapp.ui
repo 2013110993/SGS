@@ -548,32 +548,6 @@ border: 0;</string>
            <normaloff>:/icons White/Icons/White/Eye ON.png</normaloff>:/icons White/Icons/White/Eye ON.png</iconset>
          </property>
         </widget>
-        <widget class="QPushButton" name="viewCourses_Button">
-         <property name="geometry">
-          <rect>
-           <x>11</x>
-           <y>101</y>
-           <width>71</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="toolTip">
-          <string>Add Institution</string>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color:#fff;</string>
-         </property>
-         <property name="text">
-          <string>Courses</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Eye ON.png</normaloff>:/icons White/Icons/White/Eye ON.png</iconset>
-         </property>
-        </widget>
         <widget class="QPushButton" name="viewProgramSequence_Button">
          <property name="geometry">
           <rect>
@@ -766,6 +740,32 @@ border: 0;</string>
            <normaloff>:/icons White/Icons/White/Edit.png</normaloff>:/icons White/Icons/White/Edit.png</iconset>
          </property>
         </widget>
+       </widget>
+       <widget class="QPushButton" name="viewCourses_Button">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>70</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Add Institution</string>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#fff;</string>
+        </property>
+        <property name="text">
+         <string>Courses</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/icons White/Icons/White/Eye ON.png</normaloff>:/icons White/Icons/White/Eye ON.png</iconset>
+        </property>
        </widget>
       </widget>
      </widget>
