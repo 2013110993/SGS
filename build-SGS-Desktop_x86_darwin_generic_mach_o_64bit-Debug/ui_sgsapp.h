@@ -72,6 +72,8 @@ public:
     QFrame *topBarLogo;
     QLabel *usernameLable;
     QStackedWidget *stackedWidgetPages;
+    QWidget *DashboardPage;
+    QLabel *TMPlabel_2;
     QWidget *ViewProgramSequence;
     QTableWidget *programSequenceTableWidget;
     QLabel *programSequenceFacultyName;
@@ -390,6 +392,17 @@ public:
         stackedWidgetPages = new QStackedWidget(Dashboard);
         stackedWidgetPages->setObjectName(QString::fromUtf8("stackedWidgetPages"));
         stackedWidgetPages->setGeometry(QRect(260, 70, 1171, 821));
+        DashboardPage = new QWidget();
+        DashboardPage->setObjectName(QString::fromUtf8("DashboardPage"));
+        TMPlabel_2 = new QLabel(DashboardPage);
+        TMPlabel_2->setObjectName(QString::fromUtf8("TMPlabel_2"));
+        TMPlabel_2->setGeometry(QRect(470, 260, 181, 151));
+        QFont font3;
+        font3.setBold(true);
+        font3.setWeight(75);
+        TMPlabel_2->setFont(font3);
+        TMPlabel_2->setStyleSheet(QString::fromUtf8("color: #000;"));
+        stackedWidgetPages->addWidget(DashboardPage);
         ViewProgramSequence = new QWidget();
         ViewProgramSequence->setObjectName(QString::fromUtf8("ViewProgramSequence"));
         programSequenceTableWidget = new QTableWidget(ViewProgramSequence);
@@ -399,21 +412,21 @@ public:
         programSequenceFacultyName = new QLabel(ViewProgramSequence);
         programSequenceFacultyName->setObjectName(QString::fromUtf8("programSequenceFacultyName"));
         programSequenceFacultyName->setGeometry(QRect(10, 60, 571, 41));
-        QFont font3;
-        font3.setPointSize(14);
-        font3.setBold(true);
-        font3.setWeight(75);
-        programSequenceFacultyName->setFont(font3);
+        QFont font4;
+        font4.setPointSize(14);
+        font4.setBold(true);
+        font4.setWeight(75);
+        programSequenceFacultyName->setFont(font4);
         programSequenceFacultyName->setStyleSheet(QString::fromUtf8("background:#70808c;"));
         programSequenceFacultyName->setAlignment(Qt::AlignCenter);
         programSequenceProgramName = new QLabel(ViewProgramSequence);
         programSequenceProgramName->setObjectName(QString::fromUtf8("programSequenceProgramName"));
         programSequenceProgramName->setGeometry(QRect(10, 100, 571, 31));
-        QFont font4;
-        font4.setPointSize(14);
-        font4.setBold(false);
-        font4.setWeight(50);
-        programSequenceProgramName->setFont(font4);
+        QFont font5;
+        font5.setPointSize(14);
+        font5.setBold(false);
+        font5.setWeight(50);
+        programSequenceProgramName->setFont(font5);
         programSequenceProgramName->setStyleSheet(QString::fromUtf8("color:#333;border:1px solid #999;background:#fff;"));
         programSequenceProgramName->setAlignment(Qt::AlignCenter);
         stackedWidgetPages->addWidget(ViewProgramSequence);
@@ -427,7 +440,7 @@ public:
         label = new QLabel(addCourseGrade);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(0, 0, 541, 41));
-        label->setFont(font3);
+        label->setFont(font4);
         label->setStyleSheet(QString::fromUtf8("background:#70808c;"));
         label->setAlignment(Qt::AlignCenter);
         stackedWidgetPages->addWidget(AddProgramSequence);
@@ -457,9 +470,9 @@ public:
 #if QT_CONFIG(tooltip)
         Sidebar->setToolTip(QCoreApplication::translate("sgsApp", "Add", nullptr));
 #endif // QT_CONFIG(tooltip)
-        groupBox->setTitle(QCoreApplication::translate("sgsApp", "Main Menu", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("sgsApp", "General Menu", nullptr));
         dashboard_pushButton->setText(QCoreApplication::translate("sgsApp", "Dashboard", nullptr));
-        groupBox_2->setTitle(QCoreApplication::translate("sgsApp", "Reports", nullptr));
+        groupBox_2->setTitle(QCoreApplication::translate("sgsApp", "Student", nullptr));
 #if QT_CONFIG(tooltip)
         viewComments_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
 #endif // QT_CONFIG(tooltip)
@@ -476,7 +489,7 @@ public:
         viewProgramSequence_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
 #endif // QT_CONFIG(tooltip)
         viewProgramSequence_Button->setText(QCoreApplication::translate("sgsApp", "Program Sequence", nullptr));
-        settingGroupBox->setTitle(QCoreApplication::translate("sgsApp", "Settings", nullptr));
+        settingGroupBox->setTitle(QCoreApplication::translate("sgsApp", "Administration", nullptr));
 #if QT_CONFIG(tooltip)
         addInstitution_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
 #endif // QT_CONFIG(tooltip)
@@ -503,6 +516,7 @@ public:
         userIconTopBar->setText(QString());
         userRoleLable->setText(QCoreApplication::translate("sgsApp", ", STUDENT", nullptr));
         usernameLable->setText(QCoreApplication::translate("sgsApp", "USER:", nullptr));
+        TMPlabel_2->setText(QCoreApplication::translate("sgsApp", "Dashboard", nullptr));
         programSequenceFacultyName->setText(QCoreApplication::translate("sgsApp", "Faculty of Science & Technology Math, Physics and IT Department", nullptr));
         programSequenceProgramName->setText(QCoreApplication::translate("sgsApp", "Bachelor Degree (Information Technology)", nullptr));
         label->setText(QCoreApplication::translate("sgsApp", "Add Course Widget", nullptr));

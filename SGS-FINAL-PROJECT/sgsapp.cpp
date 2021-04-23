@@ -19,8 +19,6 @@ sgsApp::sgsApp(QWidget *parent)
     buttonClick = true;
     qDebug()<<"about to connect";
 
-    //Talbe for progam Sequence List
-    programSequenceList();
 
 }
 
@@ -195,23 +193,7 @@ void sgsApp::on_suspendSetting_pushButton_clicked()
 
 }
 
-void sgsApp::on_dashboard_pushButton_clicked()
-{
-    //New functionality comming soon
-//    if (buttonClick)
-//    {
-//        buttonClick = false;
-//        qDebug("clicked");
-//          ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow LEFT.png"));
-//          hideFeature();
-//    }
-//    else
-//    {
-//        ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow RIGHT.png"));
-//        buttonClick = true;
-//        showFeature();
-//    }
-}
+
 
 //New Buttons
 void sgsApp::on_logoutButton_clicked()
@@ -255,10 +237,31 @@ void sgsApp::on_addUser_Button_clicked()
 }
 
 //DASHBOARD PAGES
+void sgsApp::on_dashboard_pushButton_clicked()
+{
+    //Navigate tho Dashboard Page
+    ui->stackedWidgetPages->setCurrentIndex(0);
+    //New functionality comming soon
+//    if (buttonClick)
+//    {
+//        buttonClick = false;
+//        qDebug("clicked");
+//          ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow LEFT.png"));
+//          hideFeature();
+//    }
+//    else
+//    {
+//        ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow RIGHT.png"));
+//        buttonClick = true;
+//        showFeature();
+//    }
+}
 
 void sgsApp::on_viewProgramSequence_Button_clicked()
 {
-    //ui->stackedWidgetPages->setCurrentIndex(0);
+    //Talbe for progam Sequence List
+    programSequenceList();
+    ui->stackedWidgetPages->setCurrentIndex(1);
 }
 
 void sgsApp::programSequenceList()
@@ -271,38 +274,38 @@ void sgsApp::programSequenceList()
     ui->programSequenceTableWidget->setHorizontalHeaderLabels(header);
     ui->programSequenceTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
 
-    ui->programSequenceTableWidget->setColumnWidth(0,80);
-    ui->programSequenceTableWidget->setColumnWidth(1,150);
-    ui->programSequenceTableWidget->setColumnWidth(2,48);
-    ui->programSequenceTableWidget->setColumnWidth(3,40);
-    ui->programSequenceTableWidget->setColumnWidth(4,150);
-    ui->programSequenceTableWidget->setColumnWidth(5,60);
-    ui->programSequenceTableWidget->setColumnWidth(6,40);
+    int rowCount = 0;
 
-    QTableWidgetItem *courseCode = new QTableWidgetItem;
-    QTableWidgetItem *courseName = new QTableWidgetItem;
-    QTableWidgetItem *credits = new QTableWidgetItem;
-    QTableWidgetItem *grade = new QTableWidgetItem;
-    QTableWidgetItem *prerequisites = new QTableWidgetItem;
-    QTableWidgetItem *semester = new QTableWidgetItem;
-    QTableWidgetItem *year = new QTableWidgetItem;
+    for(int i = 0; i< 5; i++){
+        rowCount++;
 
-   courseCode->setText("CMPS3151");
-   courseName->setText("Telecommunications Systems");
-   credits->setText("3");
-   grade->setText("A");
-   prerequisites->setText("CMPS1191");
-   semester->setText("1");
-   year->setText("1");
+        QTableWidgetItem *courseCode = new QTableWidgetItem;
+        QTableWidgetItem *courseName = new QTableWidgetItem;
+        QTableWidgetItem *credits = new QTableWidgetItem;
+        QTableWidgetItem *grade = new QTableWidgetItem;
+        QTableWidgetItem *prerequisites = new QTableWidgetItem;
+        QTableWidgetItem *semester = new QTableWidgetItem;
+        QTableWidgetItem *year = new QTableWidgetItem;
 
-   //            QComboBox *combo = new QComboBox;
-   //            combo->insertItem(0,"Select");
-   //            combo->insertItem(1,"NO");
-   //            combo->insertItem(2,"Yes");
-   //            ui->tableWidget->setCellWidget(rowCount,8,combo);
-   //            ui->tableWidget->setItem(rowCount,8,is_intrested);
+        courseCode->setText("CMPS3151");
+        courseName->setText("Telecommunications Systems");
+        credits->setText("3");
+        grade->setText("A");
+        prerequisites->setText("CMPS1191");
+        semester->setText("1");
+        year->setText("1");
+
+        ui->programSequenceTableWidget->setItem(rowCount,0,courseCode);
+
+        ui->programSequenceTableWidget->setColumnWidth(0,80);
+        ui->programSequenceTableWidget->setColumnWidth(1,150);
+        ui->programSequenceTableWidget->setColumnWidth(2,48);
+        ui->programSequenceTableWidget->setColumnWidth(3,40);
+        ui->programSequenceTableWidget->setColumnWidth(4,150);
+        ui->programSequenceTableWidget->setColumnWidth(5,60);
+        ui->programSequenceTableWidget->setColumnWidth(6,40);
 
 
-   //ui->programSequenceTableWidget->setItem(courseCode,courseName,credits,grade,prerequisites,semester,year);
+    }
 
 }

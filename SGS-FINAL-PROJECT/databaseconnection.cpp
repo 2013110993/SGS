@@ -33,16 +33,16 @@ void databaseconnection::connect()
 
         }
         else
-<<<<<<< HEAD
+
             throw "The connection to phpMyAdmin Failed!";
         // Lets the program know that it didnt connect to the server
-=======
+
         {
             QString error = setConnection.lastError().text();
             throw error.toStdString().c_str();
         }
 
->>>>>>> f93401377a49adcdcf0939e8f124878332e0790d
+
     }
     catch(const char * message)
     {

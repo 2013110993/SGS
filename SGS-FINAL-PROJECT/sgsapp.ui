@@ -459,7 +459,7 @@ border: 0;</string>
         <string notr="true">color:#70808c;</string>
        </property>
        <property name="title">
-        <string>Main Menu</string>
+        <string>General Menu</string>
        </property>
        <widget class="QPushButton" name="dashboard_pushButton">
         <property name="geometry">
@@ -494,7 +494,7 @@ border: 0;</string>
          </rect>
         </property>
         <property name="title">
-         <string>Reports</string>
+         <string>Student</string>
         </property>
         <widget class="QPushButton" name="viewComments_Button">
          <property name="geometry">
@@ -611,7 +611,7 @@ border: 0;</string>
          </rect>
         </property>
         <property name="title">
-         <string>Settings</string>
+         <string>Administration</string>
         </property>
         <widget class="QPushButton" name="addInstitution_Button">
          <property name="geometry">
@@ -946,6 +946,30 @@ background-repeat: no-repeat;</string>
       <property name="currentIndex">
        <number>0</number>
       </property>
+      <widget class="QWidget" name="DashboardPage">
+       <widget class="QLabel" name="TMPlabel_2">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>260</y>
+          <width>181</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #000;</string>
+        </property>
+        <property name="text">
+         <string>Dashboard</string>
+        </property>
+       </widget>
+      </widget>
       <widget class="QWidget" name="ViewProgramSequence">
        <widget class="QTableWidget" name="programSequenceTableWidget">
         <property name="geometry">
