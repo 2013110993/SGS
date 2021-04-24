@@ -548,7 +548,7 @@ border: 0;</string>
            <normaloff>:/icons White/Icons/White/Eye ON.png</normaloff>:/icons White/Icons/White/Eye ON.png</iconset>
          </property>
         </widget>
-        <widget class="QPushButton" name="viewProgramSequence_Button">
+        <widget class="QPushButton" name="viewStudentProgramSequence_Button">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -1001,7 +1001,12 @@ background-repeat: no-repeat;</string>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background:#70808c;</string>
+         <string notr="true">background:#70808c;
+color:#fff;
+border-top-left-radius:5px;
+border-top-right-radius:5px;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:0px;</string>
         </property>
         <property name="text">
          <string>Faculty of Science &amp; Technology Math, Physics and IT Department</string>
@@ -1042,11 +1047,11 @@ background-repeat: no-repeat;</string>
           <x>710</x>
           <y>60</y>
           <width>451</width>
-          <height>341</height>
+          <height>401</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background:#f1f1f1; color:#333;</string>
+         <string notr="true">background:#f1f1f1; color:#333; border-radius:5px;</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -1072,7 +1077,9 @@ background-repeat: no-repeat;</string>
          </property>
          <property name="styleSheet">
           <string notr="true">background:#70808c;
-color:#fff;</string>
+color:#fff;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:0px;</string>
          </property>
          <property name="text">
           <string>Add Courses</string>
@@ -1081,7 +1088,7 @@ color:#fff;</string>
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QLineEdit" name="middleName_RegFormLineEdit">
+        <widget class="QLineEdit" name="addCourseCode_RegFormLineEdit">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -1110,13 +1117,13 @@ color:#fff;</string>
 color: #333;</string>
          </property>
          <property name="text">
-          <string>CMPS3151</string>
+          <string/>
          </property>
          <property name="placeholderText">
           <string>Code</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="middleName_RegFormLineEdit_2">
+        <widget class="QLineEdit" name="addCourseName_RegFormLineEdit">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -1124,7 +1131,7 @@ color: #333;</string>
           <rect>
            <x>100</x>
            <y>60</y>
-           <width>191</width>
+           <width>201</width>
            <height>30</height>
           </rect>
          </property>
@@ -1145,19 +1152,19 @@ color: #333;</string>
 color: #333;</string>
          </property>
          <property name="text">
-          <string>Fundamenta of Computing</string>
+          <string/>
          </property>
          <property name="placeholderText">
           <string>Course Name</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="middleName_RegFormLineEdit_3">
+        <widget class="QLineEdit" name="addCourseGrade_RegFormLineEdit">
          <property name="enabled">
           <bool>true</bool>
          </property>
          <property name="geometry">
           <rect>
-           <x>300</x>
+           <x>310</x>
            <y>60</y>
            <width>51</width>
            <height>30</height>
@@ -1180,13 +1187,13 @@ color: #333;</string>
 color: #333;</string>
          </property>
          <property name="text">
-          <string>A</string>
+          <string/>
          </property>
          <property name="placeholderText">
           <string>Grade</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="middleName_RegFormLineEdit_4">
+        <widget class="QLineEdit" name="addCourseCredit_RegFormLineEdit">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -1215,13 +1222,13 @@ color: #333;</string>
 color: #333;</string>
          </property>
          <property name="text">
-          <string>3</string>
+          <string/>
          </property>
          <property name="placeholderText">
           <string>Credit</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="middleName_RegFormLineEdit_5">
+        <widget class="QLineEdit" name="addCoursePrerequisites_RegFormLineEdit">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -1229,7 +1236,7 @@ color: #333;</string>
           <rect>
            <x>10</x>
            <y>110</y>
-           <width>411</width>
+           <width>421</width>
            <height>30</height>
           </rect>
          </property>
@@ -1250,13 +1257,13 @@ color: #333;</string>
 color: #333;</string>
          </property>
          <property name="text">
-          <string>CMPS3151,  CMPS3151,  CMPS3151</string>
+          <string/>
          </property>
          <property name="placeholderText">
           <string>Pre-requisites</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="middleName_RegFormLineEdit_6">
+        <widget class="QLineEdit" name="addCourseSemester_RegFormLineEdit">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -1264,7 +1271,7 @@ color: #333;</string>
           <rect>
            <x>10</x>
            <y>160</y>
-           <width>81</width>
+           <width>71</width>
            <height>30</height>
           </rect>
          </property>
@@ -1285,21 +1292,21 @@ color: #333;</string>
 color: #333;</string>
          </property>
          <property name="text">
-          <string>1</string>
+          <string/>
          </property>
          <property name="placeholderText">
           <string>Semester</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="middleName_RegFormLineEdit_7">
+        <widget class="QLineEdit" name="addCourseYear_RegFormLineEdit">
          <property name="enabled">
           <bool>true</bool>
          </property>
          <property name="geometry">
           <rect>
-           <x>110</x>
+           <x>90</x>
            <y>160</y>
-           <width>81</width>
+           <width>51</width>
            <height>30</height>
           </rect>
          </property>
@@ -1320,13 +1327,13 @@ color: #333;</string>
 color: #333;</string>
          </property>
          <property name="text">
-          <string>1</string>
+          <string/>
          </property>
          <property name="placeholderText">
           <string>Year</string>
          </property>
         </widget>
-        <widget class="QPlainTextEdit" name="plainTextEdit">
+        <widget class="QPlainTextEdit" name="addCourseComment_plainTextEdit">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -1334,6 +1341,12 @@ color: #333;</string>
            <width>431</width>
            <height>101</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">Background:#fff;</string>
+         </property>
+         <property name="plainText">
+          <string/>
          </property>
         </widget>
         <widget class="QLabel" name="label_2">
@@ -1348,6 +1361,108 @@ color: #333;</string>
          <property name="text">
           <string>CourseComments:</string>
          </property>
+        </widget>
+        <widget class="QLineEdit" name="addCourseLecturer_RegFormLineEdit">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>160</y>
+           <width>151</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:#ffffff;
+color: #333;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Lecturer</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="addCourse_pushButton">
+         <property name="geometry">
+          <rect>
+           <x>320</x>
+           <y>350</y>
+           <width>113</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#fbaf01;
+color: #ffffff;
+border:0;
+height:30px;
+border-radius:5px;</string>
+         </property>
+         <property name="text">
+          <string>Add Course</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="addCourseRatingcomboBox">
+         <property name="geometry">
+          <rect>
+           <x>310</x>
+           <y>160</y>
+           <width>121</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#fff;</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>Select Rating</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Ugly</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Bad</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Fair</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Good</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Excellent</string>
+          </property>
+         </item>
         </widget>
        </widget>
       </widget>

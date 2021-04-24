@@ -257,13 +257,22 @@ void sgsApp::on_dashboard_pushButton_clicked()
 //    }
 }
 
-void sgsApp::on_viewProgramSequence_Button_clicked()
+
+void sgsApp::on_AddProgramSequence_Button_clicked()
 {
-    //Talbe for progam Sequence List
+    //Table for progam Sequence List
     programSequenceList();
     ui->stackedWidgetPages->setCurrentIndex(1);
 }
 
+
+void sgsApp::on_viewStudentProgramSequence_Button_clicked()
+{
+    programSequenceList();
+    ui->stackedWidgetPages->setCurrentIndex(1);
+}
+
+//Generating the Program Sequence QTableWidget
 void sgsApp::programSequenceList()
 {
     ui->programSequenceTableWidget->setColumnCount(7);
@@ -317,3 +326,5 @@ void sgsApp::programSequenceList()
     }
 
 }
+
+

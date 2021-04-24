@@ -12,12 +12,14 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTableWidget>
@@ -55,7 +57,7 @@ public:
     QGroupBox *groupBox_2;
     QPushButton *viewComments_Button;
     QPushButton *viewCoursesPending_Button;
-    QPushButton *viewProgramSequence_Button;
+    QPushButton *viewStudentProgramSequence_Button;
     QGroupBox *settingGroupBox;
     QPushButton *addInstitution_Button;
     QPushButton *addCourse_Button;
@@ -80,8 +82,18 @@ public:
     QLabel *programSequenceProgramName;
     QFrame *addCourseFrame;
     QLabel *AddProgramSequenceFormTitle;
-    QLineEdit *middleName_RegFormLineEdit;
-    QLineEdit *middleName_RegFormLineEdit_2;
+    QLineEdit *addCourseCode_RegFormLineEdit;
+    QLineEdit *addCourseName_RegFormLineEdit;
+    QLineEdit *addCourseGrade_RegFormLineEdit;
+    QLineEdit *addCourseCredit_RegFormLineEdit;
+    QLineEdit *addCoursePrerequisites_RegFormLineEdit;
+    QLineEdit *addCourseSemester_RegFormLineEdit;
+    QLineEdit *addCourseYear_RegFormLineEdit;
+    QPlainTextEdit *addCourseComment_plainTextEdit;
+    QLabel *label_2;
+    QLineEdit *addCourseLecturer_RegFormLineEdit;
+    QPushButton *addCourse_pushButton;
+    QComboBox *addCourseRatingcomboBox;
     QWidget *AddProgramSequence;
     QFrame *addCourseGrade;
     QLabel *label;
@@ -285,12 +297,12 @@ public:
         viewCoursesPending_Button->setLayoutDirection(Qt::LeftToRight);
         viewCoursesPending_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
         viewCoursesPending_Button->setIcon(icon3);
-        viewProgramSequence_Button = new QPushButton(groupBox_2);
-        viewProgramSequence_Button->setObjectName(QString::fromUtf8("viewProgramSequence_Button"));
-        viewProgramSequence_Button->setGeometry(QRect(10, 130, 141, 16));
-        viewProgramSequence_Button->setLayoutDirection(Qt::LeftToRight);
-        viewProgramSequence_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        viewProgramSequence_Button->setIcon(icon3);
+        viewStudentProgramSequence_Button = new QPushButton(groupBox_2);
+        viewStudentProgramSequence_Button->setObjectName(QString::fromUtf8("viewStudentProgramSequence_Button"));
+        viewStudentProgramSequence_Button->setGeometry(QRect(10, 130, 141, 16));
+        viewStudentProgramSequence_Button->setLayoutDirection(Qt::LeftToRight);
+        viewStudentProgramSequence_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
+        viewStudentProgramSequence_Button->setIcon(icon3);
         settingGroupBox = new QGroupBox(groupBox);
         settingGroupBox->setObjectName(QString::fromUtf8("settingGroupBox"));
         settingGroupBox->setGeometry(QRect(0, 340, 160, 231));
@@ -421,7 +433,12 @@ public:
         font4.setBold(true);
         font4.setWeight(75);
         programSequenceFacultyName->setFont(font4);
-        programSequenceFacultyName->setStyleSheet(QString::fromUtf8("background:#70808c;"));
+        programSequenceFacultyName->setStyleSheet(QString::fromUtf8("background:#70808c;\n"
+"color:#fff;\n"
+"border-top-left-radius:5px;\n"
+"border-top-right-radius:5px;\n"
+"border-bottom-left-radius:0px;\n"
+"border-bottom-right-radius:0px;"));
         programSequenceFacultyName->setAlignment(Qt::AlignCenter);
         programSequenceProgramName = new QLabel(ViewProgramSequence);
         programSequenceProgramName->setObjectName(QString::fromUtf8("programSequenceProgramName"));
@@ -435,8 +452,8 @@ public:
         programSequenceProgramName->setAlignment(Qt::AlignCenter);
         addCourseFrame = new QFrame(ViewProgramSequence);
         addCourseFrame->setObjectName(QString::fromUtf8("addCourseFrame"));
-        addCourseFrame->setGeometry(QRect(710, 60, 451, 221));
-        addCourseFrame->setStyleSheet(QString::fromUtf8("background:#f1f1f1; color:#333;"));
+        addCourseFrame->setGeometry(QRect(710, 60, 451, 401));
+        addCourseFrame->setStyleSheet(QString::fromUtf8("background:#f1f1f1; color:#333; border-radius:5px;"));
         addCourseFrame->setFrameShape(QFrame::StyledPanel);
         addCourseFrame->setFrameShadow(QFrame::Raised);
         AddProgramSequenceFormTitle = new QLabel(addCourseFrame);
@@ -444,24 +461,100 @@ public:
         AddProgramSequenceFormTitle->setGeometry(QRect(0, 0, 451, 41));
         AddProgramSequenceFormTitle->setFont(font4);
         AddProgramSequenceFormTitle->setStyleSheet(QString::fromUtf8("background:#70808c;\n"
-"color:#fff;"));
+"color:#fff;\n"
+"border-bottom-left-radius:0px;\n"
+"border-bottom-right-radius:0px;"));
         AddProgramSequenceFormTitle->setAlignment(Qt::AlignCenter);
-        middleName_RegFormLineEdit = new QLineEdit(addCourseFrame);
-        middleName_RegFormLineEdit->setObjectName(QString::fromUtf8("middleName_RegFormLineEdit"));
-        middleName_RegFormLineEdit->setEnabled(true);
-        middleName_RegFormLineEdit->setGeometry(QRect(10, 60, 161, 30));
-        middleName_RegFormLineEdit->setMinimumSize(QSize(0, 30));
-        middleName_RegFormLineEdit->setMaximumSize(QSize(16777215, 30));
-        middleName_RegFormLineEdit->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
+        addCourseCode_RegFormLineEdit = new QLineEdit(addCourseFrame);
+        addCourseCode_RegFormLineEdit->setObjectName(QString::fromUtf8("addCourseCode_RegFormLineEdit"));
+        addCourseCode_RegFormLineEdit->setEnabled(true);
+        addCourseCode_RegFormLineEdit->setGeometry(QRect(10, 60, 81, 30));
+        addCourseCode_RegFormLineEdit->setMinimumSize(QSize(0, 30));
+        addCourseCode_RegFormLineEdit->setMaximumSize(QSize(16777215, 30));
+        addCourseCode_RegFormLineEdit->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
 "color: #333;"));
-        middleName_RegFormLineEdit_2 = new QLineEdit(addCourseFrame);
-        middleName_RegFormLineEdit_2->setObjectName(QString::fromUtf8("middleName_RegFormLineEdit_2"));
-        middleName_RegFormLineEdit_2->setEnabled(true);
-        middleName_RegFormLineEdit_2->setGeometry(QRect(180, 60, 161, 30));
-        middleName_RegFormLineEdit_2->setMinimumSize(QSize(0, 30));
-        middleName_RegFormLineEdit_2->setMaximumSize(QSize(16777215, 30));
-        middleName_RegFormLineEdit_2->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
+        addCourseName_RegFormLineEdit = new QLineEdit(addCourseFrame);
+        addCourseName_RegFormLineEdit->setObjectName(QString::fromUtf8("addCourseName_RegFormLineEdit"));
+        addCourseName_RegFormLineEdit->setEnabled(true);
+        addCourseName_RegFormLineEdit->setGeometry(QRect(100, 60, 201, 30));
+        addCourseName_RegFormLineEdit->setMinimumSize(QSize(0, 30));
+        addCourseName_RegFormLineEdit->setMaximumSize(QSize(16777215, 30));
+        addCourseName_RegFormLineEdit->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
 "color: #333;"));
+        addCourseGrade_RegFormLineEdit = new QLineEdit(addCourseFrame);
+        addCourseGrade_RegFormLineEdit->setObjectName(QString::fromUtf8("addCourseGrade_RegFormLineEdit"));
+        addCourseGrade_RegFormLineEdit->setEnabled(true);
+        addCourseGrade_RegFormLineEdit->setGeometry(QRect(310, 60, 51, 30));
+        addCourseGrade_RegFormLineEdit->setMinimumSize(QSize(0, 30));
+        addCourseGrade_RegFormLineEdit->setMaximumSize(QSize(16777215, 30));
+        addCourseGrade_RegFormLineEdit->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
+"color: #333;"));
+        addCourseCredit_RegFormLineEdit = new QLineEdit(addCourseFrame);
+        addCourseCredit_RegFormLineEdit->setObjectName(QString::fromUtf8("addCourseCredit_RegFormLineEdit"));
+        addCourseCredit_RegFormLineEdit->setEnabled(true);
+        addCourseCredit_RegFormLineEdit->setGeometry(QRect(370, 60, 51, 30));
+        addCourseCredit_RegFormLineEdit->setMinimumSize(QSize(0, 30));
+        addCourseCredit_RegFormLineEdit->setMaximumSize(QSize(16777215, 30));
+        addCourseCredit_RegFormLineEdit->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
+"color: #333;"));
+        addCoursePrerequisites_RegFormLineEdit = new QLineEdit(addCourseFrame);
+        addCoursePrerequisites_RegFormLineEdit->setObjectName(QString::fromUtf8("addCoursePrerequisites_RegFormLineEdit"));
+        addCoursePrerequisites_RegFormLineEdit->setEnabled(true);
+        addCoursePrerequisites_RegFormLineEdit->setGeometry(QRect(10, 110, 421, 30));
+        addCoursePrerequisites_RegFormLineEdit->setMinimumSize(QSize(0, 30));
+        addCoursePrerequisites_RegFormLineEdit->setMaximumSize(QSize(16777215, 30));
+        addCoursePrerequisites_RegFormLineEdit->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
+"color: #333;"));
+        addCourseSemester_RegFormLineEdit = new QLineEdit(addCourseFrame);
+        addCourseSemester_RegFormLineEdit->setObjectName(QString::fromUtf8("addCourseSemester_RegFormLineEdit"));
+        addCourseSemester_RegFormLineEdit->setEnabled(true);
+        addCourseSemester_RegFormLineEdit->setGeometry(QRect(10, 160, 71, 30));
+        addCourseSemester_RegFormLineEdit->setMinimumSize(QSize(0, 30));
+        addCourseSemester_RegFormLineEdit->setMaximumSize(QSize(16777215, 30));
+        addCourseSemester_RegFormLineEdit->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
+"color: #333;"));
+        addCourseYear_RegFormLineEdit = new QLineEdit(addCourseFrame);
+        addCourseYear_RegFormLineEdit->setObjectName(QString::fromUtf8("addCourseYear_RegFormLineEdit"));
+        addCourseYear_RegFormLineEdit->setEnabled(true);
+        addCourseYear_RegFormLineEdit->setGeometry(QRect(90, 160, 51, 30));
+        addCourseYear_RegFormLineEdit->setMinimumSize(QSize(0, 30));
+        addCourseYear_RegFormLineEdit->setMaximumSize(QSize(16777215, 30));
+        addCourseYear_RegFormLineEdit->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
+"color: #333;"));
+        addCourseComment_plainTextEdit = new QPlainTextEdit(addCourseFrame);
+        addCourseComment_plainTextEdit->setObjectName(QString::fromUtf8("addCourseComment_plainTextEdit"));
+        addCourseComment_plainTextEdit->setGeometry(QRect(10, 230, 431, 101));
+        addCourseComment_plainTextEdit->setStyleSheet(QString::fromUtf8("Background:#fff;"));
+        label_2 = new QLabel(addCourseFrame);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(10, 210, 121, 16));
+        addCourseLecturer_RegFormLineEdit = new QLineEdit(addCourseFrame);
+        addCourseLecturer_RegFormLineEdit->setObjectName(QString::fromUtf8("addCourseLecturer_RegFormLineEdit"));
+        addCourseLecturer_RegFormLineEdit->setEnabled(true);
+        addCourseLecturer_RegFormLineEdit->setGeometry(QRect(150, 160, 151, 30));
+        addCourseLecturer_RegFormLineEdit->setMinimumSize(QSize(0, 30));
+        addCourseLecturer_RegFormLineEdit->setMaximumSize(QSize(16777215, 30));
+        addCourseLecturer_RegFormLineEdit->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
+"color: #333;"));
+        addCourse_pushButton = new QPushButton(addCourseFrame);
+        addCourse_pushButton->setObjectName(QString::fromUtf8("addCourse_pushButton"));
+        addCourse_pushButton->setGeometry(QRect(320, 350, 113, 32));
+        addCourse_pushButton->setStyleSheet(QString::fromUtf8("background:#fbaf01;\n"
+"color: #ffffff;\n"
+"border:0;\n"
+"height:30px;\n"
+"border-radius:5px;"));
+        addCourse_pushButton->setIcon(icon4);
+        addCourseRatingcomboBox = new QComboBox(addCourseFrame);
+        addCourseRatingcomboBox->addItem(QString());
+        addCourseRatingcomboBox->addItem(QString());
+        addCourseRatingcomboBox->addItem(QString());
+        addCourseRatingcomboBox->addItem(QString());
+        addCourseRatingcomboBox->addItem(QString());
+        addCourseRatingcomboBox->addItem(QString());
+        addCourseRatingcomboBox->setObjectName(QString::fromUtf8("addCourseRatingcomboBox"));
+        addCourseRatingcomboBox->setGeometry(QRect(310, 160, 121, 32));
+        addCourseRatingcomboBox->setStyleSheet(QString::fromUtf8("background:#fff;"));
         stackedWidgetPages->addWidget(ViewProgramSequence);
         AddProgramSequence = new QWidget();
         AddProgramSequence->setObjectName(QString::fromUtf8("AddProgramSequence"));
@@ -515,9 +608,9 @@ public:
 #endif // QT_CONFIG(tooltip)
         viewCoursesPending_Button->setText(QCoreApplication::translate("sgsApp", "Pending Course", nullptr));
 #if QT_CONFIG(tooltip)
-        viewProgramSequence_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
+        viewStudentProgramSequence_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
 #endif // QT_CONFIG(tooltip)
-        viewProgramSequence_Button->setText(QCoreApplication::translate("sgsApp", "Program Sequence", nullptr));
+        viewStudentProgramSequence_Button->setText(QCoreApplication::translate("sgsApp", "Program Sequence", nullptr));
         settingGroupBox->setTitle(QCoreApplication::translate("sgsApp", "Administration", nullptr));
 #if QT_CONFIG(tooltip)
         addInstitution_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
@@ -553,8 +646,32 @@ public:
         programSequenceFacultyName->setText(QCoreApplication::translate("sgsApp", "Faculty of Science & Technology Math, Physics and IT Department", nullptr));
         programSequenceProgramName->setText(QCoreApplication::translate("sgsApp", "Bachelor Degree (Information Technology)", nullptr));
         AddProgramSequenceFormTitle->setText(QCoreApplication::translate("sgsApp", "Add Courses", nullptr));
-        middleName_RegFormLineEdit->setPlaceholderText(QCoreApplication::translate("sgsApp", "(Course Name)", nullptr));
-        middleName_RegFormLineEdit_2->setPlaceholderText(QCoreApplication::translate("sgsApp", "(Course Name)", nullptr));
+        addCourseCode_RegFormLineEdit->setText(QString());
+        addCourseCode_RegFormLineEdit->setPlaceholderText(QCoreApplication::translate("sgsApp", "Code", nullptr));
+        addCourseName_RegFormLineEdit->setText(QString());
+        addCourseName_RegFormLineEdit->setPlaceholderText(QCoreApplication::translate("sgsApp", "Course Name", nullptr));
+        addCourseGrade_RegFormLineEdit->setText(QString());
+        addCourseGrade_RegFormLineEdit->setPlaceholderText(QCoreApplication::translate("sgsApp", "Grade", nullptr));
+        addCourseCredit_RegFormLineEdit->setText(QString());
+        addCourseCredit_RegFormLineEdit->setPlaceholderText(QCoreApplication::translate("sgsApp", "Credit", nullptr));
+        addCoursePrerequisites_RegFormLineEdit->setText(QString());
+        addCoursePrerequisites_RegFormLineEdit->setPlaceholderText(QCoreApplication::translate("sgsApp", "Pre-requisites", nullptr));
+        addCourseSemester_RegFormLineEdit->setText(QString());
+        addCourseSemester_RegFormLineEdit->setPlaceholderText(QCoreApplication::translate("sgsApp", "Semester", nullptr));
+        addCourseYear_RegFormLineEdit->setText(QString());
+        addCourseYear_RegFormLineEdit->setPlaceholderText(QCoreApplication::translate("sgsApp", "Year", nullptr));
+        addCourseComment_plainTextEdit->setPlainText(QString());
+        label_2->setText(QCoreApplication::translate("sgsApp", "CourseComments:", nullptr));
+        addCourseLecturer_RegFormLineEdit->setText(QString());
+        addCourseLecturer_RegFormLineEdit->setPlaceholderText(QCoreApplication::translate("sgsApp", "Lecturer", nullptr));
+        addCourse_pushButton->setText(QCoreApplication::translate("sgsApp", "Add Course", nullptr));
+        addCourseRatingcomboBox->setItemText(0, QCoreApplication::translate("sgsApp", "Select Rating", nullptr));
+        addCourseRatingcomboBox->setItemText(1, QCoreApplication::translate("sgsApp", "Ugly", nullptr));
+        addCourseRatingcomboBox->setItemText(2, QCoreApplication::translate("sgsApp", "Bad", nullptr));
+        addCourseRatingcomboBox->setItemText(3, QCoreApplication::translate("sgsApp", "Fair", nullptr));
+        addCourseRatingcomboBox->setItemText(4, QCoreApplication::translate("sgsApp", "Good", nullptr));
+        addCourseRatingcomboBox->setItemText(5, QCoreApplication::translate("sgsApp", "Excellent", nullptr));
+
         label->setText(QCoreApplication::translate("sgsApp", "Add Course Widget", nullptr));
     } // retranslateUi
 
