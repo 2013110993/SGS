@@ -271,14 +271,22 @@ void sgsApp::programSequenceList()
 
     QStringList header;
     header << "Code"<< "Course Name" <<"Credits" << "Grade" <<"Pre-requisites" << "Semester" << "Year";
+
     ui->programSequenceTableWidget->setHorizontalHeaderLabels(header);
     ui->programSequenceTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
 
     int rowCount = 0;
 
-    for(int i = 0; i< 5; i++){
+    for(int i = 0; i< 24; i++){
 
          ui->programSequenceTableWidget->insertRow(rowCount);
+         ui->programSequenceTableWidget->setColumnWidth(0,80);
+         ui->programSequenceTableWidget->setColumnWidth(1,220);
+         ui->programSequenceTableWidget->setColumnWidth(2,48);
+         ui->programSequenceTableWidget->setColumnWidth(3,40);
+         ui->programSequenceTableWidget->setColumnWidth(4,150);
+         ui->programSequenceTableWidget->setColumnWidth(5,60);
+         ui->programSequenceTableWidget->setColumnWidth(6,40);
 
         QTableWidgetItem *courseCode = new QTableWidgetItem;
         QTableWidgetItem *courseName = new QTableWidgetItem;
@@ -297,14 +305,14 @@ void sgsApp::programSequenceList()
         year->setText("1");
 
         ui->programSequenceTableWidget->setItem(rowCount,0,courseCode);
+        ui->programSequenceTableWidget->setItem(rowCount,1,courseName);
+        ui->programSequenceTableWidget->setItem(rowCount,2,credits);
+        ui->programSequenceTableWidget->setItem(rowCount,3,grade);
+        ui->programSequenceTableWidget->setItem(rowCount,4,prerequisites);
+        ui->programSequenceTableWidget->setItem(rowCount,5,semester);
+        ui->programSequenceTableWidget->setItem(rowCount,6,year);
 
-        ui->programSequenceTableWidget->setColumnWidth(0,80);
-        ui->programSequenceTableWidget->setColumnWidth(1,150);
-        ui->programSequenceTableWidget->setColumnWidth(2,48);
-        ui->programSequenceTableWidget->setColumnWidth(3,40);
-        ui->programSequenceTableWidget->setColumnWidth(4,150);
-        ui->programSequenceTableWidget->setColumnWidth(5,60);
-        ui->programSequenceTableWidget->setColumnWidth(6,40);
+
         rowCount++;
     }
 
