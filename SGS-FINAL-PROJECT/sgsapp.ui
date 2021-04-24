@@ -496,32 +496,6 @@ border: 0;</string>
         <property name="title">
          <string>Student</string>
         </property>
-        <widget class="QPushButton" name="viewComments_Button">
-         <property name="geometry">
-          <rect>
-           <x>11</x>
-           <y>41</y>
-           <width>86</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="toolTip">
-          <string>Add Institution</string>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color:#fff;</string>
-         </property>
-         <property name="text">
-          <string>Comments</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Eye ON.png</normaloff>:/icons White/Icons/White/Eye ON.png</iconset>
-         </property>
-        </widget>
         <widget class="QPushButton" name="viewCoursesPending_Button">
          <property name="geometry">
           <rect>
@@ -542,10 +516,6 @@ border: 0;</string>
          </property>
          <property name="text">
           <string>Pending Course</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Eye ON.png</normaloff>:/icons White/Icons/White/Eye ON.png</iconset>
          </property>
         </widget>
         <widget class="QPushButton" name="viewStudentProgramSequence_Button">
@@ -571,7 +541,51 @@ border: 0;</string>
          </property>
          <property name="icon">
           <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Eye ON.png</normaloff>:/icons White/Icons/White/Eye ON.png</iconset>
+           <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="viewCourses_Button">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>Add Institution</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>Courses</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="viewComments_Button">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>50</y>
+           <width>86</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>Add Institution</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>Comments</string>
          </property>
         </widget>
        </widget>
@@ -608,10 +622,6 @@ border: 0;</string>
          <property name="text">
           <string>Institution</string>
          </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
-         </property>
         </widget>
         <widget class="QPushButton" name="addCourse_Button">
          <property name="geometry">
@@ -634,10 +644,6 @@ border: 0;</string>
          <property name="text">
           <string>Course</string>
          </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
-         </property>
         </widget>
         <widget class="QPushButton" name="AddProgramSequence_Button">
          <property name="geometry">
@@ -656,10 +662,6 @@ border: 0;</string>
          </property>
          <property name="text">
           <string>Program Sequence</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
          </property>
         </widget>
         <widget class="QPushButton" name="addUser_Button">
@@ -683,10 +685,6 @@ border: 0;</string>
          <property name="text">
           <string>User Account</string>
          </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Add User.png</normaloff>:/icons White/Icons/White/Add User.png</iconset>
-         </property>
         </widget>
         <widget class="QPushButton" name="disableUser_Button">
          <property name="geometry">
@@ -707,11 +705,7 @@ border: 0;</string>
           <string notr="true">color:#fff;</string>
          </property>
          <property name="text">
-          <string>User Account</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Eye OFF.png</normaloff>:/icons White/Icons/White/Eye OFF.png</iconset>
+          <string>Disable User</string>
          </property>
         </widget>
         <widget class="QPushButton" name="changePassword_Button">
@@ -735,37 +729,7 @@ border: 0;</string>
          <property name="text">
           <string>Change Password</string>
          </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Edit.png</normaloff>:/icons White/Icons/White/Edit.png</iconset>
-         </property>
         </widget>
-       </widget>
-       <widget class="QPushButton" name="viewCourses_Button">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>70</y>
-          <width>71</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="toolTip">
-         <string>Add Institution</string>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color:#fff;</string>
-        </property>
-        <property name="text">
-         <string>Courses</string>
-        </property>
-        <property name="icon">
-         <iconset resource="images.qrc">
-          <normaloff>:/icons White/Icons/White/Eye ON.png</normaloff>:/icons White/Icons/White/Eye ON.png</iconset>
-        </property>
        </widget>
       </widget>
      </widget>
@@ -944,7 +908,7 @@ background-repeat: no-repeat;</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="DashboardPage">
        <widget class="QLabel" name="TMPlabel_2">

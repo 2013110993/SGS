@@ -55,9 +55,10 @@ public:
     QGroupBox *groupBox;
     QPushButton *dashboard_pushButton;
     QGroupBox *groupBox_2;
-    QPushButton *viewComments_Button;
     QPushButton *viewCoursesPending_Button;
     QPushButton *viewStudentProgramSequence_Button;
+    QPushButton *viewCourses_Button;
+    QPushButton *viewComments_Button;
     QGroupBox *settingGroupBox;
     QPushButton *addInstitution_Button;
     QPushButton *addCourse_Button;
@@ -65,7 +66,6 @@ public:
     QPushButton *addUser_Button;
     QPushButton *disableUser_Button;
     QPushButton *changePassword_Button;
-    QPushButton *viewCourses_Button;
     QFrame *headBar;
     QPushButton *logoutButton;
     QLabel *userRoleLable_2;
@@ -283,26 +283,29 @@ public:
         groupBox_2 = new QGroupBox(groupBox);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         groupBox_2->setGeometry(QRect(0, 110, 161, 151));
-        viewComments_Button = new QPushButton(groupBox_2);
-        viewComments_Button->setObjectName(QString::fromUtf8("viewComments_Button"));
-        viewComments_Button->setGeometry(QRect(11, 41, 86, 16));
-        viewComments_Button->setLayoutDirection(Qt::LeftToRight);
-        viewComments_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/icons White/Icons/White/Eye ON.png"), QSize(), QIcon::Normal, QIcon::Off);
-        viewComments_Button->setIcon(icon3);
         viewCoursesPending_Button = new QPushButton(groupBox_2);
         viewCoursesPending_Button->setObjectName(QString::fromUtf8("viewCoursesPending_Button"));
         viewCoursesPending_Button->setGeometry(QRect(11, 71, 118, 16));
         viewCoursesPending_Button->setLayoutDirection(Qt::LeftToRight);
         viewCoursesPending_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        viewCoursesPending_Button->setIcon(icon3);
         viewStudentProgramSequence_Button = new QPushButton(groupBox_2);
         viewStudentProgramSequence_Button->setObjectName(QString::fromUtf8("viewStudentProgramSequence_Button"));
         viewStudentProgramSequence_Button->setGeometry(QRect(10, 130, 141, 16));
         viewStudentProgramSequence_Button->setLayoutDirection(Qt::LeftToRight);
         viewStudentProgramSequence_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/icons White/Icons/White/Add.png"), QSize(), QIcon::Normal, QIcon::Off);
         viewStudentProgramSequence_Button->setIcon(icon3);
+        viewCourses_Button = new QPushButton(groupBox_2);
+        viewCourses_Button->setObjectName(QString::fromUtf8("viewCourses_Button"));
+        viewCourses_Button->setGeometry(QRect(10, 30, 71, 16));
+        viewCourses_Button->setLayoutDirection(Qt::LeftToRight);
+        viewCourses_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
+        viewComments_Button = new QPushButton(groupBox_2);
+        viewComments_Button->setObjectName(QString::fromUtf8("viewComments_Button"));
+        viewComments_Button->setGeometry(QRect(10, 50, 86, 16));
+        viewComments_Button->setLayoutDirection(Qt::LeftToRight);
+        viewComments_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
         settingGroupBox = new QGroupBox(groupBox);
         settingGroupBox->setObjectName(QString::fromUtf8("settingGroupBox"));
         settingGroupBox->setGeometry(QRect(0, 340, 160, 231));
@@ -311,49 +314,31 @@ public:
         addInstitution_Button->setGeometry(QRect(10, 70, 81, 16));
         addInstitution_Button->setLayoutDirection(Qt::LeftToRight);
         addInstitution_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/icons White/Icons/White/Add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addInstitution_Button->setIcon(icon4);
         addCourse_Button = new QPushButton(settingGroupBox);
         addCourse_Button->setObjectName(QString::fromUtf8("addCourse_Button"));
         addCourse_Button->setGeometry(QRect(10, 100, 64, 16));
         addCourse_Button->setLayoutDirection(Qt::LeftToRight);
         addCourse_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        addCourse_Button->setIcon(icon4);
         AddProgramSequence_Button = new QPushButton(settingGroupBox);
         AddProgramSequence_Button->setObjectName(QString::fromUtf8("AddProgramSequence_Button"));
         AddProgramSequence_Button->setGeometry(QRect(10, 130, 136, 16));
         AddProgramSequence_Button->setLayoutDirection(Qt::LeftToRight);
         AddProgramSequence_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        AddProgramSequence_Button->setIcon(icon4);
         addUser_Button = new QPushButton(settingGroupBox);
         addUser_Button->setObjectName(QString::fromUtf8("addUser_Button"));
         addUser_Button->setGeometry(QRect(11, 161, 102, 16));
         addUser_Button->setLayoutDirection(Qt::LeftToRight);
         addUser_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        addUser_Button->setIcon(icon);
         disableUser_Button = new QPushButton(settingGroupBox);
         disableUser_Button->setObjectName(QString::fromUtf8("disableUser_Button"));
         disableUser_Button->setGeometry(QRect(11, 191, 102, 16));
         disableUser_Button->setLayoutDirection(Qt::LeftToRight);
         disableUser_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        QIcon icon5;
-        icon5.addFile(QString::fromUtf8(":/icons White/Icons/White/Eye OFF.png"), QSize(), QIcon::Normal, QIcon::Off);
-        disableUser_Button->setIcon(icon5);
         changePassword_Button = new QPushButton(settingGroupBox);
         changePassword_Button->setObjectName(QString::fromUtf8("changePassword_Button"));
         changePassword_Button->setGeometry(QRect(10, 40, 130, 16));
         changePassword_Button->setLayoutDirection(Qt::LeftToRight);
         changePassword_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        QIcon icon6;
-        icon6.addFile(QString::fromUtf8(":/icons White/Icons/White/Edit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        changePassword_Button->setIcon(icon6);
-        viewCourses_Button = new QPushButton(groupBox);
-        viewCourses_Button->setObjectName(QString::fromUtf8("viewCourses_Button"));
-        viewCourses_Button->setGeometry(QRect(20, 70, 71, 16));
-        viewCourses_Button->setLayoutDirection(Qt::LeftToRight);
-        viewCourses_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        viewCourses_Button->setIcon(icon3);
         headBar = new QFrame(Dashboard);
         headBar->setObjectName(QString::fromUtf8("headBar"));
         headBar->setGeometry(QRect(0, 0, 1440, 65));
@@ -370,9 +355,9 @@ public:
         font1.setPointSize(9);
         font1.setUnderline(true);
         logoutButton->setFont(font1);
-        QIcon icon7;
-        icon7.addFile(QString::fromUtf8(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
-        logoutButton->setIcon(icon7);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
+        logoutButton->setIcon(icon4);
         userRoleLable_2 = new QLabel(headBar);
         userRoleLable_2->setObjectName(QString::fromUtf8("userRoleLable_2"));
         userRoleLable_2->setGeometry(QRect(1310, 20, 16, 31));
@@ -386,9 +371,9 @@ public:
         userIconTopBar->setObjectName(QString::fromUtf8("userIconTopBar"));
         userIconTopBar->setGeometry(QRect(1130, 20, 41, 31));
         userIconTopBar->setFont(font);
-        QIcon icon8;
-        icon8.addFile(QString::fromUtf8(":/icons White/Icons/White/User.png"), QSize(), QIcon::Normal, QIcon::Off);
-        userIconTopBar->setIcon(icon8);
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/icons White/Icons/White/User.png"), QSize(), QIcon::Normal, QIcon::Off);
+        userIconTopBar->setIcon(icon5);
         userRoleLable = new QLabel(headBar);
         userRoleLable->setObjectName(QString::fromUtf8("userRoleLable"));
         userRoleLable->setGeometry(QRect(1220, 28, 81, 16));
@@ -544,7 +529,7 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        addCourse_pushButton->setIcon(icon4);
+        addCourse_pushButton->setIcon(icon3);
         addCourseRatingcomboBox = new QComboBox(addCourseFrame);
         addCourseRatingcomboBox->addItem(QString());
         addCourseRatingcomboBox->addItem(QString());
@@ -576,7 +561,7 @@ public:
         retranslateUi(sgsApp);
 
         stackedWidgetSGS->setCurrentIndex(1);
-        stackedWidgetPages->setCurrentIndex(1);
+        stackedWidgetPages->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(sgsApp);
@@ -600,10 +585,6 @@ public:
         dashboard_pushButton->setText(QCoreApplication::translate("sgsApp", "Dashboard", nullptr));
         groupBox_2->setTitle(QCoreApplication::translate("sgsApp", "Student", nullptr));
 #if QT_CONFIG(tooltip)
-        viewComments_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
-#endif // QT_CONFIG(tooltip)
-        viewComments_Button->setText(QCoreApplication::translate("sgsApp", "Comments", nullptr));
-#if QT_CONFIG(tooltip)
         viewCoursesPending_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
 #endif // QT_CONFIG(tooltip)
         viewCoursesPending_Button->setText(QCoreApplication::translate("sgsApp", "Pending Course", nullptr));
@@ -611,6 +592,14 @@ public:
         viewStudentProgramSequence_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
 #endif // QT_CONFIG(tooltip)
         viewStudentProgramSequence_Button->setText(QCoreApplication::translate("sgsApp", "Program Sequence", nullptr));
+#if QT_CONFIG(tooltip)
+        viewCourses_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
+#endif // QT_CONFIG(tooltip)
+        viewCourses_Button->setText(QCoreApplication::translate("sgsApp", "Courses", nullptr));
+#if QT_CONFIG(tooltip)
+        viewComments_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
+#endif // QT_CONFIG(tooltip)
+        viewComments_Button->setText(QCoreApplication::translate("sgsApp", "Comments", nullptr));
         settingGroupBox->setTitle(QCoreApplication::translate("sgsApp", "Administration", nullptr));
 #if QT_CONFIG(tooltip)
         addInstitution_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
@@ -628,15 +617,11 @@ public:
 #if QT_CONFIG(tooltip)
         disableUser_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
 #endif // QT_CONFIG(tooltip)
-        disableUser_Button->setText(QCoreApplication::translate("sgsApp", "User Account", nullptr));
+        disableUser_Button->setText(QCoreApplication::translate("sgsApp", "Disable User", nullptr));
 #if QT_CONFIG(tooltip)
         changePassword_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
 #endif // QT_CONFIG(tooltip)
         changePassword_Button->setText(QCoreApplication::translate("sgsApp", "Change Password", nullptr));
-#if QT_CONFIG(tooltip)
-        viewCourses_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
-#endif // QT_CONFIG(tooltip)
-        viewCourses_Button->setText(QCoreApplication::translate("sgsApp", "Courses", nullptr));
         logoutButton->setText(QCoreApplication::translate("sgsApp", " Logout", nullptr));
         userRoleLable_2->setText(QCoreApplication::translate("sgsApp", "|", nullptr));
         userIconTopBar->setText(QString());

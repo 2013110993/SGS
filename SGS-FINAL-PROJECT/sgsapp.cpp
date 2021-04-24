@@ -13,10 +13,17 @@ sgsApp::sgsApp(QWidget *parent)
 
 
     ui->setupUi(this);
+
     connection = new databaseconnection;
+
     //Default landing Page for StackedWidget
     ui->stackedWidgetSGS->setCurrentIndex(0);
+
+    //Default landing for Dashboard
+    ui->stackedWidgetPages->setCurrentIndex(0);
+
     buttonClick = true;
+
     qDebug()<<"about to connect";
 
 
@@ -260,9 +267,7 @@ void sgsApp::on_dashboard_pushButton_clicked()
 
 void sgsApp::on_AddProgramSequence_Button_clicked()
 {
-    //Table for progam Sequence List
-    programSequenceList();
-    ui->stackedWidgetPages->setCurrentIndex(1);
+
 }
 
 
