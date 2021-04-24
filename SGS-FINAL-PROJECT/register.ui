@@ -377,7 +377,7 @@ background-color:none;</string>
         <x>10</x>
         <y>40</y>
         <width>351</width>
-        <height>249</height>
+        <height>264</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">

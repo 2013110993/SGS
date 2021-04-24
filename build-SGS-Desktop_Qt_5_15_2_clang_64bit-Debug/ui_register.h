@@ -231,7 +231,7 @@ public:
 "background-color:none;"));
         layoutWidget1_3 = new QWidget(userInfogroupBox);
         layoutWidget1_3->setObjectName(QString::fromUtf8("layoutWidget1_3"));
-        layoutWidget1_3->setGeometry(QRect(10, 40, 351, 249));
+        layoutWidget1_3->setGeometry(QRect(10, 40, 351, 264));
         verticalLayout_2 = new QVBoxLayout(layoutWidget1_3);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);

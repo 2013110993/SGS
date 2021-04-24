@@ -78,6 +78,10 @@ public:
     QTableWidget *programSequenceTableWidget;
     QLabel *programSequenceFacultyName;
     QLabel *programSequenceProgramName;
+    QFrame *addCourseFrame;
+    QLabel *AddProgramSequenceFormTitle;
+    QLineEdit *middleName_RegFormLineEdit;
+    QLineEdit *middleName_RegFormLineEdit_2;
     QWidget *AddProgramSequence;
     QFrame *addCourseGrade;
     QLabel *label;
@@ -411,7 +415,7 @@ public:
         programSequenceTableWidget->setStyleSheet(QString::fromUtf8("background:#fff"));
         programSequenceFacultyName = new QLabel(ViewProgramSequence);
         programSequenceFacultyName->setObjectName(QString::fromUtf8("programSequenceFacultyName"));
-        programSequenceFacultyName->setGeometry(QRect(10, 60, 691, 41));
+        programSequenceFacultyName->setGeometry(QRect(10, 60, 681, 41));
         QFont font4;
         font4.setPointSize(14);
         font4.setBold(true);
@@ -421,7 +425,7 @@ public:
         programSequenceFacultyName->setAlignment(Qt::AlignCenter);
         programSequenceProgramName = new QLabel(ViewProgramSequence);
         programSequenceProgramName->setObjectName(QString::fromUtf8("programSequenceProgramName"));
-        programSequenceProgramName->setGeometry(QRect(10, 100, 691, 31));
+        programSequenceProgramName->setGeometry(QRect(10, 100, 681, 31));
         QFont font5;
         font5.setPointSize(14);
         font5.setBold(false);
@@ -429,6 +433,35 @@ public:
         programSequenceProgramName->setFont(font5);
         programSequenceProgramName->setStyleSheet(QString::fromUtf8("color:#333;border:1px solid #999;background:#fff;"));
         programSequenceProgramName->setAlignment(Qt::AlignCenter);
+        addCourseFrame = new QFrame(ViewProgramSequence);
+        addCourseFrame->setObjectName(QString::fromUtf8("addCourseFrame"));
+        addCourseFrame->setGeometry(QRect(710, 60, 451, 221));
+        addCourseFrame->setStyleSheet(QString::fromUtf8("background:#f1f1f1; color:#333;"));
+        addCourseFrame->setFrameShape(QFrame::StyledPanel);
+        addCourseFrame->setFrameShadow(QFrame::Raised);
+        AddProgramSequenceFormTitle = new QLabel(addCourseFrame);
+        AddProgramSequenceFormTitle->setObjectName(QString::fromUtf8("AddProgramSequenceFormTitle"));
+        AddProgramSequenceFormTitle->setGeometry(QRect(0, 0, 451, 41));
+        AddProgramSequenceFormTitle->setFont(font4);
+        AddProgramSequenceFormTitle->setStyleSheet(QString::fromUtf8("background:#70808c;\n"
+"color:#fff;"));
+        AddProgramSequenceFormTitle->setAlignment(Qt::AlignCenter);
+        middleName_RegFormLineEdit = new QLineEdit(addCourseFrame);
+        middleName_RegFormLineEdit->setObjectName(QString::fromUtf8("middleName_RegFormLineEdit"));
+        middleName_RegFormLineEdit->setEnabled(true);
+        middleName_RegFormLineEdit->setGeometry(QRect(10, 60, 161, 30));
+        middleName_RegFormLineEdit->setMinimumSize(QSize(0, 30));
+        middleName_RegFormLineEdit->setMaximumSize(QSize(16777215, 30));
+        middleName_RegFormLineEdit->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
+"color: #333;"));
+        middleName_RegFormLineEdit_2 = new QLineEdit(addCourseFrame);
+        middleName_RegFormLineEdit_2->setObjectName(QString::fromUtf8("middleName_RegFormLineEdit_2"));
+        middleName_RegFormLineEdit_2->setEnabled(true);
+        middleName_RegFormLineEdit_2->setGeometry(QRect(180, 60, 161, 30));
+        middleName_RegFormLineEdit_2->setMinimumSize(QSize(0, 30));
+        middleName_RegFormLineEdit_2->setMaximumSize(QSize(16777215, 30));
+        middleName_RegFormLineEdit_2->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
+"color: #333;"));
         stackedWidgetPages->addWidget(ViewProgramSequence);
         AddProgramSequence = new QWidget();
         AddProgramSequence->setObjectName(QString::fromUtf8("AddProgramSequence"));
@@ -450,7 +483,7 @@ public:
         retranslateUi(sgsApp);
 
         stackedWidgetSGS->setCurrentIndex(1);
-        stackedWidgetPages->setCurrentIndex(0);
+        stackedWidgetPages->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(sgsApp);
@@ -519,6 +552,9 @@ public:
         TMPlabel_2->setText(QCoreApplication::translate("sgsApp", "Dashboard", nullptr));
         programSequenceFacultyName->setText(QCoreApplication::translate("sgsApp", "Faculty of Science & Technology Math, Physics and IT Department", nullptr));
         programSequenceProgramName->setText(QCoreApplication::translate("sgsApp", "Bachelor Degree (Information Technology)", nullptr));
+        AddProgramSequenceFormTitle->setText(QCoreApplication::translate("sgsApp", "Add Courses", nullptr));
+        middleName_RegFormLineEdit->setPlaceholderText(QCoreApplication::translate("sgsApp", "(Course Name)", nullptr));
+        middleName_RegFormLineEdit_2->setPlaceholderText(QCoreApplication::translate("sgsApp", "(Course Name)", nullptr));
         label->setText(QCoreApplication::translate("sgsApp", "Add Course Widget", nullptr));
     } // retranslateUi
 
