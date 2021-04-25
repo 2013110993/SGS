@@ -274,7 +274,7 @@ void sgsApp::on_AddProgramSequence_Button_clicked()
 void sgsApp::on_viewStudentProgramSequence_Button_clicked()
 {
     programSequenceList();
-    ui->stackedWidgetPages->setCurrentIndex(1);
+    ui->stackedWidgetPages->setCurrentIndex(2);
 }
 
 //Generating the Program Sequence QTableWidget
