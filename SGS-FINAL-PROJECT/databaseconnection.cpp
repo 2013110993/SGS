@@ -33,8 +33,6 @@ void databaseconnection::connect()
 
         }
         else
-
-            throw "The connection to phpMyAdmin Failed!";
         // Lets the program know that it didnt connect to the server
 
         {
