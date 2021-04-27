@@ -235,3 +235,56 @@ void Register::recieveQuestion(QSqlQuery question)
     }
 
 }
+
+void Register::on_registerTableWidget_cellActivated(int row, int column)
+{
+    ui->registerTableWidget->setColumnCount(7);
+    ui->registerTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
+
+    QStringList header;
+    header << "Code"<< "Course Name" <<"Credits" << "Grade" <<"Pre-requisites" << "Semester" << "Year";
+
+    ui->registerTableWidget->setHorizontalHeaderLabels(header);
+    ui->registerTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
+
+    int rowCount = 0;
+
+    for(int i = 0; i< 24; i++){
+
+         ui->registerTableWidget->insertRow(rowCount);
+         ui->registerTableWidget->setColumnWidth(0,80);
+         ui->registerTableWidget->setColumnWidth(1,220);
+         ui->registerTableWidget->setColumnWidth(2,48);
+         ui->registerTableWidget->setColumnWidth(3,40);
+         ui->registerTableWidget->setColumnWidth(4,150);
+         ui->registerTableWidget->setColumnWidth(5,60);
+         ui->registerTableWidget->setColumnWidth(6,40);
+
+        QTableWidgetItem *courseCode = new QTableWidgetItem;
+        QTableWidgetItem *courseName = new QTableWidgetItem;
+        QTableWidgetItem *credits = new QTableWidgetItem;
+        QTableWidgetItem *grade = new QTableWidgetItem;
+        QTableWidgetItem *prerequisites = new QTableWidgetItem;
+        QTableWidgetItem *semester = new QTableWidgetItem;
+        QTableWidgetItem *year = new QTableWidgetItem;
+
+        courseCode->setText("CMPS3151");
+        courseName->setText("Telecommunications Systems");
+        credits->setText("3");
+        grade->setText("A");
+        prerequisites->setText("CMPS1191");
+        semester->setText("1");
+        year->setText("1");
+
+        ui->registerTableWidget->setItem(rowCount,0,courseCode);
+        ui->registerTableWidget->setItem(rowCount,1,courseName);
+        ui->registerTableWidget->setItem(rowCount,2,credits);
+        ui->registerTableWidget->setItem(rowCount,3,grade);
+        ui->registerTableWidget->setItem(rowCount,4,prerequisites);
+        ui->registerTableWidget->setItem(rowCount,5,semester);
+        ui->registerTableWidget->setItem(rowCount,6,year);
+
+
+        rowCount++;
+    }
+}

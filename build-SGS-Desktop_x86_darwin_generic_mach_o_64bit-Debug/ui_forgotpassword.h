@@ -229,7 +229,7 @@ public:
         retranslateUi(forgotPassword);
 
         forgotPasswordResetButton->setDefault(false);
-        stackedWidgetResetPassword->setCurrentIndex(2);
+        stackedWidgetResetPassword->setCurrentIndex(0);
         accountLostResetButton->setDefault(false);
         checkAnswerResetButton->setDefault(false);
 

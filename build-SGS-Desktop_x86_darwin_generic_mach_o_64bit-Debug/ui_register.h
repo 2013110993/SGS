@@ -23,7 +23,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStackedWidget>
-#include <QtWidgets/QTableView>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -87,12 +87,12 @@ public:
     QLabel *programLabel;
     QComboBox *programComboBox;
     QPushButton *filterSearchButton;
-    QTableView *tableView;
     QGroupBox *groupBoxRegBottom;
     QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout;
     QPushButton *backSignUpButton;
     QPushButton *signUpButton;
+    QTableWidget *registerTableWidget;
 
     void setupUi(QDialog *Register)
     {
@@ -231,7 +231,7 @@ public:
 "background-color:none;"));
         layoutWidget1_3 = new QWidget(userInfogroupBox);
         layoutWidget1_3->setObjectName(QString::fromUtf8("layoutWidget1_3"));
-        layoutWidget1_3->setGeometry(QRect(10, 40, 351, 249));
+        layoutWidget1_3->setGeometry(QRect(10, 40, 351, 264));
         verticalLayout_2 = new QVBoxLayout(layoutWidget1_3);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -484,9 +484,6 @@ public:
 
         horizontalLayout_6->addWidget(filterSearchButton);
 
-        tableView = new QTableView(academic);
-        tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(0, 80, 771, 511));
         groupBoxRegBottom = new QGroupBox(academic);
         groupBoxRegBottom->setObjectName(QString::fromUtf8("groupBoxRegBottom"));
         groupBoxRegBottom->setGeometry(QRect(-10, 590, 800, 60));
@@ -525,11 +522,15 @@ public:
 
         horizontalLayout->addWidget(signUpButton);
 
+        registerTableWidget = new QTableWidget(academic);
+        registerTableWidget->setObjectName(QString::fromUtf8("registerTableWidget"));
+        registerTableWidget->setGeometry(QRect(0, 80, 761, 291));
+        registerTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
         stackedWidgetRegister->addWidget(academic);
 
         retranslateUi(Register);
 
-        stackedWidgetRegister->setCurrentIndex(0);
+        stackedWidgetRegister->setCurrentIndex(1);
         signUpNextButton->setDefault(false);
         filterSearchButton->setDefault(false);
         signUpButton->setDefault(false);

@@ -34,6 +34,9 @@ private slots:
 
     void recieveQuestion(QSqlQuery);
 
+
+    void on_registerTableWidget_cellActivated(int row, int column);
+
 private:
     Ui::Register *ui;
     student * user;

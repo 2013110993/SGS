@@ -12,12 +12,14 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTableWidget>
@@ -53,9 +55,10 @@ public:
     QGroupBox *groupBox;
     QPushButton *dashboard_pushButton;
     QGroupBox *groupBox_2;
-    QPushButton *viewComments_Button;
     QPushButton *viewCoursesPending_Button;
-    QPushButton *viewProgramSequence_Button;
+    QPushButton *viewStudentProgramSequence_Button;
+    QPushButton *viewCourses_Button;
+    QPushButton *viewComments_Button;
     QGroupBox *settingGroupBox;
     QPushButton *addInstitution_Button;
     QPushButton *addCourse_Button;
@@ -63,7 +66,6 @@ public:
     QPushButton *addUser_Button;
     QPushButton *disableUser_Button;
     QPushButton *changePassword_Button;
-    QPushButton *viewCourses_Button;
     QFrame *headBar;
     QPushButton *logoutButton;
     QLabel *userRoleLable_2;
@@ -74,10 +76,35 @@ public:
     QStackedWidget *stackedWidgetPages;
     QWidget *DashboardPage;
     QLabel *TMPlabel_2;
+    QWidget *CoursesPage;
+    QTableWidget *tableWidget;
     QWidget *ViewProgramSequence;
     QTableWidget *programSequenceTableWidget;
     QLabel *programSequenceFacultyName;
     QLabel *programSequenceProgramName;
+    QFrame *addCourseFrame;
+    QLabel *AddProgramSequenceFormTitle;
+    QPlainTextEdit *addCourseComment_plainTextEdit;
+    QLabel *label_2;
+    QLineEdit *addCourseLecturer_RegFormLineEdit;
+    QPushButton *addCourse_pushButton;
+    QComboBox *addCourseRatingcomboBox;
+    QLabel *courseCode_CourseGradeLable;
+    QLabel *courseName_courseGradeLable;
+    QLabel *courseCode_CourseGradeLable_2;
+    QLabel *courseCode_CourseGradeLable_3;
+    QLabel *courseCode_CourseGradeLable_4;
+    QComboBox *addCourseRatingcomboBox_2;
+    QLabel *courseYear_CourseGradeLable;
+    QLabel *codeCourseGradeTagLable;
+    QLabel *courseNameCourseGradeTagLable;
+    QLabel *gradeCourseGradeTagLable;
+    QLabel *gradeCourseGradeTagLable_2;
+    QLabel *prerequisitesCourseGradeTagLable;
+    QLabel *gradeCourseGradeTagLable_3;
+    QLabel *yearCourseGradeTagLable;
+    QLabel *lecturerCourseGradeTagLable;
+    QLabel *ratingCourseGradeTagLable;
     QWidget *AddProgramSequence;
     QFrame *addCourseGrade;
     QLabel *label;
@@ -267,26 +294,29 @@ public:
         groupBox_2 = new QGroupBox(groupBox);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         groupBox_2->setGeometry(QRect(0, 110, 161, 151));
-        viewComments_Button = new QPushButton(groupBox_2);
-        viewComments_Button->setObjectName(QString::fromUtf8("viewComments_Button"));
-        viewComments_Button->setGeometry(QRect(11, 41, 86, 16));
-        viewComments_Button->setLayoutDirection(Qt::LeftToRight);
-        viewComments_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/icons White/Icons/White/Eye ON.png"), QSize(), QIcon::Normal, QIcon::Off);
-        viewComments_Button->setIcon(icon3);
         viewCoursesPending_Button = new QPushButton(groupBox_2);
         viewCoursesPending_Button->setObjectName(QString::fromUtf8("viewCoursesPending_Button"));
         viewCoursesPending_Button->setGeometry(QRect(11, 71, 118, 16));
         viewCoursesPending_Button->setLayoutDirection(Qt::LeftToRight);
         viewCoursesPending_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        viewCoursesPending_Button->setIcon(icon3);
-        viewProgramSequence_Button = new QPushButton(groupBox_2);
-        viewProgramSequence_Button->setObjectName(QString::fromUtf8("viewProgramSequence_Button"));
-        viewProgramSequence_Button->setGeometry(QRect(10, 130, 141, 16));
-        viewProgramSequence_Button->setLayoutDirection(Qt::LeftToRight);
-        viewProgramSequence_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        viewProgramSequence_Button->setIcon(icon3);
+        viewStudentProgramSequence_Button = new QPushButton(groupBox_2);
+        viewStudentProgramSequence_Button->setObjectName(QString::fromUtf8("viewStudentProgramSequence_Button"));
+        viewStudentProgramSequence_Button->setGeometry(QRect(10, 130, 141, 16));
+        viewStudentProgramSequence_Button->setLayoutDirection(Qt::LeftToRight);
+        viewStudentProgramSequence_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/icons White/Icons/White/Add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        viewStudentProgramSequence_Button->setIcon(icon3);
+        viewCourses_Button = new QPushButton(groupBox_2);
+        viewCourses_Button->setObjectName(QString::fromUtf8("viewCourses_Button"));
+        viewCourses_Button->setGeometry(QRect(10, 30, 71, 16));
+        viewCourses_Button->setLayoutDirection(Qt::LeftToRight);
+        viewCourses_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
+        viewComments_Button = new QPushButton(groupBox_2);
+        viewComments_Button->setObjectName(QString::fromUtf8("viewComments_Button"));
+        viewComments_Button->setGeometry(QRect(10, 50, 86, 16));
+        viewComments_Button->setLayoutDirection(Qt::LeftToRight);
+        viewComments_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
         settingGroupBox = new QGroupBox(groupBox);
         settingGroupBox->setObjectName(QString::fromUtf8("settingGroupBox"));
         settingGroupBox->setGeometry(QRect(0, 340, 160, 231));
@@ -295,49 +325,31 @@ public:
         addInstitution_Button->setGeometry(QRect(10, 70, 81, 16));
         addInstitution_Button->setLayoutDirection(Qt::LeftToRight);
         addInstitution_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/icons White/Icons/White/Add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addInstitution_Button->setIcon(icon4);
         addCourse_Button = new QPushButton(settingGroupBox);
         addCourse_Button->setObjectName(QString::fromUtf8("addCourse_Button"));
         addCourse_Button->setGeometry(QRect(10, 100, 64, 16));
         addCourse_Button->setLayoutDirection(Qt::LeftToRight);
         addCourse_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        addCourse_Button->setIcon(icon4);
         AddProgramSequence_Button = new QPushButton(settingGroupBox);
         AddProgramSequence_Button->setObjectName(QString::fromUtf8("AddProgramSequence_Button"));
         AddProgramSequence_Button->setGeometry(QRect(10, 130, 136, 16));
         AddProgramSequence_Button->setLayoutDirection(Qt::LeftToRight);
         AddProgramSequence_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        AddProgramSequence_Button->setIcon(icon4);
         addUser_Button = new QPushButton(settingGroupBox);
         addUser_Button->setObjectName(QString::fromUtf8("addUser_Button"));
         addUser_Button->setGeometry(QRect(11, 161, 102, 16));
         addUser_Button->setLayoutDirection(Qt::LeftToRight);
         addUser_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        addUser_Button->setIcon(icon);
         disableUser_Button = new QPushButton(settingGroupBox);
         disableUser_Button->setObjectName(QString::fromUtf8("disableUser_Button"));
         disableUser_Button->setGeometry(QRect(11, 191, 102, 16));
         disableUser_Button->setLayoutDirection(Qt::LeftToRight);
         disableUser_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        QIcon icon5;
-        icon5.addFile(QString::fromUtf8(":/icons White/Icons/White/Eye OFF.png"), QSize(), QIcon::Normal, QIcon::Off);
-        disableUser_Button->setIcon(icon5);
         changePassword_Button = new QPushButton(settingGroupBox);
         changePassword_Button->setObjectName(QString::fromUtf8("changePassword_Button"));
         changePassword_Button->setGeometry(QRect(10, 40, 130, 16));
         changePassword_Button->setLayoutDirection(Qt::LeftToRight);
         changePassword_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        QIcon icon6;
-        icon6.addFile(QString::fromUtf8(":/icons White/Icons/White/Edit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        changePassword_Button->setIcon(icon6);
-        viewCourses_Button = new QPushButton(groupBox);
-        viewCourses_Button->setObjectName(QString::fromUtf8("viewCourses_Button"));
-        viewCourses_Button->setGeometry(QRect(20, 70, 71, 16));
-        viewCourses_Button->setLayoutDirection(Qt::LeftToRight);
-        viewCourses_Button->setStyleSheet(QString::fromUtf8("color:#fff;"));
-        viewCourses_Button->setIcon(icon3);
         headBar = new QFrame(Dashboard);
         headBar->setObjectName(QString::fromUtf8("headBar"));
         headBar->setGeometry(QRect(0, 0, 1440, 65));
@@ -354,9 +366,9 @@ public:
         font1.setPointSize(9);
         font1.setUnderline(true);
         logoutButton->setFont(font1);
-        QIcon icon7;
-        icon7.addFile(QString::fromUtf8(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
-        logoutButton->setIcon(icon7);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
+        logoutButton->setIcon(icon4);
         userRoleLable_2 = new QLabel(headBar);
         userRoleLable_2->setObjectName(QString::fromUtf8("userRoleLable_2"));
         userRoleLable_2->setGeometry(QRect(1310, 20, 16, 31));
@@ -370,9 +382,9 @@ public:
         userIconTopBar->setObjectName(QString::fromUtf8("userIconTopBar"));
         userIconTopBar->setGeometry(QRect(1130, 20, 41, 31));
         userIconTopBar->setFont(font);
-        QIcon icon8;
-        icon8.addFile(QString::fromUtf8(":/icons White/Icons/White/User.png"), QSize(), QIcon::Normal, QIcon::Off);
-        userIconTopBar->setIcon(icon8);
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/icons White/Icons/White/User.png"), QSize(), QIcon::Normal, QIcon::Off);
+        userIconTopBar->setIcon(icon5);
         userRoleLable = new QLabel(headBar);
         userRoleLable->setObjectName(QString::fromUtf8("userRoleLable"));
         userRoleLable->setGeometry(QRect(1220, 28, 81, 16));
@@ -403,25 +415,37 @@ public:
         TMPlabel_2->setFont(font3);
         TMPlabel_2->setStyleSheet(QString::fromUtf8("color: #000;"));
         stackedWidgetPages->addWidget(DashboardPage);
+        CoursesPage = new QWidget();
+        CoursesPage->setObjectName(QString::fromUtf8("CoursesPage"));
+        tableWidget = new QTableWidget(CoursesPage);
+        tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
+        tableWidget->setGeometry(QRect(10, 60, 631, 651));
+        stackedWidgetPages->addWidget(CoursesPage);
         ViewProgramSequence = new QWidget();
         ViewProgramSequence->setObjectName(QString::fromUtf8("ViewProgramSequence"));
         programSequenceTableWidget = new QTableWidget(ViewProgramSequence);
         programSequenceTableWidget->setObjectName(QString::fromUtf8("programSequenceTableWidget"));
-        programSequenceTableWidget->setGeometry(QRect(10, 130, 571, 691));
+        programSequenceTableWidget->setGeometry(QRect(10, 130, 681, 691));
         programSequenceTableWidget->setStyleSheet(QString::fromUtf8("background:#fff"));
+        programSequenceTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
         programSequenceFacultyName = new QLabel(ViewProgramSequence);
         programSequenceFacultyName->setObjectName(QString::fromUtf8("programSequenceFacultyName"));
-        programSequenceFacultyName->setGeometry(QRect(10, 60, 571, 41));
+        programSequenceFacultyName->setGeometry(QRect(10, 60, 681, 41));
         QFont font4;
         font4.setPointSize(14);
         font4.setBold(true);
         font4.setWeight(75);
         programSequenceFacultyName->setFont(font4);
-        programSequenceFacultyName->setStyleSheet(QString::fromUtf8("background:#70808c;"));
+        programSequenceFacultyName->setStyleSheet(QString::fromUtf8("background:#70808c;\n"
+"color:#fff;\n"
+"border-top-left-radius:5px;\n"
+"border-top-right-radius:5px;\n"
+"border-bottom-left-radius:0px;\n"
+"border-bottom-right-radius:0px;"));
         programSequenceFacultyName->setAlignment(Qt::AlignCenter);
         programSequenceProgramName = new QLabel(ViewProgramSequence);
         programSequenceProgramName->setObjectName(QString::fromUtf8("programSequenceProgramName"));
-        programSequenceProgramName->setGeometry(QRect(10, 100, 571, 31));
+        programSequenceProgramName->setGeometry(QRect(10, 100, 681, 31));
         QFont font5;
         font5.setPointSize(14);
         font5.setBold(false);
@@ -429,6 +453,120 @@ public:
         programSequenceProgramName->setFont(font5);
         programSequenceProgramName->setStyleSheet(QString::fromUtf8("color:#333;border:1px solid #999;background:#fff;"));
         programSequenceProgramName->setAlignment(Qt::AlignCenter);
+        addCourseFrame = new QFrame(ViewProgramSequence);
+        addCourseFrame->setObjectName(QString::fromUtf8("addCourseFrame"));
+        addCourseFrame->setGeometry(QRect(710, 60, 451, 461));
+        addCourseFrame->setStyleSheet(QString::fromUtf8("background:#f1f1f1; color:#333; border-radius:5px;"));
+        addCourseFrame->setFrameShape(QFrame::StyledPanel);
+        addCourseFrame->setFrameShadow(QFrame::Raised);
+        AddProgramSequenceFormTitle = new QLabel(addCourseFrame);
+        AddProgramSequenceFormTitle->setObjectName(QString::fromUtf8("AddProgramSequenceFormTitle"));
+        AddProgramSequenceFormTitle->setGeometry(QRect(0, 0, 451, 41));
+        AddProgramSequenceFormTitle->setFont(font4);
+        AddProgramSequenceFormTitle->setStyleSheet(QString::fromUtf8("background:#70808c;\n"
+"color:#fff;\n"
+"border-bottom-left-radius:0px;\n"
+"border-bottom-right-radius:0px;"));
+        AddProgramSequenceFormTitle->setAlignment(Qt::AlignCenter);
+        addCourseComment_plainTextEdit = new QPlainTextEdit(addCourseFrame);
+        addCourseComment_plainTextEdit->setObjectName(QString::fromUtf8("addCourseComment_plainTextEdit"));
+        addCourseComment_plainTextEdit->setGeometry(QRect(10, 300, 431, 101));
+        addCourseComment_plainTextEdit->setStyleSheet(QString::fromUtf8("Background:#fff;"));
+        label_2 = new QLabel(addCourseFrame);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(10, 280, 121, 16));
+        addCourseLecturer_RegFormLineEdit = new QLineEdit(addCourseFrame);
+        addCourseLecturer_RegFormLineEdit->setObjectName(QString::fromUtf8("addCourseLecturer_RegFormLineEdit"));
+        addCourseLecturer_RegFormLineEdit->setEnabled(true);
+        addCourseLecturer_RegFormLineEdit->setGeometry(QRect(150, 220, 151, 30));
+        addCourseLecturer_RegFormLineEdit->setMinimumSize(QSize(0, 30));
+        addCourseLecturer_RegFormLineEdit->setMaximumSize(QSize(16777215, 30));
+        addCourseLecturer_RegFormLineEdit->setStyleSheet(QString::fromUtf8("background-color:#ffffff;\n"
+"color: #333;"));
+        addCourse_pushButton = new QPushButton(addCourseFrame);
+        addCourse_pushButton->setObjectName(QString::fromUtf8("addCourse_pushButton"));
+        addCourse_pushButton->setGeometry(QRect(342, 420, 91, 32));
+        addCourse_pushButton->setStyleSheet(QString::fromUtf8("background:#fbaf01;\n"
+"color: #ffffff;\n"
+"border:0;\n"
+"height:30px;\n"
+"border-radius:5px;"));
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/icons White/Icons/White/Edit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addCourse_pushButton->setIcon(icon6);
+        addCourseRatingcomboBox = new QComboBox(addCourseFrame);
+        addCourseRatingcomboBox->addItem(QString());
+        addCourseRatingcomboBox->addItem(QString());
+        addCourseRatingcomboBox->addItem(QString());
+        addCourseRatingcomboBox->addItem(QString());
+        addCourseRatingcomboBox->addItem(QString());
+        addCourseRatingcomboBox->addItem(QString());
+        addCourseRatingcomboBox->setObjectName(QString::fromUtf8("addCourseRatingcomboBox"));
+        addCourseRatingcomboBox->setGeometry(QRect(310, 220, 121, 32));
+        addCourseRatingcomboBox->setStyleSheet(QString::fromUtf8("background:#fff;"));
+        courseCode_CourseGradeLable = new QLabel(addCourseFrame);
+        courseCode_CourseGradeLable->setObjectName(QString::fromUtf8("courseCode_CourseGradeLable"));
+        courseCode_CourseGradeLable->setGeometry(QRect(10, 100, 81, 16));
+        courseCode_CourseGradeLable->setStyleSheet(QString::fromUtf8("color:#666"));
+        courseName_courseGradeLable = new QLabel(addCourseFrame);
+        courseName_courseGradeLable->setObjectName(QString::fromUtf8("courseName_courseGradeLable"));
+        courseName_courseGradeLable->setGeometry(QRect(100, 100, 171, 16));
+        courseName_courseGradeLable->setStyleSheet(QString::fromUtf8("color:#666"));
+        courseCode_CourseGradeLable_2 = new QLabel(addCourseFrame);
+        courseCode_CourseGradeLable_2->setObjectName(QString::fromUtf8("courseCode_CourseGradeLable_2"));
+        courseCode_CourseGradeLable_2->setGeometry(QRect(390, 100, 41, 16));
+        courseCode_CourseGradeLable_2->setStyleSheet(QString::fromUtf8("color:#666"));
+        courseCode_CourseGradeLable_3 = new QLabel(addCourseFrame);
+        courseCode_CourseGradeLable_3->setObjectName(QString::fromUtf8("courseCode_CourseGradeLable_3"));
+        courseCode_CourseGradeLable_3->setGeometry(QRect(10, 230, 71, 16));
+        courseCode_CourseGradeLable_3->setStyleSheet(QString::fromUtf8("color:#666"));
+        courseCode_CourseGradeLable_4 = new QLabel(addCourseFrame);
+        courseCode_CourseGradeLable_4->setObjectName(QString::fromUtf8("courseCode_CourseGradeLable_4"));
+        courseCode_CourseGradeLable_4->setGeometry(QRect(10, 160, 421, 16));
+        courseCode_CourseGradeLable_4->setStyleSheet(QString::fromUtf8("color:#666"));
+        addCourseRatingcomboBox_2 = new QComboBox(addCourseFrame);
+        addCourseRatingcomboBox_2->addItem(QString());
+        addCourseRatingcomboBox_2->addItem(QString());
+        addCourseRatingcomboBox_2->addItem(QString());
+        addCourseRatingcomboBox_2->addItem(QString());
+        addCourseRatingcomboBox_2->addItem(QString());
+        addCourseRatingcomboBox_2->addItem(QString());
+        addCourseRatingcomboBox_2->addItem(QString());
+        addCourseRatingcomboBox_2->addItem(QString());
+        addCourseRatingcomboBox_2->setObjectName(QString::fromUtf8("addCourseRatingcomboBox_2"));
+        addCourseRatingcomboBox_2->setGeometry(QRect(290, 90, 81, 32));
+        addCourseRatingcomboBox_2->setStyleSheet(QString::fromUtf8("background:#fff;"));
+        courseYear_CourseGradeLable = new QLabel(addCourseFrame);
+        courseYear_CourseGradeLable->setObjectName(QString::fromUtf8("courseYear_CourseGradeLable"));
+        courseYear_CourseGradeLable->setGeometry(QRect(90, 230, 51, 16));
+        courseYear_CourseGradeLable->setStyleSheet(QString::fromUtf8("color:#666"));
+        codeCourseGradeTagLable = new QLabel(addCourseFrame);
+        codeCourseGradeTagLable->setObjectName(QString::fromUtf8("codeCourseGradeTagLable"));
+        codeCourseGradeTagLable->setGeometry(QRect(10, 70, 60, 16));
+        courseNameCourseGradeTagLable = new QLabel(addCourseFrame);
+        courseNameCourseGradeTagLable->setObjectName(QString::fromUtf8("courseNameCourseGradeTagLable"));
+        courseNameCourseGradeTagLable->setGeometry(QRect(100, 70, 91, 16));
+        gradeCourseGradeTagLable = new QLabel(addCourseFrame);
+        gradeCourseGradeTagLable->setObjectName(QString::fromUtf8("gradeCourseGradeTagLable"));
+        gradeCourseGradeTagLable->setGeometry(QRect(290, 70, 81, 16));
+        gradeCourseGradeTagLable_2 = new QLabel(addCourseFrame);
+        gradeCourseGradeTagLable_2->setObjectName(QString::fromUtf8("gradeCourseGradeTagLable_2"));
+        gradeCourseGradeTagLable_2->setGeometry(QRect(390, 70, 41, 16));
+        prerequisitesCourseGradeTagLable = new QLabel(addCourseFrame);
+        prerequisitesCourseGradeTagLable->setObjectName(QString::fromUtf8("prerequisitesCourseGradeTagLable"));
+        prerequisitesCourseGradeTagLable->setGeometry(QRect(10, 140, 91, 16));
+        gradeCourseGradeTagLable_3 = new QLabel(addCourseFrame);
+        gradeCourseGradeTagLable_3->setObjectName(QString::fromUtf8("gradeCourseGradeTagLable_3"));
+        gradeCourseGradeTagLable_3->setGeometry(QRect(10, 210, 61, 16));
+        yearCourseGradeTagLable = new QLabel(addCourseFrame);
+        yearCourseGradeTagLable->setObjectName(QString::fromUtf8("yearCourseGradeTagLable"));
+        yearCourseGradeTagLable->setGeometry(QRect(90, 210, 31, 16));
+        lecturerCourseGradeTagLable = new QLabel(addCourseFrame);
+        lecturerCourseGradeTagLable->setObjectName(QString::fromUtf8("lecturerCourseGradeTagLable"));
+        lecturerCourseGradeTagLable->setGeometry(QRect(150, 210, 61, 16));
+        ratingCourseGradeTagLable = new QLabel(addCourseFrame);
+        ratingCourseGradeTagLable->setObjectName(QString::fromUtf8("ratingCourseGradeTagLable"));
+        ratingCourseGradeTagLable->setGeometry(QRect(310, 210, 121, 16));
         stackedWidgetPages->addWidget(ViewProgramSequence);
         AddProgramSequence = new QWidget();
         AddProgramSequence->setObjectName(QString::fromUtf8("AddProgramSequence"));
@@ -474,17 +612,21 @@ public:
         dashboard_pushButton->setText(QCoreApplication::translate("sgsApp", "Dashboard", nullptr));
         groupBox_2->setTitle(QCoreApplication::translate("sgsApp", "Student", nullptr));
 #if QT_CONFIG(tooltip)
-        viewComments_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
-#endif // QT_CONFIG(tooltip)
-        viewComments_Button->setText(QCoreApplication::translate("sgsApp", "Comments", nullptr));
-#if QT_CONFIG(tooltip)
         viewCoursesPending_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
 #endif // QT_CONFIG(tooltip)
         viewCoursesPending_Button->setText(QCoreApplication::translate("sgsApp", "Pending Course", nullptr));
 #if QT_CONFIG(tooltip)
-        viewProgramSequence_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
+        viewStudentProgramSequence_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
 #endif // QT_CONFIG(tooltip)
-        viewProgramSequence_Button->setText(QCoreApplication::translate("sgsApp", "Program Sequence", nullptr));
+        viewStudentProgramSequence_Button->setText(QCoreApplication::translate("sgsApp", "Program Sequence", nullptr));
+#if QT_CONFIG(tooltip)
+        viewCourses_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
+#endif // QT_CONFIG(tooltip)
+        viewCourses_Button->setText(QCoreApplication::translate("sgsApp", "Courses", nullptr));
+#if QT_CONFIG(tooltip)
+        viewComments_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
+#endif // QT_CONFIG(tooltip)
+        viewComments_Button->setText(QCoreApplication::translate("sgsApp", "Comments", nullptr));
         settingGroupBox->setTitle(QCoreApplication::translate("sgsApp", "Administration", nullptr));
 #if QT_CONFIG(tooltip)
         addInstitution_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
@@ -502,15 +644,11 @@ public:
 #if QT_CONFIG(tooltip)
         disableUser_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
 #endif // QT_CONFIG(tooltip)
-        disableUser_Button->setText(QCoreApplication::translate("sgsApp", "User Account", nullptr));
+        disableUser_Button->setText(QCoreApplication::translate("sgsApp", "Disable User", nullptr));
 #if QT_CONFIG(tooltip)
         changePassword_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
 #endif // QT_CONFIG(tooltip)
         changePassword_Button->setText(QCoreApplication::translate("sgsApp", "Change Password", nullptr));
-#if QT_CONFIG(tooltip)
-        viewCourses_Button->setToolTip(QCoreApplication::translate("sgsApp", "Add Institution", nullptr));
-#endif // QT_CONFIG(tooltip)
-        viewCourses_Button->setText(QCoreApplication::translate("sgsApp", "Courses", nullptr));
         logoutButton->setText(QCoreApplication::translate("sgsApp", " Logout", nullptr));
         userRoleLable_2->setText(QCoreApplication::translate("sgsApp", "|", nullptr));
         userIconTopBar->setText(QString());
@@ -519,6 +657,43 @@ public:
         TMPlabel_2->setText(QCoreApplication::translate("sgsApp", "Dashboard", nullptr));
         programSequenceFacultyName->setText(QCoreApplication::translate("sgsApp", "Faculty of Science & Technology Math, Physics and IT Department", nullptr));
         programSequenceProgramName->setText(QCoreApplication::translate("sgsApp", "Bachelor Degree (Information Technology)", nullptr));
+        AddProgramSequenceFormTitle->setText(QCoreApplication::translate("sgsApp", "Course Update", nullptr));
+        addCourseComment_plainTextEdit->setPlainText(QString());
+        label_2->setText(QCoreApplication::translate("sgsApp", "CourseComments:", nullptr));
+        addCourseLecturer_RegFormLineEdit->setText(QString());
+        addCourseLecturer_RegFormLineEdit->setPlaceholderText(QCoreApplication::translate("sgsApp", "Lecturer", nullptr));
+        addCourse_pushButton->setText(QCoreApplication::translate("sgsApp", "Update", nullptr));
+        addCourseRatingcomboBox->setItemText(0, QCoreApplication::translate("sgsApp", "Select Rating", nullptr));
+        addCourseRatingcomboBox->setItemText(1, QCoreApplication::translate("sgsApp", "Ugly", nullptr));
+        addCourseRatingcomboBox->setItemText(2, QCoreApplication::translate("sgsApp", "Bad", nullptr));
+        addCourseRatingcomboBox->setItemText(3, QCoreApplication::translate("sgsApp", "Fair", nullptr));
+        addCourseRatingcomboBox->setItemText(4, QCoreApplication::translate("sgsApp", "Good", nullptr));
+        addCourseRatingcomboBox->setItemText(5, QCoreApplication::translate("sgsApp", "Excellent", nullptr));
+
+        courseCode_CourseGradeLable->setText(QCoreApplication::translate("sgsApp", "Code", nullptr));
+        courseName_courseGradeLable->setText(QCoreApplication::translate("sgsApp", "Course Name", nullptr));
+        courseCode_CourseGradeLable_2->setText(QCoreApplication::translate("sgsApp", "Credit", nullptr));
+        courseCode_CourseGradeLable_3->setText(QCoreApplication::translate("sgsApp", "Semester", nullptr));
+        courseCode_CourseGradeLable_4->setText(QCoreApplication::translate("sgsApp", "All Pre-requisites", nullptr));
+        addCourseRatingcomboBox_2->setItemText(0, QCoreApplication::translate("sgsApp", "Grade", nullptr));
+        addCourseRatingcomboBox_2->setItemText(1, QCoreApplication::translate("sgsApp", "A", nullptr));
+        addCourseRatingcomboBox_2->setItemText(2, QCoreApplication::translate("sgsApp", "A-", nullptr));
+        addCourseRatingcomboBox_2->setItemText(3, QCoreApplication::translate("sgsApp", "B", nullptr));
+        addCourseRatingcomboBox_2->setItemText(4, QCoreApplication::translate("sgsApp", "C", nullptr));
+        addCourseRatingcomboBox_2->setItemText(5, QCoreApplication::translate("sgsApp", "D", nullptr));
+        addCourseRatingcomboBox_2->setItemText(6, QCoreApplication::translate("sgsApp", "F", nullptr));
+        addCourseRatingcomboBox_2->setItemText(7, QCoreApplication::translate("sgsApp", "TR", nullptr));
+
+        courseYear_CourseGradeLable->setText(QCoreApplication::translate("sgsApp", "Year", nullptr));
+        codeCourseGradeTagLable->setText(QCoreApplication::translate("sgsApp", "Code:", nullptr));
+        courseNameCourseGradeTagLable->setText(QCoreApplication::translate("sgsApp", "Course Name:", nullptr));
+        gradeCourseGradeTagLable->setText(QCoreApplication::translate("sgsApp", "Grade:", nullptr));
+        gradeCourseGradeTagLable_2->setText(QCoreApplication::translate("sgsApp", "Credit:", nullptr));
+        prerequisitesCourseGradeTagLable->setText(QCoreApplication::translate("sgsApp", "Pre-requisites:", nullptr));
+        gradeCourseGradeTagLable_3->setText(QCoreApplication::translate("sgsApp", "Semester:", nullptr));
+        yearCourseGradeTagLable->setText(QCoreApplication::translate("sgsApp", "Year:", nullptr));
+        lecturerCourseGradeTagLable->setText(QCoreApplication::translate("sgsApp", "Lecturer:", nullptr));
+        ratingCourseGradeTagLable->setText(QCoreApplication::translate("sgsApp", "Rating:", nullptr));
         label->setText(QCoreApplication::translate("sgsApp", "Add Course Widget", nullptr));
     } // retranslateUi
 
