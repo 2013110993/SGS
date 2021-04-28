@@ -256,38 +256,7 @@ void Register::on_registerTableWidget_ProgramSequenceTable()
          ui->programSequenceTable_registerTableWidget->insertRow(rowCount);
 //         ui->programSequenceTable_registerTableWidget->setColumnWidth(0,80);
 //         ui->programSequenceTable_registerTableWidget->setColumnWidth(1,200);
-//         ui->programSequenceTable_registerTableWidget->setColumnWidth(2,48Q
-
-
-
-         +++
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-         );
+//         ui->programSequenceTable_registerTableWidget->setColumnWidth(2,48);
 //         ui->programSequenceTable_registerTableWidget->setColumnWidth(3,40);
 //         ui->programSequenceTable_registerTableWidget->setColumnWidth(4,200);
 //         ui->programSequenceTable_registerTableWidget->setColumnWidth(5,60);

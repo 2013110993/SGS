@@ -23,7 +23,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStackedWidget>
-#include <QtWidgets/QTableView>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -79,20 +79,21 @@ public:
     QPushButton *signUpNextButton;
     QWidget *academic;
     QGroupBox *academicGroupBox;
-    QHBoxLayout *horizontalLayout_6;
+    QPushButton *filterSearchButton;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QLabel *facultyLabel;
     QComboBox *facultyComboBox;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout_5;
     QLabel *programLabel;
     QComboBox *programComboBox;
-    QPushButton *filterSearchButton;
-    QTableView *tableView;
     QGroupBox *groupBoxRegBottom;
-    QWidget *layoutWidget1;
+    QWidget *layoutWidget11;
     QHBoxLayout *horizontalLayout;
     QPushButton *backSignUpButton;
     QPushButton *signUpButton;
+    QTableWidget *programSequenceTable_registerTableWidget;
 
     void setupUi(QDialog *Register)
     {
@@ -423,55 +424,14 @@ public:
         academic->setObjectName(QString::fromUtf8("academic"));
         academicGroupBox = new QGroupBox(academic);
         academicGroupBox->setObjectName(QString::fromUtf8("academicGroupBox"));
-        academicGroupBox->setGeometry(QRect(0, 10, 771, 63));
+        academicGroupBox->setGeometry(QRect(0, 10, 771, 71));
         academicGroupBox->setMinimumSize(QSize(0, 0));
         academicGroupBox->setMaximumSize(QSize(16777215, 16777215));
         academicGroupBox->setStyleSheet(QString::fromUtf8("color:#666;\n"
 "background:#f1f1f1;"));
-        horizontalLayout_6 = new QHBoxLayout(academicGroupBox);
-        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        facultyLabel = new QLabel(academicGroupBox);
-        facultyLabel->setObjectName(QString::fromUtf8("facultyLabel"));
-        facultyLabel->setFont(font1);
-        facultyLabel->setStyleSheet(QString::fromUtf8("background-color:none;"));
-        facultyLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        horizontalLayout_2->addWidget(facultyLabel);
-
-        facultyComboBox = new QComboBox(academicGroupBox);
-        facultyComboBox->addItem(QString());
-        facultyComboBox->setObjectName(QString::fromUtf8("facultyComboBox"));
-
-        horizontalLayout_2->addWidget(facultyComboBox);
-
-
-        horizontalLayout_6->addLayout(horizontalLayout_2);
-
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        programLabel = new QLabel(academicGroupBox);
-        programLabel->setObjectName(QString::fromUtf8("programLabel"));
-        programLabel->setFont(font1);
-        programLabel->setStyleSheet(QString::fromUtf8("background-color:none;"));
-        programLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        horizontalLayout_5->addWidget(programLabel);
-
-        programComboBox = new QComboBox(academicGroupBox);
-        programComboBox->addItem(QString());
-        programComboBox->addItem(QString());
-        programComboBox->addItem(QString());
-        programComboBox->setObjectName(QString::fromUtf8("programComboBox"));
-
-        horizontalLayout_5->addWidget(programComboBox);
-
-
-        horizontalLayout_6->addLayout(horizontalLayout_5);
-
         filterSearchButton = new QPushButton(academicGroupBox);
         filterSearchButton->setObjectName(QString::fromUtf8("filterSearchButton"));
+        filterSearchButton->setGeometry(QRect(511, 29, 251, 26));
         filterSearchButton->setStyleSheet(QString::fromUtf8("background:#fbaf01;\n"
 "color: #ffffff;\n"
 "border:0;\n"
@@ -481,25 +441,61 @@ public:
         icon2.addFile(QString::fromUtf8(":/icons White/Icons/White/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
         filterSearchButton->setIcon(icon2);
         filterSearchButton->setAutoDefault(false);
+        layoutWidget1 = new QWidget(academicGroupBox);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(40, 30, 189, 32));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        facultyLabel = new QLabel(layoutWidget1);
+        facultyLabel->setObjectName(QString::fromUtf8("facultyLabel"));
+        facultyLabel->setFont(font1);
+        facultyLabel->setStyleSheet(QString::fromUtf8("background-color:none;"));
+        facultyLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        horizontalLayout_6->addWidget(filterSearchButton);
+        horizontalLayout_2->addWidget(facultyLabel);
 
-        tableView = new QTableView(academic);
-        tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(0, 80, 771, 511));
+        facultyComboBox = new QComboBox(layoutWidget1);
+        facultyComboBox->addItem(QString());
+        facultyComboBox->setObjectName(QString::fromUtf8("facultyComboBox"));
+
+        horizontalLayout_2->addWidget(facultyComboBox);
+
+        layoutWidget2 = new QWidget(academicGroupBox);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(270, 30, 201, 32));
+        horizontalLayout_5 = new QHBoxLayout(layoutWidget2);
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
+        programLabel = new QLabel(layoutWidget2);
+        programLabel->setObjectName(QString::fromUtf8("programLabel"));
+        programLabel->setFont(font1);
+        programLabel->setStyleSheet(QString::fromUtf8("background-color:none;"));
+        programLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        horizontalLayout_5->addWidget(programLabel);
+
+        programComboBox = new QComboBox(layoutWidget2);
+        programComboBox->addItem(QString());
+        programComboBox->addItem(QString());
+        programComboBox->addItem(QString());
+        programComboBox->setObjectName(QString::fromUtf8("programComboBox"));
+
+        horizontalLayout_5->addWidget(programComboBox);
+
         groupBoxRegBottom = new QGroupBox(academic);
         groupBoxRegBottom->setObjectName(QString::fromUtf8("groupBoxRegBottom"));
         groupBoxRegBottom->setGeometry(QRect(-10, 590, 800, 60));
         groupBoxRegBottom->setMinimumSize(QSize(800, 60));
         groupBoxRegBottom->setMaximumSize(QSize(800, 60));
         groupBoxRegBottom->setStyleSheet(QString::fromUtf8("background:#3a444c;"));
-        layoutWidget1 = new QWidget(groupBoxRegBottom);
-        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(220, 10, 251, 42));
-        horizontalLayout = new QHBoxLayout(layoutWidget1);
+        layoutWidget11 = new QWidget(groupBoxRegBottom);
+        layoutWidget11->setObjectName(QString::fromUtf8("layoutWidget11"));
+        layoutWidget11->setGeometry(QRect(220, 10, 251, 42));
+        horizontalLayout = new QHBoxLayout(layoutWidget11);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        backSignUpButton = new QPushButton(layoutWidget1);
+        backSignUpButton = new QPushButton(layoutWidget11);
         backSignUpButton->setObjectName(QString::fromUtf8("backSignUpButton"));
         backSignUpButton->setStyleSheet(QString::fromUtf8("color: #ffffff;\n"
 "border:0;\n"
@@ -511,7 +507,7 @@ public:
 
         horizontalLayout->addWidget(backSignUpButton);
 
-        signUpButton = new QPushButton(layoutWidget1);
+        signUpButton = new QPushButton(layoutWidget11);
         signUpButton->setObjectName(QString::fromUtf8("signUpButton"));
         signUpButton->setStyleSheet(QString::fromUtf8("background:#fbaf01;\n"
 "color: #ffffff;\n"
@@ -525,11 +521,15 @@ public:
 
         horizontalLayout->addWidget(signUpButton);
 
+        programSequenceTable_registerTableWidget = new QTableWidget(academic);
+        programSequenceTable_registerTableWidget->setObjectName(QString::fromUtf8("programSequenceTable_registerTableWidget"));
+        programSequenceTable_registerTableWidget->setGeometry(QRect(0, 90, 771, 311));
+        programSequenceTable_registerTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
         stackedWidgetRegister->addWidget(academic);
 
         retranslateUi(Register);
 
-        stackedWidgetRegister->setCurrentIndex(0);
+        stackedWidgetRegister->setCurrentIndex(1);
         signUpNextButton->setDefault(false);
         filterSearchButton->setDefault(false);
         signUpButton->setDefault(false);
@@ -576,6 +576,7 @@ public:
         cancelSignUpButton->setText(QCoreApplication::translate("Register", "Sign instead", nullptr));
         signUpNextButton->setText(QCoreApplication::translate("Register", "Next", nullptr));
         academicGroupBox->setTitle(QCoreApplication::translate("Register", "Academic Info", nullptr));
+        filterSearchButton->setText(QCoreApplication::translate("Register", "Filter Search", nullptr));
         facultyLabel->setText(QCoreApplication::translate("Register", "Faculty:", nullptr));
         facultyComboBox->setItemText(0, QCoreApplication::translate("Register", "Select Faculty", nullptr));
 
@@ -584,7 +585,6 @@ public:
         programComboBox->setItemText(1, QCoreApplication::translate("Register", "Associates", nullptr));
         programComboBox->setItemText(2, QCoreApplication::translate("Register", "Bachelors", nullptr));
 
-        filterSearchButton->setText(QCoreApplication::translate("Register", "Filter Search", nullptr));
         groupBoxRegBottom->setTitle(QString());
         backSignUpButton->setText(QCoreApplication::translate("Register", "Back", nullptr));
         signUpButton->setText(QCoreApplication::translate("Register", "  Create", nullptr));
