@@ -107,10 +107,13 @@ void sgsApp::on_signInButton_clicked()
         QString username = ui->usernameInput->text();
         QString password = ui->passwordInput->text();
 
-//           if (username == "admin" && password == "admin")
-//           {
-//               ui->stackedWidgetSGS->setCurrentIndex(1);
-//           }
+            // ///////////////////////////////////////
+           //       Hardcode Login to test
+           // /////////////////////////////////////////
+        if (username == "admin" && password == "admin")
+           {
+               ui->stackedWidgetSGS->setCurrentIndex(1);
+           }
 
         bool checking = connection->loginUser(username,password);
         qDebug()<<connection->getRole();
