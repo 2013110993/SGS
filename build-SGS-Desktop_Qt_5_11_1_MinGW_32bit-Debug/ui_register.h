@@ -80,20 +80,20 @@ public:
     QWidget *academic;
     QGroupBox *academicGroupBox;
     QPushButton *filterSearchButton;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QLabel *facultyLabel;
     QComboBox *facultyComboBox;
-    QWidget *widget1;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout_5;
     QLabel *programLabel;
     QComboBox *programComboBox;
     QGroupBox *groupBoxRegBottom;
-    QWidget *layoutWidget1;
+    QWidget *layoutWidget11;
     QHBoxLayout *horizontalLayout;
     QPushButton *backSignUpButton;
     QPushButton *signUpButton;
-    QTableWidget *registerTableWidget;
+    QTableWidget *programSequenceTable_registerTableWidget;
 
     void setupUi(QDialog *Register)
     {
@@ -441,13 +441,13 @@ public:
         icon2.addFile(QStringLiteral(":/icons White/Icons/White/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
         filterSearchButton->setIcon(icon2);
         filterSearchButton->setAutoDefault(false);
-        widget = new QWidget(academicGroupBox);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(40, 30, 189, 32));
-        horizontalLayout_2 = new QHBoxLayout(widget);
+        layoutWidget1 = new QWidget(academicGroupBox);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(40, 30, 189, 32));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        facultyLabel = new QLabel(widget);
+        facultyLabel = new QLabel(layoutWidget1);
         facultyLabel->setObjectName(QStringLiteral("facultyLabel"));
         facultyLabel->setFont(font1);
         facultyLabel->setStyleSheet(QStringLiteral("background-color:none;"));
@@ -455,19 +455,19 @@ public:
 
         horizontalLayout_2->addWidget(facultyLabel);
 
-        facultyComboBox = new QComboBox(widget);
+        facultyComboBox = new QComboBox(layoutWidget1);
         facultyComboBox->addItem(QString());
         facultyComboBox->setObjectName(QStringLiteral("facultyComboBox"));
 
         horizontalLayout_2->addWidget(facultyComboBox);
 
-        widget1 = new QWidget(academicGroupBox);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(270, 30, 201, 32));
-        horizontalLayout_5 = new QHBoxLayout(widget1);
+        layoutWidget2 = new QWidget(academicGroupBox);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(270, 30, 201, 32));
+        horizontalLayout_5 = new QHBoxLayout(layoutWidget2);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
-        programLabel = new QLabel(widget1);
+        programLabel = new QLabel(layoutWidget2);
         programLabel->setObjectName(QStringLiteral("programLabel"));
         programLabel->setFont(font1);
         programLabel->setStyleSheet(QStringLiteral("background-color:none;"));
@@ -475,7 +475,7 @@ public:
 
         horizontalLayout_5->addWidget(programLabel);
 
-        programComboBox = new QComboBox(widget1);
+        programComboBox = new QComboBox(layoutWidget2);
         programComboBox->addItem(QString());
         programComboBox->addItem(QString());
         programComboBox->addItem(QString());
@@ -489,13 +489,13 @@ public:
         groupBoxRegBottom->setMinimumSize(QSize(800, 60));
         groupBoxRegBottom->setMaximumSize(QSize(800, 60));
         groupBoxRegBottom->setStyleSheet(QStringLiteral("background:#3a444c;"));
-        layoutWidget1 = new QWidget(groupBoxRegBottom);
-        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(220, 10, 251, 42));
-        horizontalLayout = new QHBoxLayout(layoutWidget1);
+        layoutWidget11 = new QWidget(groupBoxRegBottom);
+        layoutWidget11->setObjectName(QStringLiteral("layoutWidget11"));
+        layoutWidget11->setGeometry(QRect(220, 10, 251, 42));
+        horizontalLayout = new QHBoxLayout(layoutWidget11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        backSignUpButton = new QPushButton(layoutWidget1);
+        backSignUpButton = new QPushButton(layoutWidget11);
         backSignUpButton->setObjectName(QStringLiteral("backSignUpButton"));
         backSignUpButton->setStyleSheet(QLatin1String("color: #ffffff;\n"
 "border:0;\n"
@@ -507,7 +507,7 @@ public:
 
         horizontalLayout->addWidget(backSignUpButton);
 
-        signUpButton = new QPushButton(layoutWidget1);
+        signUpButton = new QPushButton(layoutWidget11);
         signUpButton->setObjectName(QStringLiteral("signUpButton"));
         signUpButton->setStyleSheet(QLatin1String("background:#fbaf01;\n"
 "color: #ffffff;\n"
@@ -521,15 +521,15 @@ public:
 
         horizontalLayout->addWidget(signUpButton);
 
-        registerTableWidget = new QTableWidget(academic);
-        registerTableWidget->setObjectName(QStringLiteral("registerTableWidget"));
-        registerTableWidget->setGeometry(QRect(0, 90, 771, 311));
-        registerTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        programSequenceTable_registerTableWidget = new QTableWidget(academic);
+        programSequenceTable_registerTableWidget->setObjectName(QStringLiteral("programSequenceTable_registerTableWidget"));
+        programSequenceTable_registerTableWidget->setGeometry(QRect(0, 90, 771, 311));
+        programSequenceTable_registerTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
         stackedWidgetRegister->addWidget(academic);
 
         retranslateUi(Register);
 
-        stackedWidgetRegister->setCurrentIndex(1);
+        stackedWidgetRegister->setCurrentIndex(0);
         signUpNextButton->setDefault(false);
         filterSearchButton->setDefault(false);
         signUpButton->setDefault(false);

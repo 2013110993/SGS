@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Register_t {
-    QByteArrayData data[15];
-    char stringdata0[295];
+    QByteArrayData data[13];
+    char stringdata0[291];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,9 +43,7 @@ QT_MOC_LITERAL(8, 192, 4), // "arg1"
 QT_MOC_LITERAL(9, 197, 23), // "on_signUpButton_clicked"
 QT_MOC_LITERAL(10, 221, 15), // "recieveQuestion"
 QT_MOC_LITERAL(11, 237, 9), // "QSqlQuery"
-QT_MOC_LITERAL(12, 247, 36), // "on_registerTableWidget_cellAc..."
-QT_MOC_LITERAL(13, 284, 3), // "row"
-QT_MOC_LITERAL(14, 288, 6) // "column"
+QT_MOC_LITERAL(12, 247, 43) // "on_registerTableWidget_Progra..."
 
     },
     "Register\0on_signUpNextButton_clicked\0"
@@ -56,8 +54,7 @@ QT_MOC_LITERAL(14, 288, 6) // "column"
     "on_middleNamecheckBox_stateChanged\0"
     "arg1\0on_signUpButton_clicked\0"
     "recieveQuestion\0QSqlQuery\0"
-    "on_registerTableWidget_cellActivated\0"
-    "row\0column"
+    "on_registerTableWidget_ProgramSequenceTable"
 };
 #undef QT_MOC_LITERAL
 
@@ -83,7 +80,7 @@ static const uint qt_meta_data_Register[] = {
        7,    1,   64,    2, 0x08 /* Private */,
        9,    0,   67,    2, 0x08 /* Private */,
       10,    1,   68,    2, 0x08 /* Private */,
-      12,    2,   71,    2, 0x08 /* Private */,
+      12,    0,   71,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -94,7 +91,7 @@ static const uint qt_meta_data_Register[] = {
     QMetaType::Void, QMetaType::Int,    8,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 11,    2,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int,   13,   14,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -113,7 +110,7 @@ void Register::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 5: _t->on_middleNamecheckBox_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 6: _t->on_signUpButton_clicked(); break;
         case 7: _t->recieveQuestion((*reinterpret_cast< QSqlQuery(*)>(_a[1]))); break;
-        case 8: _t->on_registerTableWidget_cellActivated((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 8: _t->on_registerTableWidget_ProgramSequenceTable(); break;
         default: ;
         }
     }

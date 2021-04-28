@@ -107,7 +107,7 @@ background: none;</string>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="personInfo">
     <widget class="QGroupBox" name="userInfogroupBox_2">
@@ -958,7 +958,7 @@ border-radius:5px;</string>
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -998,7 +998,7 @@ border-radius:5px;</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -1130,7 +1130,7 @@ border-radius:5px;</string>
       </layout>
      </widget>
     </widget>
-    <widget class="QTableWidget" name="registerTableWidget">
+    <widget class="QTableWidget" name="programSequenceTable_registerTableWidget">
      <property name="geometry">
       <rect>
        <x>0</x>

@@ -87,7 +87,7 @@ public:
     QPlainTextEdit *addCourseComment_plainTextEdit;
     QLabel *label_2;
     QLineEdit *addCourseLecturer_RegFormLineEdit;
-    QPushButton *addCourse_pushButton;
+    QPushButton *updateCourse_pushButton;
     QComboBox *addCourseRatingcomboBox;
     QLabel *courseCode_CourseGradeLable;
     QLabel *courseName_courseGradeLable;
@@ -471,10 +471,11 @@ public:
         addCourseComment_plainTextEdit = new QPlainTextEdit(addCourseFrame);
         addCourseComment_plainTextEdit->setObjectName(QStringLiteral("addCourseComment_plainTextEdit"));
         addCourseComment_plainTextEdit->setGeometry(QRect(10, 300, 431, 101));
-        addCourseComment_plainTextEdit->setStyleSheet(QStringLiteral("Background:#fff;"));
+        addCourseComment_plainTextEdit->setStyleSheet(QStringLiteral("Background:#fff; color:#333;"));
         label_2 = new QLabel(addCourseFrame);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(10, 280, 121, 16));
+        label_2->setStyleSheet(QStringLiteral("color:#666"));
         addCourseLecturer_RegFormLineEdit = new QLineEdit(addCourseFrame);
         addCourseLecturer_RegFormLineEdit->setObjectName(QStringLiteral("addCourseLecturer_RegFormLineEdit"));
         addCourseLecturer_RegFormLineEdit->setEnabled(true);
@@ -483,17 +484,17 @@ public:
         addCourseLecturer_RegFormLineEdit->setMaximumSize(QSize(16777215, 30));
         addCourseLecturer_RegFormLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
 "color: #333;"));
-        addCourse_pushButton = new QPushButton(addCourseFrame);
-        addCourse_pushButton->setObjectName(QStringLiteral("addCourse_pushButton"));
-        addCourse_pushButton->setGeometry(QRect(342, 420, 91, 32));
-        addCourse_pushButton->setStyleSheet(QLatin1String("background:#fbaf01;\n"
+        updateCourse_pushButton = new QPushButton(addCourseFrame);
+        updateCourse_pushButton->setObjectName(QStringLiteral("updateCourse_pushButton"));
+        updateCourse_pushButton->setGeometry(QRect(342, 420, 91, 32));
+        updateCourse_pushButton->setStyleSheet(QLatin1String("background:#fbaf01;\n"
 "color: #ffffff;\n"
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
         QIcon icon6;
         icon6.addFile(QStringLiteral(":/icons White/Icons/White/Edit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addCourse_pushButton->setIcon(icon6);
+        updateCourse_pushButton->setIcon(icon6);
         addCourseRatingcomboBox = new QComboBox(addCourseFrame);
         addCourseRatingcomboBox->addItem(QString());
         addCourseRatingcomboBox->addItem(QString());
@@ -507,23 +508,23 @@ public:
         courseCode_CourseGradeLable = new QLabel(addCourseFrame);
         courseCode_CourseGradeLable->setObjectName(QStringLiteral("courseCode_CourseGradeLable"));
         courseCode_CourseGradeLable->setGeometry(QRect(10, 100, 81, 16));
-        courseCode_CourseGradeLable->setStyleSheet(QStringLiteral("color:#666"));
+        courseCode_CourseGradeLable->setStyleSheet(QStringLiteral("color:#000"));
         courseName_courseGradeLable = new QLabel(addCourseFrame);
         courseName_courseGradeLable->setObjectName(QStringLiteral("courseName_courseGradeLable"));
         courseName_courseGradeLable->setGeometry(QRect(100, 100, 171, 16));
-        courseName_courseGradeLable->setStyleSheet(QStringLiteral("color:#666"));
+        courseName_courseGradeLable->setStyleSheet(QStringLiteral("color:#000"));
         credit_CourseGradeLable = new QLabel(addCourseFrame);
         credit_CourseGradeLable->setObjectName(QStringLiteral("credit_CourseGradeLable"));
         credit_CourseGradeLable->setGeometry(QRect(390, 100, 41, 16));
-        credit_CourseGradeLable->setStyleSheet(QStringLiteral("color:#666"));
+        credit_CourseGradeLable->setStyleSheet(QStringLiteral("color:#000"));
         semester_CourseGradeLable = new QLabel(addCourseFrame);
         semester_CourseGradeLable->setObjectName(QStringLiteral("semester_CourseGradeLable"));
         semester_CourseGradeLable->setGeometry(QRect(10, 230, 71, 16));
-        semester_CourseGradeLable->setStyleSheet(QStringLiteral("color:#666"));
+        semester_CourseGradeLable->setStyleSheet(QStringLiteral("color:#000"));
         allPrerequisites_CourseGradeLable = new QLabel(addCourseFrame);
         allPrerequisites_CourseGradeLable->setObjectName(QStringLiteral("allPrerequisites_CourseGradeLable"));
         allPrerequisites_CourseGradeLable->setGeometry(QRect(10, 160, 421, 16));
-        allPrerequisites_CourseGradeLable->setStyleSheet(QStringLiteral("color:#666"));
+        allPrerequisites_CourseGradeLable->setStyleSheet(QStringLiteral("color:#000"));
         addCourseRatingcomboBox_2 = new QComboBox(addCourseFrame);
         addCourseRatingcomboBox_2->addItem(QString());
         addCourseRatingcomboBox_2->addItem(QString());
@@ -539,34 +540,43 @@ public:
         courseYear_CourseGradeLable = new QLabel(addCourseFrame);
         courseYear_CourseGradeLable->setObjectName(QStringLiteral("courseYear_CourseGradeLable"));
         courseYear_CourseGradeLable->setGeometry(QRect(90, 230, 51, 16));
-        courseYear_CourseGradeLable->setStyleSheet(QStringLiteral("color:#666"));
+        courseYear_CourseGradeLable->setStyleSheet(QStringLiteral("color:#000"));
         codeCourseGradeTagLable = new QLabel(addCourseFrame);
         codeCourseGradeTagLable->setObjectName(QStringLiteral("codeCourseGradeTagLable"));
         codeCourseGradeTagLable->setGeometry(QRect(10, 70, 60, 16));
+        codeCourseGradeTagLable->setStyleSheet(QStringLiteral("color:#666"));
         courseNameCourseGradeTagLable = new QLabel(addCourseFrame);
         courseNameCourseGradeTagLable->setObjectName(QStringLiteral("courseNameCourseGradeTagLable"));
         courseNameCourseGradeTagLable->setGeometry(QRect(100, 70, 91, 16));
+        courseNameCourseGradeTagLable->setStyleSheet(QStringLiteral("color:#666"));
         gradeCourseGradeTagLable = new QLabel(addCourseFrame);
         gradeCourseGradeTagLable->setObjectName(QStringLiteral("gradeCourseGradeTagLable"));
         gradeCourseGradeTagLable->setGeometry(QRect(290, 70, 81, 16));
+        gradeCourseGradeTagLable->setStyleSheet(QStringLiteral("color:#666"));
         gradeCourseGradeTagLable_2 = new QLabel(addCourseFrame);
         gradeCourseGradeTagLable_2->setObjectName(QStringLiteral("gradeCourseGradeTagLable_2"));
         gradeCourseGradeTagLable_2->setGeometry(QRect(390, 70, 41, 16));
+        gradeCourseGradeTagLable_2->setStyleSheet(QStringLiteral("color:#666"));
         prerequisitesCourseGradeTagLable = new QLabel(addCourseFrame);
         prerequisitesCourseGradeTagLable->setObjectName(QStringLiteral("prerequisitesCourseGradeTagLable"));
         prerequisitesCourseGradeTagLable->setGeometry(QRect(10, 140, 91, 16));
+        prerequisitesCourseGradeTagLable->setStyleSheet(QStringLiteral("color:#666"));
         gradeCourseGradeTagLable_3 = new QLabel(addCourseFrame);
         gradeCourseGradeTagLable_3->setObjectName(QStringLiteral("gradeCourseGradeTagLable_3"));
         gradeCourseGradeTagLable_3->setGeometry(QRect(10, 210, 61, 16));
+        gradeCourseGradeTagLable_3->setStyleSheet(QStringLiteral("color:#666"));
         yearCourseGradeTagLable = new QLabel(addCourseFrame);
         yearCourseGradeTagLable->setObjectName(QStringLiteral("yearCourseGradeTagLable"));
         yearCourseGradeTagLable->setGeometry(QRect(90, 210, 31, 16));
+        yearCourseGradeTagLable->setStyleSheet(QStringLiteral("color:#666"));
         lecturerCourseGradeTagLable = new QLabel(addCourseFrame);
         lecturerCourseGradeTagLable->setObjectName(QStringLiteral("lecturerCourseGradeTagLable"));
         lecturerCourseGradeTagLable->setGeometry(QRect(150, 210, 61, 16));
+        lecturerCourseGradeTagLable->setStyleSheet(QStringLiteral("color:#666"));
         ratingCourseGradeTagLable = new QLabel(addCourseFrame);
         ratingCourseGradeTagLable->setObjectName(QStringLiteral("ratingCourseGradeTagLable"));
         ratingCourseGradeTagLable->setGeometry(QRect(310, 210, 121, 16));
+        ratingCourseGradeTagLable->setStyleSheet(QStringLiteral("color:#666"));
         stackedWidgetPages->addWidget(ViewProgramSequence);
         AddProgramSequence = new QWidget();
         AddProgramSequence->setObjectName(QStringLiteral("AddProgramSequence"));
@@ -662,7 +672,7 @@ public:
         label_2->setText(QApplication::translate("sgsApp", "CourseComments:", nullptr));
         addCourseLecturer_RegFormLineEdit->setText(QString());
         addCourseLecturer_RegFormLineEdit->setPlaceholderText(QApplication::translate("sgsApp", "Lecturer", nullptr));
-        addCourse_pushButton->setText(QApplication::translate("sgsApp", "Update", nullptr));
+        updateCourse_pushButton->setText(QApplication::translate("sgsApp", "Update", nullptr));
         addCourseRatingcomboBox->setItemText(0, QApplication::translate("sgsApp", "Select Rating", nullptr));
         addCourseRatingcomboBox->setItemText(1, QApplication::translate("sgsApp", "Ugly", nullptr));
         addCourseRatingcomboBox->setItemText(2, QApplication::translate("sgsApp", "Bad", nullptr));
