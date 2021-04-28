@@ -110,10 +110,10 @@ void sgsApp::on_signInButton_clicked()
             // ///////////////////////////////////////
            //       Hardcode Login to test
            // /////////////////////////////////////////
-        if (username == "admin" && password == "admin")
-           {
-               ui->stackedWidgetSGS->setCurrentIndex(1);
-           }
+//        if (username == "admin" && password == "admin")
+//           {
+//               ui->stackedWidgetSGS->setCurrentIndex(1);
+//           }
 
         bool checking = connection->loginUser(username,password);
         qDebug()<<connection->getRole();
@@ -294,14 +294,14 @@ void sgsApp::programSequenceList()
 
     int rowCount = 0;
 
-    for(int i = 0; i< 24; i++){
+    for(int i = 0; i< 1; i++){
 
          ui->programSequenceTableWidget->insertRow(rowCount);
          ui->programSequenceTableWidget->setColumnWidth(0,80);
-         ui->programSequenceTableWidget->setColumnWidth(1,220);
+         ui->programSequenceTableWidget->setColumnWidth(1,200);
          ui->programSequenceTableWidget->setColumnWidth(2,48);
          ui->programSequenceTableWidget->setColumnWidth(3,40);
-         ui->programSequenceTableWidget->setColumnWidth(4,150);
+         ui->programSequenceTableWidget->setColumnWidth(4,200);
          ui->programSequenceTableWidget->setColumnWidth(5,60);
          ui->programSequenceTableWidget->setColumnWidth(6,40);
 
@@ -336,3 +336,22 @@ void sgsApp::programSequenceList()
 }
 
 
+
+void sgsApp::on_programSequenceTableWidget_cellClicked(int row, int column)
+{
+    QString courseCode = ui->programSequenceTableWidget->item(row,0)->text();
+    QString courseName =  ui->programSequenceTableWidget->item(row,1)->text();
+    QString credits = ui->programSequenceTableWidget->item(row,2)->text();
+    QString prerequisites = ui->programSequenceTableWidget->item(row,4)->text();
+    QString semester = ui->programSequenceTableWidget->item(row,5)->text();
+    QString year = ui->programSequenceTableWidget->item(row,6)->text();
+
+    ui->courseCode_CourseGradeLable->setText(courseCode);
+    ui->courseName_courseGradeLable->setText(courseName);
+    ui->credit_CourseGradeLable->setText(credits);
+    ui->allPrerequisites_CourseGradeLable->setText(prerequisites);
+    ui->semester_CourseGradeLable->setText(semester);
+    ui->courseYear_CourseGradeLable->setText(year);
+
+
+}

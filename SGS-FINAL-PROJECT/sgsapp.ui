@@ -908,7 +908,7 @@ background-repeat: no-repeat;</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="DashboardPage">
        <widget class="QLabel" name="TMPlabel_2">
@@ -1230,7 +1230,7 @@ border-radius:5px;</string>
           <string>Course Name</string>
          </property>
         </widget>
-        <widget class="QLabel" name="courseCode_CourseGradeLable_2">
+        <widget class="QLabel" name="credit_CourseGradeLable">
          <property name="geometry">
           <rect>
            <x>390</x>
@@ -1246,7 +1246,7 @@ border-radius:5px;</string>
           <string>Credit</string>
          </property>
         </widget>
-        <widget class="QLabel" name="courseCode_CourseGradeLable_3">
+        <widget class="QLabel" name="semester_CourseGradeLable">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -1262,7 +1262,7 @@ border-radius:5px;</string>
           <string>Semester</string>
          </property>
         </widget>
-        <widget class="QLabel" name="courseCode_CourseGradeLable_4">
+        <widget class="QLabel" name="allPrerequisites_CourseGradeLable">
          <property name="geometry">
           <rect>
            <x>10</x>

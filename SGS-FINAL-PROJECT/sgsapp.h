@@ -59,6 +59,8 @@ private slots:
 
     void on_viewStudentProgramSequence_Button_clicked();
 
+    void on_programSequenceTableWidget_cellClicked(int row, int column);
+
 private:
     Ui::sgsApp *ui;
     forgotPassword * forgot;
