@@ -23,9 +23,9 @@ forgotPassword::~forgotPassword()
 
 void forgotPassword::on_forgotPasswordResetButton_clicked()
 {
-     QString confirmPassword = ui->confirmPassword_forgotFormLineEdit->text(); //first question answer line edit
-     QString newPassword = ui->newPassword_forgotFormLineEdit->text(); //first question answer line edit
-     qDebug()<<(ui->confirmPassword_forgotFormLineEdit == ui->newPassword_forgotFormLineEdit &&  (confirmPassword.isEmpty()) && (newPassword.isEmpty()));
+    QString confirmPassword = ui->confirmPassword_forgotFormLineEdit->text(); //first question answer line edit
+    QString newPassword = ui->newPassword_forgotFormLineEdit->text(); //first question answer line edit
+    qDebug()<<(ui->confirmPassword_forgotFormLineEdit == ui->newPassword_forgotFormLineEdit &&  (confirmPassword.isEmpty()) && (newPassword.isEmpty()));
     if(ui->confirmPassword_forgotFormLineEdit->text() == ui->newPassword_forgotFormLineEdit->text() &&  !(confirmPassword.isEmpty()) && !(newPassword.isEmpty())) //&&
     {
         connect.resetPassword(newPassword);
@@ -61,6 +61,73 @@ void forgotPassword::on_lecturerAccountTypeRadioButton_clicked()
 
 void forgotPassword::on_accountLostResetButton_clicked()
 {
+    try
+    {
+        //displays window for full account reset
+        if(ui->studentAccountTypeRadioButton->isChecked())
+        {
+
+            QSqlQuery accountInfo = connect.getUserInfo(ui->studentIdForgotFormLineEdit->text(), 0);
+            if (accountInfo.size() > 0)
+            {
+                QMessageBox msgBox;
+                msgBox.setText("Account Found, Select question and input your answer");
+                msgBox.exec();
+
+                //show Security Questions after Search
+                ui->securityQuestiongroupBox->show();
+
+                int var =0;
+                while (accountInfo.next())
+                {
+                    correctanswer[var]= accountInfo.value(1).toString();
+                    qDebug()<< correctanswer[var];
+                    ui->securityQuestionsForgotFormcomboBox->addItem(accountInfo.value(2).toString());
+                    var ++;
+                }
+
+                ui->stackedWidgetResetPassword->setCurrentIndex(1);
+                //ui->securityQuestiongroupBox->show();
+                ui->accountLostResetButton->hide();
+            }
+            else
+            {
+
+                throw "No Such account found on the system, please enter a correct ID";
+            }
+
+        }
+        else
+        {
+            QSqlQuery accountInfo = connect.getUserInfo(ui->lecturerForgotFormLineEdit->text(), 1);
+            if (accountInfo.size() > 0)
+            {
+                QMessageBox msgBox;
+                msgBox.setText("Account Found, Select question and input your answer");
+                msgBox.exec();
+                int var =0;
+                while (accountInfo.next())
+                {
+                    correctanswer[var]= accountInfo.value(1).toString();
+                    qDebug()<< correctanswer[var];
+                    ui->securityQuestionsForgotFormcomboBox->addItem(accountInfo.value(2).toString());
+                    var ++;
+                }
+                ui->securityQuestiongroupBox->show();
+            }
+            else
+            {
+                throw "No Such account found on the system, please enter a correct ID";
+            }
+
+        }
+    }
+    catch (const char *message)
+    {
+        QMessageBox messagebox;
+        messagebox.warning(NULL,"Error",message);
+    }
+    /*
     //displays window for full account reset
     if(ui->studentAccountTypeRadioButton->isChecked())
     {
@@ -75,7 +142,7 @@ void forgotPassword::on_accountLostResetButton_clicked()
             //show Security Questions after Search
             ui->securityQuestiongroupBox->show();
 
-             int var =0;
+            int var =0;
             while (accountInfo.next())
             {
                 correctanswer[var]= accountInfo.value(1).toString();
@@ -102,7 +169,7 @@ void forgotPassword::on_accountLostResetButton_clicked()
             QMessageBox msgBox;
             msgBox.setText("Account Found, Select question and input your answer");
             msgBox.exec();
-             int var =0;
+            int var =0;
             while (accountInfo.next())
             {
                 correctanswer[var]= accountInfo.value(1).toString();
@@ -116,34 +183,62 @@ void forgotPassword::on_accountLostResetButton_clicked()
             QMessageBox::warning(this,"Error","No Such account found on the system, please enter a correct ID");
         }
 
-    }
+    }*/
 
 }
 
 void forgotPassword::on_checkAnswerResetButton_clicked()
 {
-   //Creates and displays security questions stored with the user to allow for updating of password
-    int selectQuestion = ui->securityQuestionsForgotFormcomboBox->currentIndex();
-    QString answer = ui->QuestionAnswer_forgotFormLineEdit->text();
-    qDebug()<<answer;
-    selectQuestion--;
-    qDebug()<<correctanswer[selectQuestion];
-    qDebug()<<(correctanswer[selectQuestion] == answer);
-    if(correctanswer[selectQuestion] == answer)
-    {
-        QMessageBox msgBox;
-        msgBox.setText("Answer accepted");
-        msgBox.exec();
 
-        //show Security Questions after Search
-        ui->stackedWidgetResetPassword->setCurrentIndex(2);
-        ui->resetPasswordGroupBox->show();
-        //ui->checkAnswerResetButton->hide();
+    try
+    {
+        //Creates and displays security questions stored with the user to allow for updating of password
+        int selectQuestion = ui->securityQuestionsForgotFormcomboBox->currentIndex();
+        QString answer = ui->QuestionAnswer_forgotFormLineEdit->text();
+        qDebug()<<answer;
+        qDebug()<<correctanswer[selectQuestion]<<"hellohello";
+        qDebug()<<(correctanswer[selectQuestion] == answer);
+
+        if (selectQuestion == 0)
+        {
+            qDebug()<<"Entro";
+            throw  "Question is not slected";
+        }
+        else if(answer == NULL)  //throws exception is Answer line edit is empty
+        {
+            throw  "Answer is Empty";
+
+        }
+        else //if everyting is correct it will succesfully proceed
+        {
+            --selectQuestion;
+            if(correctanswer[selectQuestion] == answer)
+            {
+                QMessageBox msgBox;
+                msgBox.setText("Answer accepted");
+                msgBox.exec();
+
+                //show Security Questions after Search
+                ui->stackedWidgetResetPassword->setCurrentIndex(2);
+                ui->resetPasswordGroupBox->show();
+                //ui->checkAnswerResetButton->hide();
+            }
+
+            else
+                    {
+                       throw  "Answer is  Incorrect";
+
+                    }
+
+
+        }
+
 
     }
-    else
+    catch (const char *message)
     {
-        qDebug()<<"error";
+        QMessageBox messagebox;
+        messagebox.warning(NULL,"Error",message);
     }
 
 

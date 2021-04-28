@@ -20,7 +20,7 @@ void databaseconnection::connect()
 {
     QSqlDatabase setConnection = QSqlDatabase::addDatabase("QMYSQL");
     setConnection.setHostName("127.0.0.1");
-    setConnection.setPort(3366);
+    setConnection.setPort(3336);
     setConnection.setUserName("root");
     setConnection.setPassword("");
     setConnection.setDatabaseName("studentgradingsystem");
