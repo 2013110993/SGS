@@ -256,36 +256,15 @@ void Register::on_registerTableWidget_ProgramSequenceTable()
          ui->programSequenceTable_registerTableWidget->insertRow(rowCount);
 //         ui->programSequenceTable_registerTableWidget->setColumnWidth(0,80);
 //         ui->programSequenceTable_registerTableWidget->setColumnWidth(1,200);
-//         ui->programSequenceTable_registerTableWidget->setColumnWidth(2,48);
-//         ui->programSequenceTable_registerTableWidget->setColumnWidth(3,40);
-//         ui->programSequenceTable_registerTableWidget->setColumnWidth(4,200);
-//         ui->programSequenceTable_registerTableWidget->setColumnWidth(5,60);
-//         ui->programSequenceTable_registerTableWidget->setColumnWidth(6,40);
 
-//        QTableWidgetItem *faculty = new QTableWidgetItem;
-//        QTableWidgetItem *programSequence = new QTableWidgetItem;
-//        QTableWidgetItem *programSequence = new QTableWidgetItem;
-//        QTableWidgetItem *grade = new QTableWidgetItem;
-//        QTableWidgetItem *prerequisites = new QTableWidgetItem;
-//        QTableWidgetItem *semester = new QTableWidgetItem;
-//        QTableWidgetItem *year = new QTableWidgetItem;
+        QTableWidgetItem *program = new QTableWidgetItem;
+        QTableWidgetItem *faculty = new QTableWidgetItem;
 
-//        programSequence->setText("CMPS3151");
-//        programSequence->setText("Telecommunications Systems");
-//        programSequence->setText("3");
-//        grade->setText("A");
-//        prerequisites->setText("CMPS1191");
-//        semester->setText("1");
-//        year->setText("1");
+        program->setText("Bachelor Degree");
+        faculty->setText("Faculty of Science & Technology Math, Physics and IT Department");
 
-//        ui->programSequenceTable_registerTableWidget->setItem(rowCount,0,courseCode);
-//        ui->programSequenceTable_registerTableWidget->setItem(rowCount,1,courseName);
-//        ui->programSequenceTable_registerTableWidget->setItem(rowCount,2,credits);
-//        ui->programSequenceTable_registerTableWidget->setItem(rowCount,3,grade);
-//        ui->programSequenceTable_registerTableWidget->setItem(rowCount,4,prerequisites);
-//        ui->programSequenceTable_registerTableWidget->setItem(rowCount,5,semester);
-//        ui->programSequenceTable_registerTableWidget->setItem(rowCount,6,year);
-
+        ui->programSequenceTable_registerTableWidget->setItem(rowCount,0,program);
+        ui->programSequenceTable_registerTableWidget->setItem(rowCount,1,faculty);
 
         rowCount++;
     }

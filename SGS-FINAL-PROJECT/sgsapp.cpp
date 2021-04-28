@@ -332,7 +332,6 @@ void sgsApp::programSequenceList()
 
         rowCount++;
     }
-
 }
 
 
