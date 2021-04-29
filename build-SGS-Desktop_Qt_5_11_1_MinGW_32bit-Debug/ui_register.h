@@ -489,9 +489,9 @@ public:
 
         groupBoxRegBottom = new QGroupBox(academic);
         groupBoxRegBottom->setObjectName(QStringLiteral("groupBoxRegBottom"));
-        groupBoxRegBottom->setGeometry(QRect(-10, 590, 800, 60));
-        groupBoxRegBottom->setMinimumSize(QSize(800, 60));
-        groupBoxRegBottom->setMaximumSize(QSize(800, 60));
+        groupBoxRegBottom->setGeometry(QRect(0, 600, 811, 60));
+        groupBoxRegBottom->setMinimumSize(QSize(811, 60));
+        groupBoxRegBottom->setMaximumSize(QSize(811, 60));
         groupBoxRegBottom->setStyleSheet(QStringLiteral("background:#3a444c;"));
         layoutWidget11 = new QWidget(groupBoxRegBottom);
         layoutWidget11->setObjectName(QStringLiteral("layoutWidget11"));
@@ -564,7 +564,7 @@ public:
 
         retranslateUi(Register);
 
-        stackedWidgetRegister->setCurrentIndex(0);
+        stackedWidgetRegister->setCurrentIndex(1);
         signUpNextButton->setDefault(false);
         filterSearchButton->setDefault(false);
         signUpButton->setDefault(false);
