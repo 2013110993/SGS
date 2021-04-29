@@ -100,20 +100,20 @@ background: none;</string>
   <widget class="QStackedWidget" name="stackedWidgetRegister">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>0</x>
      <y>60</y>
-     <width>811</width>
+     <width>821</width>
      <height>661</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="personInfo">
     <widget class="QGroupBox" name="userInfogroupBox_2">
      <property name="geometry">
       <rect>
-       <x>410</x>
+       <x>420</x>
        <y>150</y>
        <width>371</width>
        <height>430</height>
@@ -346,7 +346,7 @@ color: #333;</string>
     <widget class="QGroupBox" name="userInfogroupBox">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>10</x>
        <y>280</y>
        <width>371</width>
        <height>305</height>
@@ -550,7 +550,7 @@ color: #333;</string>
     <widget class="QGroupBox" name="personalInfogroupBox">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>10</x>
        <y>20</y>
        <width>371</width>
        <height>241</height>
@@ -730,7 +730,7 @@ color: #333;</string>
     <widget class="QGroupBox" name="accountTypegroupBox">
      <property name="geometry">
       <rect>
-       <x>410</x>
+       <x>420</x>
        <y>20</y>
        <width>371</width>
        <height>100</height>
@@ -820,7 +820,7 @@ color: #333;</string>
     <widget class="QGroupBox" name="Footer">
      <property name="geometry">
       <rect>
-       <x>-10</x>
+       <x>0</x>
        <y>600</y>
        <width>811</width>
        <height>60</height>
@@ -1052,21 +1052,21 @@ border-radius:5px;</string>
     <widget class="QGroupBox" name="groupBoxRegBottom">
      <property name="geometry">
       <rect>
-       <x>-10</x>
-       <y>590</y>
-       <width>800</width>
+       <x>0</x>
+       <y>600</y>
+       <width>811</width>
        <height>60</height>
       </rect>
      </property>
      <property name="minimumSize">
       <size>
-       <width>800</width>
+       <width>811</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>800</width>
+       <width>811</width>
        <height>60</height>
       </size>
      </property>
