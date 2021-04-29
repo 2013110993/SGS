@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Register_t {
-    QByteArrayData data[13];
-    char stringdata0[291];
+    QByteArrayData data[16];
+    char stringdata0[358];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,7 +43,10 @@ QT_MOC_LITERAL(8, 192, 4), // "arg1"
 QT_MOC_LITERAL(9, 197, 23), // "on_signUpButton_clicked"
 QT_MOC_LITERAL(10, 221, 15), // "recieveQuestion"
 QT_MOC_LITERAL(11, 237, 9), // "QSqlQuery"
-QT_MOC_LITERAL(12, 247, 43) // "on_registerTableWidget_Progra..."
+QT_MOC_LITERAL(12, 247, 43), // "on_registerTableWidget_Progra..."
+QT_MOC_LITERAL(13, 291, 55), // "on_programSequenceTable_regis..."
+QT_MOC_LITERAL(14, 347, 3), // "row"
+QT_MOC_LITERAL(15, 351, 6) // "column"
 
     },
     "Register\0on_signUpNextButton_clicked\0"
@@ -54,7 +57,9 @@ QT_MOC_LITERAL(12, 247, 43) // "on_registerTableWidget_Progra..."
     "on_middleNamecheckBox_stateChanged\0"
     "arg1\0on_signUpButton_clicked\0"
     "recieveQuestion\0QSqlQuery\0"
-    "on_registerTableWidget_ProgramSequenceTable"
+    "on_registerTableWidget_ProgramSequenceTable\0"
+    "on_programSequenceTable_registerTableWidget_cellClicked\0"
+    "row\0column"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,7 +69,7 @@ static const uint qt_meta_data_Register[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -72,15 +77,16 @@ static const uint qt_meta_data_Register[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   59,    2, 0x08 /* Private */,
-       3,    0,   60,    2, 0x08 /* Private */,
-       4,    0,   61,    2, 0x08 /* Private */,
-       5,    0,   62,    2, 0x08 /* Private */,
-       6,    0,   63,    2, 0x08 /* Private */,
-       7,    1,   64,    2, 0x08 /* Private */,
-       9,    0,   67,    2, 0x08 /* Private */,
-      10,    1,   68,    2, 0x08 /* Private */,
-      12,    0,   71,    2, 0x08 /* Private */,
+       1,    0,   64,    2, 0x08 /* Private */,
+       3,    0,   65,    2, 0x08 /* Private */,
+       4,    0,   66,    2, 0x08 /* Private */,
+       5,    0,   67,    2, 0x08 /* Private */,
+       6,    0,   68,    2, 0x08 /* Private */,
+       7,    1,   69,    2, 0x08 /* Private */,
+       9,    0,   72,    2, 0x08 /* Private */,
+      10,    1,   73,    2, 0x08 /* Private */,
+      12,    0,   76,    2, 0x08 /* Private */,
+      13,    2,   77,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -92,6 +98,7 @@ static const uint qt_meta_data_Register[] = {
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 11,    2,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,   14,   15,
 
        0        // eod
 };
@@ -111,6 +118,7 @@ void Register::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 6: _t->on_signUpButton_clicked(); break;
         case 7: _t->recieveQuestion((*reinterpret_cast< QSqlQuery(*)>(_a[1]))); break;
         case 8: _t->on_registerTableWidget_ProgramSequenceTable(); break;
+        case 9: _t->on_programSequenceTable_registerTableWidget_cellClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         default: ;
         }
     }
@@ -141,13 +149,13 @@ int Register::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

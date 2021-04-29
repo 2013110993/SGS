@@ -94,6 +94,10 @@ public:
     QPushButton *backSignUpButton;
     QPushButton *signUpButton;
     QTableWidget *programSequenceTable_registerTableWidget;
+    QLabel *programSequenceSelected_label;
+    QLabel *facultySelected_label;
+    QLabel *programSelected_label;
+    QLabel *programSequenceYearSelected_label;
 
     void setupUi(QDialog *Register)
     {
@@ -225,9 +229,9 @@ public:
 
         userInfogroupBox = new QGroupBox(personInfo);
         userInfogroupBox->setObjectName(QStringLiteral("userInfogroupBox"));
-        userInfogroupBox->setGeometry(QRect(0, 280, 371, 300));
+        userInfogroupBox->setGeometry(QRect(0, 280, 371, 305));
         userInfogroupBox->setMinimumSize(QSize(0, 0));
-        userInfogroupBox->setMaximumSize(QSize(371, 300));
+        userInfogroupBox->setMaximumSize(QSize(371, 305));
         userInfogroupBox->setStyleSheet(QLatin1String("color:#666;\n"
 "background-color:none;"));
         layoutWidget1_3 = new QWidget(userInfogroupBox);
@@ -302,7 +306,7 @@ public:
         email_RegFormLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
 "color: #333;"));
 
-        verticalLayout_2->addWidget(email_RegFormLineEdit);
+        verticalLayout_2->addWidget(email_RegFormLineEdit, 0, Qt::AlignTop);
 
         personalInfogroupBox = new QGroupBox(personInfo);
         personalInfogroupBox->setObjectName(QStringLiteral("personalInfogroupBox"));
@@ -383,8 +387,8 @@ public:
 
         Footer = new QGroupBox(personInfo);
         Footer->setObjectName(QStringLiteral("Footer"));
-        Footer->setGeometry(QRect(-10, 600, 800, 60));
-        Footer->setMinimumSize(QSize(800, 60));
+        Footer->setGeometry(QRect(-10, 600, 811, 60));
+        Footer->setMinimumSize(QSize(811, 60));
         Footer->setMaximumSize(QSize(800, 60));
         Footer->setStyleSheet(QStringLiteral("background:#3a444c;"));
         layoutWidget1_6 = new QWidget(Footer);
@@ -491,7 +495,7 @@ public:
         groupBoxRegBottom->setStyleSheet(QStringLiteral("background:#3a444c;"));
         layoutWidget11 = new QWidget(groupBoxRegBottom);
         layoutWidget11->setObjectName(QStringLiteral("layoutWidget11"));
-        layoutWidget11->setGeometry(QRect(220, 10, 251, 42));
+        layoutWidget11->setGeometry(QRect(270, 10, 231, 32));
         horizontalLayout = new QHBoxLayout(layoutWidget11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -523,8 +527,39 @@ public:
 
         programSequenceTable_registerTableWidget = new QTableWidget(academic);
         programSequenceTable_registerTableWidget->setObjectName(QStringLiteral("programSequenceTable_registerTableWidget"));
-        programSequenceTable_registerTableWidget->setGeometry(QRect(0, 90, 771, 311));
+        programSequenceTable_registerTableWidget->setGeometry(QRect(0, 90, 781, 301));
         programSequenceTable_registerTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        programSequenceSelected_label = new QLabel(academic);
+        programSequenceSelected_label->setObjectName(QStringLiteral("programSequenceSelected_label"));
+        programSequenceSelected_label->setGeometry(QRect(10, 410, 201, 16));
+        QFont font2;
+        font2.setPointSize(9);
+        font2.setBold(false);
+        font2.setWeight(50);
+        programSequenceSelected_label->setFont(font2);
+        programSequenceSelected_label->setStyleSheet(QStringLiteral("color:#666;"));
+        facultySelected_label = new QLabel(academic);
+        facultySelected_label->setObjectName(QStringLiteral("facultySelected_label"));
+        facultySelected_label->setGeometry(QRect(-10, 440, 801, 21));
+        QFont font3;
+        font3.setPointSize(12);
+        font3.setBold(true);
+        font3.setWeight(75);
+        facultySelected_label->setFont(font3);
+        facultySelected_label->setStyleSheet(QStringLiteral("color:#666;"));
+        facultySelected_label->setAlignment(Qt::AlignCenter);
+        programSelected_label = new QLabel(academic);
+        programSelected_label->setObjectName(QStringLiteral("programSelected_label"));
+        programSelected_label->setGeometry(QRect(-10, 470, 801, 21));
+        programSelected_label->setFont(font3);
+        programSelected_label->setStyleSheet(QStringLiteral("color:#666;"));
+        programSelected_label->setAlignment(Qt::AlignCenter);
+        programSequenceYearSelected_label = new QLabel(academic);
+        programSequenceYearSelected_label->setObjectName(QStringLiteral("programSequenceYearSelected_label"));
+        programSequenceYearSelected_label->setGeometry(QRect(-20, 500, 801, 21));
+        programSequenceYearSelected_label->setFont(font3);
+        programSequenceYearSelected_label->setStyleSheet(QStringLiteral("color:#666;"));
+        programSequenceYearSelected_label->setAlignment(Qt::AlignCenter);
         stackedWidgetRegister->addWidget(academic);
 
         retranslateUi(Register);
@@ -588,6 +623,10 @@ public:
         groupBoxRegBottom->setTitle(QString());
         backSignUpButton->setText(QApplication::translate("Register", "Back", nullptr));
         signUpButton->setText(QApplication::translate("Register", "  Create", nullptr));
+        programSequenceSelected_label->setText(QApplication::translate("Register", "Program Sequence SELECTED:", nullptr));
+        facultySelected_label->setText(QString());
+        programSelected_label->setText(QString());
+        programSequenceYearSelected_label->setText(QString());
     } // retranslateUi
 
 };
