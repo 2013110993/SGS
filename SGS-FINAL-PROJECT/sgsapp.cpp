@@ -32,7 +32,8 @@ sgsApp::sgsApp(QWidget *parent)
 sgsApp::~sgsApp()
 {
     delete connection;
-    delete forgot;
+    //delete forgot;
+    //delete active_deactivate;
     delete ui;
 
 
@@ -353,4 +354,40 @@ void sgsApp::on_programSequenceTableWidget_cellClicked(int row, int column)
     ui->courseYear_CourseGradeLable->setText(year);
 
 
+}
+
+void sgsApp::on_updateCourse_pushButton_clicked()
+{
+    QString courseCode =  ui->courseCode_CourseGradeLable->text();
+    QString courseName =  ui->courseName_courseGradeLable->text();
+    QString credits = ui->credit_CourseGradeLable->text();
+    QString prerequisites = ui->allPrerequisites_CourseGradeLable->text();
+    QString semester = ui->semester_CourseGradeLable->text();
+    QString year =  ui->courseYear_CourseGradeLable->text();
+    QString comment =  ui->addCourseComment_plainTextEdit->toPlainText();
+
+    qDebug()<<courseCode;
+    qDebug()<<courseName;
+    qDebug()<<credits;
+    qDebug()<<courseCode;
+    qDebug()<<prerequisites;
+    qDebug()<<semester;
+    qDebug()<<year;
+    qDebug()<<comment;
+
+}
+
+
+void sgsApp::on_disableUser_Button_2_clicked()
+{
+
+}
+
+void sgsApp::on_disableUser_Button_clicked()
+{
+    //create a new instance of reg
+    active_deactivate = new Activate_DeactivateUser(this);
+    //Modal Approach
+    active_deactivate->setModal(true);
+    active_deactivate->show();
 }

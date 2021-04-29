@@ -22,7 +22,8 @@ SOURCES += \
     databaseconnection.cpp \
     lecture.cpp \
     users.cpp \
-    student.cpp
+    student.cpp \
+    activate_deactivateuser.cpp
 
 HEADERS += \
     forgotpassword.h \
@@ -37,14 +38,16 @@ HEADERS += \
     databaseconnection.h \
     lecture.h \
     users.h \
-    student.h
+    student.h \
+    activate_deactivateuser.h
 
 FORMS += \
     forgotpassword.ui \
     register.ui \
     sgsapp.ui \
     dashboard.ui \
-    dashboardstudent.ui
+    dashboardstudent.ui \
+    activate_deactivateuser.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -452,7 +452,7 @@ border: 0;</string>
          <x>40</x>
          <y>50</y>
          <width>191</width>
-         <height>641</height>
+         <height>651</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -595,7 +595,7 @@ border: 0;</string>
           <x>0</x>
           <y>340</y>
           <width>160</width>
-          <height>231</height>
+          <height>251</height>
          </rect>
         </property>
         <property name="title">
@@ -691,7 +691,7 @@ border: 0;</string>
           <rect>
            <x>11</x>
            <y>191</y>
-           <width>102</width>
+           <width>151</width>
            <height>16</height>
           </rect>
          </property>
@@ -705,7 +705,7 @@ border: 0;</string>
           <string notr="true">color:#fff;</string>
          </property>
          <property name="text">
-          <string>Disable User</string>
+          <string>Disable/Activate User</string>
          </property>
         </widget>
         <widget class="QPushButton" name="changePassword_Button">
@@ -908,7 +908,7 @@ background-repeat: no-repeat;</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="DashboardPage">
        <widget class="QLabel" name="TMPlabel_2">
