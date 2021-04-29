@@ -7,6 +7,7 @@
 #include "databaseconnection.h"
 
 #include "forgotpassword.h"
+#include "activate_deactivateuser.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -61,10 +62,17 @@ private slots:
 
     void on_programSequenceTableWidget_cellClicked(int row, int column);
 
+    void on_updateCourse_pushButton_clicked();
+
+    void on_disableUser_Button_2_clicked();
+
+    void on_disableUser_Button_clicked();
+
 private:
     Ui::sgsApp *ui;
     forgotPassword * forgot;
     Register *reg;
+    Activate_DeactivateUser *active_deactivate;
     databaseconnection * connection;
     QSqlQuery queries;
     bool buttonClick;
