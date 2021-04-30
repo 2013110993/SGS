@@ -615,6 +615,10 @@ border: 0;</string>
          <property name="text">
           <string>User Account</string>
          </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Add User.png</normaloff>:/icons White/Icons/White/Add User.png</iconset>
+         </property>
         </widget>
         <widget class="QPushButton" name="disableUser_Button">
          <property name="geometry">
@@ -637,6 +641,10 @@ border: 0;</string>
          <property name="text">
           <string>Disable/Activate User</string>
          </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Eye OFF.png</normaloff>:/icons White/Icons/White/Eye OFF.png</iconset>
+         </property>
         </widget>
         <widget class="QPushButton" name="changePassword_Button">
          <property name="geometry">
@@ -658,6 +666,10 @@ border: 0;</string>
          </property>
          <property name="text">
           <string>Change Password</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Edit.png</normaloff>:/icons White/Icons/White/Edit.png</iconset>
          </property>
         </widget>
        </widget>
@@ -917,13 +929,13 @@ background-repeat: no-repeat;</string>
        </widget>
       </widget>
       <widget class="QWidget" name="CoursesPage">
-       <widget class="QTableWidget" name="tableWidget">
+       <widget class="QTableWidget" name="viewCoursesTableWidget">
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>60</y>
+          <y>100</y>
           <width>631</width>
-          <height>751</height>
+          <height>721</height>
          </rect>
         </property>
        </widget>
@@ -945,6 +957,380 @@ background-repeat: no-repeat;</string>
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
+        <widget class="QLabel" name="courseTitleViewCourseLabel">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>20</y>
+           <width>51</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666</string>
+         </property>
+         <property name="text">
+          <string>Course:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="courseStatusViewCourseLabel">
+         <property name="geometry">
+          <rect>
+           <x>340</x>
+           <y>20</y>
+           <width>51</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666</string>
+         </property>
+         <property name="text">
+          <string>Status:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="courseViewCourseTable">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>20</y>
+           <width>221</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#333</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLabel" name="pendingViewCourseTable">
+         <property name="geometry">
+          <rect>
+           <x>390</x>
+           <y>20</y>
+           <width>71</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:red;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QFrame" name="titleCourseListPage_2">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>40</y>
+           <width>471</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#fff; border-radius:5px;</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QLabel" name="courseTitleViewCourseLabel_2">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>20</y>
+            <width>51</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color:#666</string>
+          </property>
+          <property name="text">
+           <string>Course:</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="courseStatusViewCourseLabel_2">
+          <property name="geometry">
+           <rect>
+            <x>340</x>
+            <y>20</y>
+            <width>51</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color:#666</string>
+          </property>
+          <property name="text">
+           <string>Status:</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="courseViewCourseTable_2">
+          <property name="geometry">
+           <rect>
+            <x>80</x>
+            <y>20</y>
+            <width>221</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color:#333</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="pendingViewCourseTable_2">
+          <property name="geometry">
+           <rect>
+            <x>390</x>
+            <y>20</y>
+            <width>71</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color:red;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="programSequenceFacultyName_2">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>60</y>
+          <width>631</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#70808c;
+color:#fff;
+border-top-left-radius:5px;
+border-top-right-radius:5px;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:0px;</string>
+        </property>
+        <property name="text">
+         <string>My Courses</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="courseCommentViewCourseLabel">
+        <property name="geometry">
+         <rect>
+          <x>710</x>
+          <y>140</y>
+          <width>121</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>9</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#666</string>
+        </property>
+        <property name="text">
+         <string>Course Comments:</string>
+        </property>
+       </widget>
+       <widget class="QFrame" name="courseCommentListPage">
+        <property name="geometry">
+         <rect>
+          <x>700</x>
+          <y>170</y>
+          <width>471</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#fff; border-radius:5px;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLabel" name="commentPostedViewCourseLabel">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>20</y>
+           <width>51</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666</string>
+         </property>
+         <property name="text">
+          <string>Posted:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="ratingStatusViewCourseLabel">
+         <property name="geometry">
+          <rect>
+           <x>340</x>
+           <y>20</y>
+           <width>51</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666</string>
+         </property>
+         <property name="text">
+          <string>Rating:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="commentTimeStapViewCourseTable">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>20</y>
+           <width>221</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#333</string>
+         </property>
+         <property name="text">
+          <string>30/04/2021</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="ratingViewCourseTable">
+         <property name="geometry">
+          <rect>
+           <x>390</x>
+           <y>20</y>
+           <width>71</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#333;</string>
+         </property>
+         <property name="text">
+          <string>Bad</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="userCommentViewCourseTable">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>70</y>
+           <width>451</width>
+           <height>71</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#333</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="ViewProgramSequence">
