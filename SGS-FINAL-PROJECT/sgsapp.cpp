@@ -351,7 +351,7 @@ void sgsApp::viewCoursesTable()
 
     int rowCount = 0;
 
-    for(int i = 0; i< 10; i++){
+    for(int i = 0; i< 1; i++){
 
          ui->viewCoursesTableWidget->insertRow(rowCount);
          ui->viewCoursesTableWidget->setColumnWidth(0,80);
