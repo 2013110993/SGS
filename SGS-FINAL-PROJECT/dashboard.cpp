@@ -54,15 +54,4 @@ void Dashboard::on_dashboard_pushButton_2_clicked()
 }
 
 
-void Dashboard::on_suspendAccount_pushButton_clicked()
-{
-
-}
-
-void Dashboard::on_resetPasswd_pushButton_clicked()
-{
-
-}
-
-
 

@@ -27,10 +27,6 @@ private slots:
 
     void on_dashboard_pushButton_2_clicked();
 
-    void on_suspendAccount_pushButton_clicked();
-
-    void on_resetPasswd_pushButton_clicked();
-
 
 private:
     Ui::Dashboard *ui;

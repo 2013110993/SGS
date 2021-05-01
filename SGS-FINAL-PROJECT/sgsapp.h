@@ -56,8 +56,6 @@ private slots:
 
     void programSequenceList();
 
-    void on_AddProgramSequence_Button_clicked();
-
     void on_viewStudentProgramSequence_Button_clicked();
 
     void on_programSequenceTableWidget_cellClicked(int row, int column);
@@ -67,6 +65,11 @@ private slots:
     void on_disableUser_Button_2_clicked();
 
     void on_disableUser_Button_clicked();
+
+    void on_viewCourses_Button_clicked();
+    void viewCoursesTable();
+
+    void on_viewCoursesTableWidget_cellClicked(int row, int column);
 
 private:
     Ui::sgsApp *ui;

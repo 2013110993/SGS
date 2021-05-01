@@ -130,12 +130,12 @@ public:
         label->setAlignment(Qt::AlignCenter);
         stackedWidgetRegister = new QStackedWidget(Register);
         stackedWidgetRegister->setObjectName(QStringLiteral("stackedWidgetRegister"));
-        stackedWidgetRegister->setGeometry(QRect(10, 60, 811, 661));
+        stackedWidgetRegister->setGeometry(QRect(0, 60, 821, 661));
         personInfo = new QWidget();
         personInfo->setObjectName(QStringLiteral("personInfo"));
         userInfogroupBox_2 = new QGroupBox(personInfo);
         userInfogroupBox_2->setObjectName(QStringLiteral("userInfogroupBox_2"));
-        userInfogroupBox_2->setGeometry(QRect(410, 150, 371, 430));
+        userInfogroupBox_2->setGeometry(QRect(420, 150, 371, 430));
         userInfogroupBox_2->setMinimumSize(QSize(371, 430));
         userInfogroupBox_2->setMaximumSize(QSize(371, 430));
         userInfogroupBox_2->setStyleSheet(QLatin1String("color:#666;\n"
@@ -229,7 +229,7 @@ public:
 
         userInfogroupBox = new QGroupBox(personInfo);
         userInfogroupBox->setObjectName(QStringLiteral("userInfogroupBox"));
-        userInfogroupBox->setGeometry(QRect(0, 280, 371, 305));
+        userInfogroupBox->setGeometry(QRect(10, 280, 371, 305));
         userInfogroupBox->setMinimumSize(QSize(0, 0));
         userInfogroupBox->setMaximumSize(QSize(371, 305));
         userInfogroupBox->setStyleSheet(QLatin1String("color:#666;\n"
@@ -310,7 +310,7 @@ public:
 
         personalInfogroupBox = new QGroupBox(personInfo);
         personalInfogroupBox->setObjectName(QStringLiteral("personalInfogroupBox"));
-        personalInfogroupBox->setGeometry(QRect(0, 20, 371, 241));
+        personalInfogroupBox->setGeometry(QRect(10, 20, 371, 241));
         personalInfogroupBox->setMinimumSize(QSize(371, 181));
         personalInfogroupBox->setMaximumSize(QSize(16777215, 16777215));
         personalInfogroupBox->setStyleSheet(QLatin1String("color:#666;\n"
@@ -355,7 +355,7 @@ public:
         middleNamecheckBox->setChecked(true);
         accountTypegroupBox = new QGroupBox(personInfo);
         accountTypegroupBox->setObjectName(QStringLiteral("accountTypegroupBox"));
-        accountTypegroupBox->setGeometry(QRect(410, 20, 371, 100));
+        accountTypegroupBox->setGeometry(QRect(420, 20, 371, 100));
         accountTypegroupBox->setMinimumSize(QSize(0, 100));
         accountTypegroupBox->setMaximumSize(QSize(371, 100));
         accountTypegroupBox->setStyleSheet(QLatin1String("color:#666;\n"
@@ -387,7 +387,7 @@ public:
 
         Footer = new QGroupBox(personInfo);
         Footer->setObjectName(QStringLiteral("Footer"));
-        Footer->setGeometry(QRect(-10, 600, 811, 60));
+        Footer->setGeometry(QRect(0, 600, 811, 60));
         Footer->setMinimumSize(QSize(811, 60));
         Footer->setMaximumSize(QSize(800, 60));
         Footer->setStyleSheet(QStringLiteral("background:#3a444c;"));
@@ -489,9 +489,9 @@ public:
 
         groupBoxRegBottom = new QGroupBox(academic);
         groupBoxRegBottom->setObjectName(QStringLiteral("groupBoxRegBottom"));
-        groupBoxRegBottom->setGeometry(QRect(-10, 590, 800, 60));
-        groupBoxRegBottom->setMinimumSize(QSize(800, 60));
-        groupBoxRegBottom->setMaximumSize(QSize(800, 60));
+        groupBoxRegBottom->setGeometry(QRect(0, 600, 811, 60));
+        groupBoxRegBottom->setMinimumSize(QSize(811, 60));
+        groupBoxRegBottom->setMaximumSize(QSize(811, 60));
         groupBoxRegBottom->setStyleSheet(QStringLiteral("background:#3a444c;"));
         layoutWidget11 = new QWidget(groupBoxRegBottom);
         layoutWidget11->setObjectName(QStringLiteral("layoutWidget11"));
@@ -564,7 +564,7 @@ public:
 
         retranslateUi(Register);
 
-        stackedWidgetRegister->setCurrentIndex(0);
+        stackedWidgetRegister->setCurrentIndex(1);
         signUpNextButton->setDefault(false);
         filterSearchButton->setDefault(false);
         signUpButton->setDefault(false);

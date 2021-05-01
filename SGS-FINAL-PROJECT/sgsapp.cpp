@@ -268,11 +268,6 @@ void sgsApp::on_dashboard_pushButton_clicked()
 }
 
 
-void sgsApp::on_AddProgramSequence_Button_clicked()
-{
-
-}
-
 
 void sgsApp::on_viewStudentProgramSequence_Button_clicked()
 {
@@ -334,6 +329,85 @@ void sgsApp::programSequenceList()
     }
 }
 
+void sgsApp::on_viewCourses_Button_clicked()
+{
+    //Navigate to View Course Page
+    ui->stackedWidgetPages->setCurrentIndex(1);
+
+    //Function to display view course table
+    viewCoursesTable();
+}
+void sgsApp::viewCoursesTable()
+{
+    ui->viewCoursesTableWidget->setColumnCount(6);
+    ui->viewCoursesTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
+
+    QStringList header;
+    header << "Code"<< "Course Name" <<"Credits" << "Semester" << "Status" << "Comments";
+
+    ui->viewCoursesTableWidget->setHorizontalHeaderLabels(header);
+    ui->viewCoursesTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
+
+    int rowCount = 0;
+
+    for(int i = 0; i< 1; i++){
+
+         ui->viewCoursesTableWidget->insertRow(rowCount);
+         ui->viewCoursesTableWidget->setColumnWidth(0,80);
+         ui->viewCoursesTableWidget->setColumnWidth(1,210);
+         ui->viewCoursesTableWidget->setColumnWidth(2,50);
+         ui->viewCoursesTableWidget->setColumnWidth(3,60);
+         ui->viewCoursesTableWidget->setColumnWidth(4,70);
+         ui->viewCoursesTableWidget->setColumnWidth(5,145);
+
+
+
+        QTableWidgetItem *courseCode = new QTableWidgetItem;
+        QTableWidgetItem *courseName = new QTableWidgetItem;
+        QTableWidgetItem *credits = new QTableWidgetItem;
+        QTableWidgetItem *semester = new QTableWidgetItem;
+        QTableWidgetItem *status = new QTableWidgetItem;
+        QTableWidgetItem *comments = new QTableWidgetItem;
+
+        courseCode->setText("CMPS3151");
+        courseName->setText("Telecommunications Systems");
+        credits->setText("3");
+        semester->setText("1");
+        status->setText("Pending");
+        comments->setText("This is a Comment for the course");
+
+        ui->viewCoursesTableWidget->setItem(rowCount,0,courseCode);
+        ui->viewCoursesTableWidget->setItem(rowCount,1,courseName);
+        ui->viewCoursesTableWidget->setItem(rowCount,2,credits);
+        ui->viewCoursesTableWidget->setItem(rowCount,3,semester);
+        ui->viewCoursesTableWidget->setItem(rowCount,4,status);
+        ui->viewCoursesTableWidget->setItem(rowCount,5,comments);
+
+
+        rowCount++;
+    }
+}
+
+void sgsApp::on_viewCoursesTableWidget_cellClicked(int row, int column)
+{
+    QString courseName = ui->viewCoursesTableWidget->item(row,1)->text();
+    QString status =  ui->viewCoursesTableWidget->item(row,4)->text();
+
+    QString comments =  ui->viewCoursesTableWidget->item(row,5)->text();
+//    QString credits = ui->programSequenceTableWidget->item(row,2)->text();
+//    QString prerequisites = ui->programSequenceTableWidget->item(row,4)->text();
+//    QString semester = ui->programSequenceTableWidget->item(row,5)->text();
+//    QString year = ui->programSequenceTableWidget->item(row,6)->text();
+
+    ui->courseViewCourseTable->setText(courseName);
+    ui->pendingViewCourseTable->setText("Pending!");
+
+    ui->userCommentViewCourseTable->setText(comments);
+//    ui->credit_CourseGradeLable->setText(credits);
+//    ui->allPrerequisites_CourseGradeLable->setText(prerequisites);
+//    ui->semester_CourseGradeLable->setText(semester);
+//    ui->courseYear_CourseGradeLable->setText(year);
+}
 
 
 void sgsApp::on_programSequenceTableWidget_cellClicked(int row, int column)
@@ -390,3 +464,6 @@ void sgsApp::on_disableUser_Button_clicked()
     active_deactivate->setModal(true);
     active_deactivate->show();
 }
+
+
+

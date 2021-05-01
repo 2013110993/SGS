@@ -13,10 +13,12 @@ INPUT(
 ./release\lecture.o
 ./release\users.o
 ./release\student.o
+./release\activate_deactivateuser.o
 ./release\qrc_images.o
 ./release\moc_forgotpassword.o
 ./release\moc_register.o
 ./release\moc_sgsapp.o
 ./release\moc_dashboard.o
 ./release\moc_dashboardstudent.o
+./release\moc_activate_deactivateuser.o
 );

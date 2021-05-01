@@ -25,7 +25,6 @@ void databaseconnection::connect()
     setConnection.setUserName("root");
     setConnection.setPassword("");
     setConnection.setDatabaseName("db");
-    //setConnection.setDatabaseName(" databasedb");
     connected = setConnection.open();
     try
     {
