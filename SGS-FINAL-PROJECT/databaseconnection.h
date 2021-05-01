@@ -31,6 +31,9 @@ public:
     QSqlQuery updateQuestion();
     QSqlQuery getUserInfo(QString , int);
     QSqlQuery getLecturerInfo(QString);
+    QSqlQuery getFaculty();
+    QSqlQuery getProgramSequences(QString,QString);
+    void setStudentSequence(QString,QString,int);
     QString getUserId();
     void setUserId(QString);
     void resetPassword(QString);
@@ -45,6 +48,7 @@ private:
     QString currentUserID;
     QString UserRole;
     int const questionAsk = 3;
+    QSqlDatabase setConnection;
 };
 
 #endif // DATABASECONNECTION_H

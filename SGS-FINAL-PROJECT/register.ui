@@ -107,7 +107,7 @@ background: none;</string>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="personInfo">
     <widget class="QGroupBox" name="userInfogroupBox_2">
@@ -1036,12 +1036,12 @@ border-radius:5px;</string>
          </item>
          <item>
           <property name="text">
-           <string>Associates</string>
+           <string>Associate</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Bachelors</string>
+           <string>Bachelor</string>
           </property>
          </item>
         </widget>

@@ -28,6 +28,7 @@ void forgotPassword::on_forgotPasswordResetButton_clicked()
     qDebug()<<(ui->confirmPassword_forgotFormLineEdit == ui->newPassword_forgotFormLineEdit &&  (confirmPassword.isEmpty()) && (newPassword.isEmpty()));
     if(ui->confirmPassword_forgotFormLineEdit->text() == ui->newPassword_forgotFormLineEdit->text() &&  !(confirmPassword.isEmpty()) && !(newPassword.isEmpty())) //&&
     {
+        qDebug()<<"errror";
         connect.resetPassword(newPassword);
         QMessageBox msgBox;
         msgBox.setText("Reset successfully!");
@@ -80,7 +81,7 @@ void forgotPassword::on_accountLostResetButton_clicked()
                 int var =0;
                 while (accountInfo.next())
                 {
-                    correctanswer[var]= accountInfo.value(1).toString();
+                    correctanswer[var] = accountInfo.value(1).toString();
                     qDebug()<< correctanswer[var];
                     ui->securityQuestionsForgotFormcomboBox->addItem(accountInfo.value(2).toString());
                     var ++;

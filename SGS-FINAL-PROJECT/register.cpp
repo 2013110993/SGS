@@ -11,6 +11,7 @@ using namespace std;
 #include "databaseconnection.h"
 
 
+extern databaseconnection * connection;
 
 Register::Register(QWidget *parent) :
     QDialog(parent),
@@ -89,6 +90,13 @@ void Register::on_signUpNextButton_clicked()
         }
         else
         {
+
+             QSqlQuery faculties = connection->getFaculty();
+             while(faculties.next())
+             {
+                 QString faculty = faculties.value(0).toString();
+                 ui->facultyComboBox->addItem(faculty);
+             }
              ui->stackedWidgetRegister->setCurrentIndex(1); //executes if there's no error
         }
     }
@@ -202,13 +210,22 @@ void Register::on_signUpButton_clicked()
         int quesId3 =  ui->question_3_comboBox->currentIndex();
 
 
-        databaseconnection * connection = new databaseconnection;
+        //databaseconnection * connection = new databaseconnection;
 
         user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
 
         connection->insertNewUser(*user);
+        if(userRole == 1)
+        {
+            QString faculty = ui->facultySelected_label->text();
+            QString program = ui->programSelected_label->text();
+            QString year = ui->programSequenceYearSelected_label->text();
+            connection->setStudentSequence(faculty,program,year.toInt());
+            qDebug()<<faculty;
+            qDebug()<<program;
+            qDebug()<<year;
+        }
         this->close();
-        delete connection;
 
     }
 
@@ -232,38 +249,38 @@ void Register::recieveQuestion(QSqlQuery question)
 //Generating Table for Program Sequence List
 void Register::on_registerTableWidget_ProgramSequenceTable()
 {
-    ui->programSequenceTable_registerTableWidget->setColumnCount(3);
-    ui->programSequenceTable_registerTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
+//    ui->programSequenceTable_registerTableWidget->setColumnCount(3);
+//    ui->programSequenceTable_registerTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
 
-    QStringList header;
-    header << "Program"<< "Faculty" <<"Sequence";
+//    QStringList header;
+//    header << "Program"<< "Faculty" <<"Sequence";
 
-    ui->programSequenceTable_registerTableWidget->setHorizontalHeaderLabels(header);
-    ui->programSequenceTable_registerTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
+//    ui->programSequenceTable_registerTableWidget->setHorizontalHeaderLabels(header);
+//    ui->programSequenceTable_registerTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
 
-    int rowCount = 0;
+//    int rowCount = 0;
 
-    for(int i = 0; i< 10; i++){
+//    for(int i = 0; i< 10; i++){
 
-         ui->programSequenceTable_registerTableWidget->insertRow(rowCount);
-         ui->programSequenceTable_registerTableWidget->setColumnWidth(0,150);
-         ui->programSequenceTable_registerTableWidget->setColumnWidth(1,530);
-         ui->programSequenceTable_registerTableWidget->setColumnWidth(2,60);
+//         ui->programSequenceTable_registerTableWidget->insertRow(rowCount);
+//         ui->programSequenceTable_registerTableWidget->setColumnWidth(0,150);
+//         ui->programSequenceTable_registerTableWidget->setColumnWidth(1,530);
+//         ui->programSequenceTable_registerTableWidget->setColumnWidth(2,60);
 
-        QTableWidgetItem *program = new QTableWidgetItem;
-        QTableWidgetItem *faculty = new QTableWidgetItem;
-        QTableWidgetItem *programSequence = new QTableWidgetItem;
+//        QTableWidgetItem *program = new QTableWidgetItem;
+//        QTableWidgetItem *faculty = new QTableWidgetItem;
+//        QTableWidgetItem *programSequence = new QTableWidgetItem;
 
-        program->setText("Bachelor Degree");
-        faculty->setText("Faculty of Science & Technology Math, Physics and IT Department");
-        programSequence->setText("2019-1");
+//        program->setText("Bachelor Degree");
+//        faculty->setText("Faculty of Science & Technology Math, Physics and IT Department");
+//        programSequence->setText("2019-1");
 
-        ui->programSequenceTable_registerTableWidget->setItem(rowCount,0,program);
-        ui->programSequenceTable_registerTableWidget->setItem(rowCount,1,faculty);
-        ui->programSequenceTable_registerTableWidget->setItem(rowCount,2,programSequence);
+//        ui->programSequenceTable_registerTableWidget->setItem(rowCount,0,program);
+//        ui->programSequenceTable_registerTableWidget->setItem(rowCount,1,faculty);
+//        ui->programSequenceTable_registerTableWidget->setItem(rowCount,2,programSequence);
 
-        rowCount++;
-    }
+//        rowCount++;
+//    }
 
 }
 
@@ -282,3 +299,49 @@ void Register::on_programSequenceTable_registerTableWidget_cellClicked(int row, 
 
 }
 
+
+void Register::on_filterSearchButton_clicked()
+{
+    QString faculty = ui->facultyComboBox->currentText();
+    QString program = ui->programComboBox->currentText();
+    qDebug()<<faculty;
+    qDebug()<<program;
+//    databaseconnection database;
+    QSqlQuery programSequences = connection->getProgramSequences(faculty,program);
+    ui->programSequenceTable_registerTableWidget->reset();
+
+    ui->programSequenceTable_registerTableWidget->setColumnCount(3);
+    ui->programSequenceTable_registerTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
+
+    QStringList header;
+    header << "Program"<< "Faculty" <<"Sequence";
+
+    ui->programSequenceTable_registerTableWidget->setHorizontalHeaderLabels(header);
+    ui->programSequenceTable_registerTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
+
+    int rowCount = 0;
+
+    for(; programSequences.next();){
+
+         ui->programSequenceTable_registerTableWidget->insertRow(rowCount);
+         ui->programSequenceTable_registerTableWidget->setColumnWidth(0,590);
+         ui->programSequenceTable_registerTableWidget->setColumnWidth(1,70);
+         ui->programSequenceTable_registerTableWidget->setColumnWidth(2,70);
+
+        QTableWidgetItem *program = new QTableWidgetItem;
+        QTableWidgetItem *faculty = new QTableWidgetItem;
+        QTableWidgetItem *programSequence = new QTableWidgetItem;
+
+        program->setText(programSequences.value(0).toString());
+        faculty->setText(programSequences.value(1).toString());
+        programSequence->setText(programSequences.value(2).toString());
+
+        ui->programSequenceTable_registerTableWidget->setItem(rowCount,0,program);
+        ui->programSequenceTable_registerTableWidget->setItem(rowCount,1,faculty);
+        ui->programSequenceTable_registerTableWidget->setItem(rowCount,2,programSequence);
+
+        rowCount++;
+    }
+
+
+}

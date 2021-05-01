@@ -13,18 +13,18 @@ databaseconnection::databaseconnection()
 
 databaseconnection::~databaseconnection()
 {
-    //delete dash;
+   setConnection.close();
 }
 
 void databaseconnection::connect()
 {
-    QSqlDatabase setConnection = QSqlDatabase::addDatabase("QMYSQL");
+    setConnection = QSqlDatabase::addDatabase("QMYSQL");
     setConnection.setHostName("127.0.0.1");
     //setConnection.setPort(3306);
     setConnection.setPort(3366);
     setConnection.setUserName("root");
     setConnection.setPassword("");
-    setConnection.setDatabaseName("databasedb");
+    setConnection.setDatabaseName("db");
     //setConnection.setDatabaseName(" databasedb");
     connected = setConnection.open();
     try
@@ -57,6 +57,7 @@ void databaseconnection::insertNewUser(student &student)
     // creates an entry in the database for a new student
     int id = student.getID();
     qDebug()<<id;
+    setUserId(QString::number(id));
 
     QString fname = student.getFName();
     QString lname = student.getLName();
@@ -79,6 +80,7 @@ void databaseconnection::insertNewUser(student &student)
     if(!query.exec())
     {
         qDebug()<<query.lastError().text();
+        qDebug()<<"got serious probs";
     }
 
     QSqlQuery newQuery ;
@@ -98,6 +100,9 @@ void databaseconnection::insertNewUser(student &student)
             qDebug()<<userID;
             qDebug()<<" ^got id from person  ";
         }
+    }
+    else {
+        qDebug()<<"got serious probs2";
     }
 
 
@@ -128,7 +133,6 @@ void databaseconnection::insertNewUser(student &student)
     quesId[1] = student.getQuesId2();
     quesId[2] = student.getQuesId3();
 
-    qDebug()<<"id : "<<studentID<<" asd";
     if(query.exec())
     {
         qDebug()<<"Going to insert into users";
@@ -140,7 +144,7 @@ void databaseconnection::insertNewUser(student &student)
         query3.bindValue(":username", username);
         query3.bindValue(":password", password);
         query3.bindValue(":email", email);
-        if (roleID == 2)
+        if (roleID.toInt() == 1)
             query3.bindValue(":activeUser", 1);
         else
             query3.bindValue(":activeUser", 0);
@@ -210,8 +214,8 @@ bool databaseconnection::loginUser(QString username, QString password)
     QString logIn =QString::number(1);
     QString role;
 
-    if (query.exec( "SELECT id, roleid from users WHERE username = '" + username + "' AND password = '" +
-                    password + "' AND activeUser = '" + logIn + "' "))
+    if (query.exec( "SELECT id, roleid from users WHERE username = '" + username + "' AND password = "
+                    " '" + password + "' AND activeUser = '" + logIn + "' "))
     {
         qDebug()<<"enter";
         if (query.size() > 0)
@@ -222,6 +226,7 @@ bool databaseconnection::loginUser(QString username, QString password)
                 userID = query.value(0).toString();
                 setUserId(userID);
                 role = query.value(1).toString();
+                qDebug()<<getUserId();
                 qDebug() <<"role "<< role <<" here";
                 setRole(role);
             }
@@ -405,7 +410,93 @@ QSqlQuery databaseconnection::getLecturerInfo(QString lecturer)
     }
      QSqlQuery info = *query1;
      delete query1;
-    return info;
+     return info;
+}
+
+QSqlQuery databaseconnection::getFaculty()
+{
+    QSqlQuery * query1 = new QSqlQuery;
+    query1->prepare("SELECT faculty FROM academicprogram GROUP BY faculty");
+
+    if(!(query1->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+    }
+    QSqlQuery query = *query1;
+    delete query1;
+    return query;
+}
+
+QSqlQuery databaseconnection::getProgramSequences(QString faculty, QString program)
+{
+    QSqlQuery * query1 = new QSqlQuery;
+    query1->prepare("SELECT name,faculty, programsequence.pSYear FROM academicprogram JOIN programsequence ON programsequence.academicProgramID = academicprogram.id "
+                    "WHERE faculty = '" + faculty + "' AND  name LIKE '" + program + "%'");
+
+
+    if(!(query1->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+    }
+    QSqlQuery query = *query1;
+    delete query1;
+    return query;
+}
+
+void databaseconnection::setStudentSequence(QString faculty, QString programSequence, int year)
+{
+
+    QSqlQuery * query = new QSqlQuery;
+    QString yr = QString::number(year);
+    query->prepare(" SELECT programsequence.id FROM academicprogram "
+                   "JOIN programsequence ON programsequence.academicProgramID = academicprogram.id "
+                   "WHERE faculty = '" + faculty +"' AND name LIKE '" + programSequence + "' AND pSYear = "+ yr);
+
+//    query->bindValue(":userId", faculty);
+//    query->bindValue(":programSequenceid", programSequence);
+//    query->bindValue(":admissionYear", year);
+QString programID;
+    if(!(query->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",query->lastError().text());
+        qDebug()<<query->lastError().text();
+    }
+    else {
+        qDebug()<<"got it";
+        while(query->next())
+        {
+            programID = query->value(0).toString();
+            qDebug()<< programID;
+        }
+    }
+    delete query;
+
+
+//    SELECT programsequence.id FROM academicprogram
+//    JOIN programsequence ON programsequence.academicProgramID = academicprogram.id
+//    WHERE faculty = 'FST' AND  name LIKE 'Associates Degree in Infromation Technology' AND pSYear = 2016
+
+
+
+
+//still got this but i upper no work
+
+    QSqlQuery * query1 = new QSqlQuery;
+    query1->prepare("INSERT INTO student(userId, programSequenceid, admissionYear)"
+                   "VALUES (:userId, :programSequenceid, :admissionYear)");
+    qDebug()<<"down";
+    qDebug()<<yr;
+    qDebug()<<"upone";
+    query1->bindValue(":userId", getUserId());
+    query1->bindValue(":programSequenceid", programID);
+    query1->bindValue(":admissionYear", yr);
+
+    if(!(query1->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+    }
+    delete query1;
+
 }
 
 QString databaseconnection::getUserId()

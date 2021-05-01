@@ -39,6 +39,8 @@ private slots:
     void on_programSequenceTable_registerTableWidget_cellClicked(int row, int column);
 
 
+    void on_filterSearchButton_clicked();
+
 private:
     Ui::Register *ui;
     student * user;

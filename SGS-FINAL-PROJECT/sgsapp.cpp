@@ -4,7 +4,6 @@
 #include <QtSql>
 #include <QTableWidget>
 
-
 sgsApp::sgsApp(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::sgsApp)
