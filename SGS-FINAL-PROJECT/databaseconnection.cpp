@@ -69,8 +69,7 @@ void databaseconnection::insertNewUser(student &student)
     QTime ct = QTime::currentTime();
     QString currentTime =ct.toString();
 
-    //  if(id == 0)
-    // {
+
     query.prepare("INSERT INTO person ( firstname, lastname) "
                   "VALUES ( :firstname, :lastname)");
     query.bindValue(":firstname", fname);
@@ -85,9 +84,6 @@ void databaseconnection::insertNewUser(student &student)
     QSqlQuery newQuery ;
 
     QString userID;
-    //if (query.exec( "SELECT id, roleid from users WHERE username = '" + username + "' AND password = '" +
-    //                password + "' AND activeUser = '" + logIn + "' "))
-
 
     if(newQuery.exec("SELECT id FROM person WHERE firstname = '" + fname + "' AND lastname = '" + lname   + "' "))
     {
@@ -104,22 +100,6 @@ void databaseconnection::insertNewUser(student &student)
         qDebug()<<"got serious probs2";
     }
 
-
-    //newQuery.prepare("SELECT id FROM person WHERE  "
-    //                      "VALUES ( :firstname, :lastname)");
-    //        newQuery.bindValue(":firstname", fname);
-    //        newQuery.bindValue(":lastname", lname);
-
-
-    //    }
-    //    else
-    //    {
-    //        query.prepare("INSERT INTO person (id, firstname, lastname) "
-    //                      "VALUES (:id, :firstname, :lastname)");
-    //        query.bindValue(":id", id);
-    //        query.bindValue(":firstname", fname);
-    //        query.bindValue(":lastname", lname);
-    //    }
 
     QString answer[questionAsk];
     answer[0] = student.getQuestion1();
@@ -163,10 +143,6 @@ void databaseconnection::insertNewUser(student &student)
                 while (getID.next())
                 {
                     stu = getID.value(0).toString();
-
-                    qDebug()<<"created user right : ";
-                    qDebug()<<stu;
-                    qDebug()<<" ^created user right : ";
                 }
             }
 
@@ -450,10 +426,6 @@ void databaseconnection::setStudentSequence(QString faculty, QString programSequ
     query->prepare(" SELECT programsequence.id FROM academicprogram "
                    "JOIN programsequence ON programsequence.academicProgramID = academicprogram.id "
                    "WHERE faculty = '" + faculty +"' AND name LIKE '" + programSequence + "' AND pSYear = "+ yr);
-
-//    query->bindValue(":userId", faculty);
-//    query->bindValue(":programSequenceid", programSequence);
-//    query->bindValue(":admissionYear", year);
 QString programID;
     if(!(query->exec()))
     {
@@ -471,21 +443,9 @@ QString programID;
     delete query;
 
 
-//    SELECT programsequence.id FROM academicprogram
-//    JOIN programsequence ON programsequence.academicProgramID = academicprogram.id
-//    WHERE faculty = 'FST' AND  name LIKE 'Associates Degree in Infromation Technology' AND pSYear = 2016
-
-
-
-
-//still got this but i upper no work
-
     QSqlQuery * query1 = new QSqlQuery;
     query1->prepare("INSERT INTO student(userId, programSequenceid, admissionYear)"
                    "VALUES (:userId, :programSequenceid, :admissionYear)");
-    qDebug()<<"down";
-    qDebug()<<yr;
-    qDebug()<<"upone";
     query1->bindValue(":userId", getUserId());
     query1->bindValue(":programSequenceid", programID);
     query1->bindValue(":admissionYear", yr);
@@ -496,6 +456,50 @@ QString programID;
     }
     delete query1;
 
+}
+
+QSqlQuery databaseconnection::getStudentsCourses()
+{
+    QSqlQuery *programSequence = new QSqlQuery;
+    QString programSequenceid;
+    QString admissionYr;
+    programSequence->prepare("SELECT  programSequenceid, admissionYear FROM student WHERE userid = " + getUserId());
+
+
+
+    if(!(programSequence->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",programSequence->lastError().text());
+    }
+
+    {
+        qDebug()<<"WORKED";
+        while(programSequence->next())
+        {
+            programSequenceid = programSequence->value(0).toString();
+            admissionYr = programSequence->value(1).toString();
+            qDebug()<<programSequenceid;
+            qDebug()<<admissionYr;
+        }
+
+    }
+
+
+    QSqlQuery * courses = new QSqlQuery;
+    courses->prepare("SELECT courseID, name,credithour, prequisite, semester, pSYear FROM programsequencecourses "
+                     "JOIN courses on courses.courseCode = programsequencecourses.courseID "
+                     "JOIN prequisites on prequisites.id = courses.courseCode "
+                     "JOIN programsequence on programsequence.id = programsequencecourses.programSequenceid "
+                     "WHERE programSequenceid = '" + programSequenceid +"' AND psyear = " + admissionYr);
+
+    if(!(courses->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter: ",programSequence->lastError().text());
+    }
+    QSqlQuery course = *courses;
+    delete programSequence;
+    delete courses;
+    return course;
 }
 
 QString databaseconnection::getUserId()

@@ -34,6 +34,7 @@ public:
     QSqlQuery getFaculty();
     QSqlQuery getProgramSequences(QString,QString);
     void setStudentSequence(QString,QString,int);
+    QSqlQuery getStudentsCourses();
     QString getUserId();
     void setUserId(QString);
     void resetPassword(QString);

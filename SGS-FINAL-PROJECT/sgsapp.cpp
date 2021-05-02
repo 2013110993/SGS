@@ -4,6 +4,7 @@
 #include <QtSql>
 #include <QTableWidget>
 
+//extern databaseconnection * connection;
 sgsApp::sgsApp(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::sgsApp)
@@ -271,6 +272,10 @@ void sgsApp::on_dashboard_pushButton_clicked()
 
 void sgsApp::on_viewStudentProgramSequence_Button_clicked()
 {
+    while (ui->programSequenceTableWidget->rowCount() > 0)
+    {
+        ui->programSequenceTableWidget->removeRow(0);
+    }
     programSequenceList();
     ui->stackedWidgetPages->setCurrentIndex(2);
 }
@@ -278,6 +283,8 @@ void sgsApp::on_viewStudentProgramSequence_Button_clicked()
 //Generating the Program Sequence QTableWidget
 void sgsApp::programSequenceList()
 {
+    QSqlQuery programCourses = connection->getStudentsCourses();
+
     ui->programSequenceTableWidget->setColumnCount(7);
     ui->programSequenceTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
 
@@ -289,15 +296,15 @@ void sgsApp::programSequenceList()
 
     int rowCount = 0;
 
-    for(int i = 0; i< 1; i++){
+    for(; programCourses.next();){
 
          ui->programSequenceTableWidget->insertRow(rowCount);
-         ui->programSequenceTableWidget->setColumnWidth(0,80);
-         ui->programSequenceTableWidget->setColumnWidth(1,200);
-         ui->programSequenceTableWidget->setColumnWidth(2,48);
-         ui->programSequenceTableWidget->setColumnWidth(3,40);
-         ui->programSequenceTableWidget->setColumnWidth(4,200);
-         ui->programSequenceTableWidget->setColumnWidth(5,60);
+         ui->programSequenceTableWidget->setColumnWidth(0,90);
+         ui->programSequenceTableWidget->setColumnWidth(1,300);
+         ui->programSequenceTableWidget->setColumnWidth(2,60);
+         ui->programSequenceTableWidget->setColumnWidth(3,53);
+         ui->programSequenceTableWidget->setColumnWidth(4,480);
+         ui->programSequenceTableWidget->setColumnWidth(5,70);
          ui->programSequenceTableWidget->setColumnWidth(6,40);
 
         QTableWidgetItem *courseCode = new QTableWidgetItem;
@@ -308,13 +315,13 @@ void sgsApp::programSequenceList()
         QTableWidgetItem *semester = new QTableWidgetItem;
         QTableWidgetItem *year = new QTableWidgetItem;
 
-        courseCode->setText("CMPS3151");
-        courseName->setText("Telecommunications Systems");
-        credits->setText("3");
+        courseCode->setText(programCourses.value(0).toString());
+        courseName->setText(programCourses.value(1).toString());
+        credits->setText(programCourses.value(2).toString());
         grade->setText("A");
-        prerequisites->setText("CMPS1191");
-        semester->setText("1");
-        year->setText("1");
+        prerequisites->setText(programCourses.value(3).toString());
+        semester->setText(programCourses.value(4).toString());
+        year->setText(programCourses.value(5).toString());
 
         ui->programSequenceTableWidget->setItem(rowCount,0,courseCode);
         ui->programSequenceTableWidget->setItem(rowCount,1,courseName);
@@ -323,7 +330,6 @@ void sgsApp::programSequenceList()
         ui->programSequenceTableWidget->setItem(rowCount,4,prerequisites);
         ui->programSequenceTableWidget->setItem(rowCount,5,semester);
         ui->programSequenceTableWidget->setItem(rowCount,6,year);
-
 
         rowCount++;
     }

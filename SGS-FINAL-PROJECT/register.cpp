@@ -109,41 +109,6 @@ void Register::on_signUpNextButton_clicked()
     //Generate Table for ProgramSequence
     on_registerTableWidget_ProgramSequenceTable();
 
-//    if(!emailLineEdit->hasAcceptableInput())            //displays warning message box if email format is incorrect
-//    {
-//        QMessageBox::warning(this, tr("Email verification"),
-//                             tr("Email Format is incorrect."), QMessageBox::Ok);
-//        return;
-//    }
-//    else if(emailLineEdit->text() != confirmEmailLineEdit->text()) //displays warning message box if the email line edit is not equal to confirm email line edit
-//    {
-//        QMessageBox::warning(this, tr("Email verification"),
-//                             tr("Email Format does not Match."), QMessageBox::Ok);
-//        return;
-
-//    }
-
-
-
-//    if( questionText.isEmpty() ||  currIndex == 0 || questionText2.isEmpty() || currIndex2 == 0 || questionText3.isEmpty() || currIndex3 == 0)
-//    {
-//        QMessageBox msgBox1;
-//        msgBox1.setText("Your Account is not completed, Please fill the missing data!");
-//        msgBox1.exec();
-//        qDebug()<<"is empty";
-//    }
-//    else if(currIndex == currIndex2 || currIndex == currIndex3 || currIndex2 == currIndex3) //checks if questions are repeated
-//    {
-//        QMessageBox msgBox1;
-//        msgBox1.setText("Questions are repeated!");
-//        msgBox1.exec();
-//    }
-//    else
-//    {
-
-//        ui->stackedWidgetRegister->setCurrentIndex(1); //executes if there's no error
-
-//    }
 }
 
 //Register Back page
@@ -182,13 +147,6 @@ void Register::on_signUpButton_clicked()
 
     int currIndex = ui->programComboBox->currentIndex();       // program combo box
     int currIndex2 = ui->facultyComboBox->currentIndex();  //faculty combo box
-    //    if(currIndex == 0 || currIndex2 == 0)
-    //    {
-    //        QMessageBox msgBox1;
-    //        msgBox1.setText("Please fill the missing data!");
-    //        msgBox1.exec();
-    //    }
-    //    else
     {
 
 
