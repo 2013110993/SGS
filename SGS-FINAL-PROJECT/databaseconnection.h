@@ -33,13 +33,17 @@ public:
     QSqlQuery getLecturerInfo(QString);
     QSqlQuery getFaculty();
     QSqlQuery getProgramSequences(QString,QString);
+    QSqlQuery getLectureName(QString);
     void setStudentSequence(QString,QString,int);
+    bool setCourseGrade(QStringList);
     QSqlQuery getStudentsCourses();
     QString getUserId();
     void setUserId(QString);
     void resetPassword(QString);
     void setRole(QString);
     QString getRole();
+
+    bool isCourseGraded(QString);
 
 private:
     bool connected;

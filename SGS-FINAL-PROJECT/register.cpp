@@ -121,13 +121,13 @@ void Register::on_backSignUpButton_clicked()
 //Accout Types Radio Buttons
 void Register::on_studentRadioButton_clicked()
 {
-    ui->studentIdRegFormLineEdit->show();
+    ui->studentIdRegFormLineEdit->setPlaceholderText("Enter Student ID: ");
     userRole=1;
 }
 
 void Register::on_lecturerRadioButton_clicked()
 {
-    ui->studentIdRegFormLineEdit->hide();
+    ui->studentIdRegFormLineEdit->setPlaceholderText("Enter Lecture Username: ");
     userRole=2;
 }
 

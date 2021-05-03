@@ -107,7 +107,7 @@ background: none;</string>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="personInfo">
     <widget class="QGroupBox" name="userInfogroupBox_2">
@@ -866,7 +866,7 @@ border-radius:5px;</string>
           <string>Sign instead</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../../SGS-FINAL-PROJECT-CURRENT/images.qrc">
            <normaloff>:/icons White/Icons/White/Passsword.png</normaloff>:/icons White/Icons/White/Passsword.png</iconset>
          </property>
         </widget>
@@ -884,7 +884,7 @@ border-radius:5px;</string>
           <string>Next</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../../SGS-FINAL-PROJECT-CURRENT/images.qrc">
            <normaloff>:/icons White/Icons/White/Double Arrow RIGHT.png</normaloff>:/icons White/Icons/White/Double Arrow RIGHT.png</iconset>
          </property>
          <property name="autoDefault">
@@ -948,7 +948,7 @@ border-radius:5px;</string>
        <string>Filter Search</string>
       </property>
       <property name="icon">
-       <iconset resource="images.qrc">
+       <iconset resource="../../SGS-FINAL-PROJECT-CURRENT/images.qrc">
         <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
       </property>
       <property name="autoDefault">
@@ -1098,7 +1098,7 @@ border-radius:5px;</string>
           <string>Back</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../../SGS-FINAL-PROJECT-CURRENT/images.qrc">
            <normaloff>:/icons White/Icons/White/Single Arrow LEFT.png</normaloff>:/icons White/Icons/White/Single Arrow LEFT.png</iconset>
          </property>
         </widget>
@@ -1116,7 +1116,7 @@ border-radius:5px;</string>
           <string>  Create</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../../SGS-FINAL-PROJECT-CURRENT/images.qrc">
            <normaloff>:/icons White/Icons/White/Add User.png</normaloff>:/icons White/Icons/White/Add User.png</iconset>
          </property>
          <property name="autoDefault">
@@ -1247,8 +1247,6 @@ border-radius:5px;</string>
    </widget>
   </widget>
  </widget>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

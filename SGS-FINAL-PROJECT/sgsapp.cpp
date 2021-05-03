@@ -424,6 +424,7 @@ void sgsApp::on_programSequenceTableWidget_cellClicked(int row, int column)
     QString prerequisites = ui->programSequenceTableWidget->item(row,4)->text();
     QString semester = ui->programSequenceTableWidget->item(row,5)->text();
     QString year = ui->programSequenceTableWidget->item(row,6)->text();
+    QSqlQuery lecture = connection->getLectureName(courseCode);
 
     ui->courseCode_CourseGradeLable->setText(courseCode);
     ui->courseName_courseGradeLable->setText(courseName);
@@ -432,27 +433,51 @@ void sgsApp::on_programSequenceTableWidget_cellClicked(int row, int column)
     ui->semester_CourseGradeLable->setText(semester);
     ui->courseYear_CourseGradeLable->setText(year);
 
+    ui->addLectureComboBox->clear();
+    while (lecture.next())
+    {
+        QString lectureName = lecture.value(0).toString();
+        lectureName.append(" ");
+        lectureName = lectureName.append(lecture.value(1).toString());
+        ui->addLectureComboBox->addItem(lectureName);
+    }
+
+
 
 }
 
 void sgsApp::on_updateCourse_pushButton_clicked()
 {
+
     QString courseCode =  ui->courseCode_CourseGradeLable->text();
     QString courseName =  ui->courseName_courseGradeLable->text();
     QString credits = ui->credit_CourseGradeLable->text();
+    QString grade = ui->addCourseGradecomboBox->currentText();
+    QString rating = ui->addCourseRatingcomboBox->currentText();
     QString prerequisites = ui->allPrerequisites_CourseGradeLable->text();
     QString semester = ui->semester_CourseGradeLable->text();
     QString year =  ui->courseYear_CourseGradeLable->text();
     QString comment =  ui->addCourseComment_plainTextEdit->toPlainText();
 
-    qDebug()<<courseCode;
-    qDebug()<<courseName;
-    qDebug()<<credits;
-    qDebug()<<courseCode;
-    qDebug()<<prerequisites;
-    qDebug()<<semester;
-    qDebug()<<year;
-    qDebug()<<comment;
+    QStringList list;
+    list.append(courseCode);
+
+     list.append(grade);
+
+    list.append(rating);
+    list.append(ui->addLectureComboBox->currentText());
+    list.append(comment);
+
+
+
+
+
+
+    bool checking = connection->setCourseGrade(list);
+
+    if (checking)
+          qDebug()<<"UPDATED GRADE";
+
 
 }
 

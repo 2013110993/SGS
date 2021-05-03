@@ -13,7 +13,7 @@ databaseconnection::databaseconnection()
 
 databaseconnection::~databaseconnection()
 {
-   setConnection.close();
+    setConnection.close();
 }
 
 void databaseconnection::connect()
@@ -34,8 +34,7 @@ void databaseconnection::connect()
 
         }
         else
-        // Lets the program know that it didnt connect to the server
-
+            // Lets the program know that it didnt connect to the server
         {
             QString error = setConnection.lastError().text();
             throw error.toStdString().c_str();
@@ -223,18 +222,18 @@ bool databaseconnection::loginUser(QString username, QString password)
 
             switch (getRole().toInt())
             {
-                case 1:
-                {
+            case 1:
+            {
                 qDebug()<<"Student";
 
                 return true;
-                }
+            }
 
-                case 2:
-                {
+            case 2:
+            {
                 qDebug()<<"Lecture";
                 return true;
-                }
+            }
             case 3:
             {
                 qDebug()<<"Admin";
@@ -247,17 +246,13 @@ bool databaseconnection::loginUser(QString username, QString password)
         }
         else
         {
-            qDebug()<<"here: ";
             qDebug()<<query.lastError().text();
-            qDebug()<<" Login failed Invalid username or password.d s";
             return false;
         }
     }
     else
     {
-        qDebug()<<"here: ";
         qDebug()<<query.lastError().text();
-        qDebug()<<"Login failed Invalid username or password.";
         return false;
     }
     return false;
@@ -383,9 +378,9 @@ QSqlQuery databaseconnection::getLecturerInfo(QString lecturer)
 
         }
     }
-     QSqlQuery info = *query1;
-     delete query1;
-     return info;
+    QSqlQuery info = *query1;
+    delete query1;
+    return info;
 }
 
 QSqlQuery databaseconnection::getFaculty()
@@ -418,6 +413,35 @@ QSqlQuery databaseconnection::getProgramSequences(QString faculty, QString progr
     return query;
 }
 
+QSqlQuery databaseconnection::getLectureName(QString coureID)
+{
+    QSqlQuery *programSequence = new QSqlQuery;
+    QString programSequenceid;
+    QString admissionYr;
+    programSequence->prepare("SELECT firstname,lastname FROM lecturercourses "
+                             "JOIN users ON lecturercourses.lecturerID = users.id "
+                             "JOIN person ON users.personId = person.id "
+                             " WHERE lecturercourses.courseID = '" + coureID +"'");
+
+
+
+
+    //        'AAGR 1121'
+
+
+    if(!(programSequence->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",programSequence->lastError().text());
+    }
+
+
+
+    QSqlQuery lectures = *programSequence ;
+    delete programSequence;
+    return lectures;
+
+}
+
 void databaseconnection::setStudentSequence(QString faculty, QString programSequence, int year)
 {
 
@@ -426,7 +450,7 @@ void databaseconnection::setStudentSequence(QString faculty, QString programSequ
     query->prepare(" SELECT programsequence.id FROM academicprogram "
                    "JOIN programsequence ON programsequence.academicProgramID = academicprogram.id "
                    "WHERE faculty = '" + faculty +"' AND name LIKE '" + programSequence + "' AND pSYear = "+ yr);
-QString programID;
+    QString programID;
     if(!(query->exec()))
     {
         QMessageBox::warning(NULL,"We encounter an error: ",query->lastError().text());
@@ -445,7 +469,7 @@ QString programID;
 
     QSqlQuery * query1 = new QSqlQuery;
     query1->prepare("INSERT INTO student(userId, programSequenceid, admissionYear)"
-                   "VALUES (:userId, :programSequenceid, :admissionYear)");
+                    "VALUES (:userId, :programSequenceid, :admissionYear)");
     query1->bindValue(":userId", getUserId());
     query1->bindValue(":programSequenceid", programID);
     query1->bindValue(":admissionYear", yr);
@@ -455,6 +479,161 @@ QString programID;
         QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
     }
     delete query1;
+
+}
+
+bool databaseconnection::setCourseGrade(QStringList studentCourseGrade)
+{
+    QStringList::Iterator gradeinfo = studentCourseGrade.begin();
+    QString courseID = *gradeinfo;
+    ++gradeinfo;
+    QString grade = *gradeinfo;
+    ++gradeinfo;
+    QString rating = *gradeinfo;
+    ++gradeinfo;
+    QString lecture = *gradeinfo;
+    ++gradeinfo;
+    QString comment = *gradeinfo;
+
+    bool courseHasGrade = isCourseGraded(courseID);
+    bool addGrade = false;
+    bool addComment = false;
+
+    qDebug()<<"COURSE HAS GRADE:: "<<courseHasGrade <<" END";
+
+
+    if (courseHasGrade)
+
+    {
+        QSqlQuery * query1 = new QSqlQuery;
+        query1->prepare("INSERT INTO studentcourses(studentid, courseid, courseGrade, courseRating, isTransferred)"
+                        "VALUES (:studentid, :courseid, :courseGrade, :courseRating, :isTransferred)");
+        query1->bindValue(":studentid", getUserId());
+        query1->bindValue(":courseid", courseID);
+        query1->bindValue(":courseRating", rating);
+        qDebug()<<(grade == "TR");
+        if (grade == "TR")
+        { query1->bindValue(":isTransferred", 1);
+            query1->bindValue(":courseGrade", grade);
+        }
+        else
+        {
+            query1->bindValue(":courseGrade", grade);
+            query1->bindValue(":isTransferred", 0);
+        }
+
+        if(!(query1->exec()))
+        {
+            QMessageBox::warning(NULL,"We encounter an error: ","COULD NOT ADD YOUR GRADE " + query1->lastError().text());
+            return false;
+        }
+        delete query1;
+        addGrade = true;
+
+
+    }
+
+
+    if (!(comment.isEmpty() || lecture.isEmpty()))
+    {
+
+        qDebug()<<lecture;
+        QStringList list = lecture.split(QRegExp("\\s+"));
+        QStringList::Iterator lectureName = list.begin();
+        QString firstName = *lectureName;
+        ++lectureName;
+        QString lastName = *lectureName;
+
+        qDebug()<<firstName<<" "<<lastName;
+
+        QTime ct = QTime::currentTime();
+
+        QSqlQuery * query = new QSqlQuery;
+        query->prepare("SELECT users.id FROM users "
+                       "JOIN person ON users.personId = person.id "
+                       "WHERE firstname = '" + firstName +"' AND lastname = '" + lastName + "' AND roleId = " + '2' );
+
+        QString LectureID;
+        if(!(query->exec()))
+        {
+            QMessageBox::warning(NULL,"We encounter an error: ","COULD NOT FIND LECTURE " + query->lastError().text() );
+            qDebug()<<query->lastError().text();
+        }
+        else {
+            qDebug()<<"got it";
+            while(query->next())
+            {
+                LectureID = query->value(0).toString();
+                qDebug()<< LectureID;
+            }
+        }
+        delete query;
+
+        QSqlQuery * query1 = new QSqlQuery;
+        query1->prepare("INSERT INTO `coursecomments`(`courseid`, `timeStamp`, `comment`, `lecturerid`) "
+                        "VALUES ( :courseid, :timeStamp, :comment, :lecturerid)");
+
+        query1->bindValue(":courseid", courseID);
+        query1->bindValue(":timeStamp", ct);
+        query1->bindValue(":comment", comment);
+        query1->bindValue(":lecturerid", LectureID);
+
+        if(!(query1->exec()))
+        {
+            QMessageBox::warning(NULL,"We encounter an error: ","COULD NOT ADD COMMENT " + query->lastError().text());
+            qDebug()<<query->lastError().text();
+        }
+
+        delete query;
+        addComment = true;
+    }
+
+    if(!addGrade)
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ","COULD NOT ADD GRADE, You have Already add a grade to this course. " );
+        qDebug()<<"Grade NOT ADDED";
+    }
+    if (!addComment)
+        QMessageBox::warning(NULL,"We encounter an error: ","COULD NOT ADD Comment, There seem to be an error while adding a Comment. " );
+
+
+        if (addGrade && addComment)
+        {
+                QMessageBox msgBox;
+                msgBox.setText("Successfully Added Grade & Comment");
+                msgBox.setInformativeText("Both Grade And Comment have been added.");
+                msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Discard );
+                msgBox.setDefaultButton(QMessageBox::Ok);
+                int ret = msgBox.exec();
+         }
+
+
+    if (addGrade || addComment)
+    {
+        if (addGrade)
+        {
+                QMessageBox msgBox;
+                msgBox.setText("Successfully Added Grade ");
+                msgBox.setInformativeText("The grade for this course "+  courseID  +" has been added.");
+                msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Discard );
+                msgBox.setDefaultButton(QMessageBox::Ok);
+                int ret = msgBox.exec();
+         }
+        else
+        {
+            QMessageBox msgBox;
+            msgBox.setText("Successfully Added Commet ");
+            msgBox.setInformativeText("The Commet for this course "+  courseID  +" has been added.");
+            msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Discard );
+            msgBox.setDefaultButton(QMessageBox::Ok);
+            int ret = msgBox.exec();
+        }
+            return true;
+
+    }
+
+    else
+        return false;
 
 }
 
@@ -473,7 +652,6 @@ QSqlQuery databaseconnection::getStudentsCourses()
     }
 
     {
-        qDebug()<<"WORKED";
         while(programSequence->next())
         {
             programSequenceid = programSequence->value(0).toString();
@@ -532,5 +710,32 @@ void databaseconnection::setRole(QString role)
 QString databaseconnection::getRole()
 {
     return UserRole;
+}
+
+bool databaseconnection::isCourseGraded(QString courseID)
+{
+
+    QSqlQuery * query1 = new QSqlQuery;
+    query1->prepare("SELECT courseGrade FROM studentcourses WHERE studentid = " + getUserId() + " AND courseid = '" + courseID + "'");
+
+    if(!(query1->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+    }
+    else {
+        while(query1->next())
+        {
+            QString checkingGrade = query1->value(0).toString();
+            if(checkingGrade.isEmpty())
+                return true;
+        }
+        return false;
+    }
+    delete query1;
+
+
+
+
+
 }
 

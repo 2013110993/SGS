@@ -222,7 +222,6 @@ void forgotPassword::on_checkAnswerResetButton_clicked()
                 //show Security Questions after Search
                 ui->stackedWidgetResetPassword->setCurrentIndex(2);
                 ui->resetPasswordGroupBox->show();
-                //ui->checkAnswerResetButton->hide();
             }
 
             else
@@ -230,7 +229,6 @@ void forgotPassword::on_checkAnswerResetButton_clicked()
                        throw  "Answer is  Incorrect";
 
                     }
-
 
         }
 
