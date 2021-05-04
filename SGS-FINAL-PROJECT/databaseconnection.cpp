@@ -478,7 +478,7 @@ void databaseconnection::setStudentSequence(QString faculty, QString programSequ
         QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
     }
     delete query1;
-    bool updateStudentSequences = setStudentsCoursePerSequence(getStudentsCourses());
+    bool updateStudentSequences = setStudentsCoursePerSequence(getCourses());
     if(updateStudentSequences)
         qDebug()<<"Successfully Add all courses";
 
@@ -700,11 +700,15 @@ QSqlQuery databaseconnection::getStudentsCourses()
 
 
     QSqlQuery * courses = new QSqlQuery;
-    courses->prepare("SELECT courseID, name,credithour, prequisite, semester, pSYear FROM programsequencecourses "
+    courses->prepare("SELECT courseCode, name,credithour, studentcourses.courseGrade, prequisite, semester, pSYear FROM programsequencecourses  "
                      "JOIN courses on courses.courseCode = programsequencecourses.courseID "
-                     "JOIN prequisites on prequisites.id = courses.courseCode "
+                     "JOIN prequisites on prequisites.id = courses.courseCode  "
                      "JOIN programsequence on programsequence.id = programsequencecourses.programSequenceid "
-                     "WHERE programSequenceid = '" + programSequenceid +"' AND psyear = " + admissionYr);
+                     "JOIN studentcourses on studentcourses.courseid = programsequencecourses.courseID "
+                     "WHERE programSequenceid = '" + programSequenceid +"' AND psyear = " + admissionYr +" AND studentid = " + getUserId());
+
+
+
 
     if(!(courses->exec()))
     {
@@ -715,6 +719,55 @@ QSqlQuery databaseconnection::getStudentsCourses()
     delete courses;
     return course;
 }
+
+
+QSqlQuery databaseconnection::getCourses()
+{
+    QSqlQuery *programSequence = new QSqlQuery;
+    QString programSequenceid;
+    QString admissionYr;
+    programSequence->prepare("SELECT  programSequenceid, admissionYear FROM student WHERE userid = " + getUserId());
+
+
+
+    if(!(programSequence->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",programSequence->lastError().text());
+    }
+
+    {
+        while(programSequence->next())
+        {
+            programSequenceid = programSequence->value(0).toString();
+            admissionYr = programSequence->value(1).toString();
+            qDebug()<<programSequenceid;
+            qDebug()<<admissionYr;
+        }
+
+    }
+
+
+    QSqlQuery * courses = new QSqlQuery;
+    courses->prepare("SELECT courseCode, name,credithour, prequisite, semester, pSYear FROM programsequencecourses  "
+                     "JOIN courses on courses.courseCode = programsequencecourses.courseID "
+                     "JOIN prequisites on prequisites.id = courses.courseCode  "
+                     "JOIN programsequence on programsequence.id = programsequencecourses.programSequenceid "
+                     "WHERE programSequenceid = '" + programSequenceid +"' AND psyear = " + admissionYr);
+
+
+
+
+    if(!(courses->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter: ",programSequence->lastError().text());
+    }
+    QSqlQuery course = *courses;
+    delete programSequence;
+    delete courses;
+    return course;
+}
+
+
 
 QString databaseconnection::getUserId()
 {

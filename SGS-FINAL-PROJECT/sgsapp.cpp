@@ -300,9 +300,9 @@ void sgsApp::programSequenceList()
 
          ui->programSequenceTableWidget->insertRow(rowCount);
          ui->programSequenceTableWidget->setColumnWidth(0,90);
-         ui->programSequenceTableWidget->setColumnWidth(1,300);
+         ui->programSequenceTableWidget->setColumnWidth(1,270);
          ui->programSequenceTableWidget->setColumnWidth(2,60);
-         ui->programSequenceTableWidget->setColumnWidth(3,53);
+         ui->programSequenceTableWidget->setColumnWidth(3,90);
          ui->programSequenceTableWidget->setColumnWidth(4,480);
          ui->programSequenceTableWidget->setColumnWidth(5,70);
          ui->programSequenceTableWidget->setColumnWidth(6,40);
@@ -318,10 +318,15 @@ void sgsApp::programSequenceList()
         courseCode->setText(programCourses.value(0).toString());
         courseName->setText(programCourses.value(1).toString());
         credits->setText(programCourses.value(2).toString());
-        grade->setText("A");
-        prerequisites->setText(programCourses.value(3).toString());
-        semester->setText(programCourses.value(4).toString());
-        year->setText(programCourses.value(5).toString());
+        if (programCourses.value(3).toString().isEmpty())
+        grade->setText("Pending");
+        else
+            grade->setText(programCourses.value(3).toString());
+
+
+        prerequisites->setText(programCourses.value(4).toString());
+        semester->setText(programCourses.value(5).toString());
+        year->setText(programCourses.value(6).toString());
 
         ui->programSequenceTableWidget->setItem(rowCount,0,courseCode);
         ui->programSequenceTableWidget->setItem(rowCount,1,courseName);
@@ -476,7 +481,8 @@ void sgsApp::on_updateCourse_pushButton_clicked()
     bool checking = connection->setCourseGrade(list);
 
     if (checking)
-          qDebug()<<"UPDATED GRADE";
+          programSequenceList();
+    programSequenceList();
 
 
 }

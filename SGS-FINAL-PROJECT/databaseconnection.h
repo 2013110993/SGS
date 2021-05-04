@@ -38,6 +38,7 @@ public:
     bool setStudentsCoursePerSequence(QSqlQuery);
     bool setCourseGrade(QStringList);
     QSqlQuery getStudentsCourses();
+    QSqlQuery getCourses();
     QString getUserId();
     void setUserId(QString);
     void resetPassword(QString);
