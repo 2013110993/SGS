@@ -272,10 +272,7 @@ void sgsApp::on_dashboard_pushButton_clicked()
 
 void sgsApp::on_viewStudentProgramSequence_Button_clicked()
 {
-    while (ui->programSequenceTableWidget->rowCount() > 0)
-    {
-        ui->programSequenceTableWidget->removeRow(0);
-    }
+
     programSequenceList();
     ui->stackedWidgetPages->setCurrentIndex(2);
 }
@@ -283,6 +280,10 @@ void sgsApp::on_viewStudentProgramSequence_Button_clicked()
 //Generating the Program Sequence QTableWidget
 void sgsApp::programSequenceList()
 {
+    while (ui->programSequenceTableWidget->rowCount() > 0)
+    {
+        ui->programSequenceTableWidget->removeRow(0);
+    }
     QSqlQuery programCourses = connection->getStudentsCourses();
 
     ui->programSequenceTableWidget->setColumnCount(7);
@@ -482,7 +483,6 @@ void sgsApp::on_updateCourse_pushButton_clicked()
 
     if (checking)
           programSequenceList();
-    programSequenceList();
 
 
 }
