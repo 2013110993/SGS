@@ -44,7 +44,7 @@ public:
     QPushButton *accountLostResetButton;
     QWidget *page_2;
     QGroupBox *userInfogroupBox;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *UserName;
@@ -55,7 +55,7 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QLabel *Activate;
     QLabel *Activate_Label;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_5;
     QPushButton *checkAnswerResetButton;
     QPushButton *checkAnswerResetButton_2;
@@ -165,15 +165,15 @@ public:
         userInfogroupBox = new QGroupBox(page_2);
         userInfogroupBox->setObjectName(QStringLiteral("userInfogroupBox"));
         userInfogroupBox->setGeometry(QRect(10, 30, 301, 171));
-        widget = new QWidget(userInfogroupBox);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 20, 271, 91));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(userInfogroupBox);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 20, 271, 91));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        UserName = new QLabel(widget);
+        UserName = new QLabel(layoutWidget);
         UserName->setObjectName(QStringLiteral("UserName"));
         QFont font1;
         font1.setBold(true);
@@ -183,7 +183,7 @@ public:
 
         horizontalLayout->addWidget(UserName);
 
-        UserName_label = new QLabel(widget);
+        UserName_label = new QLabel(layoutWidget);
         UserName_label->setObjectName(QStringLiteral("UserName_label"));
         UserName_label->setFont(font1);
         UserName_label->setStyleSheet(QStringLiteral("background-color:none;"));
@@ -195,14 +195,14 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        RoleType = new QLabel(widget);
+        RoleType = new QLabel(layoutWidget);
         RoleType->setObjectName(QStringLiteral("RoleType"));
         RoleType->setFont(font1);
         RoleType->setStyleSheet(QStringLiteral("background-color:none;"));
 
         horizontalLayout_2->addWidget(RoleType);
 
-        RoleType_Label = new QLabel(widget);
+        RoleType_Label = new QLabel(layoutWidget);
         RoleType_Label->setObjectName(QStringLiteral("RoleType_Label"));
         RoleType_Label->setFont(font1);
         RoleType_Label->setStyleSheet(QStringLiteral("background-color:none;"));
@@ -214,14 +214,14 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        Activate = new QLabel(widget);
+        Activate = new QLabel(layoutWidget);
         Activate->setObjectName(QStringLiteral("Activate"));
         Activate->setFont(font1);
         Activate->setStyleSheet(QStringLiteral("background-color:none;"));
 
         horizontalLayout_3->addWidget(Activate);
 
-        Activate_Label = new QLabel(widget);
+        Activate_Label = new QLabel(layoutWidget);
         Activate_Label->setObjectName(QStringLiteral("Activate_Label"));
         Activate_Label->setFont(font1);
         Activate_Label->setStyleSheet(QStringLiteral("background-color:none;"));
@@ -231,13 +231,13 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_3);
 
-        widget1 = new QWidget(userInfogroupBox);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(10, 120, 271, 32));
-        horizontalLayout_5 = new QHBoxLayout(widget1);
+        layoutWidget1 = new QWidget(userInfogroupBox);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(10, 120, 271, 32));
+        horizontalLayout_5 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
-        checkAnswerResetButton = new QPushButton(widget1);
+        checkAnswerResetButton = new QPushButton(layoutWidget1);
         checkAnswerResetButton->setObjectName(QStringLiteral("checkAnswerResetButton"));
         checkAnswerResetButton->setStyleSheet(QLatin1String("background:#fbaf01;\n"
 "color: #ffffff;\n"
@@ -251,7 +251,7 @@ public:
 
         horizontalLayout_5->addWidget(checkAnswerResetButton);
 
-        checkAnswerResetButton_2 = new QPushButton(widget1);
+        checkAnswerResetButton_2 = new QPushButton(layoutWidget1);
         checkAnswerResetButton_2->setObjectName(QStringLiteral("checkAnswerResetButton_2"));
         checkAnswerResetButton_2->setStyleSheet(QLatin1String("background:#fbaf01;\n"
 "color: #ffffff;\n"
@@ -287,7 +287,7 @@ public:
 
         retranslateUi(Activate_DeactivateUser);
 
-        stackedWidgetResetPassword->setCurrentIndex(0);
+        stackedWidgetResetPassword->setCurrentIndex(1);
         accountLostResetButton->setDefault(false);
         checkAnswerResetButton->setDefault(false);
         checkAnswerResetButton_2->setDefault(false);
