@@ -564,7 +564,7 @@ public:
 
         retranslateUi(Register);
 
-        stackedWidgetRegister->setCurrentIndex(1);
+        stackedWidgetRegister->setCurrentIndex(0);
         signUpNextButton->setDefault(false);
         filterSearchButton->setDefault(false);
         signUpButton->setDefault(false);
@@ -617,8 +617,8 @@ public:
 
         programLabel->setText(QApplication::translate("Register", "Program:", nullptr));
         programComboBox->setItemText(0, QApplication::translate("Register", "Select program", nullptr));
-        programComboBox->setItemText(1, QApplication::translate("Register", "Associates", nullptr));
-        programComboBox->setItemText(2, QApplication::translate("Register", "Bachelors", nullptr));
+        programComboBox->setItemText(1, QApplication::translate("Register", "Associate", nullptr));
+        programComboBox->setItemText(2, QApplication::translate("Register", "Bachelor", nullptr));
 
         groupBoxRegBottom->setTitle(QString());
         backSignUpButton->setText(QApplication::translate("Register", "Back", nullptr));
