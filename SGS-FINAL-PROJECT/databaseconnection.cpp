@@ -457,7 +457,6 @@ void databaseconnection::setStudentSequence(QString faculty, QString programSequ
         qDebug()<<query->lastError().text();
     }
     else {
-        qDebug()<<"got it";
         while(query->next())
         {
             programID = query->value(0).toString();
@@ -479,6 +478,43 @@ void databaseconnection::setStudentSequence(QString faculty, QString programSequ
         QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
     }
     delete query1;
+    bool updateStudentSequences = setStudentsCoursePerSequence(getStudentsCourses());
+    if(updateStudentSequences)
+        qDebug()<<"Successfully Add all courses";
+
+}
+
+bool databaseconnection::setStudentsCoursePerSequence(QSqlQuery courses)
+{
+    QString courseID;
+    qDebug()<<"add course with studentID"<<getUserId();
+    while (courses.next())
+    {
+        courseID = courses.value(0).toString();
+            QSqlQuery * query = new QSqlQuery;
+            query->prepare("INSERT INTO `studentcourses`(`studentid`, `courseid`) "
+                           "VALUES (:studentid,:courseid)");
+
+
+                           query->bindValue(":studentid",getUserId());
+                           query->bindValue(":courseid",courseID);
+                           if(query->exec())
+                           {
+                               qDebug()<<"add course with studentID"<<courseID;
+                               //emit userLogOut();
+                           }
+                           else
+                           {
+                               qDebug()<<query->lastError().text();
+                               return false;
+                           }
+            delete query;
+
+    }
+
+    return true;
+
+
 
 }
 
@@ -494,6 +530,7 @@ bool databaseconnection::setCourseGrade(QStringList studentCourseGrade)
     QString lecture = *gradeinfo;
     ++gradeinfo;
     QString comment = *gradeinfo;
+    int isTransfered = 0;
 
     bool courseHasGrade = isCourseGraded(courseID);
     bool addGrade = false;
@@ -502,25 +539,24 @@ bool databaseconnection::setCourseGrade(QStringList studentCourseGrade)
     qDebug()<<"COURSE HAS GRADE:: "<<courseHasGrade <<" END";
 
 
-    if (courseHasGrade)
+    if (!courseHasGrade)
 
     {
         QSqlQuery * query1 = new QSqlQuery;
-        query1->prepare("INSERT INTO studentcourses(studentid, courseid, courseGrade, courseRating, isTransferred)"
-                        "VALUES (:studentid, :courseid, :courseGrade, :courseRating, :isTransferred)");
-        query1->bindValue(":studentid", getUserId());
-        query1->bindValue(":courseid", courseID);
-        query1->bindValue(":courseRating", rating);
+
+
         qDebug()<<(grade == "TR");
         if (grade == "TR")
-        { query1->bindValue(":isTransferred", 1);
-            query1->bindValue(":courseGrade", grade);
+        {
+            isTransfered =1;
         }
         else
         {
-            query1->bindValue(":courseGrade", grade);
-            query1->bindValue(":isTransferred", 0);
+            isTransfered = 0;
         }
+        query1->prepare("UPDATE studentcourses "
+                        "SET courseGrade= '" + grade + "', courseRating= '" + rating  + "' , isTransferred = " + QString::number( isTransfered) + " "
+                        "WHERE studentid = "+ getUserId() + " AND courseid = '"+ courseID+"' " );
 
         if(!(query1->exec()))
         {
@@ -722,16 +758,20 @@ bool databaseconnection::isCourseGraded(QString courseID)
     {
         QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
     }
-    else {
+    else
+    {
         while(query1->next())
         {
             QString checkingGrade = query1->value(0).toString();
             if(checkingGrade.isEmpty())
+                return false;
+            else
                 return true;
         }
-        return false;
+
     }
     delete query1;
+    return false;
 
 
 
