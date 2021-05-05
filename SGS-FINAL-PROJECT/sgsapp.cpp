@@ -410,17 +410,11 @@ void sgsApp::viewCoursesTable()
         else
             status->setText("Complete: "+ courses.value(3).toString());
 
-
-
-
-        comments->setText("This is a Comment for the course");
-
         ui->viewCoursesTableWidget->setItem(rowCount,0,courseCode);
         ui->viewCoursesTableWidget->setItem(rowCount,1,courseName);
         ui->viewCoursesTableWidget->setItem(rowCount,2,credits);
         ui->viewCoursesTableWidget->setItem(rowCount,3,semester);
         ui->viewCoursesTableWidget->setItem(rowCount,4,status);
-        //ui->viewCoursesTableWidget->setItem(rowCount,5,comments);
 
 
         rowCount++;
@@ -431,21 +425,8 @@ void sgsApp::on_viewCoursesTableWidget_cellClicked(int row, int column)
 {
     QString courseName = ui->viewCoursesTableWidget->item(row,1)->text();
     QString status =  ui->viewCoursesTableWidget->item(row,4)->text();
-
-   // QString comments =  ui->viewCoursesTableWidget->item(row,5)->text();
-   // QString satus = ui->viewCoursesTableWidget->item(row,2)->text();
-//    QString prerequisites = ui->programSequenceTableWidget->item(row,4)->text();
-//    QString semester = ui->programSequenceTableWidget->item(row,5)->text();
-//    QString year = ui->programSequenceTableWidget->item(row,6)->text();
-
     ui->courseViewCourseTable->setText(courseName);
     ui->pendingViewCourseTable->setText(status);
-
-   // ui->userCommentViewCourseTable->setText(comments);
-//    ui->credit_CourseGradeLable->setText(credits);
-//    ui->allPrerequisites_CourseGradeLable->setText(prerequisites);
-//    ui->semester_CourseGradeLable->setText(semester);
-//    ui->courseYear_CourseGradeLable->setText(year);
 
         qDebug()<< ui->viewCoursesTableWidget->item(row,4)->text() ;
         qDebug()<<( ui->viewCoursesTableWidget->item(row,4)->text() != "Pending!");
@@ -458,13 +439,15 @@ void sgsApp::on_viewCoursesTableWidget_cellClicked(int row, int column)
         ui->userCommentViewCourseTable->setText(commentSec[0]);
 
 
-//        for (int i =0;i < 3;i++)
-//        {
-//            qDebug()<<i;
-//            qDebug()<<commentSec[i];
 
-//        }
     }
+    else
+    {
+        ui->commentTimeStapViewCourseTable->setText(" ");
+        ui->ratingViewCourseTable->setText(" ");
+        ui->userCommentViewCourseTable->setText(" ");
+
+     }
 
 
 
