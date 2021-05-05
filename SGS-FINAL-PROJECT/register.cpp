@@ -260,6 +260,11 @@ void Register::on_programSequenceTable_registerTableWidget_cellClicked(int row, 
 
 void Register::on_filterSearchButton_clicked()
 {
+    while (ui->programSequenceTable_registerTableWidget->rowCount() > 0)
+    {
+        ui->programSequenceTable_registerTableWidget->removeRow(0);
+    }
+
     QString faculty = ui->facultyComboBox->currentText();
     QString program = ui->programComboBox->currentText();
     qDebug()<<faculty;

@@ -40,6 +40,7 @@ public:
     QSqlQuery getStudentsCourses();
     QSqlQuery getCourses();
     QString getUserId();
+    QStringList getComment(QString);
     void setUserId(QString);
     void resetPassword(QString);
     void setRole(QString);

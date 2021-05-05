@@ -42,7 +42,7 @@
      <string notr="true">color:#fff;</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="loginScreen">
      <property name="styleSheet">
@@ -912,7 +912,7 @@ background-repeat: no-repeat;</string>
        <string notr="true">border: 1px</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="DashboardPage">
        <widget class="QFrame" name="pageTitleCourseListPage_3">
@@ -1549,7 +1549,7 @@ border-radius: 5px;</string>
          <rect>
           <x>20</x>
           <y>100</y>
-          <width>631</width>
+          <width>661</width>
           <height>721</height>
          </rect>
         </property>
@@ -1560,7 +1560,7 @@ border-radius: 5px;</string>
           <x>700</x>
           <y>60</y>
           <width>471</width>
-          <height>51</height>
+          <height>161</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -1596,8 +1596,8 @@ border-radius: 5px;</string>
         <widget class="QLabel" name="courseStatusViewCourseLabel">
          <property name="geometry">
           <rect>
-           <x>340</x>
-           <y>20</y>
+           <x>30</x>
+           <y>80</y>
            <width>51</width>
            <height>16</height>
           </rect>
@@ -1617,9 +1617,9 @@ border-radius: 5px;</string>
         <widget class="QLabel" name="courseViewCourseTable">
          <property name="geometry">
           <rect>
-           <x>80</x>
-           <y>20</y>
-           <width>221</width>
+           <x>40</x>
+           <y>50</y>
+           <width>411</width>
            <height>20</height>
           </rect>
          </property>
@@ -1640,9 +1640,9 @@ border-radius: 5px;</string>
         <widget class="QLabel" name="pendingViewCourseTable">
          <property name="geometry">
           <rect>
-           <x>390</x>
-           <y>20</y>
-           <width>71</width>
+           <x>40</x>
+           <y>110</y>
+           <width>411</width>
            <height>21</height>
           </rect>
          </property>
@@ -1665,7 +1665,7 @@ border-radius: 5px;</string>
          <rect>
           <x>20</x>
           <y>60</y>
-          <width>631</width>
+          <width>661</width>
           <height>41</height>
          </rect>
         </property>
@@ -1695,8 +1695,8 @@ border-bottom-right-radius:0px;</string>
         <property name="geometry">
          <rect>
           <x>710</x>
-          <y>140</y>
-          <width>121</width>
+          <y>250</y>
+          <width>201</width>
           <height>16</height>
          </rect>
         </property>
@@ -1709,14 +1709,14 @@ border-bottom-right-radius:0px;</string>
          <string notr="true">color:#666</string>
         </property>
         <property name="text">
-         <string>Course Comments:</string>
+         <string>Lastest Course Comments:</string>
         </property>
        </widget>
        <widget class="QFrame" name="courseCommentListPage">
         <property name="geometry">
          <rect>
           <x>700</x>
-          <y>170</y>
+          <y>280</y>
           <width>471</width>
           <height>151</height>
          </rect>
@@ -1754,7 +1754,7 @@ border-bottom-right-radius:0px;</string>
         <widget class="QLabel" name="ratingStatusViewCourseLabel">
          <property name="geometry">
           <rect>
-           <x>340</x>
+           <x>280</x>
            <y>20</y>
            <width>51</width>
            <height>16</height>
@@ -1777,7 +1777,7 @@ border-bottom-right-radius:0px;</string>
           <rect>
            <x>80</x>
            <y>20</y>
-           <width>221</width>
+           <width>141</width>
            <height>20</height>
           </rect>
          </property>
@@ -1798,9 +1798,9 @@ border-bottom-right-radius:0px;</string>
         <widget class="QLabel" name="ratingViewCourseTable">
          <property name="geometry">
           <rect>
-           <x>390</x>
+           <x>340</x>
            <y>20</y>
-           <width>71</width>
+           <width>121</width>
            <height>21</height>
           </rect>
          </property>

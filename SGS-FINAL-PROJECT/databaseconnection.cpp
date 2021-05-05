@@ -20,8 +20,8 @@ void databaseconnection::connect()
 {
     setConnection = QSqlDatabase::addDatabase("QMYSQL");
     setConnection.setHostName("127.0.0.1");
-    setConnection.setPort(3306);
-    //setConnection.setPort(3366);
+    //setConnection.setPort(3306);
+    setConnection.setPort(3366);
     setConnection.setUserName("root");
     setConnection.setPassword("");
     setConnection.setDatabaseName("db");
@@ -567,62 +567,70 @@ bool databaseconnection::setCourseGrade(QStringList studentCourseGrade)
         addGrade = true;
 
 
-    }
-
-
-    if (!(comment.isEmpty() || lecture.isEmpty()))
-    {
-
-        qDebug()<<lecture;
-        QStringList list = lecture.split(QRegExp("\\s+"));
-        QStringList::Iterator lectureName = list.begin();
-        QString firstName = *lectureName;
-        ++lectureName;
-        QString lastName = *lectureName;
-
-        qDebug()<<firstName<<" "<<lastName;
-
-        QTime ct = QTime::currentTime();
-
-        QSqlQuery * query = new QSqlQuery;
-        query->prepare("SELECT users.id FROM users "
-                       "JOIN person ON users.personId = person.id "
-                       "WHERE firstname = '" + firstName +"' AND lastname = '" + lastName + "' AND roleId = " + '2' );
-
-        QString LectureID;
-        if(!(query->exec()))
+        if (!(comment.isEmpty() || lecture.isEmpty()))
         {
-            QMessageBox::warning(NULL,"We encounter an error: ","COULD NOT FIND LECTURE " + query->lastError().text() );
-            qDebug()<<query->lastError().text();
-        }
-        else {
-            qDebug()<<"got it";
-            while(query->next())
+
+            qDebug()<<lecture;
+            QStringList list = lecture.split(QRegExp("\\s+"));
+            QStringList::Iterator lectureName = list.begin();
+            QString firstName = *lectureName;
+            ++lectureName;
+            QString lastName = *lectureName;
+
+            qDebug()<<firstName<<" "<<lastName;
+
+            QTime ct = QTime::currentTime();
+
+            QSqlQuery * query = new QSqlQuery;
+            query->prepare("SELECT users.id FROM users "
+                           "JOIN person ON users.personId = person.id "
+                           "WHERE firstname = '" + firstName +"' AND lastname = '" + lastName + "' AND roleId = " + '2' );
+
+            QString LectureID;
+            if(!(query->exec()))
             {
-                LectureID = query->value(0).toString();
-                qDebug()<< LectureID;
+                QMessageBox::warning(NULL,"We encounter an error: ","COULD NOT FIND LECTURE " + query->lastError().text() );
+                qDebug()<<query->lastError().text();
             }
+            else {
+                qDebug()<<"got it";
+                while(query->next())
+                {
+                    LectureID = query->value(0).toString();
+                    qDebug()<< LectureID;
+                }
+            }
+            delete query;
+
+            QSqlQuery * query3 = new QSqlQuery;
+            query3->prepare("INSERT INTO `coursecomments`(`courseid`, `timeStamp`, `comment`, `lecturerid`, studentID) "
+                            "VALUES ( :courseid, :timeStamp, :comment, :lecturerid,:studentID)");
+
+            query3->bindValue(":courseid", courseID);
+            query3->bindValue(":timeStamp", ct);
+            query3->bindValue(":comment", comment);
+            query3->bindValue(":lecturerid", LectureID);
+            query3->bindValue(":studentID", getUserId());
+
+            if(!(query3->exec()))
+            {
+                QMessageBox::warning(NULL,"We encounter an error: ","COULD NOT ADD COMMENT " + query3->lastError().text());
+                qDebug()<<query3->lastError().text();
+            }
+            else
+            {
+            addComment = true;
+            qDebug()<<"WORKED";
+            }
+            delete  query3;
+
         }
-        delete query;
 
-        QSqlQuery * query1 = new QSqlQuery;
-        query1->prepare("INSERT INTO `coursecomments`(`courseid`, `timeStamp`, `comment`, `lecturerid`) "
-                        "VALUES ( :courseid, :timeStamp, :comment, :lecturerid)");
 
-        query1->bindValue(":courseid", courseID);
-        query1->bindValue(":timeStamp", ct);
-        query1->bindValue(":comment", comment);
-        query1->bindValue(":lecturerid", LectureID);
 
-        if(!(query1->exec()))
-        {
-            QMessageBox::warning(NULL,"We encounter an error: ","COULD NOT ADD COMMENT " + query->lastError().text());
-            qDebug()<<query->lastError().text();
-        }
-
-        delete query;
-        addComment = true;
     }
+
+qDebug()<<"OUT";
 
     if(!addGrade)
     {
@@ -641,10 +649,12 @@ bool databaseconnection::setCourseGrade(QStringList studentCourseGrade)
                 msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Discard );
                 msgBox.setDefaultButton(QMessageBox::Ok);
                 int ret = msgBox.exec();
+                qDebug()<<"About to eturn T";
+                return true;
          }
 
 
-    if (addGrade || addComment)
+    else if (addGrade || addComment)
     {
         if (addGrade)
         {
@@ -664,6 +674,7 @@ bool databaseconnection::setCourseGrade(QStringList studentCourseGrade)
             msgBox.setDefaultButton(QMessageBox::Ok);
             int ret = msgBox.exec();
         }
+        qDebug()<<"About to eturn T";
             return true;
 
     }
@@ -772,6 +783,82 @@ QSqlQuery databaseconnection::getCourses()
 QString databaseconnection::getUserId()
 {
     return currentUserID;
+}
+
+QStringList databaseconnection::getComment(QString courseID)
+{
+
+    QString courseComment;
+    QString rating;
+    QStringList data;
+    QString date = "2021-04-29 23:37:07";
+    QRegExp separator("-|\\s|:|T");
+    QStringList list = date.split(separator, QString::SkipEmptyParts);
+
+    int i = list.size();
+
+    for (int var=0; var < i;var++)
+    {
+        qDebug()<<list[var];
+    }
+    QSqlQuery * courseCommentPerStudent = new QSqlQuery;
+    courseCommentPerStudent->prepare("SELECT comment,timeStamp FROM coursecomments "
+                                     "WHERE studentid = " + getUserId() + " AND courseid = '" + courseID+ "' " );
+
+
+
+
+
+    if(!(courseCommentPerStudent->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",courseCommentPerStudent->lastError().text());
+    }
+    else
+    {
+        while(courseCommentPerStudent->next())
+        {
+            courseComment = courseCommentPerStudent->value(0).toString();
+            date = courseCommentPerStudent->value(1).toString();
+            qDebug()<<date;
+            QStringList list = date.split(separator, QString::SkipEmptyParts);
+            data.append(courseComment);
+
+            QString dateFormat = " ";
+            dateFormat.append( list[2]);
+            dateFormat.append("/");
+            dateFormat.append(list[1]);
+            dateFormat.append("/");
+            dateFormat.append(list[0]);
+
+            data.append(dateFormat);
+
+        }
+
+        QSqlQuery * rating = new QSqlQuery;
+        rating->prepare("SELECT `courseRating` FROM `studentcourses` "
+                        "WHERE `studentid` = " + getUserId() + " AND courseid = '" + courseID+ "' ");
+        if(!(rating->exec()))
+            qDebug()<<"Back Fire";
+        else
+        {
+
+            while(rating->next())
+            {
+                QString rate = rating->value(0).toString();
+                qDebug()<<rate;
+                        data.append(rate);
+            }
+
+        }
+
+        delete rating;
+    }
+    delete courseCommentPerStudent;
+
+
+
+    return data;
+
 }
 
 void databaseconnection::setUserId(QString userId)

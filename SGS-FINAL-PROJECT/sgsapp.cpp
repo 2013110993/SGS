@@ -50,19 +50,21 @@ void sgsApp::disableStudentFeature()
 
 void sgsApp::hideFeature()
 {
-//    ui->AddProgramSequence_Button->hide();
-//    ui->addCourse_Button->hide();
-//    ui->addInstitution_Button->hide();
-//    ui->addInstitution_Button_2->hide();
+    ui->AddProgramSequence_Button->hide();
+    ui->addCourse_Button->hide();
+    //ui->disableUser_Button->hide();
+    //ui->addUser_Button->hide();
+    //ui->addInstitution_Button->hide();
 
 }
 
 void sgsApp::showFeature()
 {
-//    ui->AddProgramSequence_Button->show();
-//    ui->addCourse_Button->show();
-//    ui->addInstitution_Button->show();
-//    ui->addInstitution_Button_2->show();
+    ui->AddProgramSequence_Button->show();
+    ui->addCourse_Button->show();
+    ui->disableUser_Button->show();
+    ui->addUser_Button->show();
+    ui->addInstitution_Button->show();
 }
 
 void sgsApp::logout()
@@ -127,6 +129,8 @@ void sgsApp::on_signInButton_clicked()
             case 1:
             {
                 ui->stackedWidgetSGS->setCurrentIndex(1);
+                ui->stackedWidgetPages->setCurrentIndex(1);
+                showFeature();
                 disableStudentFeature();
                 ui->userRoleLable->setText(username);
             }
@@ -134,12 +138,17 @@ void sgsApp::on_signInButton_clicked()
             case 2:
             {
                 ui->stackedWidgetSGS->setCurrentIndex(1);
+                ui->stackedWidgetPages->setCurrentIndex(1);
+                showFeature();
+                hideFeature();
                 ui->userRoleLable->setText(username);
             }
                 break;
             case 3:
             {
                 ui->stackedWidgetSGS->setCurrentIndex(1);
+                ui->stackedWidgetPages->setCurrentIndex(1);
+                showFeature();
                 ui->userRoleLable->setText(username);
             }
                 break;
@@ -343,6 +352,7 @@ void sgsApp::programSequenceList()
 
 void sgsApp::on_viewCourses_Button_clicked()
 {
+
     //Navigate to View Course Page
     ui->stackedWidgetPages->setCurrentIndex(1);
 
@@ -351,6 +361,15 @@ void sgsApp::on_viewCourses_Button_clicked()
 }
 void sgsApp::viewCoursesTable()
 {
+
+    while (ui->viewCoursesTableWidget->rowCount() > 0)
+    {
+        ui->viewCoursesTableWidget->removeRow(0);
+    }
+
+    QSqlQuery courses = connection->getStudentsCourses();
+
+
     ui->viewCoursesTableWidget->setColumnCount(6);
     ui->viewCoursesTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
 
@@ -362,15 +381,14 @@ void sgsApp::viewCoursesTable()
 
     int rowCount = 0;
 
-    for(int i = 0; i< 1; i++){
+    for(;courses.next() ; ){
 
          ui->viewCoursesTableWidget->insertRow(rowCount);
-         ui->viewCoursesTableWidget->setColumnWidth(0,80);
-         ui->viewCoursesTableWidget->setColumnWidth(1,210);
-         ui->viewCoursesTableWidget->setColumnWidth(2,50);
-         ui->viewCoursesTableWidget->setColumnWidth(3,60);
-         ui->viewCoursesTableWidget->setColumnWidth(4,70);
-         ui->viewCoursesTableWidget->setColumnWidth(5,145);
+         ui->viewCoursesTableWidget->setColumnWidth(0,90);
+         ui->viewCoursesTableWidget->setColumnWidth(1,215);
+         ui->viewCoursesTableWidget->setColumnWidth(2,70);
+         ui->viewCoursesTableWidget->setColumnWidth(3,80);
+         ui->viewCoursesTableWidget->setColumnWidth(4,160);
 
 
 
@@ -381,11 +399,20 @@ void sgsApp::viewCoursesTable()
         QTableWidgetItem *status = new QTableWidgetItem;
         QTableWidgetItem *comments = new QTableWidgetItem;
 
-        courseCode->setText("CMPS3151");
-        courseName->setText("Telecommunications Systems");
-        credits->setText("3");
-        semester->setText("1");
-        status->setText("Pending");
+        courseCode->setText(courses.value(0).toString());
+        courseName->setText(courses.value(1).toString());
+        credits->setText(courses.value(2).toString());
+        semester->setText(courses.value(5).toString());
+
+
+        if (courses.value(3).toString().isEmpty())
+        status->setText("Pending!");
+        else
+            status->setText("Complete: "+ courses.value(3).toString());
+
+
+
+
         comments->setText("This is a Comment for the course");
 
         ui->viewCoursesTableWidget->setItem(rowCount,0,courseCode);
@@ -393,7 +420,7 @@ void sgsApp::viewCoursesTable()
         ui->viewCoursesTableWidget->setItem(rowCount,2,credits);
         ui->viewCoursesTableWidget->setItem(rowCount,3,semester);
         ui->viewCoursesTableWidget->setItem(rowCount,4,status);
-        ui->viewCoursesTableWidget->setItem(rowCount,5,comments);
+        //ui->viewCoursesTableWidget->setItem(rowCount,5,comments);
 
 
         rowCount++;
@@ -405,20 +432,42 @@ void sgsApp::on_viewCoursesTableWidget_cellClicked(int row, int column)
     QString courseName = ui->viewCoursesTableWidget->item(row,1)->text();
     QString status =  ui->viewCoursesTableWidget->item(row,4)->text();
 
-    QString comments =  ui->viewCoursesTableWidget->item(row,5)->text();
-//    QString credits = ui->programSequenceTableWidget->item(row,2)->text();
+   // QString comments =  ui->viewCoursesTableWidget->item(row,5)->text();
+   // QString satus = ui->viewCoursesTableWidget->item(row,2)->text();
 //    QString prerequisites = ui->programSequenceTableWidget->item(row,4)->text();
 //    QString semester = ui->programSequenceTableWidget->item(row,5)->text();
 //    QString year = ui->programSequenceTableWidget->item(row,6)->text();
 
     ui->courseViewCourseTable->setText(courseName);
-    ui->pendingViewCourseTable->setText("Pending!");
+    ui->pendingViewCourseTable->setText(status);
 
-    ui->userCommentViewCourseTable->setText(comments);
+   // ui->userCommentViewCourseTable->setText(comments);
 //    ui->credit_CourseGradeLable->setText(credits);
 //    ui->allPrerequisites_CourseGradeLable->setText(prerequisites);
 //    ui->semester_CourseGradeLable->setText(semester);
 //    ui->courseYear_CourseGradeLable->setText(year);
+
+        qDebug()<< ui->viewCoursesTableWidget->item(row,4)->text() ;
+        qDebug()<<( ui->viewCoursesTableWidget->item(row,4)->text() != "Pending!");
+    if(( ui->viewCoursesTableWidget->item(row,4)->text() != "Pending!"))
+    {
+        QStringList commentSec = connection->getComment(ui->viewCoursesTableWidget->item(row,0)->text());
+
+        ui->commentTimeStapViewCourseTable->setText(commentSec[1]);
+        ui->ratingViewCourseTable->setText(commentSec[2]);
+        ui->userCommentViewCourseTable->setText(commentSec[0]);
+
+
+//        for (int i =0;i < 3;i++)
+//        {
+//            qDebug()<<i;
+//            qDebug()<<commentSec[i];
+
+//        }
+    }
+
+
+
 }
 
 
