@@ -226,18 +226,22 @@ public:
         font.setBold(true);
         font.setWeight(75);
         signInButton->setFont(font);
+        signInButton->setLayoutDirection(Qt::LeftToRight);
         signInButton->setStyleSheet(QLatin1String("background:#fbaf01;\n"
 "color: #ffffff;\n"
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/icons White/Icons/White/Single Arrow RIGHT.png"), QSize(), QIcon::Normal, QIcon::Off);
+        signInButton->setIcon(icon);
         signUpButton = new QPushButton(loginBox);
         signUpButton->setObjectName(QStringLiteral("signUpButton"));
         signUpButton->setGeometry(QRect(20, 280, 113, 32));
         signUpButton->setStyleSheet(QStringLiteral("border:0px; color:#fff;"));
-        QIcon icon;
-        icon.addFile(QStringLiteral(":/icons White/Icons/White/Add User.png"), QSize(), QIcon::Normal, QIcon::Off);
-        signUpButton->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/icons White/Icons/White/Add User.png"), QSize(), QIcon::Normal, QIcon::Off);
+        signUpButton->setIcon(icon1);
         forgotPasswordButton = new QPushButton(loginBox);
         forgotPasswordButton->setObjectName(QStringLiteral("forgotPasswordButton"));
         forgotPasswordButton->setGeometry(QRect(150, 280, 113, 32));
@@ -291,9 +295,9 @@ public:
 "border-bottom-right-radius:5px;\n"
 "border-top-left-radius:0px;\n"
 "border-bottom-left-radius:0px;"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/iconsGray/Icons/Gray/Eye ON.png"), QSize(), QIcon::Normal, QIcon::Off);
-        passwordShowButton->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/iconsGray/Icons/Gray/Eye ON.png"), QSize(), QIcon::Normal, QIcon::Off);
+        passwordShowButton->setIcon(icon2);
         footerLogo = new QFrame(loginScreen);
         footerLogo->setObjectName(QStringLiteral("footerLogo"));
         footerLogo->setGeometry(QRect(990, 180, 191, 61));
@@ -348,9 +352,9 @@ public:
         dashboard_pushButton->setGeometry(QRect(20, 40, 86, 16));
         dashboard_pushButton->setLayoutDirection(Qt::LeftToRight);
         dashboard_pushButton->setStyleSheet(QStringLiteral("color:#fff;"));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/icons White/Icons/White/Dashboard.png"), QSize(), QIcon::Normal, QIcon::Off);
-        dashboard_pushButton->setIcon(icon2);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/icons White/Icons/White/Dashboard.png"), QSize(), QIcon::Normal, QIcon::Off);
+        dashboard_pushButton->setIcon(icon3);
         groupBox_2 = new QGroupBox(groupBox);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         groupBox_2->setGeometry(QRect(0, 210, 161, 111));
@@ -382,39 +386,39 @@ public:
         addUser_Button->setGeometry(QRect(11, 161, 102, 16));
         addUser_Button->setLayoutDirection(Qt::LeftToRight);
         addUser_Button->setStyleSheet(QStringLiteral("color:#fff;"));
-        addUser_Button->setIcon(icon);
+        addUser_Button->setIcon(icon1);
         disableUser_Button = new QPushButton(settingGroupBox);
         disableUser_Button->setObjectName(QStringLiteral("disableUser_Button"));
         disableUser_Button->setGeometry(QRect(11, 191, 151, 16));
         disableUser_Button->setLayoutDirection(Qt::LeftToRight);
         disableUser_Button->setStyleSheet(QStringLiteral("color:#fff;"));
-        QIcon icon3;
-        icon3.addFile(QStringLiteral(":/icons White/Icons/White/Eye OFF.png"), QSize(), QIcon::Normal, QIcon::Off);
-        disableUser_Button->setIcon(icon3);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/icons White/Icons/White/Eye OFF.png"), QSize(), QIcon::Normal, QIcon::Off);
+        disableUser_Button->setIcon(icon4);
         changePassword_Button = new QPushButton(settingGroupBox);
         changePassword_Button->setObjectName(QStringLiteral("changePassword_Button"));
         changePassword_Button->setGeometry(QRect(10, 40, 130, 16));
         changePassword_Button->setLayoutDirection(Qt::LeftToRight);
         changePassword_Button->setStyleSheet(QStringLiteral("color:#fff;"));
-        QIcon icon4;
-        icon4.addFile(QStringLiteral(":/icons White/Icons/White/Edit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        changePassword_Button->setIcon(icon4);
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/icons White/Icons/White/Edit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        changePassword_Button->setIcon(icon5);
         viewStudentProgramSequence_Button = new QPushButton(groupBox);
         viewStudentProgramSequence_Button->setObjectName(QStringLiteral("viewStudentProgramSequence_Button"));
         viewStudentProgramSequence_Button->setGeometry(QRect(0, 160, 141, 16));
         viewStudentProgramSequence_Button->setLayoutDirection(Qt::LeftToRight);
         viewStudentProgramSequence_Button->setStyleSheet(QStringLiteral("color:#fff;"));
-        QIcon icon5;
-        icon5.addFile(QStringLiteral(":/icons White/Icons/White/Add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        viewStudentProgramSequence_Button->setIcon(icon5);
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/icons White/Icons/White/Add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        viewStudentProgramSequence_Button->setIcon(icon6);
         viewCourses_Button = new QPushButton(groupBox);
         viewCourses_Button->setObjectName(QStringLiteral("viewCourses_Button"));
         viewCourses_Button->setGeometry(QRect(0, 120, 121, 16));
         viewCourses_Button->setLayoutDirection(Qt::LeftToRight);
         viewCourses_Button->setStyleSheet(QStringLiteral("color:#fff;"));
-        QIcon icon6;
-        icon6.addFile(QStringLiteral(":/icons White/Icons/White/Student.png"), QSize(), QIcon::Normal, QIcon::Off);
-        viewCourses_Button->setIcon(icon6);
+        QIcon icon7;
+        icon7.addFile(QStringLiteral(":/icons White/Icons/White/Student.png"), QSize(), QIcon::Normal, QIcon::Off);
+        viewCourses_Button->setIcon(icon7);
         headBar = new QFrame(Dashboard);
         headBar->setObjectName(QStringLiteral("headBar"));
         headBar->setGeometry(QRect(0, 0, 1440, 65));
@@ -431,9 +435,9 @@ public:
         font1.setPointSize(9);
         font1.setUnderline(true);
         logoutButton->setFont(font1);
-        QIcon icon7;
-        icon7.addFile(QStringLiteral(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
-        logoutButton->setIcon(icon7);
+        QIcon icon8;
+        icon8.addFile(QStringLiteral(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
+        logoutButton->setIcon(icon8);
         userRoleLable_2 = new QLabel(headBar);
         userRoleLable_2->setObjectName(QStringLiteral("userRoleLable_2"));
         userRoleLable_2->setGeometry(QRect(1310, 20, 16, 31));
@@ -447,9 +451,9 @@ public:
         userIconTopBar->setObjectName(QStringLiteral("userIconTopBar"));
         userIconTopBar->setGeometry(QRect(1130, 20, 41, 31));
         userIconTopBar->setFont(font);
-        QIcon icon8;
-        icon8.addFile(QStringLiteral(":/icons White/Icons/White/User.png"), QSize(), QIcon::Normal, QIcon::Off);
-        userIconTopBar->setIcon(icon8);
+        QIcon icon9;
+        icon9.addFile(QStringLiteral(":/icons White/Icons/White/User.png"), QSize(), QIcon::Normal, QIcon::Off);
+        userIconTopBar->setIcon(icon9);
         userRoleLable = new QLabel(headBar);
         userRoleLable->setObjectName(QStringLiteral("userRoleLable"));
         userRoleLable->setGeometry(QRect(1220, 28, 81, 16));
@@ -660,10 +664,10 @@ public:
         CoursesPage->setObjectName(QStringLiteral("CoursesPage"));
         viewCoursesTableWidget = new QTableWidget(CoursesPage);
         viewCoursesTableWidget->setObjectName(QStringLiteral("viewCoursesTableWidget"));
-        viewCoursesTableWidget->setGeometry(QRect(20, 100, 631, 721));
+        viewCoursesTableWidget->setGeometry(QRect(20, 100, 661, 721));
         titleCourseListPage = new QFrame(CoursesPage);
         titleCourseListPage->setObjectName(QStringLiteral("titleCourseListPage"));
-        titleCourseListPage->setGeometry(QRect(700, 60, 471, 51));
+        titleCourseListPage->setGeometry(QRect(700, 60, 471, 161));
         titleCourseListPage->setStyleSheet(QStringLiteral("background:#fff; border-radius:5px;"));
         titleCourseListPage->setFrameShape(QFrame::StyledPanel);
         titleCourseListPage->setFrameShadow(QFrame::Raised);
@@ -676,12 +680,12 @@ public:
         courseTitleViewCourseLabel->setStyleSheet(QStringLiteral("color:#666"));
         courseStatusViewCourseLabel = new QLabel(titleCourseListPage);
         courseStatusViewCourseLabel->setObjectName(QStringLiteral("courseStatusViewCourseLabel"));
-        courseStatusViewCourseLabel->setGeometry(QRect(340, 20, 51, 16));
+        courseStatusViewCourseLabel->setGeometry(QRect(30, 80, 51, 16));
         courseStatusViewCourseLabel->setFont(font7);
         courseStatusViewCourseLabel->setStyleSheet(QStringLiteral("color:#666"));
         courseViewCourseTable = new QLabel(titleCourseListPage);
         courseViewCourseTable->setObjectName(QStringLiteral("courseViewCourseTable"));
-        courseViewCourseTable->setGeometry(QRect(80, 20, 221, 20));
+        courseViewCourseTable->setGeometry(QRect(40, 50, 411, 20));
         QFont font8;
         font8.setPointSize(10);
         font8.setBold(true);
@@ -690,12 +694,12 @@ public:
         courseViewCourseTable->setStyleSheet(QStringLiteral("color:#333"));
         pendingViewCourseTable = new QLabel(titleCourseListPage);
         pendingViewCourseTable->setObjectName(QStringLiteral("pendingViewCourseTable"));
-        pendingViewCourseTable->setGeometry(QRect(390, 20, 71, 21));
+        pendingViewCourseTable->setGeometry(QRect(40, 110, 411, 21));
         pendingViewCourseTable->setFont(font5);
         pendingViewCourseTable->setStyleSheet(QStringLiteral("color:red;"));
         programSequenceFacultyName_2 = new QLabel(CoursesPage);
         programSequenceFacultyName_2->setObjectName(QStringLiteral("programSequenceFacultyName_2"));
-        programSequenceFacultyName_2->setGeometry(QRect(20, 60, 631, 41));
+        programSequenceFacultyName_2->setGeometry(QRect(20, 60, 661, 41));
         QFont font9;
         font9.setPointSize(14);
         font9.setBold(true);
@@ -710,12 +714,12 @@ public:
         programSequenceFacultyName_2->setAlignment(Qt::AlignCenter);
         courseCommentViewCourseLabel = new QLabel(CoursesPage);
         courseCommentViewCourseLabel->setObjectName(QStringLiteral("courseCommentViewCourseLabel"));
-        courseCommentViewCourseLabel->setGeometry(QRect(710, 140, 121, 16));
+        courseCommentViewCourseLabel->setGeometry(QRect(710, 250, 201, 16));
         courseCommentViewCourseLabel->setFont(font7);
         courseCommentViewCourseLabel->setStyleSheet(QStringLiteral("color:#666"));
         courseCommentListPage = new QFrame(CoursesPage);
         courseCommentListPage->setObjectName(QStringLiteral("courseCommentListPage"));
-        courseCommentListPage->setGeometry(QRect(700, 170, 471, 151));
+        courseCommentListPage->setGeometry(QRect(700, 280, 471, 151));
         courseCommentListPage->setStyleSheet(QStringLiteral("background:#fff; border-radius:5px;"));
         courseCommentListPage->setFrameShape(QFrame::StyledPanel);
         courseCommentListPage->setFrameShadow(QFrame::Raised);
@@ -726,17 +730,17 @@ public:
         commentPostedViewCourseLabel->setStyleSheet(QStringLiteral("color:#666"));
         ratingStatusViewCourseLabel = new QLabel(courseCommentListPage);
         ratingStatusViewCourseLabel->setObjectName(QStringLiteral("ratingStatusViewCourseLabel"));
-        ratingStatusViewCourseLabel->setGeometry(QRect(340, 20, 51, 16));
+        ratingStatusViewCourseLabel->setGeometry(QRect(280, 20, 51, 16));
         ratingStatusViewCourseLabel->setFont(font7);
         ratingStatusViewCourseLabel->setStyleSheet(QStringLiteral("color:#666"));
         commentTimeStapViewCourseTable = new QLabel(courseCommentListPage);
         commentTimeStapViewCourseTable->setObjectName(QStringLiteral("commentTimeStapViewCourseTable"));
-        commentTimeStapViewCourseTable->setGeometry(QRect(80, 20, 221, 20));
+        commentTimeStapViewCourseTable->setGeometry(QRect(80, 20, 141, 20));
         commentTimeStapViewCourseTable->setFont(font8);
         commentTimeStapViewCourseTable->setStyleSheet(QStringLiteral("color:#333"));
         ratingViewCourseTable = new QLabel(courseCommentListPage);
         ratingViewCourseTable->setObjectName(QStringLiteral("ratingViewCourseTable"));
-        ratingViewCourseTable->setGeometry(QRect(390, 20, 71, 21));
+        ratingViewCourseTable->setGeometry(QRect(340, 20, 121, 21));
         ratingViewCourseTable->setFont(font5);
         ratingViewCourseTable->setStyleSheet(QStringLiteral("color:#333;"));
         userCommentViewCourseTable = new QLabel(courseCommentListPage);
@@ -824,7 +828,7 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        updateCourse_pushButton->setIcon(icon4);
+        updateCourse_pushButton->setIcon(icon5);
         layoutWidget1 = new QWidget(addCourseFrame);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
         layoutWidget1->setGeometry(QRect(20, 100, 271, 61));
@@ -1070,8 +1074,8 @@ public:
 
         retranslateUi(sgsApp);
 
-        stackedWidgetSGS->setCurrentIndex(1);
-        stackedWidgetPages->setCurrentIndex(0);
+        stackedWidgetSGS->setCurrentIndex(0);
+        stackedWidgetPages->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(sgsApp);
@@ -1156,7 +1160,7 @@ public:
         courseViewCourseTable->setText(QString());
         pendingViewCourseTable->setText(QString());
         programSequenceFacultyName_2->setText(QApplication::translate("sgsApp", "My Courses", nullptr));
-        courseCommentViewCourseLabel->setText(QApplication::translate("sgsApp", "Course Comments:", nullptr));
+        courseCommentViewCourseLabel->setText(QApplication::translate("sgsApp", "Lastest Course Comments:", nullptr));
         commentPostedViewCourseLabel->setText(QApplication::translate("sgsApp", "Posted:", nullptr));
         ratingStatusViewCourseLabel->setText(QApplication::translate("sgsApp", "Rating:", nullptr));
         commentTimeStapViewCourseTable->setText(QApplication::translate("sgsApp", "30/04/2021", nullptr));

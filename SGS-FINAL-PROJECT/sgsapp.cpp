@@ -129,7 +129,7 @@ void sgsApp::on_signInButton_clicked()
             case 1:
             {
                 ui->stackedWidgetSGS->setCurrentIndex(1);
-                ui->stackedWidgetPages->setCurrentIndex(1);
+                ui->stackedWidgetPages->setCurrentIndex(0);
                 showFeature();
                 disableStudentFeature();
                 ui->userRoleLable->setText(username);
@@ -138,7 +138,7 @@ void sgsApp::on_signInButton_clicked()
             case 2:
             {
                 ui->stackedWidgetSGS->setCurrentIndex(1);
-                ui->stackedWidgetPages->setCurrentIndex(1);
+                ui->stackedWidgetPages->setCurrentIndex(0);
                 showFeature();
                 hideFeature();
                 ui->userRoleLable->setText(username);
@@ -147,7 +147,7 @@ void sgsApp::on_signInButton_clicked()
             case 3:
             {
                 ui->stackedWidgetSGS->setCurrentIndex(1);
-                ui->stackedWidgetPages->setCurrentIndex(1);
+                ui->stackedWidgetPages->setCurrentIndex(0);
                 showFeature();
                 ui->userRoleLable->setText(username);
             }
