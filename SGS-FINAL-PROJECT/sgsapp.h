@@ -74,6 +74,10 @@ private slots:
 
     void on_viewCoursesTableWidget_cellClicked(int row, int column);
 
+    void on_AddLecturerCourse_Button_clicked();
+
+    void on_lecturerCoursesListTableWidget_cellClicked(int row, int column);
+
 private:
     Ui::sgsApp *ui;
     forgotPassword * forgot;

@@ -41,7 +41,6 @@ sgsApp::~sgsApp()
 
 void sgsApp::disableStudentFeature()
 {
-    ui->AddProgramSequence_Button->hide();
     ui->addCourse_Button->hide();
     ui->disableUser_Button->hide();
     ui->addUser_Button->hide();
@@ -50,7 +49,6 @@ void sgsApp::disableStudentFeature()
 
 void sgsApp::hideFeature()
 {
-    ui->AddProgramSequence_Button->hide();
     ui->addCourse_Button->hide();
     //ui->disableUser_Button->hide();
     //ui->addUser_Button->hide();
@@ -60,7 +58,6 @@ void sgsApp::hideFeature()
 
 void sgsApp::showFeature()
 {
-    ui->AddProgramSequence_Button->show();
     ui->addCourse_Button->show();
     ui->disableUser_Button->show();
     ui->addUser_Button->show();
@@ -302,7 +299,10 @@ void sgsApp::programSequenceList()
     header << "Code"<< "Course Name" <<"Credits" << "Grade" <<"Pre-requisites" << "Semester" << "Year";
 
     ui->programSequenceTableWidget->setHorizontalHeaderLabels(header);
-    ui->programSequenceTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
+    ui->programSequenceTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
+
+    ui->programSequenceTableWidget->setAlternatingRowColors(true);
+    ui->programSequenceTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
 
     int rowCount = 0;
 
@@ -315,7 +315,7 @@ void sgsApp::programSequenceList()
          ui->programSequenceTableWidget->setColumnWidth(3,90);
          ui->programSequenceTableWidget->setColumnWidth(4,480);
          ui->programSequenceTableWidget->setColumnWidth(5,70);
-         ui->programSequenceTableWidget->setColumnWidth(6,40);
+         ui->programSequenceTableWidget->setColumnWidth(6,68);
 
         QTableWidgetItem *courseCode = new QTableWidgetItem;
         QTableWidgetItem *courseName = new QTableWidgetItem;
@@ -377,18 +377,22 @@ void sgsApp::viewCoursesTable()
     header << "Code"<< "Course Name" <<"Credits" << "Semester" << "Status" << "Comments";
 
     ui->viewCoursesTableWidget->setHorizontalHeaderLabels(header);
-    ui->viewCoursesTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
+    ui->viewCoursesTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
+
+    ui->viewCoursesTableWidget->setAlternatingRowColors(true);
+    ui->viewCoursesTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
 
     int rowCount = 0;
 
     for(;courses.next() ; ){
 
          ui->viewCoursesTableWidget->insertRow(rowCount);
-         ui->viewCoursesTableWidget->setColumnWidth(0,90);
-         ui->viewCoursesTableWidget->setColumnWidth(1,215);
+         ui->viewCoursesTableWidget->setColumnWidth(0,85);
+         ui->viewCoursesTableWidget->setColumnWidth(1,195);
          ui->viewCoursesTableWidget->setColumnWidth(2,70);
          ui->viewCoursesTableWidget->setColumnWidth(3,80);
-         ui->viewCoursesTableWidget->setColumnWidth(4,160);
+         ui->viewCoursesTableWidget->setColumnWidth(4,100);
+         ui->viewCoursesTableWidget->setColumnWidth(5,108);
 
 
 
@@ -424,26 +428,78 @@ void sgsApp::viewCoursesTable()
 //Generate Lecturer Cours List Table
 void sgsApp::viewLecturerCoursesTable()
 {
-//    int rowCount = 0;
+    ui->lecturerCoursesListTableWidget->setColumnCount(5);
+    ui->lecturerCoursesListTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
 
-//    for(int i = 0; i < 5; i++)
-//    {
-//         ui->lecturerCoursesListTableWidget->insertRow(rowCount);
-
-//        QTableWidgetItem *courseName = new QTableWidgetItem;
-//        QTableWidgetItem *credits = new QTableWidgetItem;
-//        QTableWidgetItem *semester = new QTableWidgetItem;
-//        QTableWidgetItem *year = new QTableWidgetItem;
+    QStringList header;
+    header << "Course Name"<< "Credit" << "Pre-requisites" <<"Semester" << "Year";
+    ui->lecturerCoursesListTableWidget->setHorizontalHeaderLabels(header);
+    ui->lecturerCoursesListTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
 
 
-//        courseName->setText("Belizean History");
-//        credits->setText("3");
-//        semester->setText("1");
-//        year->setText("2021");
+    ui->lecturerCoursesListTableWidget->setAlternatingRowColors(true);
+    ui->lecturerCoursesListTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
 
-//        rowCount++;
-//    }
+    int rowCount = 0;
 
+    for(int i = 0; i < 15; i++)
+    {
+         ui->lecturerCoursesListTableWidget->insertRow(rowCount);
+
+         ui->lecturerCoursesListTableWidget->setColumnWidth(0,200);
+          ui->lecturerCoursesListTableWidget->setColumnWidth(1,138);
+          ui->lecturerCoursesListTableWidget->setColumnWidth(2,138);
+
+        // ui->lecturerCoursesListTableWidget->setColumnWidth(0,338);
+
+        QTableWidgetItem *courseName = new QTableWidgetItem;
+        QTableWidgetItem *credits = new QTableWidgetItem;
+        QTableWidgetItem *prerequisites = new QTableWidgetItem;
+        QTableWidgetItem *semester = new QTableWidgetItem;
+        QTableWidgetItem *year = new QTableWidgetItem;
+
+
+        courseName->setText("Fundamental of Management");
+        credits->setText("3");
+        prerequisites->setText("ENGL1014,MATH1302");
+        semester->setText("1");
+        year->setText("2021");
+
+
+        ui->lecturerCoursesListTableWidget->setItem(rowCount,0,courseName);
+        ui->lecturerCoursesListTableWidget->setItem(rowCount,1,prerequisites);
+        ui->lecturerCoursesListTableWidget->setItem(rowCount,2,credits);
+        ui->lecturerCoursesListTableWidget->setItem(rowCount,3,semester);
+        ui->lecturerCoursesListTableWidget->setItem(rowCount,4,year);
+
+        rowCount++;
+    }
+
+
+}
+
+void sgsApp::on_lecturerCoursesListTableWidget_cellClicked(int row, int column)
+{
+    QString courseName = ui->lecturerCoursesListTableWidget->item(row,0)->text();
+    QString credits =  ui->lecturerCoursesListTableWidget->item(row,1)->text();
+    QString semester = ui->lecturerCoursesListTableWidget->item(row,2)->text();
+    QString year = ui->lecturerCoursesListTableWidget->item(row,3)->text();
+
+
+    ui->updateCourseName->setText(courseName);
+    ui->updatePrerequisites->setText(credits);
+    ui->updateSemester->setText(semester);
+    ui->updateYear->setText(year);
+}
+
+//View Lecturer Page
+void sgsApp::on_AddLecturerCourse_Button_clicked()
+{
+    //Navigate to View Course Page
+    ui->stackedWidgetPages->setCurrentIndex(3);
+
+    //Function to display view course table
+    viewLecturerCoursesTable();
 
 }
 
@@ -506,8 +562,6 @@ void sgsApp::on_programSequenceTableWidget_cellClicked(int row, int column)
         ui->addLectureComboBox->addItem(lectureName);
     }
 
-
-
 }
 
 void sgsApp::on_updateCourse_pushButton_clicked()
@@ -559,6 +613,9 @@ void sgsApp::on_disableUser_Button_clicked()
     active_deactivate->setModal(true);
     active_deactivate->show();
 }
+
+
+
 
 
 

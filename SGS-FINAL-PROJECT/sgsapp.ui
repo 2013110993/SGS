@@ -197,14 +197,14 @@ text-decoration:underline;</string>
       <widget class="QLabel" name="label_4">
        <property name="geometry">
         <rect>
-         <x>0</x>
+         <x>10</x>
          <y>30</y>
-         <width>291</width>
+         <width>271</width>
          <height>31</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: #fff; font-size:25px; border:0px;</string>
+        <string notr="true">color: #fff; font-size:25px; border:0px;background: transparent;</string>
        </property>
        <property name="text">
         <string>LOGIN</string>
@@ -498,9 +498,9 @@ border: 0;</string>
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>210</y>
+          <y>230</y>
           <width>161</width>
-          <height>111</height>
+          <height>81</height>
          </rect>
         </property>
         <property name="title">
@@ -585,25 +585,6 @@ border: 0;</string>
           <string>Course</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="AddProgramSequence_Button">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>130</y>
-           <width>136</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color:#fff;</string>
-         </property>
-         <property name="text">
-          <string>Program Sequence</string>
-         </property>
-        </widget>
         <widget class="QPushButton" name="addUser_Button">
          <property name="geometry">
           <rect>
@@ -686,8 +667,8 @@ border: 0;</string>
        <widget class="QPushButton" name="viewStudentProgramSequence_Button">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>160</y>
+          <x>10</x>
+          <y>110</y>
           <width>141</width>
           <height>16</height>
          </rect>
@@ -712,8 +693,8 @@ border: 0;</string>
        <widget class="QPushButton" name="viewCourses_Button">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>120</y>
+          <x>10</x>
+          <y>150</y>
           <width>121</width>
           <height>16</height>
          </rect>
@@ -733,6 +714,29 @@ border: 0;</string>
         <property name="icon">
          <iconset resource="images.qrc">
           <normaloff>:/icons White/Icons/White/Student.png</normaloff>:/icons White/Icons/White/Student.png</iconset>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="AddLecturerCourse_Button">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>190</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#fff;</string>
+        </property>
+        <property name="text">
+         <string>Add Course</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/icons White/Icons/White/Lecturer.png</normaloff>:/icons White/Icons/White/Lecturer.png</iconset>
         </property>
        </widget>
       </widget>
@@ -1680,13 +1684,14 @@ border-radius: 5px;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>10</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background:#70808c;
+         <string notr="true">padding-left:5px;
+background:#70808c;
 color:#fff;
 border-top-left-radius:5px;
 border-top-right-radius:5px;
@@ -1694,10 +1699,10 @@ border-bottom-left-radius:0px;
 border-bottom-right-radius:0px;</string>
         </property>
         <property name="text">
-         <string>My Courses</string>
+         <string>All My Courses</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
        <widget class="QLabel" name="courseCommentViewCourseLabel">
@@ -2670,6 +2675,9 @@ border-bottom-right-radius:0px;</string>
           <height>721</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
        </widget>
        <widget class="QFrame" name="titleCourseListPage_2">
         <property name="geometry">
@@ -2942,7 +2950,7 @@ border-radius:5px;</string>
           <bool>false</bool>
          </property>
         </widget>
-        <widget class="QLabel" name="courseResultLabel_10">
+        <widget class="QLabel" name="updateCourseName">
          <property name="geometry">
           <rect>
            <x>120</x>
@@ -2961,7 +2969,7 @@ border-radius:5px;</string>
 border-bottom:1px dotted #999;</string>
          </property>
          <property name="text">
-          <string>Fundamentals of Management</string>
+          <string/>
          </property>
         </widget>
         <widget class="QLabel" name="courseResultLabe_6">
@@ -3027,7 +3035,7 @@ border-bottom:1px dotted #999;</string>
           <string>Pre-requisites :</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_2">
+        <widget class="QLineEdit" name="updatePrerequisites">
          <property name="geometry">
           <rect>
            <x>130</x>
@@ -3044,7 +3052,7 @@ border-bottom:1px dotted #999;</string>
           <string>Course Code</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_3">
+        <widget class="QLineEdit" name="updateSemester">
          <property name="geometry">
           <rect>
            <x>100</x>
@@ -3061,7 +3069,7 @@ border-bottom:1px dotted #999;</string>
           <string>#</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_4">
+        <widget class="QLineEdit" name="updateYear">
          <property name="geometry">
           <rect>
            <x>200</x>
