@@ -67,7 +67,10 @@ private slots:
     void on_disableUser_Button_clicked();
 
     void on_viewCourses_Button_clicked();
+
     void viewCoursesTable();
+
+    void viewLecturerCoursesTable();
 
     void on_viewCoursesTableWidget_cellClicked(int row, int column);
 

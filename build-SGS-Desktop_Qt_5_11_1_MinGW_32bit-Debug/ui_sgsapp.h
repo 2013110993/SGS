@@ -166,8 +166,17 @@ public:
     QFrame *pageTitleCourseListPage_2;
     QLabel *pageNameLabel_3;
     QWidget *AddProgramSequence;
-    QFrame *addCourseGrade;
-    QLabel *label;
+    QFrame *pageTitleCourseListPage_4;
+    QLabel *pageNameLabel_5;
+    QLabel *addUpdateCourseWidget;
+    QLabel *programSequenceFacultyName_3;
+    QTableWidget *addCoursesListTableWidget;
+    QFrame *titleCourseListPage_2;
+    QLabel *courseTitleViewCourseLabel_2;
+    QLabel *courseStatusViewCourseLabel_2;
+    QLabel *courseViewCourseTable_2;
+    QLabel *pendingViewCourseTable_2;
+    QFrame *frame_3;
 
     void setupUi(QMainWindow *sgsApp)
     {
@@ -473,36 +482,40 @@ public:
         stackedWidgetPages = new QStackedWidget(Dashboard);
         stackedWidgetPages->setObjectName(QStringLiteral("stackedWidgetPages"));
         stackedWidgetPages->setGeometry(QRect(260, 80, 1171, 821));
+        QFont font3;
+        font3.setBold(false);
+        font3.setWeight(50);
+        stackedWidgetPages->setFont(font3);
         stackedWidgetPages->setStyleSheet(QStringLiteral("border: 1px"));
         DashboardPage = new QWidget();
         DashboardPage->setObjectName(QStringLiteral("DashboardPage"));
         pageTitleCourseListPage_3 = new QFrame(DashboardPage);
         pageTitleCourseListPage_3->setObjectName(QStringLiteral("pageTitleCourseListPage_3"));
         pageTitleCourseListPage_3->setGeometry(QRect(10, 0, 1151, 41));
-        QFont font3;
-        font3.setPointSize(11);
-        pageTitleCourseListPage_3->setFont(font3);
+        QFont font4;
+        font4.setPointSize(11);
+        pageTitleCourseListPage_3->setFont(font4);
         pageTitleCourseListPage_3->setStyleSheet(QStringLiteral("border-bottom:1px solid #999999;"));
         pageTitleCourseListPage_3->setFrameShape(QFrame::StyledPanel);
         pageTitleCourseListPage_3->setFrameShadow(QFrame::Raised);
         pageNameLabel_4 = new QLabel(pageTitleCourseListPage_3);
         pageNameLabel_4->setObjectName(QStringLiteral("pageNameLabel_4"));
         pageNameLabel_4->setGeometry(QRect(990, 0, 141, 31));
-        QFont font4;
-        font4.setPointSize(11);
-        font4.setBold(true);
-        font4.setWeight(75);
-        pageNameLabel_4->setFont(font4);
+        QFont font5;
+        font5.setPointSize(11);
+        font5.setBold(true);
+        font5.setWeight(75);
+        pageNameLabel_4->setFont(font5);
         pageNameLabel_4->setLayoutDirection(Qt::LeftToRight);
         pageNameLabel_4->setStyleSheet(QStringLiteral("color:#999; border: 0px;"));
         pageNameLabel_4->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         TMPlabel_5 = new QLabel(DashboardPage);
         TMPlabel_5->setObjectName(QStringLiteral("TMPlabel_5"));
         TMPlabel_5->setGeometry(QRect(40, 230, 531, 431));
-        QFont font5;
-        font5.setBold(true);
-        font5.setWeight(75);
-        TMPlabel_5->setFont(font5);
+        QFont font6;
+        font6.setBold(true);
+        font6.setWeight(75);
+        TMPlabel_5->setFont(font6);
         TMPlabel_5->setStyleSheet(QLatin1String("background:#fff;\n"
 "color: #000;\n"
 "border-radius: 5px;"));
@@ -510,7 +523,7 @@ public:
         TMPlabel_6 = new QLabel(DashboardPage);
         TMPlabel_6->setObjectName(QStringLiteral("TMPlabel_6"));
         TMPlabel_6->setGeometry(QRect(610, 230, 531, 431));
-        TMPlabel_6->setFont(font5);
+        TMPlabel_6->setFont(font6);
         TMPlabel_6->setStyleSheet(QLatin1String("background:#fff;\n"
 "color: #000;\n"
 "border-radius: 5px;"));
@@ -524,7 +537,7 @@ public:
         icon1Widget1 = new QLabel(frame_Widget1);
         icon1Widget1->setObjectName(QStringLiteral("icon1Widget1"));
         icon1Widget1->setGeometry(QRect(10, 20, 41, 41));
-        icon1Widget1->setFont(font5);
+        icon1Widget1->setFont(font6);
         icon1Widget1->setStyleSheet(QStringLiteral(""));
         icon1Widget1->setPixmap(QPixmap(QString::fromUtf8(":/iconsGray/Icons/Gray/Student.png")));
         icon1Widget1->setScaledContents(true);
@@ -532,18 +545,18 @@ public:
         widget1Title = new QLabel(frame_Widget1);
         widget1Title->setObjectName(QStringLiteral("widget1Title"));
         widget1Title->setGeometry(QRect(60, 20, 141, 41));
-        widget1Title->setFont(font4);
+        widget1Title->setFont(font5);
         widget1Title->setStyleSheet(QLatin1String("color:#999;\n"
 "border-radius: 5px;"));
         widget1Title->setAlignment(Qt::AlignCenter);
         widget1courseComplete = new QLabel(frame_Widget1);
         widget1courseComplete->setObjectName(QStringLiteral("widget1courseComplete"));
         widget1courseComplete->setGeometry(QRect(0, 70, 201, 41));
-        QFont font6;
-        font6.setPointSize(27);
-        font6.setBold(true);
-        font6.setWeight(75);
-        widget1courseComplete->setFont(font6);
+        QFont font7;
+        font7.setPointSize(27);
+        font7.setBold(true);
+        font7.setWeight(75);
+        widget1courseComplete->setFont(font7);
         widget1courseComplete->setStyleSheet(QLatin1String("color:#292f38;\n"
 "border-radius: 5px;"));
         widget1courseComplete->setAlignment(Qt::AlignCenter);
@@ -556,7 +569,7 @@ public:
         icon1Widget2 = new QLabel(frame_Widget2);
         icon1Widget2->setObjectName(QStringLiteral("icon1Widget2"));
         icon1Widget2->setGeometry(QRect(10, 20, 41, 41));
-        icon1Widget2->setFont(font5);
+        icon1Widget2->setFont(font6);
         icon1Widget2->setStyleSheet(QStringLiteral(""));
         icon1Widget2->setPixmap(QPixmap(QString::fromUtf8(":/iconsGray/Icons/Gray/Student.png")));
         icon1Widget2->setScaledContents(true);
@@ -564,14 +577,14 @@ public:
         widget2Title = new QLabel(frame_Widget2);
         widget2Title->setObjectName(QStringLiteral("widget2Title"));
         widget2Title->setGeometry(QRect(60, 20, 141, 41));
-        widget2Title->setFont(font4);
+        widget2Title->setFont(font5);
         widget2Title->setStyleSheet(QLatin1String("color:#999;\n"
 "border-radius: 5px;"));
         widget2Title->setAlignment(Qt::AlignCenter);
         widget2TitleCoursePending = new QLabel(frame_Widget2);
         widget2TitleCoursePending->setObjectName(QStringLiteral("widget2TitleCoursePending"));
         widget2TitleCoursePending->setGeometry(QRect(0, 70, 201, 41));
-        widget2TitleCoursePending->setFont(font6);
+        widget2TitleCoursePending->setFont(font7);
         widget2TitleCoursePending->setStyleSheet(QLatin1String("color:#292f38;\n"
 "border-radius: 5px;"));
         widget2TitleCoursePending->setAlignment(Qt::AlignCenter);
@@ -584,7 +597,7 @@ public:
         icon1Widget2_2 = new QLabel(frame_Widget2_2);
         icon1Widget2_2->setObjectName(QStringLiteral("icon1Widget2_2"));
         icon1Widget2_2->setGeometry(QRect(10, 20, 41, 41));
-        icon1Widget2_2->setFont(font5);
+        icon1Widget2_2->setFont(font6);
         icon1Widget2_2->setStyleSheet(QStringLiteral(""));
         icon1Widget2_2->setPixmap(QPixmap(QString::fromUtf8(":/iconsGray/Icons/Gray/Student.png")));
         icon1Widget2_2->setScaledContents(true);
@@ -592,14 +605,14 @@ public:
         widget2Title_2 = new QLabel(frame_Widget2_2);
         widget2Title_2->setObjectName(QStringLiteral("widget2Title_2"));
         widget2Title_2->setGeometry(QRect(60, 20, 141, 41));
-        widget2Title_2->setFont(font4);
+        widget2Title_2->setFont(font5);
         widget2Title_2->setStyleSheet(QLatin1String("color:#999;\n"
 "border-radius: 5px;"));
         widget2Title_2->setAlignment(Qt::AlignCenter);
         widget2TitleCoursePending_2 = new QLabel(frame_Widget2_2);
         widget2TitleCoursePending_2->setObjectName(QStringLiteral("widget2TitleCoursePending_2"));
         widget2TitleCoursePending_2->setGeometry(QRect(0, 70, 201, 41));
-        widget2TitleCoursePending_2->setFont(font6);
+        widget2TitleCoursePending_2->setFont(font7);
         widget2TitleCoursePending_2->setStyleSheet(QLatin1String("color:#292f38;\n"
 "border-radius: 5px;"));
         widget2TitleCoursePending_2->setAlignment(Qt::AlignCenter);
@@ -612,7 +625,7 @@ public:
         icon1Widget2_5 = new QLabel(frame_Widget2_3);
         icon1Widget2_5->setObjectName(QStringLiteral("icon1Widget2_5"));
         icon1Widget2_5->setGeometry(QRect(10, 20, 41, 41));
-        icon1Widget2_5->setFont(font5);
+        icon1Widget2_5->setFont(font6);
         icon1Widget2_5->setStyleSheet(QStringLiteral(""));
         icon1Widget2_5->setPixmap(QPixmap(QString::fromUtf8(":/iconsGray/Icons/Gray/Student.png")));
         icon1Widget2_5->setScaledContents(true);
@@ -620,14 +633,14 @@ public:
         widget2Title_5 = new QLabel(frame_Widget2_3);
         widget2Title_5->setObjectName(QStringLiteral("widget2Title_5"));
         widget2Title_5->setGeometry(QRect(60, 20, 141, 41));
-        widget2Title_5->setFont(font4);
+        widget2Title_5->setFont(font5);
         widget2Title_5->setStyleSheet(QLatin1String("color:#999;\n"
 "border-radius: 5px;"));
         widget2Title_5->setAlignment(Qt::AlignCenter);
         widget2TitleCoursePending_5 = new QLabel(frame_Widget2_3);
         widget2TitleCoursePending_5->setObjectName(QStringLiteral("widget2TitleCoursePending_5"));
         widget2TitleCoursePending_5->setGeometry(QRect(0, 70, 201, 41));
-        widget2TitleCoursePending_5->setFont(font6);
+        widget2TitleCoursePending_5->setFont(font7);
         widget2TitleCoursePending_5->setStyleSheet(QLatin1String("color:#292f38;\n"
 "border-radius: 5px;"));
         widget2TitleCoursePending_5->setAlignment(Qt::AlignCenter);
@@ -640,7 +653,7 @@ public:
         icon1Widget2_6 = new QLabel(frame_Widget2_5);
         icon1Widget2_6->setObjectName(QStringLiteral("icon1Widget2_6"));
         icon1Widget2_6->setGeometry(QRect(10, 20, 41, 41));
-        icon1Widget2_6->setFont(font5);
+        icon1Widget2_6->setFont(font6);
         icon1Widget2_6->setStyleSheet(QStringLiteral(""));
         icon1Widget2_6->setPixmap(QPixmap(QString::fromUtf8(":/iconsGray/Icons/Gray/Student.png")));
         icon1Widget2_6->setScaledContents(true);
@@ -648,14 +661,14 @@ public:
         widget2Title_6 = new QLabel(frame_Widget2_5);
         widget2Title_6->setObjectName(QStringLiteral("widget2Title_6"));
         widget2Title_6->setGeometry(QRect(60, 20, 141, 41));
-        widget2Title_6->setFont(font4);
+        widget2Title_6->setFont(font5);
         widget2Title_6->setStyleSheet(QLatin1String("color:#999;\n"
 "border-radius: 5px;"));
         widget2Title_6->setAlignment(Qt::AlignCenter);
         widget2TitleCoursePending_6 = new QLabel(frame_Widget2_5);
         widget2TitleCoursePending_6->setObjectName(QStringLiteral("widget2TitleCoursePending_6"));
         widget2TitleCoursePending_6->setGeometry(QRect(0, 70, 201, 41));
-        widget2TitleCoursePending_6->setFont(font6);
+        widget2TitleCoursePending_6->setFont(font7);
         widget2TitleCoursePending_6->setStyleSheet(QLatin1String("color:#292f38;\n"
 "border-radius: 5px;"));
         widget2TitleCoursePending_6->setAlignment(Qt::AlignCenter);
@@ -674,37 +687,37 @@ public:
         courseTitleViewCourseLabel = new QLabel(titleCourseListPage);
         courseTitleViewCourseLabel->setObjectName(QStringLiteral("courseTitleViewCourseLabel"));
         courseTitleViewCourseLabel->setGeometry(QRect(30, 20, 51, 16));
-        QFont font7;
-        font7.setPointSize(9);
-        courseTitleViewCourseLabel->setFont(font7);
+        QFont font8;
+        font8.setPointSize(9);
+        courseTitleViewCourseLabel->setFont(font8);
         courseTitleViewCourseLabel->setStyleSheet(QStringLiteral("color:#666"));
         courseStatusViewCourseLabel = new QLabel(titleCourseListPage);
         courseStatusViewCourseLabel->setObjectName(QStringLiteral("courseStatusViewCourseLabel"));
         courseStatusViewCourseLabel->setGeometry(QRect(30, 80, 51, 16));
-        courseStatusViewCourseLabel->setFont(font7);
+        courseStatusViewCourseLabel->setFont(font8);
         courseStatusViewCourseLabel->setStyleSheet(QStringLiteral("color:#666"));
         courseViewCourseTable = new QLabel(titleCourseListPage);
         courseViewCourseTable->setObjectName(QStringLiteral("courseViewCourseTable"));
         courseViewCourseTable->setGeometry(QRect(40, 50, 411, 20));
-        QFont font8;
-        font8.setPointSize(10);
-        font8.setBold(true);
-        font8.setWeight(75);
-        courseViewCourseTable->setFont(font8);
+        QFont font9;
+        font9.setPointSize(10);
+        font9.setBold(true);
+        font9.setWeight(75);
+        courseViewCourseTable->setFont(font9);
         courseViewCourseTable->setStyleSheet(QStringLiteral("color:#333"));
         pendingViewCourseTable = new QLabel(titleCourseListPage);
         pendingViewCourseTable->setObjectName(QStringLiteral("pendingViewCourseTable"));
         pendingViewCourseTable->setGeometry(QRect(40, 110, 411, 21));
-        pendingViewCourseTable->setFont(font5);
+        pendingViewCourseTable->setFont(font6);
         pendingViewCourseTable->setStyleSheet(QStringLiteral("color:red;"));
         programSequenceFacultyName_2 = new QLabel(CoursesPage);
         programSequenceFacultyName_2->setObjectName(QStringLiteral("programSequenceFacultyName_2"));
         programSequenceFacultyName_2->setGeometry(QRect(20, 60, 661, 41));
-        QFont font9;
-        font9.setPointSize(14);
-        font9.setBold(true);
-        font9.setWeight(75);
-        programSequenceFacultyName_2->setFont(font9);
+        QFont font10;
+        font10.setPointSize(14);
+        font10.setBold(true);
+        font10.setWeight(75);
+        programSequenceFacultyName_2->setFont(font10);
         programSequenceFacultyName_2->setStyleSheet(QLatin1String("background:#70808c;\n"
 "color:#fff;\n"
 "border-top-left-radius:5px;\n"
@@ -715,7 +728,7 @@ public:
         courseCommentViewCourseLabel = new QLabel(CoursesPage);
         courseCommentViewCourseLabel->setObjectName(QStringLiteral("courseCommentViewCourseLabel"));
         courseCommentViewCourseLabel->setGeometry(QRect(710, 250, 201, 16));
-        courseCommentViewCourseLabel->setFont(font7);
+        courseCommentViewCourseLabel->setFont(font8);
         courseCommentViewCourseLabel->setStyleSheet(QStringLiteral("color:#666"));
         courseCommentListPage = new QFrame(CoursesPage);
         courseCommentListPage->setObjectName(QStringLiteral("courseCommentListPage"));
@@ -726,43 +739,43 @@ public:
         commentPostedViewCourseLabel = new QLabel(courseCommentListPage);
         commentPostedViewCourseLabel->setObjectName(QStringLiteral("commentPostedViewCourseLabel"));
         commentPostedViewCourseLabel->setGeometry(QRect(30, 20, 51, 16));
-        commentPostedViewCourseLabel->setFont(font7);
+        commentPostedViewCourseLabel->setFont(font8);
         commentPostedViewCourseLabel->setStyleSheet(QStringLiteral("color:#666"));
         ratingStatusViewCourseLabel = new QLabel(courseCommentListPage);
         ratingStatusViewCourseLabel->setObjectName(QStringLiteral("ratingStatusViewCourseLabel"));
         ratingStatusViewCourseLabel->setGeometry(QRect(280, 20, 51, 16));
-        ratingStatusViewCourseLabel->setFont(font7);
+        ratingStatusViewCourseLabel->setFont(font8);
         ratingStatusViewCourseLabel->setStyleSheet(QStringLiteral("color:#666"));
         commentTimeStapViewCourseTable = new QLabel(courseCommentListPage);
         commentTimeStapViewCourseTable->setObjectName(QStringLiteral("commentTimeStapViewCourseTable"));
         commentTimeStapViewCourseTable->setGeometry(QRect(80, 20, 141, 20));
-        commentTimeStapViewCourseTable->setFont(font8);
+        commentTimeStapViewCourseTable->setFont(font9);
         commentTimeStapViewCourseTable->setStyleSheet(QStringLiteral("color:#333"));
         ratingViewCourseTable = new QLabel(courseCommentListPage);
         ratingViewCourseTable->setObjectName(QStringLiteral("ratingViewCourseTable"));
         ratingViewCourseTable->setGeometry(QRect(340, 20, 121, 21));
-        ratingViewCourseTable->setFont(font5);
+        ratingViewCourseTable->setFont(font6);
         ratingViewCourseTable->setStyleSheet(QStringLiteral("color:#333;"));
         userCommentViewCourseTable = new QLabel(courseCommentListPage);
         userCommentViewCourseTable->setObjectName(QStringLiteral("userCommentViewCourseTable"));
         userCommentViewCourseTable->setGeometry(QRect(10, 70, 451, 71));
-        QFont font10;
-        font10.setPointSize(8);
-        font10.setBold(false);
-        font10.setWeight(50);
-        userCommentViewCourseTable->setFont(font10);
+        QFont font11;
+        font11.setPointSize(8);
+        font11.setBold(false);
+        font11.setWeight(50);
+        userCommentViewCourseTable->setFont(font11);
         userCommentViewCourseTable->setStyleSheet(QStringLiteral("color:#333"));
         pageTitleCourseListPage = new QFrame(CoursesPage);
         pageTitleCourseListPage->setObjectName(QStringLiteral("pageTitleCourseListPage"));
         pageTitleCourseListPage->setGeometry(QRect(20, 0, 1151, 41));
-        pageTitleCourseListPage->setFont(font3);
+        pageTitleCourseListPage->setFont(font4);
         pageTitleCourseListPage->setStyleSheet(QStringLiteral("border-bottom:1px solid #999999;"));
         pageTitleCourseListPage->setFrameShape(QFrame::StyledPanel);
         pageTitleCourseListPage->setFrameShadow(QFrame::Raised);
         pageNameLabel = new QLabel(pageTitleCourseListPage);
         pageNameLabel->setObjectName(QStringLiteral("pageNameLabel"));
         pageNameLabel->setGeometry(QRect(990, 0, 141, 31));
-        pageNameLabel->setFont(font4);
+        pageNameLabel->setFont(font5);
         pageNameLabel->setLayoutDirection(Qt::LeftToRight);
         pageNameLabel->setStyleSheet(QStringLiteral("color:#999; border: 0px;"));
         pageNameLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -777,7 +790,7 @@ public:
         programSequenceFacultyName = new QLabel(ViewProgramSequence);
         programSequenceFacultyName->setObjectName(QStringLiteral("programSequenceFacultyName"));
         programSequenceFacultyName->setGeometry(QRect(10, 60, 1151, 41));
-        programSequenceFacultyName->setFont(font9);
+        programSequenceFacultyName->setFont(font10);
         programSequenceFacultyName->setStyleSheet(QLatin1String("background:#70808c;\n"
 "color:#fff;\n"
 "border-top-left-radius:5px;\n"
@@ -788,11 +801,11 @@ public:
         programSequenceProgramName = new QLabel(ViewProgramSequence);
         programSequenceProgramName->setObjectName(QStringLiteral("programSequenceProgramName"));
         programSequenceProgramName->setGeometry(QRect(10, 100, 1151, 31));
-        QFont font11;
-        font11.setPointSize(14);
-        font11.setBold(false);
-        font11.setWeight(50);
-        programSequenceProgramName->setFont(font11);
+        QFont font12;
+        font12.setPointSize(14);
+        font12.setBold(false);
+        font12.setWeight(50);
+        programSequenceProgramName->setFont(font12);
         programSequenceProgramName->setStyleSheet(QStringLiteral("color:#333;border:1px solid #999;background:#fff;"));
         programSequenceProgramName->setAlignment(Qt::AlignCenter);
         addCourseFrame = new QFrame(ViewProgramSequence);
@@ -805,7 +818,7 @@ public:
         AddProgramSequenceFormTitle = new QLabel(addCourseFrame);
         AddProgramSequenceFormTitle->setObjectName(QStringLiteral("AddProgramSequenceFormTitle"));
         AddProgramSequenceFormTitle->setGeometry(QRect(0, 0, 1151, 41));
-        AddProgramSequenceFormTitle->setFont(font9);
+        AddProgramSequenceFormTitle->setFont(font10);
         AddProgramSequenceFormTitle->setStyleSheet(QLatin1String("background:#70808c;\n"
 "color:#fff;\n"
 "border-bottom-left-radius:0px;\n"
@@ -1043,39 +1056,102 @@ public:
         pageTitleCourseListPage_2 = new QFrame(ViewProgramSequence);
         pageTitleCourseListPage_2->setObjectName(QStringLiteral("pageTitleCourseListPage_2"));
         pageTitleCourseListPage_2->setGeometry(QRect(10, 0, 1151, 41));
-        pageTitleCourseListPage_2->setFont(font3);
+        pageTitleCourseListPage_2->setFont(font4);
         pageTitleCourseListPage_2->setStyleSheet(QStringLiteral("border-bottom:1px solid #999999;"));
         pageTitleCourseListPage_2->setFrameShape(QFrame::StyledPanel);
         pageTitleCourseListPage_2->setFrameShadow(QFrame::Raised);
         pageNameLabel_3 = new QLabel(pageTitleCourseListPage_2);
         pageNameLabel_3->setObjectName(QStringLiteral("pageNameLabel_3"));
         pageNameLabel_3->setGeometry(QRect(920, 0, 211, 31));
-        pageNameLabel_3->setFont(font4);
+        pageNameLabel_3->setFont(font5);
         pageNameLabel_3->setLayoutDirection(Qt::LeftToRight);
         pageNameLabel_3->setStyleSheet(QStringLiteral("color:#999; border: 0px;"));
         pageNameLabel_3->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         stackedWidgetPages->addWidget(ViewProgramSequence);
         AddProgramSequence = new QWidget();
         AddProgramSequence->setObjectName(QStringLiteral("AddProgramSequence"));
-        addCourseGrade = new QFrame(AddProgramSequence);
-        addCourseGrade->setObjectName(QStringLiteral("addCourseGrade"));
-        addCourseGrade->setGeometry(QRect(410, 190, 541, 231));
-        addCourseGrade->setFrameShape(QFrame::StyledPanel);
-        addCourseGrade->setFrameShadow(QFrame::Raised);
-        label = new QLabel(addCourseGrade);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(0, 0, 541, 41));
-        label->setFont(font9);
-        label->setStyleSheet(QStringLiteral("background:#70808c;"));
-        label->setAlignment(Qt::AlignCenter);
+        pageTitleCourseListPage_4 = new QFrame(AddProgramSequence);
+        pageTitleCourseListPage_4->setObjectName(QStringLiteral("pageTitleCourseListPage_4"));
+        pageTitleCourseListPage_4->setGeometry(QRect(10, 0, 1151, 41));
+        pageTitleCourseListPage_4->setFont(font4);
+        pageTitleCourseListPage_4->setStyleSheet(QStringLiteral("border-bottom:1px solid #999999;"));
+        pageTitleCourseListPage_4->setFrameShape(QFrame::StyledPanel);
+        pageTitleCourseListPage_4->setFrameShadow(QFrame::Raised);
+        pageNameLabel_5 = new QLabel(pageTitleCourseListPage_4);
+        pageNameLabel_5->setObjectName(QStringLiteral("pageNameLabel_5"));
+        pageNameLabel_5->setGeometry(QRect(920, 0, 211, 31));
+        pageNameLabel_5->setFont(font5);
+        pageNameLabel_5->setLayoutDirection(Qt::LeftToRight);
+        pageNameLabel_5->setStyleSheet(QStringLiteral("color:#999; border: 0px;"));
+        pageNameLabel_5->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        addUpdateCourseWidget = new QLabel(AddProgramSequence);
+        addUpdateCourseWidget->setObjectName(QStringLiteral("addUpdateCourseWidget"));
+        addUpdateCourseWidget->setGeometry(QRect(690, 60, 471, 41));
+        addUpdateCourseWidget->setFont(font9);
+        addUpdateCourseWidget->setStyleSheet(QLatin1String("padding-left:5px;\n"
+"background:#70808c;\n"
+"color:#fff;\n"
+"border-top-left-radius:5px;\n"
+"border-top-right-radius:5px;\n"
+"border-bottom-left-radius:0px;\n"
+"border-bottom-right-radius:0px;"));
+        addUpdateCourseWidget->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        programSequenceFacultyName_3 = new QLabel(AddProgramSequence);
+        programSequenceFacultyName_3->setObjectName(QStringLiteral("programSequenceFacultyName_3"));
+        programSequenceFacultyName_3->setGeometry(QRect(10, 60, 661, 41));
+        programSequenceFacultyName_3->setFont(font9);
+        programSequenceFacultyName_3->setStyleSheet(QLatin1String("padding-left:5px;\n"
+"background:#70808c;\n"
+"color:#fff;\n"
+"border-top-left-radius:5px;\n"
+"border-top-right-radius:5px;\n"
+"border-bottom-left-radius:0px;\n"
+"border-bottom-right-radius:0px;"));
+        programSequenceFacultyName_3->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        addCoursesListTableWidget = new QTableWidget(AddProgramSequence);
+        addCoursesListTableWidget->setObjectName(QStringLiteral("addCoursesListTableWidget"));
+        addCoursesListTableWidget->setGeometry(QRect(10, 100, 661, 721));
+        titleCourseListPage_2 = new QFrame(AddProgramSequence);
+        titleCourseListPage_2->setObjectName(QStringLiteral("titleCourseListPage_2"));
+        titleCourseListPage_2->setGeometry(QRect(690, 100, 471, 161));
+        titleCourseListPage_2->setStyleSheet(QLatin1String("background:#fff;\n"
+"border-top-left-radius:0;\n"
+"border-top-right-radius:0;"));
+        titleCourseListPage_2->setFrameShape(QFrame::StyledPanel);
+        titleCourseListPage_2->setFrameShadow(QFrame::Raised);
+        courseTitleViewCourseLabel_2 = new QLabel(titleCourseListPage_2);
+        courseTitleViewCourseLabel_2->setObjectName(QStringLiteral("courseTitleViewCourseLabel_2"));
+        courseTitleViewCourseLabel_2->setGeometry(QRect(30, 20, 51, 16));
+        courseTitleViewCourseLabel_2->setFont(font8);
+        courseTitleViewCourseLabel_2->setStyleSheet(QStringLiteral("color:#666"));
+        courseStatusViewCourseLabel_2 = new QLabel(titleCourseListPage_2);
+        courseStatusViewCourseLabel_2->setObjectName(QStringLiteral("courseStatusViewCourseLabel_2"));
+        courseStatusViewCourseLabel_2->setGeometry(QRect(30, 80, 51, 16));
+        courseStatusViewCourseLabel_2->setFont(font8);
+        courseStatusViewCourseLabel_2->setStyleSheet(QStringLiteral("color:#666"));
+        courseViewCourseTable_2 = new QLabel(titleCourseListPage_2);
+        courseViewCourseTable_2->setObjectName(QStringLiteral("courseViewCourseTable_2"));
+        courseViewCourseTable_2->setGeometry(QRect(40, 50, 411, 20));
+        courseViewCourseTable_2->setFont(font9);
+        courseViewCourseTable_2->setStyleSheet(QStringLiteral("color:#333"));
+        pendingViewCourseTable_2 = new QLabel(titleCourseListPage_2);
+        pendingViewCourseTable_2->setObjectName(QStringLiteral("pendingViewCourseTable_2"));
+        pendingViewCourseTable_2->setGeometry(QRect(40, 110, 411, 21));
+        pendingViewCourseTable_2->setFont(font6);
+        pendingViewCourseTable_2->setStyleSheet(QStringLiteral("color:red;"));
+        frame_3 = new QFrame(AddProgramSequence);
+        frame_3->setObjectName(QStringLiteral("frame_3"));
+        frame_3->setGeometry(QRect(170, 500, 120, 80));
+        frame_3->setFrameShape(QFrame::StyledPanel);
+        frame_3->setFrameShadow(QFrame::Raised);
         stackedWidgetPages->addWidget(AddProgramSequence);
         stackedWidgetSGS->addWidget(Dashboard);
         sgsApp->setCentralWidget(centralwidget);
 
         retranslateUi(sgsApp);
 
-        stackedWidgetSGS->setCurrentIndex(0);
-        stackedWidgetPages->setCurrentIndex(1);
+        stackedWidgetSGS->setCurrentIndex(1);
+        stackedWidgetPages->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(sgsApp);
@@ -1209,7 +1285,13 @@ public:
         addLectureComboBox->setItemText(0, QApplication::translate("sgsApp", "Select Lecture", nullptr));
 
         pageNameLabel_3->setText(QApplication::translate("sgsApp", "/ Program Sequence", nullptr));
-        label->setText(QApplication::translate("sgsApp", "Add Course Widget", nullptr));
+        pageNameLabel_5->setText(QApplication::translate("sgsApp", "/ Add Course", nullptr));
+        addUpdateCourseWidget->setText(QApplication::translate("sgsApp", "Add / Update", nullptr));
+        programSequenceFacultyName_3->setText(QApplication::translate("sgsApp", "Course List", nullptr));
+        courseTitleViewCourseLabel_2->setText(QApplication::translate("sgsApp", "Course:", nullptr));
+        courseStatusViewCourseLabel_2->setText(QApplication::translate("sgsApp", "Status:", nullptr));
+        courseViewCourseTable_2->setText(QString());
+        pendingViewCourseTable_2->setText(QString());
     } // retranslateUi
 
 };

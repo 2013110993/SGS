@@ -421,6 +421,32 @@ void sgsApp::viewCoursesTable()
     }
 }
 
+//Generate Lecturer Cours List Table
+void sgsApp::viewLecturerCoursesTable()
+{
+//    int rowCount = 0;
+
+//    for(int i = 0; i < 5; i++)
+//    {
+//         ui->lecturerCoursesListTableWidget->insertRow(rowCount);
+
+//        QTableWidgetItem *courseName = new QTableWidgetItem;
+//        QTableWidgetItem *credits = new QTableWidgetItem;
+//        QTableWidgetItem *semester = new QTableWidgetItem;
+//        QTableWidgetItem *year = new QTableWidgetItem;
+
+
+//        courseName->setText("Belizean History");
+//        credits->setText("3");
+//        semester->setText("1");
+//        year->setText("2021");
+
+//        rowCount++;
+//    }
+
+
+}
+
 void sgsApp::on_viewCoursesTableWidget_cellClicked(int row, int column)
 {
     QString courseName = ui->viewCoursesTableWidget->item(row,1)->text();
