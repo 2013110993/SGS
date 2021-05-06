@@ -441,6 +441,8 @@ void sgsApp::viewLecturerCoursesTable()
     ui->lecturerCoursesListTableWidget->setHorizontalHeaderLabels(header);
     ui->lecturerCoursesListTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
 
+    ui->lecturerCoursesListTableWidget->verticalHeader()->setVisible(false);
+
 
     ui->lecturerCoursesListTableWidget->setAlternatingRowColors(true);
     ui->lecturerCoursesListTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
@@ -451,11 +453,9 @@ void sgsApp::viewLecturerCoursesTable()
     {
          ui->lecturerCoursesListTableWidget->insertRow(rowCount);
 
-         ui->lecturerCoursesListTableWidget->setColumnWidth(0,200);
-          ui->lecturerCoursesListTableWidget->setColumnWidth(1,138);
-          ui->lecturerCoursesListTableWidget->setColumnWidth(2,138);
-
-        // ui->lecturerCoursesListTableWidget->setColumnWidth(0,338);
+         ui->lecturerCoursesListTableWidget->setColumnWidth(0,205);
+         ui->lecturerCoursesListTableWidget->setColumnWidth(1,205);
+         ui->lecturerCoursesListTableWidget->setColumnWidth(4,50);
 
         QTableWidgetItem *courseName = new QTableWidgetItem;
         QTableWidgetItem *credits = new QTableWidgetItem;
@@ -500,7 +500,7 @@ void sgsApp::on_lecturerCoursesListTableWidget_cellClicked(int row, int column)
 //View Lecturer Page
 void sgsApp::on_AddLecturerCourse_Button_clicked()
 {
-    //Navigate to View Course Page
+    //Navigate to Lecturer Course Page
     ui->stackedWidgetPages->setCurrentIndex(3);
 
     //Function to display view course table
@@ -623,10 +623,63 @@ void sgsApp::on_disableUser_Button_clicked()
 
 
 
+//View Comments Page
+void sgsApp::on_viewComments_Button_clicked()
+{
+    //Navigate to View Course Page
+    ui->stackedWidgetPages->setCurrentIndex(4);
 
+    //Display search Table
+    viewSearchCourseCommentTable();
+}
+void sgsApp::viewSearchCourseCommentTable()
+{
+    ui->searchResultCourseCommentTableWidget->setColumnCount(3);
+    ui->searchResultCourseCommentTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
+
+    QStringList header;
+    header <<"Code" <<  "Course Name"<< "Lecturer";
+    ui->searchResultCourseCommentTableWidget->setHorizontalHeaderLabels(header);
+    ui->searchResultCourseCommentTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
+
+    ui->searchResultCourseCommentTableWidget->verticalHeader()->setVisible(false);
+
+
+    ui->searchResultCourseCommentTableWidget->setAlternatingRowColors(true);
+    ui->searchResultCourseCommentTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
+
+    int rowCount = 0;
+
+    for(int i = 0; i < 5; i++)
+    {
+         ui->searchResultCourseCommentTableWidget->insertRow(rowCount);
+
+         ui->searchResultCourseCommentTableWidget->setColumnWidth(0,75);
+         ui->searchResultCourseCommentTableWidget->setColumnWidth(1,200);
+         ui->searchResultCourseCommentTableWidget->setColumnWidth(0,150);
+
+
+
+        QTableWidgetItem *courseCode = new QTableWidgetItem;
+        QTableWidgetItem *courseName = new QTableWidgetItem;
+        QTableWidgetItem *lecturer = new QTableWidgetItem;
+
+        courseCode->setText("ENGL1014");
+        courseName->setText("Fundamental of Management");
+        lecturer->setText("Farshad Rabbani");
+
+
+}
+}
 
 void sgsApp::on_filterSearchButton_clicked()
 {
-    QString courseCode = ui->CourseCodelineEdit->text();
-    QSqlQuery info = connection->getLectureCourses(courseCode);
+//    QString courseCode = ui->CourseCodelineEdit->text();
+//    QSqlQuery info = connection->getLectureCourses(courseCode);
+//        ui->searchResultCourseCommentTableWidget->setItem(rowCount,0,courseCode);
+//        ui->searchResultCourseCommentTableWidget->setItem(rowCount,1,courseName);
+//        ui->searchResultCourseCommentTableWidget->setItem(rowCount,2,lecturer);
+
+//        rowCount++;
+//    }
 }

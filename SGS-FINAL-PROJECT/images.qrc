@@ -29,6 +29,7 @@
         <file>Icons/White/Student.png</file>
         <file>Icons/White/Upload.png</file>
         <file>Icons/White/User.png</file>
+        <file>Icons/White/commentWHITE.png</file>
     </qresource>
     <qresource prefix="/iconsBlack">
         <file>Icons/Black/Add User.png</file>

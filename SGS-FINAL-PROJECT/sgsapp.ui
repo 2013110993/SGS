@@ -525,7 +525,11 @@ border: 0;</string>
           <string notr="true">color:#fff;</string>
          </property>
          <property name="text">
-          <string>Comments</string>
+          <string>View Comments</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/commentWHITE.png</normaloff>:/icons White/Icons/White/commentWHITE.png</iconset>
          </property>
         </widget>
        </widget>
@@ -910,7 +914,7 @@ background-repeat: no-repeat;</string>
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>80</y>
+        <y>70</y>
         <width>1171</width>
         <height>821</height>
        </rect>
@@ -2116,6 +2120,7 @@ border:0px;</string>
            <widget class="QLabel" name="courseName_courseGradeLable">
             <property name="styleSheet">
              <string notr="true">color:#000;
+border:0px;
 border-bottom:1px dotted #999;</string>
             </property>
             <property name="text">
@@ -2220,6 +2225,7 @@ border:0px;</string>
            <widget class="QLabel" name="credit_CourseGradeLable">
             <property name="styleSheet">
              <string notr="true">color:#000;
+border:0px;
 border-bottom:1px dotted #999;</string>
             </property>
             <property name="text">
@@ -2254,6 +2260,7 @@ border:0px;</string>
            <widget class="QLabel" name="allPrerequisites_CourseGradeLable">
             <property name="styleSheet">
              <string notr="true">color:#000;
+border:0px;
 border-bottom:1px dotted #999;</string>
             </property>
             <property name="text">
@@ -2288,6 +2295,7 @@ border:0px;</string>
            <widget class="QLabel" name="semester_CourseGradeLable">
             <property name="styleSheet">
              <string notr="true">color:#000;
+border:0px;
 border-bottom:1px dotted #999;</string>
             </property>
             <property name="text">
@@ -2322,6 +2330,7 @@ border:0px;</string>
            <widget class="QLabel" name="courseYear_CourseGradeLable">
             <property name="styleSheet">
              <string notr="true">color:#000;
+border:0px;
 border-bottom:1px dotted #999;</string>
             </property>
             <property name="text">
@@ -2449,6 +2458,7 @@ border:0px;</string>
            <widget class="QLabel" name="courseCode_CourseGradeLable">
             <property name="styleSheet">
              <string notr="true">color:#000;
+border:0px;
 border-bottom:1px dotted #999;</string>
             </property>
             <property name="text">
@@ -2548,7 +2558,7 @@ border:0px;</string>
         </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="AddProgramSequence">
+      <widget class="QWidget" name="AddCourse">
        <widget class="QFrame" name="pageTitleCourseListPage_4">
         <property name="geometry">
          <rect>
@@ -2677,6 +2687,9 @@ border-bottom-right-radius:0px;</string>
         </property>
         <property name="styleSheet">
          <string notr="true"/>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
         </property>
        </widget>
        <widget class="QFrame" name="titleCourseListPage_2">
@@ -2829,7 +2842,7 @@ border-radius:5px;</string>
 border-bottom:1px dotted #999;</string>
          </property>
          <property name="text">
-          <string>Fundamentals of Management</string>
+          <string/>
          </property>
         </widget>
         <widget class="QPushButton" name="filterSearchButton_3">
@@ -3150,6 +3163,257 @@ border-bottom-right-radius:0px;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="ViewComments">
+       <widget class="QLabel" name="courseCommentsName">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>60</y>
+          <width>661</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">padding-left:5px;
+background:#70808c;
+color:#fff;
+border-top-left-radius:5px;
+border-top-right-radius:5px;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:0px;</string>
+        </property>
+        <property name="text">
+         <string>Course Comments :</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="lecturerCoursesListTableWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>100</y>
+          <width>661</width>
+          <height>721</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+       </widget>
+       <widget class="QFrame" name="pageTitleCourseListPage_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>0</y>
+          <width>1151</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-bottom:1px solid #999999;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLabel" name="pageNameLabel_6">
+         <property name="geometry">
+          <rect>
+           <x>920</x>
+           <y>0</y>
+           <width>211</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#999; border: 0px;</string>
+         </property>
+         <property name="text">
+          <string>/ View Comments</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="searcCourseCodeWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>471</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">padding-left:5px;
+background:#70808c;
+color:#fff;
+border-top-left-radius:5px;
+border-top-right-radius:5px;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:0px;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QFrame" name="titleCourseListPage_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>110</y>
+          <width>471</width>
+          <height>231</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#fff;
+border-top-left-radius:0;
+border-top-right-radius:0;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLabel" name="pendingViewCourseTable_3">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>110</y>
+           <width>411</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:red;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QTableWidget" name="searchResultCourseCommentTableWidget">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>451</width>
+           <height>201</height>
+          </rect>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QPushButton" name="commentSearchCourseCODEButton">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>70</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#292f38;
+color: #ffffff;
+border:0;
+height:30px;
+border-top-left-radius:0px;
+border-top-right-radius:5px;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:5px;</string>
+        </property>
+        <property name="text">
+         <string>Search</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="commentsSearchCourseCodelineEdit">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>70</y>
+          <width>301</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#000;
+padding: 5px;</string>
+        </property>
+        <property name="placeholderText">
+         <string>Search Course by CODE</string>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="allCourseCommentTableWidget">
+        <property name="geometry">
+         <rect>
+          <x>510</x>
+          <y>120</y>
+          <width>601</width>
+          <height>681</height>
+         </rect>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
         </property>
        </widget>
       </widget>
