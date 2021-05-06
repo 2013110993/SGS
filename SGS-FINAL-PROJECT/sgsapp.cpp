@@ -291,6 +291,10 @@ void sgsApp::programSequenceList()
         ui->programSequenceTableWidget->removeRow(0);
     }
     QSqlQuery programCourses = connection->getStudentsCourses();
+    QStringList programSeqInfo = connection->getSequenceName();
+    ui->programSequenceProgramName->setText(programSeqInfo[0]);
+
+    ui->programSequenceFacultyName->setText(programSeqInfo[1]);
 
     ui->programSequenceTableWidget->setColumnCount(7);
     ui->programSequenceTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
@@ -368,6 +372,7 @@ void sgsApp::viewCoursesTable()
     }
 
     QSqlQuery courses = connection->getStudentsCourses();
+
 
 
     ui->viewCoursesTableWidget->setColumnCount(6);
@@ -619,3 +624,9 @@ void sgsApp::on_disableUser_Button_clicked()
 
 
 
+
+void sgsApp::on_filterSearchButton_clicked()
+{
+    QString courseCode = ui->CourseCodelineEdit->text();
+    QSqlQuery info = connection->getLectureCourses(courseCode);
+}

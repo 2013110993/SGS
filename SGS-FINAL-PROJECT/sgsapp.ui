@@ -2430,7 +2430,7 @@ border:0px;</string>
            <x>20</x>
            <y>50</y>
            <width>271</width>
-           <height>41</height>
+           <height>43</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -2605,8 +2605,8 @@ border:0px;</string>
        <widget class="QLabel" name="addUpdateCourseWidget">
         <property name="geometry">
          <rect>
-          <x>690</x>
-          <y>60</y>
+          <x>70</x>
+          <y>610</y>
           <width>471</width>
           <height>41</height>
          </rect>
@@ -2639,7 +2639,7 @@ border-bottom-right-radius:0px;</string>
          <rect>
           <x>10</x>
           <y>60</y>
-          <width>661</width>
+          <width>1151</width>
           <height>41</height>
          </rect>
         </property>
@@ -2671,8 +2671,8 @@ border-bottom-right-radius:0px;</string>
          <rect>
           <x>10</x>
           <y>100</y>
-          <width>661</width>
-          <height>721</height>
+          <width>1151</width>
+          <height>491</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -2682,8 +2682,8 @@ border-bottom-right-radius:0px;</string>
        <widget class="QFrame" name="titleCourseListPage_2">
         <property name="geometry">
          <rect>
-          <x>690</x>
-          <y>100</y>
+          <x>70</x>
+          <y>650</y>
           <width>471</width>
           <height>161</height>
          </rect>
@@ -2763,7 +2763,7 @@ border-top-right-radius:0;</string>
           <string/>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="CourseCodelineEdit">
          <property name="geometry">
           <rect>
            <x>80</x>
@@ -2882,10 +2882,10 @@ border-radius:5px;</string>
        <widget class="QFrame" name="titleCourseListPage_3">
         <property name="geometry">
          <rect>
-          <x>690</x>
-          <y>360</y>
-          <width>471</width>
-          <height>191</height>
+          <x>590</x>
+          <y>650</y>
+          <width>501</width>
+          <height>161</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -2923,8 +2923,8 @@ border-top-right-radius:0;</string>
         <widget class="QPushButton" name="filterSearchButton_5">
          <property name="geometry">
           <rect>
-           <x>340</x>
-           <y>150</y>
+           <x>370</x>
+           <y>120</y>
            <width>121</width>
            <height>26</height>
           </rect>
@@ -3092,9 +3092,9 @@ border-bottom:1px dotted #999;</string>
         <widget class="QPushButton" name="filterSearchButton_4">
          <property name="geometry">
           <rect>
-           <x>350</x>
+           <x>380</x>
            <y>50</y>
-           <width>71</width>
+           <width>101</width>
            <height>26</height>
           </rect>
          </property>
@@ -3123,9 +3123,9 @@ border-radius:5px;</string>
        <widget class="QLabel" name="addUpdateCourseWidget_2">
         <property name="geometry">
          <rect>
-          <x>690</x>
-          <y>320</y>
-          <width>471</width>
+          <x>590</x>
+          <y>610</y>
+          <width>501</width>
           <height>41</height>
          </rect>
         </property>

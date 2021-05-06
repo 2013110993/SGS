@@ -7,6 +7,7 @@ databaseconnection::databaseconnection()
     currentUserID = "";
 
     qDebug()<<"construcT";
+    programSeqID = "";
     // dash = &createDash;
 
 }
@@ -20,8 +21,8 @@ void databaseconnection::connect()
 {
     setConnection = QSqlDatabase::addDatabase("QMYSQL");
     setConnection.setHostName("127.0.0.1");
-    setConnection.setPort(3306);
-    //setConnection.setPort(3366);
+    //setConnection.setPort(3306);
+    setConnection.setPort(3366);
     setConnection.setUserName("root");
     setConnection.setPassword("");
     setConnection.setDatabaseName("db");
@@ -425,10 +426,6 @@ QSqlQuery databaseconnection::getLectureName(QString coureID)
 
 
 
-
-    //        'AAGR 1121'
-
-
     if(!(programSequence->exec()))
     {
         QMessageBox::warning(NULL,"We encounter an error: ",programSequence->lastError().text());
@@ -567,7 +564,7 @@ bool databaseconnection::setCourseGrade(QStringList studentCourseGrade)
         addGrade = true;
 
 
-        if (!(comment.isEmpty() || lecture.isEmpty()))
+        if (!(lecture.isEmpty()))
         {
 
             qDebug()<<lecture;
@@ -703,6 +700,7 @@ QSqlQuery databaseconnection::getStudentsCourses()
         {
             programSequenceid = programSequence->value(0).toString();
             admissionYr = programSequence->value(1).toString();
+            programSeqID = programSequenceid;
             qDebug()<<programSequenceid;
             qDebug()<<admissionYr;
         }
@@ -731,6 +729,25 @@ QSqlQuery databaseconnection::getStudentsCourses()
     return course;
 }
 
+QSqlQuery databaseconnection::getLectureCourses(QString courseID)
+{
+
+    QSqlQuery * courses = new QSqlQuery;
+    courses->prepare("SELECT name, creditHour, prequisite, semester FROM `courses`  "
+                     "JOIN prequisites on prequisites.id = courses.id "
+                     "WHERE courses.courseCode = '" + courseID +"'");
+
+
+
+    if(!(courses->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter: ",courses->lastError().text());
+    }
+    QSqlQuery course = *courses;
+    delete courses;
+    return course;
+}
+
 
 QSqlQuery databaseconnection::getCourses()
 {
@@ -751,6 +768,10 @@ QSqlQuery databaseconnection::getCourses()
         {
             programSequenceid = programSequence->value(0).toString();
             admissionYr = programSequence->value(1).toString();
+            programSeqID = programSequenceid;
+            qDebug()<<"eherre";
+            qDebug()<<programSeqID;
+            qDebug()<<"eherre";
             qDebug()<<programSequenceid;
             qDebug()<<admissionYr;
         }
@@ -793,14 +814,7 @@ QStringList databaseconnection::getComment(QString courseID)
     QStringList data;
     QString date = "2021-04-29 23:37:07";
     QRegExp separator("-|\\s|:|T");
-    QStringList list = date.split(separator, QString::SkipEmptyParts);
 
-    int i = list.size();
-
-    for (int var=0; var < i;var++)
-    {
-        qDebug()<<list[var];
-    }
     QSqlQuery * courseCommentPerStudent = new QSqlQuery;
     courseCommentPerStudent->prepare("SELECT comment,timeStamp FROM coursecomments "
                                      "WHERE studentid = " + getUserId() + " AND courseid = '" + courseID+ "' " );
@@ -858,6 +872,41 @@ QStringList databaseconnection::getComment(QString courseID)
 
 
     return data;
+
+}
+
+QStringList databaseconnection::getSequenceName()
+{
+    qDebug()<<"about to insert enter getname";
+    QSqlQuery * programSequence = new QSqlQuery;
+    QStringList data;
+    qDebug()<<programSeqID;
+    programSequence->prepare("SELECT name,faculty FROM `programsequence` "
+                    "JOIN academicprogram on academicprogram.id = programsequence.academicProgramID "
+                    "WHERE programsequence.id = '" + programSeqID+ "' ");
+
+    if(!(programSequence->exec()))
+        qDebug()<<"Back Fire";
+    else
+    {
+              while(programSequence->next())
+        {
+            QString name = programSequence->value(0).toString();
+            QString faculty = programSequence->value(1).toString();
+
+
+            qDebug()<<name;
+            qDebug()<<faculty;
+
+                    data.append(name);
+                    data.append(faculty);
+        }
+
+    }
+
+    delete programSequence;
+
+return data;
 
 }
 

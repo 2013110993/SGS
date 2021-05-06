@@ -38,9 +38,11 @@ public:
     bool setStudentsCoursePerSequence(QSqlQuery);
     bool setCourseGrade(QStringList);
     QSqlQuery getStudentsCourses();
+    QSqlQuery getLectureCourses(QString);
     QSqlQuery getCourses();
     QString getUserId();
     QStringList getComment(QString);
+    QStringList getSequenceName();
     void setUserId(QString);
     void resetPassword(QString);
     void setRole(QString);
@@ -56,6 +58,7 @@ private:
     QString currentUserID;
     QString UserRole;
     int const questionAsk = 3;
+    QString programSeqID;
     QSqlDatabase setConnection;
 };
 
