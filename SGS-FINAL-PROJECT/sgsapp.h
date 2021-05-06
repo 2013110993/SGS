@@ -71,12 +71,15 @@ private slots:
     void viewCoursesTable();
 
     void viewLecturerCoursesTable();
+    void viewSearchCourseCommentTable();
 
     void on_viewCoursesTableWidget_cellClicked(int row, int column);
 
     void on_AddLecturerCourse_Button_clicked();
 
     void on_lecturerCoursesListTableWidget_cellClicked(int row, int column);
+
+    void on_viewComments_Button_clicked();
 
 private:
     Ui::sgsApp *ui;
