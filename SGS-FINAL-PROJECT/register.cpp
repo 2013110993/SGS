@@ -157,7 +157,11 @@ void Register::on_signUpButton_clicked()
         QString e =  ui->email_RegFormLineEdit->text();
         QString p =  ui->password_RegFormLineEdit->text();
         QString id =  ui->studentIdRegFormLineEdit->text();
-        int ID = id.toInt();
+        int ID ;
+        if (userRole == 2)
+            ID = 0;
+        else
+        ID = id.toInt();
 
         QString ques1 =  ui->firtstQuestionAnswer_RegFormLineEdit->text();
         QString ques2 =  ui->secondQuestionAnswer_RegFormLineEdit->text();

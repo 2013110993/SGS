@@ -2823,7 +2823,7 @@ border-radius:5px;</string>
           <bool>false</bool>
          </property>
         </widget>
-        <widget class="QLabel" name="courseResultLabel_2">
+        <widget class="QLabel" name="courseResultInfoLabel">
          <property name="geometry">
           <rect>
            <x>90</x>
@@ -2845,7 +2845,7 @@ border-bottom:1px dotted #999;</string>
           <string/>
          </property>
         </widget>
-        <widget class="QPushButton" name="filterSearchButton_3">
+        <widget class="QPushButton" name="addButton">
          <property name="geometry">
           <rect>
            <x>330</x>
@@ -2917,7 +2917,7 @@ border-top-right-radius:0;</string>
           <rect>
            <x>30</x>
            <y>20</y>
-           <width>81</width>
+           <width>91</width>
            <height>16</height>
           </rect>
          </property>
@@ -2933,7 +2933,7 @@ border-top-right-radius:0;</string>
           <string>Course Name :</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="filterSearchButton_5">
+        <widget class="QPushButton" name="addCourseButton">
          <property name="geometry">
           <rect>
            <x>370</x>
@@ -2966,7 +2966,7 @@ border-radius:5px;</string>
         <widget class="QLabel" name="updateCourseName">
          <property name="geometry">
           <rect>
-           <x>120</x>
+           <x>130</x>
            <y>20</y>
            <width>231</width>
            <height>16</height>

@@ -64,7 +64,12 @@ void databaseconnection::insertNewUser(student &student)
     QString password = student.getPassword();
     QString email = student.getEmail();
     QString roleID = student.getRole();
-    QString studentID = QString::number(id);
+    qDebug()<<roleID<<"ROle ASDsad";
+    QString studentID;
+    if (roleID == "2")
+        studentID = "";
+    else
+    studentID = QString::number(id);
     QSqlQuery query;
     QTime ct = QTime::currentTime();
     QString currentTime =ct.toString();
@@ -132,17 +137,17 @@ void databaseconnection::insertNewUser(student &student)
         query3.bindValue(":createdAt", ct);
 
 
-
+        QString stuID;
         if(query3.exec())
         {
             QSqlQuery getID;
 
-            QString stu;
+
             if(getID.exec("SELECT id FROM users WHERE personid = " + userID))
             {
                 while (getID.next())
                 {
-                    stu = getID.value(0).toString();
+                    stuID = getID.value(0).toString();
                 }
             }
 
@@ -158,7 +163,7 @@ void databaseconnection::insertNewUser(student &student)
                 query2.clear();
                 query2.prepare("INSERT INTO securityquestions (userId , questionId , answer) "
                                "VALUES (:userId, :questionId, :answer)");
-                query2.bindValue(":userId", stu);
+                query2.bindValue(":userId", stuID);
                 query2.bindValue(":questionId", quesId[var]);
                 query2.bindValue(":answer", answer[var]);
                 if(!query2.exec())
@@ -174,12 +179,35 @@ void databaseconnection::insertNewUser(student &student)
             qDebug()<<query3.lastError().text();
             QMessageBox::warning(NULL,"ERROR",query3.lastError().text());
         }
+        if (roleID == "2")
+        {
+            QString FullName = fname;
+            FullName.append(" ");
+            FullName.append(lname);
+            QSqlQuery insertLecuter;
+
+            insertLecuter.prepare("INSERT INTO `lecturer`(`id`, `name`) "
+                           "VALUES (:id,:name)");
+            insertLecuter.bindValue(":id", stuID);
+            insertLecuter.bindValue(":name", FullName);
+
+            if(insertLecuter.exec())
+            {
+                qDebug()<<"Add lecture tabel";
+            }
+            else {
+                QMessageBox::warning(NULL,"ERROR$)!!",insertLecuter.lastError().text());
+            }
+            // VALUES ('[value-1]','[value-2]')
+        }
+
 
     }
     else
     {
         QMessageBox::warning(NULL,"ERROR",query.lastError().text());
     }
+
 }
 
 bool databaseconnection::loginUser(QString username, QString password)
@@ -488,24 +516,24 @@ bool databaseconnection::setStudentsCoursePerSequence(QSqlQuery courses)
     while (courses.next())
     {
         courseID = courses.value(0).toString();
-            QSqlQuery * query = new QSqlQuery;
-            query->prepare("INSERT INTO `studentcourses`(`studentid`, `courseid`) "
-                           "VALUES (:studentid,:courseid)");
+        QSqlQuery * query = new QSqlQuery;
+        query->prepare("INSERT INTO `studentcourses`(`studentid`, `courseid`) "
+                       "VALUES (:studentid,:courseid)");
 
 
-                           query->bindValue(":studentid",getUserId());
-                           query->bindValue(":courseid",courseID);
-                           if(query->exec())
-                           {
-                               qDebug()<<"add course with studentID"<<courseID;
-                               //emit userLogOut();
-                           }
-                           else
-                           {
-                               qDebug()<<query->lastError().text();
-                               return false;
-                           }
-            delete query;
+        query->bindValue(":studentid",getUserId());
+        query->bindValue(":courseid",courseID);
+        if(query->exec())
+        {
+            qDebug()<<"add course with studentID"<<courseID;
+            //emit userLogOut();
+        }
+        else
+        {
+            qDebug()<<query->lastError().text();
+            return false;
+        }
+        delete query;
 
     }
 
@@ -553,7 +581,7 @@ bool databaseconnection::setCourseGrade(QStringList studentCourseGrade)
         }
         query1->prepare("UPDATE studentcourses "
                         "SET courseGrade= '" + grade + "', courseRating= '" + rating  + "' , isTransferred = " + QString::number( isTransfered) + " "
-                        "WHERE studentid = "+ getUserId() + " AND courseid = '"+ courseID+"' " );
+                                                                                                                                                  "WHERE studentid = "+ getUserId() + " AND courseid = '"+ courseID+"' " );
 
         if(!(query1->exec()))
         {
@@ -616,8 +644,8 @@ bool databaseconnection::setCourseGrade(QStringList studentCourseGrade)
             }
             else
             {
-            addComment = true;
-            qDebug()<<"WORKED";
+                addComment = true;
+                qDebug()<<"WORKED";
             }
             delete  query3;
 
@@ -627,7 +655,7 @@ bool databaseconnection::setCourseGrade(QStringList studentCourseGrade)
 
     }
 
-qDebug()<<"OUT";
+    qDebug()<<"OUT";
 
     if(!addGrade)
     {
@@ -638,30 +666,30 @@ qDebug()<<"OUT";
         QMessageBox::warning(NULL,"We encounter an error: ","COULD NOT ADD Comment, There seem to be an error while adding a Comment. " );
 
 
-        if (addGrade && addComment)
-        {
-                QMessageBox msgBox;
-                msgBox.setText("Successfully Added Grade & Comment");
-                msgBox.setInformativeText("Both Grade And Comment have been added.");
-                msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Discard );
-                msgBox.setDefaultButton(QMessageBox::Ok);
-                int ret = msgBox.exec();
-                qDebug()<<"About to eturn T";
-                return true;
-         }
+    if (addGrade && addComment)
+    {
+        QMessageBox msgBox;
+        msgBox.setText("Successfully Added Grade & Comment");
+        msgBox.setInformativeText("Both Grade And Comment have been added.");
+        msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Discard );
+        msgBox.setDefaultButton(QMessageBox::Ok);
+        int ret = msgBox.exec();
+        qDebug()<<"About to eturn T";
+        return true;
+    }
 
 
     else if (addGrade || addComment)
     {
         if (addGrade)
         {
-                QMessageBox msgBox;
-                msgBox.setText("Successfully Added Grade ");
-                msgBox.setInformativeText("The grade for this course "+  courseID  +" has been added.");
-                msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Discard );
-                msgBox.setDefaultButton(QMessageBox::Ok);
-                int ret = msgBox.exec();
-         }
+            QMessageBox msgBox;
+            msgBox.setText("Successfully Added Grade ");
+            msgBox.setInformativeText("The grade for this course "+  courseID  +" has been added.");
+            msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Discard );
+            msgBox.setDefaultButton(QMessageBox::Ok);
+            int ret = msgBox.exec();
+        }
         else
         {
             QMessageBox msgBox;
@@ -672,7 +700,7 @@ qDebug()<<"OUT";
             int ret = msgBox.exec();
         }
         qDebug()<<"About to eturn T";
-            return true;
+        return true;
 
     }
 
@@ -743,6 +771,7 @@ QSqlQuery databaseconnection::getLectureCourses(QString courseID)
     {
         QMessageBox::warning(NULL,"We encounter: ",courses->lastError().text());
     }
+
     QSqlQuery course = *courses;
     delete courses;
     return course;
@@ -860,7 +889,7 @@ QStringList databaseconnection::getComment(QString courseID)
             {
                 QString rate = rating->value(0).toString();
                 qDebug()<<rate;
-                        data.append(rate);
+                data.append(rate);
             }
 
         }
@@ -882,14 +911,14 @@ QStringList databaseconnection::getSequenceName()
     QStringList data;
     qDebug()<<programSeqID;
     programSequence->prepare("SELECT name,faculty FROM `programsequence` "
-                    "JOIN academicprogram on academicprogram.id = programsequence.academicProgramID "
-                    "WHERE programsequence.id = '" + programSeqID+ "' ");
+                             "JOIN academicprogram on academicprogram.id = programsequence.academicProgramID "
+                             "WHERE programsequence.id = '" + programSeqID+ "' ");
 
     if(!(programSequence->exec()))
         qDebug()<<"Back Fire";
     else
     {
-              while(programSequence->next())
+        while(programSequence->next())
         {
             QString name = programSequence->value(0).toString();
             QString faculty = programSequence->value(1).toString();
@@ -898,15 +927,58 @@ QStringList databaseconnection::getSequenceName()
             qDebug()<<name;
             qDebug()<<faculty;
 
-                    data.append(name);
-                    data.append(faculty);
+            data.append(name);
+            data.append(faculty);
         }
 
     }
 
     delete programSequence;
 
-return data;
+    return data;
+
+}
+
+void databaseconnection::addLectureCourse(QString courseId, QString year)
+{
+    QSqlQuery * addCourse = new QSqlQuery;
+
+    addCourse->prepare("INSERT INTO `lecturercourses`(`id`, `courseID`, `lecturerID`, `Year`) "
+                       "VALUES ( :id, :courseID,:lecturerID,:Year)");
+    addCourse->bindValue(":id", courseId);
+    addCourse->bindValue(":courseID", courseId);
+    addCourse->bindValue(":lecturerID", getUserId());
+    addCourse->bindValue(":Year", year);
+
+    if(!addCourse->exec())
+    {
+        qDebug()<<addCourse->lastError().text();
+        qDebug()<<"got serious probs";
+    }
+    else
+    {
+
+        QMessageBox messagebox;
+        messagebox.about(NULL,"Successfully Added Course","Course has being add to your list. ");
+    }
+}
+
+QSqlQuery databaseconnection::getLectureCourse()
+{
+    QSqlQuery * query1 = new QSqlQuery;
+    query1->prepare("SELECT name,creditHour, prequisite, semester, Year  FROM `lecturercourses` "
+                    "JOIN prequisites on prequisites.id = lecturercourses.courseID "
+                    "JOIN courses on courses.id = prequisites.id "
+                    "WHERE `lecturerID` = " + getUserId() );
+
+    if(!(query1->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+    }
+    QSqlQuery lectureCourses = * query1;
+
+    delete query1;
+    return lectureCourses;
 
 }
 

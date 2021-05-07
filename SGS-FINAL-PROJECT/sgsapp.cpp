@@ -433,6 +433,10 @@ void sgsApp::viewCoursesTable()
 //Generate Lecturer Cours List Table
 void sgsApp::viewLecturerCoursesTable()
 {
+    while (ui->lecturerCoursesListTableWidget->rowCount() > 0)
+    {
+        ui->lecturerCoursesListTableWidget->removeRow(0);
+    }
     ui->lecturerCoursesListTableWidget->setColumnCount(5);
     ui->lecturerCoursesListTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
 
@@ -448,14 +452,17 @@ void sgsApp::viewLecturerCoursesTable()
     ui->lecturerCoursesListTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
 
     int rowCount = 0;
+    QSqlQuery lectureCourses = connection->getLectureCourse();
 
-    for(int i = 0; i < 15; i++)
+    for(; lectureCourses.next();)
     {
          ui->lecturerCoursesListTableWidget->insertRow(rowCount);
 
-         ui->lecturerCoursesListTableWidget->setColumnWidth(0,205);
-         ui->lecturerCoursesListTableWidget->setColumnWidth(1,205);
-         ui->lecturerCoursesListTableWidget->setColumnWidth(4,50);
+         ui->lecturerCoursesListTableWidget->setColumnWidth(0,250);
+         ui->lecturerCoursesListTableWidget->setColumnWidth(1,110);
+         ui->lecturerCoursesListTableWidget->setColumnWidth(2,375);
+         ui->lecturerCoursesListTableWidget->setColumnWidth(3,100);
+         ui->lecturerCoursesListTableWidget->setColumnWidth(4,180);
 
         QTableWidgetItem *courseName = new QTableWidgetItem;
         QTableWidgetItem *credits = new QTableWidgetItem;
@@ -464,16 +471,16 @@ void sgsApp::viewLecturerCoursesTable()
         QTableWidgetItem *year = new QTableWidgetItem;
 
 
-        courseName->setText("Fundamental of Management");
-        credits->setText("3");
-        prerequisites->setText("ENGL1014,MATH1302");
-        semester->setText("1");
-        year->setText("2021");
+        courseName->setText(lectureCourses.value(0).toString());
+        credits->setText(lectureCourses.value(1).toString());
+        prerequisites->setText(lectureCourses.value(2).toString());
+        semester->setText(lectureCourses.value(3).toString());
+        year->setText(lectureCourses.value(4).toString());
 
 
         ui->lecturerCoursesListTableWidget->setItem(rowCount,0,courseName);
-        ui->lecturerCoursesListTableWidget->setItem(rowCount,1,prerequisites);
-        ui->lecturerCoursesListTableWidget->setItem(rowCount,2,credits);
+        ui->lecturerCoursesListTableWidget->setItem(rowCount,1,credits);
+        ui->lecturerCoursesListTableWidget->setItem(rowCount,2,prerequisites);
         ui->lecturerCoursesListTableWidget->setItem(rowCount,3,semester);
         ui->lecturerCoursesListTableWidget->setItem(rowCount,4,year);
 
@@ -487,8 +494,8 @@ void sgsApp::on_lecturerCoursesListTableWidget_cellClicked(int row, int column)
 {
     QString courseName = ui->lecturerCoursesListTableWidget->item(row,0)->text();
     QString credits =  ui->lecturerCoursesListTableWidget->item(row,1)->text();
-    QString semester = ui->lecturerCoursesListTableWidget->item(row,2)->text();
-    QString year = ui->lecturerCoursesListTableWidget->item(row,3)->text();
+    QString semester = ui->lecturerCoursesListTableWidget->item(row,3)->text();
+    QString year = ui->lecturerCoursesListTableWidget->item(row,4)->text();
 
 
     ui->updateCourseName->setText(courseName);
@@ -674,12 +681,58 @@ void sgsApp::viewSearchCourseCommentTable()
 
 void sgsApp::on_filterSearchButton_clicked()
 {
-//    QString courseCode = ui->CourseCodelineEdit->text();
-//    QSqlQuery info = connection->getLectureCourses(courseCode);
-//        ui->searchResultCourseCommentTableWidget->setItem(rowCount,0,courseCode);
-//        ui->searchResultCourseCommentTableWidget->setItem(rowCount,1,courseName);
-//        ui->searchResultCourseCommentTableWidget->setItem(rowCount,2,lecturer);
+    QString courseCode = ui->CourseCodelineEdit->text();
+    QSqlQuery info = connection->getLectureCourses(courseCode);
 
-//        rowCount++;
-//    }
+
+    while(info.next())
+    {
+        ui->courseResultInfoLabel->setText(info.value(0).toString());
+    }
+
+
+
+}
+
+void sgsApp::on_addButton_clicked()
+{
+    if (ui->courseResultInfoLabel->text().isEmpty())
+    {
+        QMessageBox::warning(NULL,"We encounter an Error : ","Please add a course before proceeding to the next step");
+
+    }
+    else
+    {
+        QString courseCode = ui->CourseCodelineEdit->text();
+        QSqlQuery info = connection->getLectureCourses(courseCode);
+        QString credit;
+        QString prerequisites;
+        QString semester;
+
+        while(info.next())
+        {
+            ui->updateCourseName->setText(info.value(0).toString());
+            ui->updatePrerequisites->setText(prerequisites = info.value(2).toString());
+        }
+
+    }
+
+}
+
+void sgsApp::on_addCourseButton_clicked()
+{
+    if (ui->updateYear->text().isEmpty() || ui->updateSemester->text().isEmpty())
+    {
+        QMessageBox::warning(NULL,"We encounter an Error : ","Please add a the semester and year we process your data");
+
+    }
+
+    else
+    {
+        QString courseID = ui->CourseCodelineEdit->text();
+        QString year = ui->updateYear->text();
+        year.append("-");
+        year.append(ui->updateSemester->text());
+        connection->addLectureCourse(courseID,year);
+    }
 }

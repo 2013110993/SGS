@@ -81,6 +81,10 @@ private slots:
 
     void on_filterSearchButton_clicked();
     void on_viewComments_Button_clicked();
+    void on_addButton_clicked();
+
+    void on_addCourseButton_clicked();
+
 private:
     Ui::sgsApp *ui;
     forgotPassword * forgot;

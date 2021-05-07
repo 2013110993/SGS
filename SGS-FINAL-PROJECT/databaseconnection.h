@@ -43,6 +43,8 @@ public:
     QString getUserId();
     QStringList getComment(QString);
     QStringList getSequenceName();
+    void addLectureCourse(QString,QString);
+    QSqlQuery getLectureCourse ();
     void setUserId(QString);
     void resetPassword(QString);
     void setRole(QString);
