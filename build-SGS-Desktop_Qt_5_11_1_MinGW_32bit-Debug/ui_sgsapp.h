@@ -1357,6 +1357,7 @@ public:
         searchResultCourseCommentTableWidget->setObjectName(QStringLiteral("searchResultCourseCommentTableWidget"));
         searchResultCourseCommentTableWidget->setGeometry(QRect(10, 10, 451, 201));
         searchResultCourseCommentTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        searchResultCourseCommentTableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
         commentSearchCourseCODEButton = new QPushButton(ViewComments);
         commentSearchCourseCODEButton->setObjectName(QStringLiteral("commentSearchCourseCODEButton"));
         commentSearchCourseCODEButton->setGeometry(QRect(340, 70, 111, 31));
@@ -1378,11 +1379,11 @@ public:
         scrollArea = new QScrollArea(ViewComments);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
         scrollArea->setGeometry(QRect(500, 100, 661, 711));
-        scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 644, 711));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 661, 711));
         scrollArea->setWidget(scrollAreaWidgetContents);
         stackedWidgetPages->addWidget(ViewComments);
         stackedWidgetSGS->addWidget(Dashboard);

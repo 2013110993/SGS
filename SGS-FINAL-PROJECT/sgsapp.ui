@@ -3338,6 +3338,9 @@ border-top-right-radius:0;</string>
          <property name="editTriggers">
           <set>QAbstractItemView::NoEditTriggers</set>
          </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
         </widget>
        </widget>
        <widget class="QPushButton" name="commentSearchCourseCODEButton">
@@ -3400,7 +3403,7 @@ padding: 5px;</string>
          </rect>
         </property>
         <property name="verticalScrollBarPolicy">
-         <enum>Qt::ScrollBarAlwaysOn</enum>
+         <enum>Qt::ScrollBarAsNeeded</enum>
         </property>
         <property name="widgetResizable">
          <bool>true</bool>
@@ -3410,7 +3413,7 @@ padding: 5px;</string>
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>644</width>
+           <width>661</width>
            <height>711</height>
           </rect>
          </property>

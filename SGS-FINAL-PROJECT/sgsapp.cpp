@@ -741,63 +741,36 @@ void sgsApp::on_addCourseButton_clicked()
 
 void sgsApp::test()
 {
-//    QGroupBox *sale = new QGroupBox();
-//    sale->setTitle("minha venda");
-
-
-//    ui->commentFrame->layout()->addWidget(sale);
-
-
-
-
        //Creating a grid layout...
-       QGridLayout *lay=new QGridLayout(this);
-       //Creating an array of button...
-       QPushButton *name[100];
+       QGridLayout *layout=new QGridLayout(this);
+
+
        //running a loop to add the desired components to the scroll area...
-       for(int j=0;j<=30;j++)
+       for(int j=0;j<=50;j++)
        {
-           //Assigning the desired information from the previously prepared modals...
-       QString str= "Fred";//(name)
-       QString str1="Fred2";//(blood group)
-       QString str2="Fred3";//(address)
-
-       //Assigning the desired information from the previously prepared modals...
-
-       //Assigning the strings to widgets...
-       name[j]=new QPushButton(str);
-       QLabel *lab=new QLabel("Blood Group: "+str1+", Address: "+str2+"."); //Assigning the strings to widgets...
-       lab->setStyleSheet("color:white");
-       QFrame *line;
-
-       //Creating horizontal line with desired properties...
-       line = new QFrame();
-       line->setFrameShape(QFrame::HLine);
-       line->setFrameShadow(QFrame::Sunken);
-       line->setStyleSheet("background:white"); //Creating horizontal line with desired properties...
-
-       //Setting up the pushbutton with the on-hover changes...
-       name[j]->setObjectName("btnName_1");
-       name[j]->setStyleSheet(
-       "   QPushButton#btnName_1 {"
-       "     background:transparent; Text-align:left;font-family:century gothic;font-size:18px; color:orange;"
-       " }"
-       " QPushButton#btnName_1:hover {"
-       "     color: yellow;font-size:25px;"
-       " }");                                  //Setting up the pushbutton with the on-hover changes...
 
 
-       lab->setStyleSheet("background:transparent; Text-align:left;font-family:century gothic;font-size:18px; color:white");
-
-        //adding all the widgets to the previously cretaed grid layout...
-       lay->addWidget(name[j]);
-       lay->addWidget(lab);
-       lay->addWidget(line);  //adding all the widgets to the previously cretaed grid layout...
+       QLabel *lab=new QLabel("Blood Group: , Address: "); //Assigning the strings to widgets...
 
 
-       //connecting the button containg name with the onnameclicked function...
-        connect(name[j],SIGNAL(clicked()),this,SLOT(onnameclicked()));
-        ui->scrollArea->setLayout(lay);
+//      QFrame *line;
+//       //Creating horizontal line with desired properties...
+//       line = new QFrame();
+//       line->setFrameShape(QFrame::HLine);
+//       line->setFrameShadow(QFrame::Sunken);
+//       line->setStyleSheet("background:white"); //Creating horizontal line with desired properties...
+
+
+
+
+       lab->setStyleSheet("background:#fff; Text-align:left;font-family:century gothic;font-size:18px; color:#333");
+
+
+       layout->addWidget(lab);
+
+
+        //sets Layout to ScrollArea
+        ui->scrollAreaWidgetContents->setLayout(layout);
        }
 
 
@@ -807,10 +780,3 @@ void sgsApp::test()
 
 }
 
-void sgsApp::test2()
-{
-    for(int i = 0; i < 5; i++)
-    {
-        qDebug() << "test";
-    }
-}

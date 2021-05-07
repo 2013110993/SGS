@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_sgsApp_t {
-    QByteArrayData data[38];
-    char stringdata0[954];
+    QByteArrayData data[37];
+    char stringdata0[948];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -67,8 +67,7 @@ QT_MOC_LITERAL(32, 834, 29), // "on_filterSearchButton_clicked"
 QT_MOC_LITERAL(33, 864, 30), // "on_viewComments_Button_clicked"
 QT_MOC_LITERAL(34, 895, 20), // "on_addButton_clicked"
 QT_MOC_LITERAL(35, 916, 26), // "on_addCourseButton_clicked"
-QT_MOC_LITERAL(36, 943, 4), // "test"
-QT_MOC_LITERAL(37, 948, 5) // "test2"
+QT_MOC_LITERAL(36, 943, 4) // "test"
 
     },
     "sgsApp\0sendQuestion\0\0QSqlQuery\0"
@@ -97,7 +96,7 @@ QT_MOC_LITERAL(37, 948, 5) // "test2"
     "on_filterSearchButton_clicked\0"
     "on_viewComments_Button_clicked\0"
     "on_addButton_clicked\0on_addCourseButton_clicked\0"
-    "test\0test2"
+    "test"
 };
 #undef QT_MOC_LITERAL
 
@@ -107,7 +106,7 @@ static const uint qt_meta_data_sgsApp[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      33,   14, // methods
+      32,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -115,41 +114,40 @@ static const uint qt_meta_data_sgsApp[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  179,    2, 0x06 /* Public */,
+       1,    1,  174,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,  182,    2, 0x08 /* Private */,
-       5,    0,  183,    2, 0x08 /* Private */,
-       6,    0,  184,    2, 0x08 /* Private */,
-       7,    0,  185,    2, 0x08 /* Private */,
-       8,    0,  186,    2, 0x08 /* Private */,
-       9,    0,  187,    2, 0x08 /* Private */,
-      10,    0,  188,    2, 0x08 /* Private */,
-      11,    0,  189,    2, 0x08 /* Private */,
-      12,    0,  190,    2, 0x08 /* Private */,
-      13,    0,  191,    2, 0x08 /* Private */,
-      14,    0,  192,    2, 0x08 /* Private */,
-      15,    0,  193,    2, 0x08 /* Private */,
-      16,    0,  194,    2, 0x08 /* Private */,
-      17,    0,  195,    2, 0x08 /* Private */,
-      18,    0,  196,    2, 0x08 /* Private */,
-      19,    2,  197,    2, 0x08 /* Private */,
-      22,    0,  202,    2, 0x08 /* Private */,
-      23,    0,  203,    2, 0x08 /* Private */,
-      24,    0,  204,    2, 0x08 /* Private */,
-      25,    0,  205,    2, 0x08 /* Private */,
-      26,    0,  206,    2, 0x08 /* Private */,
-      27,    0,  207,    2, 0x08 /* Private */,
-      28,    0,  208,    2, 0x08 /* Private */,
-      29,    2,  209,    2, 0x08 /* Private */,
-      30,    0,  214,    2, 0x08 /* Private */,
-      31,    2,  215,    2, 0x08 /* Private */,
-      32,    0,  220,    2, 0x08 /* Private */,
-      33,    0,  221,    2, 0x08 /* Private */,
-      34,    0,  222,    2, 0x08 /* Private */,
-      35,    0,  223,    2, 0x08 /* Private */,
-      36,    0,  224,    2, 0x08 /* Private */,
-      37,    0,  225,    2, 0x08 /* Private */,
+       4,    0,  177,    2, 0x08 /* Private */,
+       5,    0,  178,    2, 0x08 /* Private */,
+       6,    0,  179,    2, 0x08 /* Private */,
+       7,    0,  180,    2, 0x08 /* Private */,
+       8,    0,  181,    2, 0x08 /* Private */,
+       9,    0,  182,    2, 0x08 /* Private */,
+      10,    0,  183,    2, 0x08 /* Private */,
+      11,    0,  184,    2, 0x08 /* Private */,
+      12,    0,  185,    2, 0x08 /* Private */,
+      13,    0,  186,    2, 0x08 /* Private */,
+      14,    0,  187,    2, 0x08 /* Private */,
+      15,    0,  188,    2, 0x08 /* Private */,
+      16,    0,  189,    2, 0x08 /* Private */,
+      17,    0,  190,    2, 0x08 /* Private */,
+      18,    0,  191,    2, 0x08 /* Private */,
+      19,    2,  192,    2, 0x08 /* Private */,
+      22,    0,  197,    2, 0x08 /* Private */,
+      23,    0,  198,    2, 0x08 /* Private */,
+      24,    0,  199,    2, 0x08 /* Private */,
+      25,    0,  200,    2, 0x08 /* Private */,
+      26,    0,  201,    2, 0x08 /* Private */,
+      27,    0,  202,    2, 0x08 /* Private */,
+      28,    0,  203,    2, 0x08 /* Private */,
+      29,    2,  204,    2, 0x08 /* Private */,
+      30,    0,  209,    2, 0x08 /* Private */,
+      31,    2,  210,    2, 0x08 /* Private */,
+      32,    0,  215,    2, 0x08 /* Private */,
+      33,    0,  216,    2, 0x08 /* Private */,
+      34,    0,  217,    2, 0x08 /* Private */,
+      35,    0,  218,    2, 0x08 /* Private */,
+      36,    0,  219,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    2,
@@ -181,7 +179,6 @@ static const uint qt_meta_data_sgsApp[] = {
     QMetaType::Void, QMetaType::Int, QMetaType::Int,   20,   21,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,   20,   21,
-    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -229,7 +226,6 @@ void sgsApp::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 29: _t->on_addButton_clicked(); break;
         case 30: _t->on_addCourseButton_clicked(); break;
         case 31: _t->test(); break;
-        case 32: _t->test2(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -269,13 +265,13 @@ int sgsApp::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 33)
+        if (_id < 32)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 33;
+        _id -= 32;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 33)
+        if (_id < 32)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 33;
+        _id -= 32;
     }
     return _id;
 }
