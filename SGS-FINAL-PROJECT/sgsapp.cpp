@@ -3,7 +3,7 @@
 #include "databaseconnection.h"
 #include <QtSql>
 #include <QTableWidget>
-#include <QFrame>
+#include <QWidget>
 
 //extern databaseconnection * connection;
 sgsApp::sgsApp(QWidget *parent)
@@ -746,37 +746,35 @@ void sgsApp::test()
 
 
        //running a loop to add the desired components to the scroll area...
-       for(int j=0;j<=50;j++)
+       for(int j=0;j<5;j++)
        {
 
 
-       QLabel *lab=new QLabel("Blood Group: , Address: "); //Assigning the strings to widgets...
+//       QLabel *lab = new QLabel("Blood Group: , Address: "); //Assigning the strings to widgets...
+//        lab->setStyleSheet("background:#fff; Text-align:left;font-family:century gothic;font-size:18px; color:#333");
+
+//        layout->addWidget(lab);
+
+       QFrame *frame = new QFrame (this);
+       frame->setStyleSheet("background:#fff; border-radius: 5px; padding:5px; margin-bottom:20px;");
+
+       QLabel * title = new QLabel("Lecturer: +Farshad Rabbani+",frame);
+       title->setStyleSheet("text-align:left;font-family:century gothic;font-size:11px; color:#999");
+
+       QLabel * code = new QLabel("Code: +CMPS1014+",frame);
+       code->setStyleSheet("text-align:left;font-family:century gothic;font-size:11px; color:#999;");
+       code->setGeometry(530,0,110,40);
 
 
-//      QFrame *line;
-//       //Creating horizontal line with desired properties...
-//       line = new QFrame();
-//       line->setFrameShape(QFrame::HLine);
-//       line->setFrameShadow(QFrame::Sunken);
-//       line->setStyleSheet("background:white"); //Creating horizontal line with desired properties...
+       layout->addWidget(frame);
 
 
-
-
-       lab->setStyleSheet("background:#fff; Text-align:left;font-family:century gothic;font-size:18px; color:#333");
-
-
-       layout->addWidget(lab);
 
 
         //sets Layout to ScrollArea
         ui->scrollAreaWidgetContents->setLayout(layout);
        }
 
-
-
-       //hiding the frame that will show the profile...
-       ui->frame_2->hide();
 
 }
 
