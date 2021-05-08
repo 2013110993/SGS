@@ -645,12 +645,26 @@ void sgsApp::on_viewComments_Button_clicked()
     //Navigate to View Course Page
     ui->stackedWidgetPages->setCurrentIndex(4);
 
-    //Display search Table
-    viewSearchCourseCommentTable();
-    test();
+
+
 }
 void sgsApp::viewSearchCourseCommentTable()
 {
+
+    while (ui->searchResultCourseCommentTableWidget->rowCount() > 0)
+    {
+        ui->searchResultCourseCommentTableWidget->removeRow(0);
+    }
+
+    QString courseName = ui->commentsSearchCourseCodelineEdit->text();
+    QSqlQuery courses = connection->getLecturesByCourse(courseName);
+
+
+
+
+
+
+
     ui->searchResultCourseCommentTableWidget->setColumnCount(3);
     ui->searchResultCourseCommentTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
 
@@ -667,7 +681,7 @@ void sgsApp::viewSearchCourseCommentTable()
 
     int rowCount = 0;
 
-    for(int i = 0; i < 5; i++)
+    for(; courses.next();)
     {
          ui->searchResultCourseCommentTableWidget->insertRow(rowCount);
 
@@ -681,9 +695,14 @@ void sgsApp::viewSearchCourseCommentTable()
         QTableWidgetItem *courseName = new QTableWidgetItem;
         QTableWidgetItem *lecturer = new QTableWidgetItem;
 
-        courseCode->setText("ENGL1014");
-        courseName->setText("Fundamental of Management");
-        lecturer->setText("Farshad Rabbani");
+        courseCode->setText(courses.value(0).toString());
+        courseName->setText(courses.value(1).toString());
+        lecturer->setText(courses.value(2).toString());
+
+        ui->searchResultCourseCommentTableWidget->setItem(rowCount,0,courseCode);
+        ui->searchResultCourseCommentTableWidget->setItem(rowCount,1,courseName);
+        ui->searchResultCourseCommentTableWidget->setItem(rowCount,2,lecturer);
+
 
 
 }
@@ -745,44 +764,64 @@ void sgsApp::on_addCourseButton_clicked()
         year.append(ui->updateSemester->text());
         connection->addLectureCourse(courseID,year);
     }
+    viewLecturerCoursesTable();
 }
 
-void sgsApp::test()
+void sgsApp::courseComments(int row)
 {
-       //Creating a grid layout...
-       QGridLayout *layout=new QGridLayout(this);
 
 
-       //running a loop to add the desired components to the scroll area...
-       for(int j=0;j<5;j++)
-       {
+    QString courseCode = ui->searchResultCourseCommentTableWidget->item(row,0)->text();
+    QString lectureName =  ui->searchResultCourseCommentTableWidget->item(row,2)->text();
+    //Creating a grid layout...
+    QGridLayout *layout=new QGridLayout(this);
+    QSqlQuery comments = connection->getComments(courseCode,lectureName);
 
 
-//       QLabel *lab = new QLabel("Blood Group: , Address: "); //Assigning the strings to widgets...
-//        lab->setStyleSheet("background:#fff; Text-align:left;font-family:century gothic;font-size:18px; color:#333");
-
-//        layout->addWidget(lab);
-
-       QFrame *frame = new QFrame (this);
-       frame->setStyleSheet("background:#fff; border-radius: 5px; padding:5px; margin-bottom:20px;");
-
-       QLabel * title = new QLabel("Lecturer: +Farshad Rabbani+",frame);
-       title->setStyleSheet("text-align:left;font-family:century gothic;font-size:11px; color:#999");
-
-       QLabel * code = new QLabel("Code: +CMPS1014+",frame);
-       code->setStyleSheet("text-align:left;font-family:century gothic;font-size:11px; color:#999;");
-       code->setGeometry(530,0,110,40);
-
-
-       layout->addWidget(frame);
+    //running a loop to add the desired components to the scroll area...
+    for(;comments.next();)
+    {
+         QString date= "Posted: " + comments.value(0).toString() + " ";
+         QString commentText =comments.value(1).toString() ;
+         QString rate= "Rating: "+ comments.value(2).toString() + " ";
 
 
 
+        //Label for Comment Body
+        QLabel * comment = new QLabel(date+"\t\t\t\t\t\t\t" +rate+"\n\n" + commentText);
+        comment->setStyleSheet("font-size:12px;line-height:24px;background:#fff; border-radius: 5px; padding:15px; margin-bottom:20px; color:#999;");
 
-        //sets Layout to ScrollArea
-        ui->scrollAreaWidgetContents->setLayout(layout);
-       }
+
+        layout->addWidget(comment);
+    }
+
+
+    //sets Layout to ScrollArea
+    ui->scrollAreaWidgetContents->setLayout(layout);
+
 
 
 }
 
+
+void sgsApp::on_commentSearchCourseCODEButton_clicked()
+{
+    QString courseName = ui->commentsSearchCourseCodelineEdit->text();
+    if (courseName.isEmpty())
+    {
+        QMessageBox::warning(NULL,"Error, No course Input", "We cannot Search the course without you entering a course Name:");
+
+    }
+    else {
+
+        //Display search Table
+        viewSearchCourseCommentTable();
+    }
+}
+
+
+void sgsApp::on_searchResultCourseCommentTableWidget_cellClicked(int row, int column)
+{    qDebug()<<"YOU click the cell";
+     courseComments(row);
+
+}

@@ -21,6 +21,7 @@ void databaseconnection::connect()
     setConnection = QSqlDatabase::addDatabase("QMYSQL");
     setConnection.setHostName("127.0.0.1");
     //setConnection.setPort(3306);
+
     setConnection.setPort(3336);
     //setConnection.setPort(3366);
 
@@ -460,7 +461,8 @@ QSqlQuery databaseconnection::getLectureName(QString coureID)
     programSequence->prepare("SELECT firstname,lastname FROM lecturercourses "
                              "JOIN users ON lecturercourses.lecturerID = users.id "
                              "JOIN person ON users.personId = person.id "
-                             " WHERE lecturercourses.courseID = '" + coureID +"'");
+                             "WHERE lecturercourses.courseID = '" + coureID +"' "
+                             "GROUP by lecturerid");
 
 
 
@@ -590,7 +592,7 @@ bool databaseconnection::setCourseGrade(QStringList studentCourseGrade)
             isTransfered = 0;
         }
         query1->prepare("UPDATE studentcourses "
-                        "SET courseGrade= '" + grade + "', courseRating= '" + rating  + "' , isTransferred = " + QString::number( isTransfered) + " "
+                        "SET courseGrade= '" + grade + "', courseRating= '" + rating  + "' , isTransferred = " + QString::number( isTransfered) + " "//AKI2
                                                                                                                                                   "WHERE studentid = "+ getUserId() + " AND courseid = '"+ courseID+"' " );
 
         if(!(query1->exec()))
@@ -638,15 +640,15 @@ bool databaseconnection::setCourseGrade(QStringList studentCourseGrade)
             delete query;
 
             QSqlQuery * query3 = new QSqlQuery;
-            query3->prepare("INSERT INTO `coursecomments`(`courseid`, `timeStamp`, `comment`, `lecturerid`, studentID) "
-                            "VALUES ( :courseid, :timeStamp, :comment, :lecturerid,:studentID)");
+            query3->prepare("INSERT INTO `coursecomments`(`courseid`, `timeStamp`, `comment`, `lecturerid`, studentID,courseRating) "//AKI
+                            "VALUES ( :courseid, :timeStamp, :comment, :lecturerid,:studentID,:courseRating)");
 
             query3->bindValue(":courseid", courseID);
             query3->bindValue(":timeStamp", ct);
             query3->bindValue(":comment", comment);
             query3->bindValue(":lecturerid", LectureID);
             query3->bindValue(":studentID", getUserId());
-
+            query3->bindValue(":courseRating", rating);
             if(!(query3->exec()))
             {
                 QMessageBox::warning(NULL,"We encounter an error: ","COULD NOT ADD COMMENT " + query3->lastError().text());
@@ -888,7 +890,7 @@ QStringList databaseconnection::getComment(QString courseID)
         }
 
         QSqlQuery * rating = new QSqlQuery;
-        rating->prepare("SELECT `courseRating` FROM `studentcourses` "
+        rating->prepare("SELECT `courseRating` FROM `studentcourses` "//AKI3
                         "WHERE `studentid` = " + getUserId() + " AND courseid = '" + courseID+ "' ");
         if(!(rating->exec()))
             qDebug()<<"Back Fire";
@@ -1017,6 +1019,46 @@ void databaseconnection::setRole(QString role)
 QString databaseconnection::getRole()
 {
     return UserRole;
+}
+
+QSqlQuery databaseconnection::getLecturesByCourse(QString coureName)
+{
+
+    QSqlQuery * query1 = new QSqlQuery;
+    query1->prepare("SELECT courses.ID, courses.name, lecturer.name FROM  courses "
+                    "JOIN `lecturercourses` on `lecturercourses`.courseID = courses.courseCode "
+                    "JOIN lecturer on lecturer.id = lecturercourses.lecturerID "
+                    "WHERE courses.name Like '" + coureName + "%' "
+                    "GROUP BY lecturer.name");
+
+    if(!(query1->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+    }
+
+    QSqlQuery lectureByCourse = *query1;
+    delete query1;
+    return lectureByCourse;
+
+
+}
+
+QSqlQuery databaseconnection::getComments(QString courseID, QString lectureName)
+{
+    QSqlQuery * query1 = new QSqlQuery;
+    query1->prepare("SELECT timeStamp,comment, courseRating FROM `coursecomments` "
+                    "JOIN lecturer on lecturer.id = coursecomments.lecturerid "
+                    "WHERE coursecomments.courseid = '" + courseID + "' AND lecturer.name = '" + lectureName + "'");
+
+    if(!(query1->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+    }
+
+    QSqlQuery lectureComment = *query1;
+    delete query1;
+    return lectureComment;
+
 }
 
 bool databaseconnection::isCourseGraded(QString courseID)
