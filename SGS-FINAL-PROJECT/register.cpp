@@ -179,6 +179,7 @@ void Register::on_signUpButton_clicked()
         connection->insertNewUser(*user);
         if(userRole == 1)
         {
+            //user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
             QString faculty = ui->facultySelected_label->text();
             QString program = ui->programSelected_label->text();
             QString year = ui->programSequenceYearSelected_label->text();
@@ -187,6 +188,11 @@ void Register::on_signUpButton_clicked()
             qDebug()<<program;
             qDebug()<<year;
         }
+       // else
+      //  {
+            //user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
+      //  }
+      //  //connection->insertNewUser(*user);
         this->close();
 
     }

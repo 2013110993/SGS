@@ -1,5 +1,4 @@
 #include "databaseconnection.h"
-
 #include "dashboardstudent.h"
 
 databaseconnection::databaseconnection()
@@ -21,8 +20,11 @@ void databaseconnection::connect()
 {
     setConnection = QSqlDatabase::addDatabase("QMYSQL");
     setConnection.setHostName("127.0.0.1");
-    setConnection.setPort(3306);
+    //setConnection.setPort(3306);
+    setConnection.setPort(3336);
     //setConnection.setPort(3366);
+
+
     setConnection.setUserName("root");
     setConnection.setPassword("");
     setConnection.setDatabaseName("db");
@@ -49,6 +51,15 @@ void databaseconnection::connect()
         messagebox.about(NULL,"Connection Failier",message);
     }
     logSatus=false;
+}
+
+void databaseconnection::disconnect()
+{
+    qDebug()<<"db removed";
+    setConnection.close();  //close connection from mysql and qt
+    QSqlDatabase::removeDatabase( QSqlDatabase::defaultConnection );  //remove database
+        return;
+
 }
 
 void databaseconnection::insertNewUser(student &student)
@@ -384,7 +395,6 @@ QSqlQuery databaseconnection::getUserInfo(QString lostAccount, int role)
     QSqlQuery info = *query1;
     delete query1;
     return info;
-
 
 }
 

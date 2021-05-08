@@ -8,7 +8,7 @@
 
 #include "forgotpassword.h"
 #include "activate_deactivateuser.h"
-
+#include "lecture.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class sgsApp; }
@@ -24,6 +24,7 @@ public:
     void disableStudentFeature();
     void showFeature();
     void hideFeature();
+    void closeDatabase(databaseconnection &dbObj);
 
 signals:
      void sendQuestion(QSqlQuery);
@@ -87,6 +88,8 @@ private slots:
 
     void test();
 
+
+
 private:
     Ui::sgsApp *ui;
     forgotPassword * forgot;
@@ -94,6 +97,7 @@ private:
     Activate_DeactivateUser *active_deactivate;
     databaseconnection * connection;
     QSqlQuery queries;
+    lecture lecture;
     bool buttonClick;
 };
 #endif // SGSAPP_H

@@ -52,6 +52,10 @@ public:
 
     bool isCourseGraded(QString);
 
+    //friend functions
+    friend void closeDatabase(databaseconnection &);
+    friend QSqlQuery getLecturerCourses(databaseconnection &);
+
 private:
     bool connected;
     bool logSatus;

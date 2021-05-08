@@ -32,6 +32,7 @@ sgsApp::sgsApp(QWidget *parent)
 
 sgsApp::~sgsApp()
 {
+    closeDatabase(*(connection));
     delete connection;
     //delete forgot;
     //delete active_deactivate;
@@ -55,6 +56,13 @@ void sgsApp::hideFeature()
     //ui->addUser_Button->hide();
     //ui->addInstitution_Button->hide();
 
+}
+
+void sgsApp::closeDatabase(databaseconnection &dbObj)  //friend function
+{
+//    dbObj.~databaseconnection();
+    //dbObj.disconnect();
+    dbObj.disconnect();
 }
 
 void sgsApp::showFeature()
@@ -453,7 +461,7 @@ void sgsApp::viewLecturerCoursesTable()
     ui->lecturerCoursesListTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
 
     int rowCount = 0;
-    QSqlQuery lectureCourses = connection->getLectureCourse();
+    QSqlQuery lectureCourses = lecture.getLecturerCourses(*(connection));
 
     for(; lectureCourses.next();)
     {

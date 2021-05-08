@@ -1,10 +1,9 @@
-  #ifndef STUDENT_H
+#ifndef STUDENT_H
 #define STUDENT_H
 #include <QString>
 #include <string>
 #include "users.h"
 using std::string;
-
 
 class student : public users
 {
