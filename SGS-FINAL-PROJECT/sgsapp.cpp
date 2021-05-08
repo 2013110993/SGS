@@ -639,7 +639,7 @@ void sgsApp::on_viewComments_Button_clicked()
 
     //Display search Table
     viewSearchCourseCommentTable();
-    test();
+    courseComments();
 }
 void sgsApp::viewSearchCourseCommentTable()
 {
@@ -739,41 +739,31 @@ void sgsApp::on_addCourseButton_clicked()
     }
 }
 
-void sgsApp::test()
+void sgsApp::courseComments()
 {
-       //Creating a grid layout...
-       QGridLayout *layout=new QGridLayout(this);
+    //Creating a grid layout...
+    QGridLayout *layout=new QGridLayout(this);
 
 
-       //running a loop to add the desired components to the scroll area...
-       for(int j=0;j<5;j++)
-       {
+    //running a loop to add the desired components to the scroll area...
+    for(int j=0;j<50;j++)
+    {
+         QString date= "Posted: + 2021-04-29 23:37:07 +";
+         QString rate= "Rating: + 3/5 +";
 
 
-//       QLabel *lab = new QLabel("Blood Group: , Address: "); //Assigning the strings to widgets...
-//        lab->setStyleSheet("background:#fff; Text-align:left;font-family:century gothic;font-size:18px; color:#333");
-
-//        layout->addWidget(lab);
-
-       QFrame *frame = new QFrame (this);
-       frame->setStyleSheet("background:#fff; border-radius: 5px; padding:5px; margin-bottom:20px;");
-
-       QLabel * title = new QLabel("Lecturer: +Farshad Rabbani+",frame);
-       title->setStyleSheet("text-align:left;font-family:century gothic;font-size:11px; color:#999");
-
-       QLabel * code = new QLabel("Code: +CMPS1014+",frame);
-       code->setStyleSheet("text-align:left;font-family:century gothic;font-size:11px; color:#999;");
-       code->setGeometry(530,0,110,40);
+        //Label for Comment Body
+        QLabel * comment = new QLabel(date+"\t\t\t\t\t\t\t" +rate+"\n\nThis is a dummie text for a course comment body paragraph.\nThis is a dummie text for a course comment body paragraph.\nThis is a dummie text for a course comment body paragraph.\nThis is a dummie text for a course comment body paragraph.");
+        comment->setStyleSheet("font-size:12px;line-height:24px;background:#fff; border-radius: 5px; padding:15px; margin-bottom:20px; color:#999;");
 
 
-       layout->addWidget(frame);
+        layout->addWidget(comment);
+    }
 
 
+    //sets Layout to ScrollArea
+    ui->scrollAreaWidgetContents->setLayout(layout);
 
-
-        //sets Layout to ScrollArea
-        ui->scrollAreaWidgetContents->setLayout(layout);
-       }
 
 
 }

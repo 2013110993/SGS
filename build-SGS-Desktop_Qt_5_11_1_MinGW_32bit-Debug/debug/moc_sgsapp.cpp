@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_sgsApp_t {
     QByteArrayData data[37];
-    char stringdata0[948];
+    char stringdata0[958];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -67,7 +67,7 @@ QT_MOC_LITERAL(32, 834, 29), // "on_filterSearchButton_clicked"
 QT_MOC_LITERAL(33, 864, 30), // "on_viewComments_Button_clicked"
 QT_MOC_LITERAL(34, 895, 20), // "on_addButton_clicked"
 QT_MOC_LITERAL(35, 916, 26), // "on_addCourseButton_clicked"
-QT_MOC_LITERAL(36, 943, 4) // "test"
+QT_MOC_LITERAL(36, 943, 14) // "courseComments"
 
     },
     "sgsApp\0sendQuestion\0\0QSqlQuery\0"
@@ -96,7 +96,7 @@ QT_MOC_LITERAL(36, 943, 4) // "test"
     "on_filterSearchButton_clicked\0"
     "on_viewComments_Button_clicked\0"
     "on_addButton_clicked\0on_addCourseButton_clicked\0"
-    "test"
+    "courseComments"
 };
 #undef QT_MOC_LITERAL
 
@@ -225,7 +225,7 @@ void sgsApp::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 28: _t->on_viewComments_Button_clicked(); break;
         case 29: _t->on_addButton_clicked(); break;
         case 30: _t->on_addCourseButton_clicked(); break;
-        case 31: _t->test(); break;
+        case 31: _t->courseComments(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

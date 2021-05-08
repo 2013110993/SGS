@@ -85,7 +85,7 @@ private slots:
 
     void on_addCourseButton_clicked();
 
-    void test();
+    void courseComments();
 
 private:
     Ui::sgsApp *ui;
