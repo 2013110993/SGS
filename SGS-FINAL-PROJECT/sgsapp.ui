@@ -3390,7 +3390,7 @@ border-bottom-right-radius:5px;</string>
 padding: 5px;</string>
         </property>
         <property name="placeholderText">
-         <string>Search Course by CODE</string>
+         <string>Search Course by Phrase of Full Name of Course</string>
         </property>
        </widget>
        <widget class="QScrollArea" name="scrollArea">
