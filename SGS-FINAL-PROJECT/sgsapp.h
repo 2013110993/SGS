@@ -85,7 +85,12 @@ private slots:
 
     void on_addCourseButton_clicked();
 
-    void courseComments();
+    void courseComments(int);
+
+    void on_commentSearchCourseCODEButton_clicked();
+
+    void on_searchResultCourseCommentTableWidget_cellClicked(int row, int column);
+
 
 private:
     Ui::sgsApp *ui;

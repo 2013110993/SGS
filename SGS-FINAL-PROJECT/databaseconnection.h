@@ -50,6 +50,10 @@ public:
     void setRole(QString);
     QString getRole();
 
+
+    QSqlQuery getLecturesByCourse(QString);
+    QSqlQuery getComments(QString, QString);
+
     bool isCourseGraded(QString);
 
 private:
