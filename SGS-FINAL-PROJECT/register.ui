@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="images.qrc">
-    <normaloff>:/images/Icon for Taskbar.png</normaloff>:/images/Icon for Taskbar.png</iconset>
+    <normaloff>:/images/SGS LOGO.png</normaloff>:/images/SGS LOGO.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color:#ffffff;</string>
