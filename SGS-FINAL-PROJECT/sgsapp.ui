@@ -671,6 +671,29 @@ border: 0;</string>
            <normaloff>:/icons White/Icons/White/Edit.png</normaloff>:/icons White/Icons/White/Edit.png</iconset>
          </property>
         </widget>
+        <widget class="QPushButton" name="AddProgramSequence_Button">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>130</y>
+           <width>111</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#fff;</string>
+         </property>
+         <property name="text">
+          <string>Program Sequence</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
+         </property>
+        </widget>
        </widget>
        <widget class="QPushButton" name="viewStudentProgramSequence_Button">
         <property name="geometry">
@@ -933,7 +956,7 @@ background-repeat: no-repeat;</string>
        <string notr="true">border: 1px</string>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="DashboardPage">
        <widget class="QFrame" name="pageTitleCourseListPage_3">
@@ -1569,9 +1592,9 @@ border-radius: 5px;</string>
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>100</y>
+          <y>110</y>
           <width>661</width>
-          <height>721</height>
+          <height>711</height>
          </rect>
         </property>
        </widget>
@@ -1687,7 +1710,7 @@ border-radius: 5px;</string>
           <x>20</x>
           <y>60</y>
           <width>661</width>
-          <height>41</height>
+          <height>51</height>
          </rect>
         </property>
         <property name="font">
@@ -2506,6 +2529,88 @@ border:0px;</string>
            </widget>
           </item>
          </layout>
+        </widget>
+        <widget class="QLabel" name="AddProgramSequenceFormTitle_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>1151</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#70808c;
+color:#fff;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:0px;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="studentSearchLineEdit">
+         <property name="geometry">
+          <rect>
+           <x>730</x>
+           <y>10</y>
+           <width>301</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#000;
+padding: 5px;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Search Student to view Program Sequence</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="studentSearchButton">
+         <property name="geometry">
+          <rect>
+           <x>1030</x>
+           <y>10</y>
+           <width>111</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#292f38;
+color: #ffffff;
+border:0;
+height:30px;
+border-top-left-radius:0px;
+border-top-right-radius:5px;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:5px;</string>
+         </property>
+         <property name="text">
+          <string>Search</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
+         </property>
+         <property name="autoDefault">
+          <bool>false</bool>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
         </widget>
        </widget>
        <widget class="QFrame" name="pageTitleCourseListPage_2">
@@ -3420,6 +3525,675 @@ padding: 5px;</string>
            <width>661</width>
            <height>711</height>
           </rect>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="AddProgramSequence">
+       <widget class="QFrame" name="pageTitleCourseListPage_6">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>0</y>
+          <width>1151</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-bottom:1px solid #999999;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLabel" name="pageNameLabel_2">
+         <property name="geometry">
+          <rect>
+           <x>960</x>
+           <y>0</y>
+           <width>191</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#999; border: 0px;</string>
+         </property>
+         <property name="text">
+          <string>/ Add Program Sequence</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="courseCommentsName_2">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>50</y>
+          <width>491</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">padding-left:5px;
+background:#70808c;
+color:#fff;
+border-top-left-radius:5px;
+border-top-right-radius:5px;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:0px;</string>
+        </property>
+        <property name="text">
+         <string>All Program Sequence</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="courseCommentsName_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>50</y>
+          <width>601</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">padding-left:5px;
+background:#70808c;
+color:#fff;
+border-top-left-radius:5px;
+border-top-right-radius:5px;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:0px;</string>
+        </property>
+        <property name="text">
+         <string>Create New</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QFrame" name="frame_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>601</width>
+          <height>211</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#999;background:#fff;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLabel" name="idTagLable">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>20</y>
+           <width>161</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666;
+border:0px;</string>
+         </property>
+         <property name="text">
+          <string>ID:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="idLineEdit">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>40</y>
+           <width>151</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:#ffffff;
+color: #333;
+border:0px;
+border-bottom:1px dotted #999;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Program Sequence ID #</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="idLineEdit_2">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>200</x>
+           <y>40</y>
+           <width>151</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:#ffffff;
+color: #333;
+border:0px;
+border-bottom:1px dotted #999;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Sequence Name</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="idTagLable_2">
+         <property name="geometry">
+          <rect>
+           <x>200</x>
+           <y>20</y>
+           <width>161</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666;
+border:0px;</string>
+         </property>
+         <property name="text">
+          <string>Program Sequence Name:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="idLineEdit_3">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>380</x>
+           <y>40</y>
+           <width>201</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:#ffffff;
+color: #333;
+border:0px;
+border-bottom:1px dotted #999;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Sequence Name</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="idTagLable_3">
+         <property name="geometry">
+          <rect>
+           <x>380</x>
+           <y>20</y>
+           <width>161</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666;
+border:0px;</string>
+         </property>
+         <property name="text">
+          <string>Faculty:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="idLineEdit_4">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>120</y>
+           <width>151</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:#ffffff;
+color: #333;
+border:0px;
+border-bottom:1px dotted #999;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Sequence Effective Semester</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="idTagLable_4">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>100</y>
+           <width>161</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666;
+border:0px;</string>
+         </property>
+         <property name="text">
+          <string>Year:</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="updateCourse_pushButton_2">
+         <property name="geometry">
+          <rect>
+           <x>480</x>
+           <y>170</y>
+           <width>101</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#fbaf01;
+color: #ffffff;
+border:0;
+height:30px;
+border-radius:5px;</string>
+         </property>
+         <property name="text">
+          <string>Continue</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Double Arrow RIGHT.png</normaloff>:/icons White/Icons/White/Double Arrow RIGHT.png</iconset>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="courseCommentsName_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>350</y>
+          <width>601</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">padding-left:5px;
+background:#70808c;
+color:#fff;
+border-top-left-radius:5px;
+border-top-right-radius:5px;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:0px;</string>
+        </property>
+        <property name="text">
+         <string>Create New</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QFrame" name="frame_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>390</y>
+          <width>601</width>
+          <height>211</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#999;background:#fff;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLabel" name="idTagLable_5">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>20</y>
+           <width>161</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666;
+border:0px;</string>
+         </property>
+         <property name="text">
+          <string>ID:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="idLineEdit_5">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>40</y>
+           <width>151</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:#ffffff;
+color: #333;
+border:0px;
+border-bottom:1px dotted #999;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Program Sequence ID #</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="idLineEdit_6">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>200</x>
+           <y>40</y>
+           <width>151</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:#ffffff;
+color: #333;
+border:0px;
+border-bottom:1px dotted #999;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Sequence Name</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="idTagLable_6">
+         <property name="geometry">
+          <rect>
+           <x>200</x>
+           <y>20</y>
+           <width>161</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666;
+border:0px;</string>
+         </property>
+         <property name="text">
+          <string>Program Sequence Name:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="idLineEdit_7">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>380</x>
+           <y>40</y>
+           <width>201</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:#ffffff;
+color: #333;
+border:0px;
+border-bottom:1px dotted #999;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Sequence Name</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="idTagLable_7">
+         <property name="geometry">
+          <rect>
+           <x>380</x>
+           <y>20</y>
+           <width>161</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666;
+border:0px;</string>
+         </property>
+         <property name="text">
+          <string>Faculty:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="idLineEdit_8">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>120</y>
+           <width>151</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:#ffffff;
+color: #333;
+border:0px;
+border-bottom:1px dotted #999;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Sequence Effective Semester</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="idTagLable_8">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>100</y>
+           <width>161</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666;
+border:0px;</string>
+         </property>
+         <property name="text">
+          <string>Year:</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="updateCourse_pushButton_3">
+         <property name="geometry">
+          <rect>
+           <x>480</x>
+           <y>170</y>
+           <width>101</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#fbaf01;
+color: #ffffff;
+border:0;
+height:30px;
+border-radius:5px;</string>
+         </property>
+         <property name="text">
+          <string>Add Sequence</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
          </property>
         </widget>
        </widget>
