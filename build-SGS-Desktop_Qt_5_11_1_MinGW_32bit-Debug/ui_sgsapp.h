@@ -216,13 +216,26 @@ public:
     QLabel *courseCommentsName_3;
     QFrame *frame_4;
     QLabel *idTagLable;
-    QLineEdit *idLineEdit;
+    QLineEdit *LineEdit;
     QLineEdit *idLineEdit_2;
-    QLabel *idTagLable_2;
+    QLabel *sequenceNameTagLable_2;
     QLineEdit *idLineEdit_3;
-    QLabel *idTagLable_3;
+    QLabel *facultyTagLable;
     QLineEdit *idLineEdit_4;
-    QLabel *idTagLable_4;
+    QLabel *yearTagLable;
+    QPushButton *addCourseSequencepushButton;
+    QFrame *addCourseSequenceframe;
+    QLabel *idTagLable_5;
+    QLineEdit *idLineEdit_5;
+    QLineEdit *idLineEdit_6;
+    QLabel *idTagLable_6;
+    QLineEdit *idLineEdit_7;
+    QLabel *idTagLable_7;
+    QLabel *idTagLable_8;
+    QLineEdit *idLineEdit_8;
+    QLabel *courseCommentsName_4;
+    QPushButton *updateCourse_pushButton_3;
+    QTableWidget *tableWidget;
 
     void setupUi(QMainWindow *sgsApp)
     {
@@ -1458,7 +1471,7 @@ public:
         pageNameLabel_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         courseCommentsName_2 = new QLabel(AddProgramSequence);
         courseCommentsName_2->setObjectName(QStringLiteral("courseCommentsName_2"));
-        courseCommentsName_2->setGeometry(QRect(670, 50, 491, 41));
+        courseCommentsName_2->setGeometry(QRect(620, 50, 541, 41));
         courseCommentsName_2->setFont(font9);
         courseCommentsName_2->setStyleSheet(QLatin1String("padding-left:5px;\n"
 "background:#70808c;\n"
@@ -1470,7 +1483,7 @@ public:
         courseCommentsName_2->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         courseCommentsName_3 = new QLabel(AddProgramSequence);
         courseCommentsName_3->setObjectName(QStringLiteral("courseCommentsName_3"));
-        courseCommentsName_3->setGeometry(QRect(10, 50, 601, 41));
+        courseCommentsName_3->setGeometry(QRect(10, 50, 581, 41));
         courseCommentsName_3->setFont(font9);
         courseCommentsName_3->setStyleSheet(QLatin1String("padding-left:5px;\n"
 "background:#70808c;\n"
@@ -1482,7 +1495,7 @@ public:
         courseCommentsName_3->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         frame_4 = new QFrame(AddProgramSequence);
         frame_4->setObjectName(QStringLiteral("frame_4"));
-        frame_4->setGeometry(QRect(10, 90, 601, 451));
+        frame_4->setGeometry(QRect(10, 90, 581, 151));
         frame_4->setStyleSheet(QStringLiteral("color:#999;background:#fff;"));
         frame_4->setFrameShape(QFrame::StyledPanel);
         frame_4->setFrameShadow(QFrame::Raised);
@@ -1491,61 +1504,162 @@ public:
         idTagLable->setGeometry(QRect(20, 20, 161, 18));
         idTagLable->setStyleSheet(QLatin1String("color:#666;\n"
 "border:0px;"));
-        idLineEdit = new QLineEdit(frame_4);
-        idLineEdit->setObjectName(QStringLiteral("idLineEdit"));
-        idLineEdit->setEnabled(true);
-        idLineEdit->setGeometry(QRect(20, 40, 151, 30));
-        idLineEdit->setMinimumSize(QSize(0, 30));
-        idLineEdit->setMaximumSize(QSize(16777215, 30));
-        idLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
+        LineEdit = new QLineEdit(frame_4);
+        LineEdit->setObjectName(QStringLiteral("LineEdit"));
+        LineEdit->setEnabled(true);
+        LineEdit->setGeometry(QRect(20, 40, 41, 30));
+        LineEdit->setMinimumSize(QSize(0, 30));
+        LineEdit->setMaximumSize(QSize(16777215, 30));
+        LineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
 "color: #333;\n"
 "border:0px;\n"
 "border-bottom:1px dotted #999;"));
         idLineEdit_2 = new QLineEdit(frame_4);
         idLineEdit_2->setObjectName(QStringLiteral("idLineEdit_2"));
         idLineEdit_2->setEnabled(true);
-        idLineEdit_2->setGeometry(QRect(200, 40, 151, 30));
+        idLineEdit_2->setGeometry(QRect(90, 40, 151, 30));
         idLineEdit_2->setMinimumSize(QSize(0, 30));
         idLineEdit_2->setMaximumSize(QSize(16777215, 30));
         idLineEdit_2->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
 "color: #333;\n"
 "border:0px;\n"
 "border-bottom:1px dotted #999;"));
-        idTagLable_2 = new QLabel(frame_4);
-        idTagLable_2->setObjectName(QStringLiteral("idTagLable_2"));
-        idTagLable_2->setGeometry(QRect(200, 20, 161, 18));
-        idTagLable_2->setStyleSheet(QLatin1String("color:#666;\n"
+        sequenceNameTagLable_2 = new QLabel(frame_4);
+        sequenceNameTagLable_2->setObjectName(QStringLiteral("sequenceNameTagLable_2"));
+        sequenceNameTagLable_2->setGeometry(QRect(90, 20, 161, 18));
+        sequenceNameTagLable_2->setStyleSheet(QLatin1String("color:#666;\n"
 "border:0px;"));
         idLineEdit_3 = new QLineEdit(frame_4);
         idLineEdit_3->setObjectName(QStringLiteral("idLineEdit_3"));
         idLineEdit_3->setEnabled(true);
-        idLineEdit_3->setGeometry(QRect(380, 40, 201, 30));
+        idLineEdit_3->setGeometry(QRect(260, 40, 201, 30));
         idLineEdit_3->setMinimumSize(QSize(0, 30));
         idLineEdit_3->setMaximumSize(QSize(16777215, 30));
         idLineEdit_3->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
 "color: #333;\n"
 "border:0px;\n"
 "border-bottom:1px dotted #999;"));
-        idTagLable_3 = new QLabel(frame_4);
-        idTagLable_3->setObjectName(QStringLiteral("idTagLable_3"));
-        idTagLable_3->setGeometry(QRect(380, 20, 161, 18));
-        idTagLable_3->setStyleSheet(QLatin1String("color:#666;\n"
+        facultyTagLable = new QLabel(frame_4);
+        facultyTagLable->setObjectName(QStringLiteral("facultyTagLable"));
+        facultyTagLable->setGeometry(QRect(260, 20, 161, 18));
+        facultyTagLable->setStyleSheet(QLatin1String("color:#666;\n"
 "border:0px;"));
         idLineEdit_4 = new QLineEdit(frame_4);
         idLineEdit_4->setObjectName(QStringLiteral("idLineEdit_4"));
         idLineEdit_4->setEnabled(true);
-        idLineEdit_4->setGeometry(QRect(20, 120, 151, 30));
+        idLineEdit_4->setGeometry(QRect(490, 40, 81, 30));
         idLineEdit_4->setMinimumSize(QSize(0, 30));
         idLineEdit_4->setMaximumSize(QSize(16777215, 30));
         idLineEdit_4->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
 "color: #333;\n"
 "border:0px;\n"
 "border-bottom:1px dotted #999;"));
-        idTagLable_4 = new QLabel(frame_4);
-        idTagLable_4->setObjectName(QStringLiteral("idTagLable_4"));
-        idTagLable_4->setGeometry(QRect(20, 100, 161, 18));
-        idTagLable_4->setStyleSheet(QLatin1String("color:#666;\n"
+        yearTagLable = new QLabel(frame_4);
+        yearTagLable->setObjectName(QStringLiteral("yearTagLable"));
+        yearTagLable->setGeometry(QRect(490, 20, 71, 18));
+        yearTagLable->setStyleSheet(QLatin1String("color:#666;\n"
 "border:0px;"));
+        addCourseSequencepushButton = new QPushButton(frame_4);
+        addCourseSequencepushButton->setObjectName(QStringLiteral("addCourseSequencepushButton"));
+        addCourseSequencepushButton->setGeometry(QRect(470, 100, 101, 32));
+        addCourseSequencepushButton->setStyleSheet(QLatin1String("background:#fbaf01;\n"
+"color: #ffffff;\n"
+"border:0;\n"
+"height:30px;\n"
+"border-radius:5px;"));
+        QIcon icon15;
+        icon15.addFile(QStringLiteral(":/icons White/Icons/White/Double Arrow RIGHT.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addCourseSequencepushButton->setIcon(icon15);
+        addCourseSequenceframe = new QFrame(AddProgramSequence);
+        addCourseSequenceframe->setObjectName(QStringLiteral("addCourseSequenceframe"));
+        addCourseSequenceframe->setGeometry(QRect(10, 270, 581, 151));
+        addCourseSequenceframe->setStyleSheet(QStringLiteral("color:#999;background:#fff;"));
+        addCourseSequenceframe->setFrameShape(QFrame::StyledPanel);
+        addCourseSequenceframe->setFrameShadow(QFrame::Raised);
+        idTagLable_5 = new QLabel(addCourseSequenceframe);
+        idTagLable_5->setObjectName(QStringLiteral("idTagLable_5"));
+        idTagLable_5->setGeometry(QRect(20, 70, 161, 18));
+        idTagLable_5->setStyleSheet(QLatin1String("color:#666;\n"
+"border:0px;"));
+        idLineEdit_5 = new QLineEdit(addCourseSequenceframe);
+        idLineEdit_5->setObjectName(QStringLiteral("idLineEdit_5"));
+        idLineEdit_5->setEnabled(true);
+        idLineEdit_5->setGeometry(QRect(20, 90, 61, 30));
+        idLineEdit_5->setMinimumSize(QSize(0, 30));
+        idLineEdit_5->setMaximumSize(QSize(16777215, 30));
+        idLineEdit_5->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
+"color: #333;\n"
+"border:0px;\n"
+"border-bottom:1px dotted #999;"));
+        idLineEdit_6 = new QLineEdit(addCourseSequenceframe);
+        idLineEdit_6->setObjectName(QStringLiteral("idLineEdit_6"));
+        idLineEdit_6->setEnabled(true);
+        idLineEdit_6->setGeometry(QRect(120, 90, 161, 30));
+        idLineEdit_6->setMinimumSize(QSize(0, 30));
+        idLineEdit_6->setMaximumSize(QSize(16777215, 30));
+        idLineEdit_6->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
+"color: #333;\n"
+"border:0px;\n"
+"border-bottom:1px dotted #999;"));
+        idTagLable_6 = new QLabel(addCourseSequenceframe);
+        idTagLable_6->setObjectName(QStringLiteral("idTagLable_6"));
+        idTagLable_6->setGeometry(QRect(120, 70, 141, 18));
+        idTagLable_6->setStyleSheet(QLatin1String("color:#666;\n"
+"border:0px;"));
+        idLineEdit_7 = new QLineEdit(addCourseSequenceframe);
+        idLineEdit_7->setObjectName(QStringLiteral("idLineEdit_7"));
+        idLineEdit_7->setEnabled(true);
+        idLineEdit_7->setGeometry(QRect(310, 90, 41, 30));
+        idLineEdit_7->setMinimumSize(QSize(0, 30));
+        idLineEdit_7->setMaximumSize(QSize(16777215, 30));
+        idLineEdit_7->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
+"color: #333;\n"
+"border:0px;\n"
+"border-bottom:1px dotted #999;"));
+        idTagLable_7 = new QLabel(addCourseSequenceframe);
+        idTagLable_7->setObjectName(QStringLiteral("idTagLable_7"));
+        idTagLable_7->setGeometry(QRect(310, 70, 41, 18));
+        idTagLable_7->setStyleSheet(QLatin1String("color:#666;\n"
+"border:0px;"));
+        idTagLable_8 = new QLabel(addCourseSequenceframe);
+        idTagLable_8->setObjectName(QStringLiteral("idTagLable_8"));
+        idTagLable_8->setGeometry(QRect(390, 70, 141, 18));
+        idTagLable_8->setStyleSheet(QLatin1String("color:#666;\n"
+"border:0px;"));
+        idLineEdit_8 = new QLineEdit(addCourseSequenceframe);
+        idLineEdit_8->setObjectName(QStringLiteral("idLineEdit_8"));
+        idLineEdit_8->setEnabled(true);
+        idLineEdit_8->setGeometry(QRect(390, 90, 181, 30));
+        idLineEdit_8->setMinimumSize(QSize(0, 30));
+        idLineEdit_8->setMaximumSize(QSize(16777215, 30));
+        idLineEdit_8->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
+"color: #333;\n"
+"border:0px;\n"
+"border-bottom:1px dotted #999;"));
+        courseCommentsName_4 = new QLabel(addCourseSequenceframe);
+        courseCommentsName_4->setObjectName(QStringLiteral("courseCommentsName_4"));
+        courseCommentsName_4->setGeometry(QRect(0, 0, 581, 51));
+        courseCommentsName_4->setFont(font9);
+        courseCommentsName_4->setStyleSheet(QLatin1String("padding-left:5px;\n"
+"background:#70808c;\n"
+"color:#fff;\n"
+"border-top-left-radius:5px;\n"
+"border-top-right-radius:5px;\n"
+"border-bottom-left-radius:0px;\n"
+"border-bottom-right-radius:0px;"));
+        courseCommentsName_4->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        updateCourse_pushButton_3 = new QPushButton(addCourseSequenceframe);
+        updateCourse_pushButton_3->setObjectName(QStringLiteral("updateCourse_pushButton_3"));
+        updateCourse_pushButton_3->setGeometry(QRect(460, 10, 111, 32));
+        updateCourse_pushButton_3->setStyleSheet(QLatin1String("background:#292f38;\n"
+"color: #ffffff;\n"
+"border:0;\n"
+"height:30px;\n"
+"border-radius:5px;"));
+        updateCourse_pushButton_3->setIcon(icon8);
+        tableWidget = new QTableWidget(AddProgramSequence);
+        tableWidget->setObjectName(QStringLiteral("tableWidget"));
+        tableWidget->setGeometry(QRect(620, 90, 541, 721));
         stackedWidgetPages->addWidget(AddProgramSequence);
         stackedWidgetSGS->addWidget(Dashboard);
         sgsApp->setCentralWidget(centralwidget);
@@ -1727,20 +1841,35 @@ public:
         commentSearchCourseCODEButton->setText(QApplication::translate("sgsApp", "Search", nullptr));
         commentsSearchCourseCodelineEdit->setPlaceholderText(QApplication::translate("sgsApp", "Search Course by Phrase of Full Name of Course", nullptr));
         pageNameLabel_2->setText(QApplication::translate("sgsApp", "/ Add Program Sequence", nullptr));
-        courseCommentsName_2->setText(QApplication::translate("sgsApp", "All Program Sequence", nullptr));
+        courseCommentsName_2->setText(QApplication::translate("sgsApp", "Program Sequence", nullptr));
         courseCommentsName_3->setText(QApplication::translate("sgsApp", "Create New", nullptr));
         idTagLable->setText(QApplication::translate("sgsApp", "ID:", nullptr));
-        idLineEdit->setText(QString());
-        idLineEdit->setPlaceholderText(QApplication::translate("sgsApp", "Program Sequence ID #", nullptr));
+        LineEdit->setText(QString());
+        LineEdit->setPlaceholderText(QApplication::translate("sgsApp", "ID", nullptr));
         idLineEdit_2->setText(QString());
         idLineEdit_2->setPlaceholderText(QApplication::translate("sgsApp", "Sequence Name", nullptr));
-        idTagLable_2->setText(QApplication::translate("sgsApp", "Program Sequence Name:", nullptr));
+        sequenceNameTagLable_2->setText(QApplication::translate("sgsApp", "Program Sequence Name:", nullptr));
         idLineEdit_3->setText(QString());
         idLineEdit_3->setPlaceholderText(QApplication::translate("sgsApp", "Sequence Name", nullptr));
-        idTagLable_3->setText(QApplication::translate("sgsApp", "Faculty:", nullptr));
+        facultyTagLable->setText(QApplication::translate("sgsApp", "Faculty:", nullptr));
         idLineEdit_4->setText(QString());
-        idLineEdit_4->setPlaceholderText(QApplication::translate("sgsApp", "Efective year", nullptr));
-        idTagLable_4->setText(QApplication::translate("sgsApp", "Year:", nullptr));
+        idLineEdit_4->setPlaceholderText(QApplication::translate("sgsApp", "Effective Year", nullptr));
+        yearTagLable->setText(QApplication::translate("sgsApp", "Year:", nullptr));
+        addCourseSequencepushButton->setText(QApplication::translate("sgsApp", "Add Course", nullptr));
+        idTagLable_5->setText(QApplication::translate("sgsApp", "Course Code:", nullptr));
+        idLineEdit_5->setText(QString());
+        idLineEdit_5->setPlaceholderText(QApplication::translate("sgsApp", "CODE", nullptr));
+        idLineEdit_6->setText(QString());
+        idLineEdit_6->setPlaceholderText(QApplication::translate("sgsApp", "Course Name", nullptr));
+        idTagLable_6->setText(QApplication::translate("sgsApp", "Course Name:", nullptr));
+        idLineEdit_7->setText(QString());
+        idLineEdit_7->setPlaceholderText(QApplication::translate("sgsApp", "Credits", nullptr));
+        idTagLable_7->setText(QApplication::translate("sgsApp", "Credits:", nullptr));
+        idTagLable_8->setText(QApplication::translate("sgsApp", "Pre-requisites", nullptr));
+        idLineEdit_8->setText(QString());
+        idLineEdit_8->setPlaceholderText(QApplication::translate("sgsApp", "Pre-requisites", nullptr));
+        courseCommentsName_4->setText(QApplication::translate("sgsApp", "Add Course to Sequence", nullptr));
+        updateCourse_pushButton_3->setText(QApplication::translate("sgsApp", "Add to Sequence", nullptr));
     } // retranslateUi
 
 };

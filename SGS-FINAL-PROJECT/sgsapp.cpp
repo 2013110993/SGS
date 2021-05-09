@@ -850,3 +850,8 @@ void sgsApp::on_searchResultCourseCommentTableWidget_cellClicked(int row, int co
      courseComments(row);
 
 }
+
+void sgsApp::on_addCourseSequencepushButton_clicked()
+{
+    ui->addCourseSequenceframe->hide();
+}

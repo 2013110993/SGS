@@ -96,6 +96,8 @@ private slots:
 
 
 
+    void on_addCourseSequencepushButton_clicked();
+
 private:
     Ui::sgsApp *ui;
     forgotPassword * forgot;

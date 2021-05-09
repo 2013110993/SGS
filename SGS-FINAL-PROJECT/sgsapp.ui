@@ -3586,9 +3586,9 @@ padding: 5px;</string>
        <widget class="QLabel" name="courseCommentsName_2">
         <property name="geometry">
          <rect>
-          <x>670</x>
+          <x>620</x>
           <y>50</y>
-          <width>491</width>
+          <width>541</width>
           <height>41</height>
          </rect>
         </property>
@@ -3609,7 +3609,7 @@ border-bottom-left-radius:0px;
 border-bottom-right-radius:0px;</string>
         </property>
         <property name="text">
-         <string>All Program Sequence</string>
+         <string>Program Sequence</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -3620,7 +3620,7 @@ border-bottom-right-radius:0px;</string>
          <rect>
           <x>10</x>
           <y>50</y>
-          <width>601</width>
+          <width>581</width>
           <height>41</height>
          </rect>
         </property>
@@ -3652,8 +3652,8 @@ border-bottom-right-radius:0px;</string>
          <rect>
           <x>10</x>
           <y>90</y>
-          <width>601</width>
-          <height>211</height>
+          <width>581</width>
+          <height>151</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -3682,7 +3682,7 @@ border:0px;</string>
           <string>ID:</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="idLineEdit">
+        <widget class="QLineEdit" name="LineEdit">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -3690,7 +3690,7 @@ border:0px;</string>
           <rect>
            <x>20</x>
            <y>40</y>
-           <width>151</width>
+           <width>41</width>
            <height>30</height>
           </rect>
          </property>
@@ -3716,7 +3716,7 @@ border-bottom:1px dotted #999;</string>
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Program Sequence ID #</string>
+          <string>ID</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="idLineEdit_2">
@@ -3725,7 +3725,7 @@ border-bottom:1px dotted #999;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>200</x>
+           <x>90</x>
            <y>40</y>
            <width>151</width>
            <height>30</height>
@@ -3756,10 +3756,10 @@ border-bottom:1px dotted #999;</string>
           <string>Sequence Name</string>
          </property>
         </widget>
-        <widget class="QLabel" name="idTagLable_2">
+        <widget class="QLabel" name="sequenceNameTagLable_2">
          <property name="geometry">
           <rect>
-           <x>200</x>
+           <x>90</x>
            <y>20</y>
            <width>161</width>
            <height>18</height>
@@ -3779,7 +3779,7 @@ border:0px;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>380</x>
+           <x>260</x>
            <y>40</y>
            <width>201</width>
            <height>30</height>
@@ -3810,10 +3810,10 @@ border-bottom:1px dotted #999;</string>
           <string>Sequence Name</string>
          </property>
         </widget>
-        <widget class="QLabel" name="idTagLable_3">
+        <widget class="QLabel" name="facultyTagLable">
          <property name="geometry">
           <rect>
-           <x>380</x>
+           <x>260</x>
            <y>20</y>
            <width>161</width>
            <height>18</height>
@@ -3833,9 +3833,9 @@ border:0px;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>120</y>
-           <width>151</width>
+           <x>490</x>
+           <y>40</y>
+           <width>81</width>
            <height>30</height>
           </rect>
          </property>
@@ -3861,15 +3861,15 @@ border-bottom:1px dotted #999;</string>
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Sequence Effective Semester</string>
+          <string>Effective Year</string>
          </property>
         </widget>
-        <widget class="QLabel" name="idTagLable_4">
+        <widget class="QLabel" name="yearTagLable">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>100</y>
-           <width>161</width>
+           <x>490</x>
+           <y>20</y>
+           <width>71</width>
            <height>18</height>
           </rect>
          </property>
@@ -3881,11 +3881,11 @@ border:0px;</string>
           <string>Year:</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="updateCourse_pushButton_2">
+        <widget class="QPushButton" name="addCourseSequencepushButton">
          <property name="geometry">
           <rect>
-           <x>480</x>
-           <y>170</y>
+           <x>470</x>
+           <y>100</y>
            <width>101</width>
            <height>32</height>
           </rect>
@@ -3898,7 +3898,7 @@ height:30px;
 border-radius:5px;</string>
          </property>
          <property name="text">
-          <string>Continue</string>
+          <string>Add Course</string>
          </property>
          <property name="icon">
           <iconset resource="images.qrc">
@@ -3906,45 +3906,13 @@ border-radius:5px;</string>
          </property>
         </widget>
        </widget>
-       <widget class="QLabel" name="courseCommentsName_4">
+       <widget class="QFrame" name="addCourseSequenceframe">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>350</y>
-          <width>601</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">padding-left:5px;
-background:#70808c;
-color:#fff;
-border-top-left-radius:5px;
-border-top-right-radius:5px;
-border-bottom-left-radius:0px;
-border-bottom-right-radius:0px;</string>
-        </property>
-        <property name="text">
-         <string>Create New</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QFrame" name="frame_5">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>390</y>
-          <width>601</width>
-          <height>211</height>
+          <y>270</y>
+          <width>581</width>
+          <height>151</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -3960,7 +3928,7 @@ border-bottom-right-radius:0px;</string>
          <property name="geometry">
           <rect>
            <x>20</x>
-           <y>20</y>
+           <y>70</y>
            <width>161</width>
            <height>18</height>
           </rect>
@@ -3970,7 +3938,7 @@ border-bottom-right-radius:0px;</string>
 border:0px;</string>
          </property>
          <property name="text">
-          <string>ID:</string>
+          <string>Course Code:</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="idLineEdit_5">
@@ -3980,8 +3948,8 @@ border:0px;</string>
          <property name="geometry">
           <rect>
            <x>20</x>
-           <y>40</y>
-           <width>151</width>
+           <y>90</y>
+           <width>61</width>
            <height>30</height>
           </rect>
          </property>
@@ -4007,7 +3975,7 @@ border-bottom:1px dotted #999;</string>
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Program Sequence ID #</string>
+          <string>CODE</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="idLineEdit_6">
@@ -4016,9 +3984,9 @@ border-bottom:1px dotted #999;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>200</x>
-           <y>40</y>
-           <width>151</width>
+           <x>120</x>
+           <y>90</y>
+           <width>161</width>
            <height>30</height>
           </rect>
          </property>
@@ -4044,15 +4012,15 @@ border-bottom:1px dotted #999;</string>
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Sequence Name</string>
+          <string>Course Name</string>
          </property>
         </widget>
         <widget class="QLabel" name="idTagLable_6">
          <property name="geometry">
           <rect>
-           <x>200</x>
-           <y>20</y>
-           <width>161</width>
+           <x>120</x>
+           <y>70</y>
+           <width>141</width>
            <height>18</height>
           </rect>
          </property>
@@ -4061,7 +4029,7 @@ border-bottom:1px dotted #999;</string>
 border:0px;</string>
          </property>
          <property name="text">
-          <string>Program Sequence Name:</string>
+          <string>Course Name:</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="idLineEdit_7">
@@ -4070,9 +4038,9 @@ border:0px;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>380</x>
-           <y>40</y>
-           <width>201</width>
+           <x>310</x>
+           <y>90</y>
+           <width>41</width>
            <height>30</height>
           </rect>
          </property>
@@ -4098,15 +4066,15 @@ border-bottom:1px dotted #999;</string>
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Sequence Name</string>
+          <string>Credits</string>
          </property>
         </widget>
         <widget class="QLabel" name="idTagLable_7">
          <property name="geometry">
           <rect>
-           <x>380</x>
-           <y>20</y>
-           <width>161</width>
+           <x>310</x>
+           <y>70</y>
+           <width>41</width>
            <height>18</height>
           </rect>
          </property>
@@ -4115,7 +4083,24 @@ border-bottom:1px dotted #999;</string>
 border:0px;</string>
          </property>
          <property name="text">
-          <string>Faculty:</string>
+          <string>Credits:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="idTagLable_8">
+         <property name="geometry">
+          <rect>
+           <x>390</x>
+           <y>70</y>
+           <width>141</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666;
+border:0px;</string>
+         </property>
+         <property name="text">
+          <string>Pre-requisites</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="idLineEdit_8">
@@ -4124,9 +4109,9 @@ border:0px;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>120</y>
-           <width>151</width>
+           <x>390</x>
+           <y>90</y>
+           <width>181</width>
            <height>30</height>
           </rect>
          </property>
@@ -4152,50 +4137,75 @@ border-bottom:1px dotted #999;</string>
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Sequence Effective Semester</string>
+          <string>Pre-requisites</string>
          </property>
         </widget>
-        <widget class="QLabel" name="idTagLable_8">
+        <widget class="QLabel" name="courseCommentsName_4">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>100</y>
-           <width>161</width>
-           <height>18</height>
+           <x>0</x>
+           <y>0</y>
+           <width>581</width>
+           <height>51</height>
           </rect>
          </property>
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">color:#666;
-border:0px;</string>
+          <string notr="true">padding-left:5px;
+background:#70808c;
+color:#fff;
+border-top-left-radius:5px;
+border-top-right-radius:5px;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:0px;</string>
          </property>
          <property name="text">
-          <string>Year:</string>
+          <string>Add Course to Sequence</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
          </property>
         </widget>
         <widget class="QPushButton" name="updateCourse_pushButton_3">
          <property name="geometry">
           <rect>
-           <x>480</x>
-           <y>170</y>
-           <width>101</width>
+           <x>460</x>
+           <y>10</y>
+           <width>111</width>
            <height>32</height>
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background:#fbaf01;
+          <string notr="true">background:#292f38;
 color: #ffffff;
 border:0;
 height:30px;
 border-radius:5px;</string>
          </property>
          <property name="text">
-          <string>Add Sequence</string>
+          <string>Add to Sequence</string>
          </property>
          <property name="icon">
           <iconset resource="images.qrc">
            <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
          </property>
         </widget>
+       </widget>
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>90</y>
+          <width>541</width>
+          <height>721</height>
+         </rect>
+        </property>
        </widget>
       </widget>
      </widget>
