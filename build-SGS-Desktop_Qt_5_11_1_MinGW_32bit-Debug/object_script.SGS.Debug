@@ -15,6 +15,7 @@ INPUT(
 ./debug\student.o
 ./debug\activate_deactivateuser.o
 ./debug\qrc_images.o
+./debug\qrc_translation.o
 ./debug\moc_forgotpassword.o
 ./debug\moc_register.o
 ./debug\moc_sgsapp.o

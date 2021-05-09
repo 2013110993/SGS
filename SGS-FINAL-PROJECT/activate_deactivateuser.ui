@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Reset Passord</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/images/SGS LOGO.png</normaloff>:/images/SGS LOGO.png</iconset>
+  </property>
   <widget class="QGroupBox" name="Footer">
    <property name="geometry">
     <rect>

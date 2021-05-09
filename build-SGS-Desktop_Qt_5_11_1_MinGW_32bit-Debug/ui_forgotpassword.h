@@ -59,6 +59,9 @@ public:
         if (forgotPassword->objectName().isEmpty())
             forgotPassword->setObjectName(QStringLiteral("forgotPassword"));
         forgotPassword->resize(339, 347);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/images/SGS LOGO.png"), QSize(), QIcon::Normal, QIcon::Off);
+        forgotPassword->setWindowIcon(icon);
         Footer = new QGroupBox(forgotPassword);
         Footer->setObjectName(QStringLiteral("Footer"));
         Footer->setGeometry(QRect(0, 290, 341, 60));
@@ -87,9 +90,9 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon;
-        icon.addFile(QStringLiteral(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
-        forgotPasswordResetButton->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
+        forgotPasswordResetButton->setIcon(icon1);
         forgotPasswordResetButton->setAutoDefault(false);
 
         horizontalLayout_4->addWidget(forgotPasswordResetButton);
@@ -159,9 +162,9 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/icons White/Icons/White/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
-        accountLostResetButton->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/icons White/Icons/White/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
+        accountLostResetButton->setIcon(icon2);
         accountLostResetButton->setAutoDefault(false);
         stackedWidgetResetPassword->addWidget(page);
         page_2 = new QWidget();
@@ -200,9 +203,9 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/icons White/Icons/White/Single Arrow RIGHT.png"), QSize(), QIcon::Normal, QIcon::Off);
-        checkAnswerResetButton->setIcon(icon2);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/icons White/Icons/White/Single Arrow RIGHT.png"), QSize(), QIcon::Normal, QIcon::Off);
+        checkAnswerResetButton->setIcon(icon3);
         checkAnswerResetButton->setAutoDefault(false);
         stackedWidgetResetPassword->addWidget(page_2);
         page_3 = new QWidget();

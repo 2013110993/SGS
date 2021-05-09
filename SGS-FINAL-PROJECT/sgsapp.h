@@ -2,6 +2,7 @@
 #define SGSAPP_H
 
 #include <QMainWindow>
+#include "QGridLayout"
 #include "register.h"
 
 #include "databaseconnection.h"
@@ -95,6 +96,10 @@ private slots:
 
 
 
+    void on_AddProgramSequence_Button_clicked();
+
+    void on_studentSearchButton_clicked();
+
 private:
     Ui::sgsApp *ui;
     forgotPassword * forgot;
@@ -104,5 +109,9 @@ private:
     QSqlQuery queries;
     lecture lecture;
     bool buttonClick;
+    bool clickedCell;
+    const int arraySize = 500;
+    QLabel *ArrayDeleteLater[500 ];
+    QGridLayout *layout;
 };
 #endif // SGSAPP_H

@@ -197,7 +197,7 @@ public:
         palette1.setBrush(QPalette::Active, QPalette::AlternateBase, brush2);
         QBrush brush3(QColor(255, 255, 255, 128));
         brush3.setStyle(Qt::SolidPattern);
-        //palette1.setBrush(QPalette::Active, QPalette::PlaceholderText, brush3);
+
         palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush1);
         palette1.setBrush(QPalette::Inactive, QPalette::Button, brush2);
         palette1.setBrush(QPalette::Inactive, QPalette::Text, brush1);
@@ -205,7 +205,7 @@ public:
         palette1.setBrush(QPalette::Inactive, QPalette::Window, brush2);
         palette1.setBrush(QPalette::Inactive, QPalette::HighlightedText, brush2);
         palette1.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush2);
-       // palette1.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush3);
+
         QBrush brush4(QColor(120, 120, 120, 255));
         brush4.setStyle(Qt::SolidPattern);
         palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush4);
@@ -217,7 +217,7 @@ public:
         palette1.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
         QBrush brush5(QColor(0, 0, 0, 128));
         brush5.setStyle(Qt::SolidPattern);
-        //palette1.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush5);
+
         topFrame->setPalette(palette1);
         topFrame->setStyleSheet(QStringLiteral("background-color: #3c8dbc;"));
         topFrame->setFrameShape(QFrame::StyledPanel);

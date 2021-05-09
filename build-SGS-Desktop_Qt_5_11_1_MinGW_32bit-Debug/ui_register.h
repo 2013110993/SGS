@@ -106,6 +106,9 @@ public:
         Register->resize(803, 714);
         Register->setMinimumSize(QSize(0, 0));
         Register->setMaximumSize(QSize(16777215, 16777215));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/images/SGS LOGO.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Register->setWindowIcon(icon);
         Register->setStyleSheet(QStringLiteral("background-color:#ffffff;"));
         Header = new QGroupBox(Register);
         Header->setObjectName(QStringLiteral("Header"));
@@ -403,9 +406,9 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon;
-        icon.addFile(QStringLiteral(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cancelSignUpButton->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
+        cancelSignUpButton->setIcon(icon1);
 
         horizontalLayout_3->addWidget(cancelSignUpButton);
 
@@ -416,9 +419,9 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/icons White/Icons/White/Double Arrow RIGHT.png"), QSize(), QIcon::Normal, QIcon::Off);
-        signUpNextButton->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/icons White/Icons/White/Double Arrow RIGHT.png"), QSize(), QIcon::Normal, QIcon::Off);
+        signUpNextButton->setIcon(icon2);
         signUpNextButton->setAutoDefault(false);
 
         horizontalLayout_3->addWidget(signUpNextButton);
@@ -441,9 +444,9 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/icons White/Icons/White/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
-        filterSearchButton->setIcon(icon2);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/icons White/Icons/White/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
+        filterSearchButton->setIcon(icon3);
         filterSearchButton->setAutoDefault(false);
         layoutWidget1 = new QWidget(academicGroupBox);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
@@ -505,9 +508,9 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon3;
-        icon3.addFile(QStringLiteral(":/icons White/Icons/White/Single Arrow LEFT.png"), QSize(), QIcon::Normal, QIcon::Off);
-        backSignUpButton->setIcon(icon3);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/icons White/Icons/White/Single Arrow LEFT.png"), QSize(), QIcon::Normal, QIcon::Off);
+        backSignUpButton->setIcon(icon4);
 
         horizontalLayout->addWidget(backSignUpButton);
 
@@ -518,9 +521,9 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon4;
-        icon4.addFile(QStringLiteral(":/icons White/Icons/White/Add User.png"), QSize(), QIcon::Normal, QIcon::Off);
-        signUpButton->setIcon(icon4);
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/icons White/Icons/White/Add User.png"), QSize(), QIcon::Normal, QIcon::Off);
+        signUpButton->setIcon(icon5);
         signUpButton->setAutoDefault(false);
 
         horizontalLayout->addWidget(signUpButton);
@@ -564,7 +567,7 @@ public:
 
         retranslateUi(Register);
 
-        stackedWidgetRegister->setCurrentIndex(0);
+        stackedWidgetRegister->setCurrentIndex(1);
         signUpNextButton->setDefault(false);
         filterSearchButton->setDefault(false);
         signUpButton->setDefault(false);

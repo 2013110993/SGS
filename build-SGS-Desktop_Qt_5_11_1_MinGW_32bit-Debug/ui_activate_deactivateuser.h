@@ -69,6 +69,9 @@ public:
         if (Activate_DeactivateUser->objectName().isEmpty())
             Activate_DeactivateUser->setObjectName(QStringLiteral("Activate_DeactivateUser"));
         Activate_DeactivateUser->resize(341, 348);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/images/SGS LOGO.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Activate_DeactivateUser->setWindowIcon(icon);
         Footer = new QGroupBox(Activate_DeactivateUser);
         Footer->setObjectName(QStringLiteral("Footer"));
         Footer->setGeometry(QRect(0, 290, 341, 60));
@@ -155,9 +158,9 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon;
-        icon.addFile(QStringLiteral(":/icons White/Icons/White/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
-        accountLostResetButton->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/icons White/Icons/White/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
+        accountLostResetButton->setIcon(icon1);
         accountLostResetButton->setAutoDefault(false);
         stackedWidgetResetPassword->addWidget(page);
         page_2 = new QWidget();
@@ -244,9 +247,9 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/icons White/Icons/White/Single Arrow RIGHT.png"), QSize(), QIcon::Normal, QIcon::Off);
-        checkAnswerResetButton->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/icons White/Icons/White/Single Arrow RIGHT.png"), QSize(), QIcon::Normal, QIcon::Off);
+        checkAnswerResetButton->setIcon(icon2);
         checkAnswerResetButton->setAutoDefault(false);
 
         horizontalLayout_5->addWidget(checkAnswerResetButton);
@@ -258,7 +261,7 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        checkAnswerResetButton_2->setIcon(icon1);
+        checkAnswerResetButton_2->setIcon(icon2);
         checkAnswerResetButton_2->setAutoDefault(false);
 
         horizontalLayout_5->addWidget(checkAnswerResetButton_2);

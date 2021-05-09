@@ -15,6 +15,7 @@ INPUT(
 ./release\student.o
 ./release\activate_deactivateuser.o
 ./release\qrc_images.o
+./release\qrc_translation.o
 ./release\moc_forgotpassword.o
 ./release\moc_register.o
 ./release\moc_sgsapp.o
