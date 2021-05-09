@@ -96,6 +96,10 @@ private slots:
 
 
 
+    void on_AddProgramSequence_Button_clicked();
+
+    void on_studentSearchButton_clicked();
+
 private:
     Ui::sgsApp *ui;
     forgotPassword * forgot;
