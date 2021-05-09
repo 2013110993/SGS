@@ -23,6 +23,9 @@ sgsApp::sgsApp(QWidget *parent)
     //Default landing for Dashboard
     ui->stackedWidgetPages->setCurrentIndex(0);
 
+    //Default hide Add Course to admin page
+    ui->addCourseSequenceframe->hide();
+
     buttonClick = true;
     for (int var = 0; var < arraySize; ++var)
     {
@@ -851,7 +854,14 @@ void sgsApp::on_searchResultCourseCommentTableWidget_cellClicked(int row, int co
 
 }
 
+//Add program Sequence Page
+void sgsApp::on_AddProgramSequence_Button_clicked()
+{
+    ui->stackedWidgetPages->setCurrentIndex(5);
+}
+
+//  Enabel add course form fillout sequence prog and faculty
 void sgsApp::on_addCourseSequencepushButton_clicked()
 {
-    ui->addCourseSequenceframe->hide();
+    ui->addCourseSequenceframe->show();
 }

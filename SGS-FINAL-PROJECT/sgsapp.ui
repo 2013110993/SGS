@@ -26,7 +26,7 @@
    <string>Student Grading System</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset>
     <normaloff>:/images/logo.png</normaloff>:/images/logo.png</iconset>
   </property>
   <property name="styleSheet">
@@ -156,7 +156,7 @@ border-radius:5px;</string>
         <string>SIGN IN</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset>
          <normaloff>:/icons White/Icons/White/Single Arrow RIGHT.png</normaloff>:/icons White/Icons/White/Single Arrow RIGHT.png</iconset>
        </property>
       </widget>
@@ -176,7 +176,7 @@ border-radius:5px;</string>
         <string>SIGN UP</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset>
          <normaloff>:/icons White/Icons/White/Add User.png</normaloff>:/icons White/Icons/White/Add User.png</iconset>
        </property>
       </widget>
@@ -317,7 +317,7 @@ border-bottom-left-radius:0px;</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset>
          <normaloff>:/iconsGray/Icons/Gray/Eye ON.png</normaloff>:/iconsGray/Icons/Gray/Eye ON.png</iconset>
        </property>
       </widget>
@@ -494,7 +494,7 @@ border: 0;</string>
          <string>Dashboard</string>
         </property>
         <property name="icon">
-         <iconset resource="images.qrc">
+         <iconset>
           <normaloff>:/icons White/Icons/White/Dashboard.png</normaloff>:/icons White/Icons/White/Dashboard.png</iconset>
         </property>
        </widget>
@@ -532,7 +532,7 @@ border: 0;</string>
           <string>View Comments</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/commentWHITE.png</normaloff>:/icons White/Icons/White/commentWHITE.png</iconset>
          </property>
         </widget>
@@ -615,7 +615,7 @@ border: 0;</string>
           <string>User Account</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Add User.png</normaloff>:/icons White/Icons/White/Add User.png</iconset>
          </property>
         </widget>
@@ -641,7 +641,7 @@ border: 0;</string>
           <string>Disable/Activate User</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Eye OFF.png</normaloff>:/icons White/Icons/White/Eye OFF.png</iconset>
          </property>
         </widget>
@@ -667,7 +667,7 @@ border: 0;</string>
           <string>Change Password</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Edit.png</normaloff>:/icons White/Icons/White/Edit.png</iconset>
          </property>
         </widget>
@@ -690,7 +690,7 @@ border: 0;</string>
           <string>Program Sequence</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
          </property>
         </widget>
@@ -717,7 +717,7 @@ border: 0;</string>
          <string>Program Sequence</string>
         </property>
         <property name="icon">
-         <iconset resource="images.qrc">
+         <iconset>
           <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
         </property>
        </widget>
@@ -743,7 +743,7 @@ border: 0;</string>
          <string>View Courses</string>
         </property>
         <property name="icon">
-         <iconset resource="images.qrc">
+         <iconset>
           <normaloff>:/icons White/Icons/White/Student.png</normaloff>:/icons White/Icons/White/Student.png</iconset>
         </property>
        </widget>
@@ -766,7 +766,7 @@ border: 0;</string>
          <string>Add Course</string>
         </property>
         <property name="icon">
-         <iconset resource="images.qrc">
+         <iconset>
           <normaloff>:/icons White/Icons/White/Lecturer.png</normaloff>:/icons White/Icons/White/Lecturer.png</iconset>
         </property>
        </widget>
@@ -822,7 +822,7 @@ border:0;</string>
         <string> Logout</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset>
          <normaloff>:/icons White/Icons/White/Passsword.png</normaloff>:/icons White/Icons/White/Passsword.png</iconset>
        </property>
       </widget>
@@ -869,7 +869,7 @@ border:0;</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset>
          <normaloff>:/icons White/Icons/White/User.png</normaloff>:/icons White/Icons/White/User.png</iconset>
        </property>
       </widget>
@@ -1106,7 +1106,7 @@ border-radius: 5px;</string>
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="images.qrc">:/iconsGray/Icons/Gray/Student.png</pixmap>
+          <pixmap>:/iconsGray/Icons/Gray/Student.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -1210,7 +1210,7 @@ border-radius: 5px;</string>
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="images.qrc">:/iconsGray/Icons/Gray/Student.png</pixmap>
+          <pixmap>:/iconsGray/Icons/Gray/Student.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -1313,7 +1313,7 @@ border-radius: 5px;</string>
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="images.qrc">:/iconsGray/Icons/Gray/Student.png</pixmap>
+           <pixmap>:/iconsGray/Icons/Gray/Student.png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -1418,7 +1418,7 @@ border-radius: 5px;</string>
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="images.qrc">:/iconsGray/Icons/Gray/Student.png</pixmap>
+          <pixmap>:/iconsGray/Icons/Gray/Student.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -1521,7 +1521,7 @@ border-radius: 5px;</string>
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="images.qrc">:/iconsGray/Icons/Gray/Student.png</pixmap>
+           <pixmap>:/iconsGray/Icons/Gray/Student.png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -2118,7 +2118,7 @@ border-radius:5px;</string>
           <string>Update</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Edit.png</normaloff>:/icons White/Icons/White/Edit.png</iconset>
          </property>
         </widget>
@@ -2602,7 +2602,7 @@ border-bottom-right-radius:5px;</string>
           <string>Search</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
          </property>
          <property name="autoDefault">
@@ -2922,7 +2922,7 @@ border-radius:5px;</string>
           <string>Search</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
          </property>
          <property name="autoDefault">
@@ -2974,7 +2974,7 @@ border-radius:5px;</string>
           <string>Add</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
          </property>
          <property name="autoDefault">
@@ -3062,7 +3062,7 @@ border-radius:5px;</string>
           <string>Update</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Edit.png</normaloff>:/icons White/Icons/White/Edit.png</iconset>
          </property>
          <property name="autoDefault">
@@ -3231,7 +3231,7 @@ border-radius:5px;</string>
           <string>Add More</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Double Arrow LEFT.png</normaloff>:/icons White/Icons/White/Double Arrow LEFT.png</iconset>
          </property>
          <property name="autoDefault">
@@ -3475,7 +3475,7 @@ border-bottom-right-radius:5px;</string>
          <string>Search</string>
         </property>
         <property name="icon">
-         <iconset resource="images.qrc">
+         <iconset>
           <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
         </property>
         <property name="autoDefault">
@@ -3594,7 +3594,7 @@ padding: 5px;</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>10</pointsize>
+          <pointsize>12</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -3609,10 +3609,10 @@ border-bottom-left-radius:0px;
 border-bottom-right-radius:0px;</string>
         </property>
         <property name="text">
-         <string>Program Sequence</string>
+         <string>Draft:</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
        <widget class="QLabel" name="courseCommentsName_3">
@@ -3901,7 +3901,7 @@ border-radius:5px;</string>
           <string>Add Course</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Double Arrow RIGHT.png</normaloff>:/icons White/Icons/White/Double Arrow RIGHT.png</iconset>
          </property>
         </widget>
@@ -4192,7 +4192,7 @@ border-radius:5px;</string>
           <string>Add to Sequence</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
          </property>
         </widget>
@@ -4207,14 +4207,38 @@ border-radius:5px;</string>
          </rect>
         </property>
        </widget>
+       <widget class="QLabel" name="programSequenceProgramName_2">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>90</y>
+          <width>541</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#333;border:1px solid #999;background:#fff;</string>
+        </property>
+        <property name="text">
+         <string>Bachelor Degree (Information Technology)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>
    </widget>
   </widget>
  </widget>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
