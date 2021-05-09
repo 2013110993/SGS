@@ -25,6 +25,7 @@ public:
     void disableStudentFeature();
     void showFeature();
     void hideFeature();
+    void disableAdminFeature();
     void closeDatabase(databaseconnection &dbObj);
 
 signals:

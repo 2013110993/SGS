@@ -29,7 +29,6 @@ sgsApp::sgsApp(QWidget *parent)
         ArrayDeleteLater[var] = NULL;
     }
 
-    qDebug()<<"about to connect";
 
 
 }
@@ -38,8 +37,6 @@ sgsApp::~sgsApp()
 {
     closeDatabase(*(connection));
     delete connection;
-    //delete forgot;
-    //delete active_deactivate;
     delete ui;
 
 
@@ -51,30 +48,54 @@ void sgsApp::disableStudentFeature()
     ui->disableUser_Button->hide();
     ui->addUser_Button->hide();
     ui->addInstitution_Button->hide();
+    ui->AddLecturerCourse_Button->hide();
+    ui->AddProgramSequence_Button->hide();
+    ui->AddProgramSequenceFormTitle_2->hide();
+    ui->studentSearchButton->hide();
+    ui->studentSearchLineEdit->hide();
+
 }
 
 void sgsApp::hideFeature()
 {
-    ui->addCourse_Button->hide();
-    //ui->disableUser_Button->hide();
-    //ui->addUser_Button->hide();
-    //ui->addInstitution_Button->hide();
+
+    ui->addCourseFrame->hide();
+    ui->viewCourses_Button->hide();
+
+        ui->addCourse_Button->hide();
+        ui->AddProgramSequence_Button->hide();
+        ui->disableUser_Button->hide();
+        ui->addInstitution_Button->hide();
+
+
+}
+
+void sgsApp::disableAdminFeature()
+{
+
+        ui->AddLecturerCourse_Button->hide();
 
 }
 
 void sgsApp::closeDatabase(databaseconnection &dbObj)  //friend function
 {
-    //    dbObj.~databaseconnection();
-    //dbObj.disconnect();
     dbObj.disconnect();
 }
 
 void sgsApp::showFeature()
 {
+
+    ui->AddProgramSequence_Button->show();
+    ui->addCourseFrame->show();
+    ui->AddProgramSequenceFormTitle_2->show();
+    ui->studentSearchButton->show();
+    ui->studentSearchLineEdit->show();
     ui->addCourse_Button->show();
     ui->disableUser_Button->show();
     ui->addUser_Button->show();
     ui->addInstitution_Button->show();
+    ui->AddLecturerCourse_Button->show();
+    ui->viewCourses_Button->show();
 }
 
 void sgsApp::logout()
@@ -131,7 +152,6 @@ void sgsApp::on_signInButton_clicked()
     bool checking = connection->loginUser(username,password);
     qDebug()<<connection->getRole();
     int role =  connection->getRole().toInt();
-    qDebug()<<role;
     if (checking)
     {
         switch (role)
@@ -159,6 +179,7 @@ void sgsApp::on_signInButton_clicked()
             ui->stackedWidgetSGS->setCurrentIndex(1);
             ui->stackedWidgetPages->setCurrentIndex(0);
             showFeature();
+            disableAdminFeature();
             ui->userRoleLable->setText(username);
         }
             break;
@@ -309,17 +330,18 @@ void sgsApp::programSequenceList()
 
     QSqlQuery programCourses ;
     QStringList programSeqInfo;
-    qDebug()<<(connection->getRole() == "2" || connection->getRole() == "3" || !(ui->studentSearchLineEdit->text().isEmpty()));
 
     bool role = (connection->getRole() == "2" || connection->getRole() == "3");
-    bool works = ((role && !(ui->studentSearchLineEdit->text().isEmpty())) || !(connection->getRole() == "2" || connection->getRole() == "3" ) );
+    bool administration_LineIsnotEmpty = ((role && !(ui->studentSearchLineEdit->text().isEmpty())) || !(connection->getRole() == "2" || connection->getRole() == "3" ) );
 
+
+    //  bool role = (connection->getRole() == "2" || connection->getRole() == "3");
     if (role)
     {
-            ui->addCourseFrame->hide();
-             ui->AddProgramSequenceFormTitle_2->show();
-             ui->studentSearchButton->show();
-             ui->studentSearchLineEdit->show();
+        ui->addCourseFrame->hide();
+        ui->AddProgramSequenceFormTitle_2->show();
+        ui->studentSearchButton->show();
+        ui->studentSearchLineEdit->show();
     }
 
     else
@@ -348,7 +370,7 @@ void sgsApp::programSequenceList()
 
 
 
-    if (works)
+    if (administration_LineIsnotEmpty)
     {
 
 
@@ -470,7 +492,7 @@ void sgsApp::viewCoursesTable()
         QTableWidgetItem *credits = new QTableWidgetItem;
         QTableWidgetItem *semester = new QTableWidgetItem;
         QTableWidgetItem *status = new QTableWidgetItem;
-        QTableWidgetItem *comments = new QTableWidgetItem;
+        //        QTableWidgetItem *comments = new QTableWidgetItem;
 
         courseCode->setText(courses.value(0).toString());
         courseName->setText(courses.value(1).toString());
