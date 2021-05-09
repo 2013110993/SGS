@@ -295,6 +295,7 @@ void sgsApp::on_viewStudentProgramSequence_Button_clicked()
 //Generating the Program Sequence QTableWidget
 void sgsApp::programSequenceList()
 {
+    qDebug()<<connection->getRole();
     while (ui->programSequenceTableWidget->rowCount() > 0)
     {
         ui->programSequenceTableWidget->removeRow(0);

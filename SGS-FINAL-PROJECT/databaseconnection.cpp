@@ -769,6 +769,11 @@ QSqlQuery databaseconnection::getStudentsCourses()
     return course;
 }
 
+QSqlQuery databaseconnection::getStudentsCourses(QString)
+{
+
+}
+
 QSqlQuery databaseconnection::getLectureCourses(QString courseID)
 {
 
