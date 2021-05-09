@@ -41,6 +41,8 @@ private slots:
 
     void on_filterSearchButton_clicked();
 
+    void on_createLectureButton_clicked();
+
 private:
     Ui::Register *ui;
     student * user;

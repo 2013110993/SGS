@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>341</width>
-    <height>348</height>
+    <width>518</width>
+    <height>487</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,8 +21,8 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>290</y>
-     <width>341</width>
+     <y>430</y>
+     <width>521</width>
      <height>60</height>
     </rect>
    </property>
@@ -47,7 +47,7 @@
    <widget class="QWidget" name="layoutWidget1_7">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>130</x>
       <y>10</y>
       <width>251</width>
       <height>42</height>
@@ -75,8 +75,8 @@ border-radius:5px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>341</width>
-     <height>60</height>
+     <width>521</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -108,7 +108,7 @@ background-repeat: no-repeat;</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>100</x>
       <y>20</y>
       <width>341</width>
       <height>20</height>
@@ -145,423 +145,250 @@ background: none;</string>
     </property>
    </widget>
   </widget>
-  <widget class="QStackedWidget" name="stackedWidgetResetPassword">
+  <widget class="QPushButton" name="lectureSearchButton">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>70</y>
-     <width>321</width>
-     <height>211</height>
+     <x>350</x>
+     <y>80</y>
+     <width>111</width>
+     <height>31</height>
     </rect>
    </property>
-   <property name="currentIndex">
-    <number>1</number>
+   <property name="styleSheet">
+    <string notr="true">background:#292f38;
+color: #ffffff;
+border:0;
+height:30px;
+border-top-left-radius:0px;
+border-top-right-radius:5px;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:5px;</string>
    </property>
-   <widget class="QWidget" name="page">
-    <widget class="QGroupBox" name="accountTypegroupBox">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>30</y>
-       <width>301</width>
-       <height>141</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string>Account Type</string>
-     </property>
-     <widget class="QLineEdit" name="lecturerForgotFormLineEdit">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>80</y>
-        <width>281</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:#ffffff;
-color: #333;</string>
-      </property>
-      <property name="placeholderText">
-       <string>Lecturer Username</string>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="studentAccountTypeRadioButton">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>50</y>
-        <width>74</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Student</string>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="lecturerAccountTypeRadioButton">
-      <property name="geometry">
-       <rect>
-        <x>94</x>
-        <y>50</y>
-        <width>76</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Lecturer</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="studentIdForgotFormLineEdit">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>80</y>
-        <width>281</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:#ffffff;
-color: #333;</string>
-      </property>
-      <property name="placeholderText">
-       <string>Student ID #</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QPushButton" name="accountLostResetButton">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>180</y>
-       <width>121</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background:#fbaf01;
+   <property name="text">
+    <string>Search</string>
+   </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lectureSearchLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>80</y>
+     <width>301</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:#000;
+padding: 5px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Enter Full Lecture Name to find their Info.</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="userInfogroupBox">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>120</y>
+     <width>451</width>
+     <height>291</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>User Information</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>240</y>
+      <width>271</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QPushButton" name="checkAnswerResetButton">
+       <property name="styleSheet">
+        <string notr="true">background:#fbaf01;
 color: #ffffff;
 border:0;
 height:30px;
 border-radius:5px;</string>
-     </property>
-     <property name="text">
-      <string>Search Account</string>
-     </property>
-     <property name="icon">
-      <iconset resource="images.qrc">
-       <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
-     </property>
-     <property name="autoDefault">
-      <bool>false</bool>
-     </property>
-     <property name="default">
-      <bool>false</bool>
-     </property>
-    </widget>
+       </property>
+       <property name="text">
+        <string>Activate</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/icons White/Icons/White/Single Arrow RIGHT.png</normaloff>:/icons White/Icons/White/Single Arrow RIGHT.png</iconset>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="checkAnswerResetButton_2">
+       <property name="styleSheet">
+        <string notr="true">background:#fbaf01;
+color: #ffffff;
+border:0;
+height:30px;
+border-radius:5px;</string>
+       </property>
+       <property name="text">
+        <string>Deactivate</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/icons White/Icons/White/Single Arrow RIGHT.png</normaloff>:/icons White/Icons/White/Single Arrow RIGHT.png</iconset>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QWidget" name="page_2">
-    <widget class="QGroupBox" name="userInfogroupBox">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>301</width>
-       <height>171</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string>User Info</string>
-     </property>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>271</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
+   <widget class="QWidget" name="layoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>50</y>
+      <width>351</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QLabel" name="UserName">
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color:none;</string>
-           </property>
-           <property name="text">
-            <string>Name:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="UserName_label">
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color:none;</string>
-           </property>
-           <property name="text">
-            <string>User Name</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QLabel" name="RoleType">
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color:none;</string>
-           </property>
-           <property name="text">
-            <string>Role:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="RoleType_Label">
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color:none;</string>
-           </property>
-           <property name="text">
-            <string>Student ? Lecture</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QLabel" name="Activate">
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color:none;</string>
-           </property>
-           <property name="text">
-            <string>Activate:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="Activate_Label">
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color:none;</string>
-           </property>
-           <property name="text">
-            <string>Student ? Lecture</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>120</y>
-        <width>271</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_5">
-       <item>
-        <widget class="QPushButton" name="checkAnswerResetButton">
+        <widget class="QLabel" name="UserName">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">background:#fbaf01;
-color: #ffffff;
-border:0;
-height:30px;
-border-radius:5px;</string>
+          <string notr="true">background-color:none;</string>
          </property>
          <property name="text">
-          <string>Activate</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Single Arrow RIGHT.png</normaloff>:/icons White/Icons/White/Single Arrow RIGHT.png</iconset>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-         <property name="default">
-          <bool>false</bool>
+          <string>Name:</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="checkAnswerResetButton_2">
+        <widget class="QLabel" name="UserName_label">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">background:#fbaf01;
-color: #ffffff;
-border:0;
-height:30px;
-border-radius:5px;</string>
+          <string notr="true">background-color:none;</string>
          </property>
          <property name="text">
-          <string>Deactivate</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Single Arrow RIGHT.png</normaloff>:/icons White/Icons/White/Single Arrow RIGHT.png</iconset>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-         <property name="default">
-          <bool>false</bool>
+          <string>User Name</string>
          </property>
         </widget>
        </item>
       </layout>
-     </widget>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="page_3">
-    <widget class="QGroupBox" name="resetPasswordGroupBox">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>301</width>
-       <height>131</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string>Reset Password</string>
-     </property>
-     <widget class="QLineEdit" name="newPassword_forgotFormLineEdit">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>40</y>
-        <width>281</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:#ffffff;
-color: #333;</string>
-      </property>
-      <property name="placeholderText">
-       <string>(Enter new password)</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="confirmPassword_forgotFormLineEdit">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>80</y>
-        <width>281</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:#ffffff;
-color: #333;</string>
-      </property>
-      <property name="placeholderText">
-       <string>( Confirm password)</string>
-      </property>
-     </widget>
-    </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="RoleType">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:none;</string>
+         </property>
+         <property name="text">
+          <string>Role:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="RoleType_Label">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:none;</string>
+         </property>
+         <property name="text">
+          <string>Student ? Lecture</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="Activate">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:none;</string>
+         </property>
+         <property name="text">
+          <string>Activate:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="Activate_Label">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:none;</string>
+         </property>
+         <property name="text">
+          <string>Activate ? Deativate</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>

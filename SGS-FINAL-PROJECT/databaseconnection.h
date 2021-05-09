@@ -18,44 +18,48 @@ class databaseconnection
 public:
     databaseconnection();
     ~databaseconnection();
+
+    bool setStudentsCoursePerSequence(QSqlQuery);
+    bool setCourseGrade(QStringList);
+    bool loginUser(QString, QString);
+    bool isconnected();
+    bool isCourseGraded(QString);
+
     void connect();
     void disconnect();
     void searchAllStudent();
     void searchStudent();
     void insertNewUser(student &student);
-    bool loginUser(QString, QString);
     void logoutUser();
     void resetPassword();
     void suspendUser();
-    bool isconnected();
+    void setStudentSequence(QString,QString,int);
+    void addLectureCourse(QString,QString);\
+    void setUserId(QString);
+    void resetPassword(QString);
+    void setRole(QString);
+
     QSqlQuery updateQuestion();
     QSqlQuery getUserInfo(QString , int);
     QSqlQuery getLecturerInfo(QString);
     QSqlQuery getFaculty();
     QSqlQuery getProgramSequences(QString,QString);
     QSqlQuery getLectureName(QString);
-    void setStudentSequence(QString,QString,int);
-    bool setStudentsCoursePerSequence(QSqlQuery);
-    bool setCourseGrade(QStringList);
     QSqlQuery getStudentsCourses(); //overloaded function
     QSqlQuery getStudentsCourses(QString); //overloaded function
     QSqlQuery getLectureCourses(QString);
     QSqlQuery getCourses();
-    QString getUserId();
-    QStringList getComment(QString);
-    QStringList getSequenceName();
-    void addLectureCourse(QString,QString);
-    QSqlQuery getLectureCourse ();
-    void setUserId(QString);
-    void resetPassword(QString);
-    void setRole(QString);
-    QString getRole();
-
-
     QSqlQuery getLecturesByCourse(QString);
     QSqlQuery getComments(QString, QString);
+    QSqlQuery getLectureCourse ();
+    QSqlQuery activate_DeactivateLecture(QString);
 
-    bool isCourseGraded(QString);
+    QString getRole();
+    QString getUserId();
+
+    QStringList getComment(QString);
+    QStringList getSequenceName();
+
 
     //friend functions
     friend void closeDatabase(databaseconnection &);

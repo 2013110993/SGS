@@ -20,11 +20,8 @@ void databaseconnection::connect()
 {
     setConnection = QSqlDatabase::addDatabase("QMYSQL");
     setConnection.setHostName("127.0.0.1");
-   setConnection.setPort(3306);
-    //setConnection.setPort(3336);
-
-
-
+    setConnection.setPort(3306);
+    setConnection.setPort(3366);
     setConnection.setUserName("root");
     setConnection.setPassword("");
     setConnection.setDatabaseName("db");
@@ -58,7 +55,7 @@ void databaseconnection::disconnect()
     qDebug()<<"db removed";
     setConnection.close();  //close connection from mysql and qt
     QSqlDatabase::removeDatabase( QSqlDatabase::defaultConnection );  //remove database
-        return;
+    return;
 
 }
 
@@ -80,7 +77,7 @@ void databaseconnection::insertNewUser(student &student)
     if (roleID == "2")
         studentID = "";
     else
-    studentID = QString::number(id);
+        studentID = QString::number(id);
     QSqlQuery query;
     QTime ct = QTime::currentTime();
     QString currentTime =ct.toString();
@@ -198,7 +195,7 @@ void databaseconnection::insertNewUser(student &student)
             QSqlQuery insertLecuter;
 
             insertLecuter.prepare("INSERT INTO `lecturer`(`id`, `name`) "
-                           "VALUES (:id,:name)");
+                                  "VALUES (:id,:name)");
             insertLecuter.bindValue(":id", stuID);
             insertLecuter.bindValue(":name", FullName);
 
@@ -461,7 +458,7 @@ QSqlQuery databaseconnection::getLectureName(QString coureID)
                              "JOIN users ON lecturercourses.lecturerID = users.id "
                              "JOIN person ON users.personId = person.id "
                              "WHERE lecturercourses.courseID = '" + coureID +"' "
-                             "GROUP by lecturerid");
+                                                                             "GROUP by lecturerid");
 
 
 
@@ -592,7 +589,7 @@ bool databaseconnection::setCourseGrade(QStringList studentCourseGrade)
         }
         query1->prepare("UPDATE studentcourses "
                         "SET courseGrade= '" + grade + "', courseRating= '" + rating  + "' , isTransferred = " + QString::number( isTransfered) + " "//AKI2
-                                                                                                                                                  "WHERE studentid = "+ getUserId() + " AND courseid = '"+ courseID+"' " );
+                        "WHERE studentid = "+ getUserId() + " AND courseid = '"+ courseID+"' " );
 
         if(!(query1->exec()))
         {
@@ -998,6 +995,37 @@ QSqlQuery databaseconnection::getLectureCourse()
 
 }
 
+QSqlQuery databaseconnection::activate_DeactivateLecture(QString lectureName)
+{
+
+
+    QSqlQuery * query1 = new QSqlQuery;
+    query1->prepare("SELECT name, username, createdAt,roleId, activeuser FROM `lecturer` "
+                    "JOIN users on users.id = lecturer.id "
+                    " WHERE name like '" + lectureName + "%'" );
+
+    if(!(query1->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+    }
+
+    while (query1->next())
+    {
+        query1->value(0).toString();
+        query1->value(1).toString();
+        query1->value(2).toString();
+        query1->value(3).toString();
+        query1->value(4).toString();
+    }
+    QSqlQuery lectureInfo = * query1;
+
+    delete query1;
+    return lectureInfo;
+
+
+
+}
+
 void databaseconnection::setUserId(QString userId)
 {
     currentUserID = userId;
@@ -1033,7 +1061,7 @@ QSqlQuery databaseconnection::getLecturesByCourse(QString coureName)
                     "JOIN `lecturercourses` on `lecturercourses`.courseID = courses.courseCode "
                     "JOIN lecturer on lecturer.id = lecturercourses.lecturerID "
                     "WHERE courses.name Like '" + coureName + "%' "
-                    "");
+                                                              "");
 
     if(!(query1->exec()))
     {

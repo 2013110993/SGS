@@ -20,7 +20,8 @@ Register::Register(QWidget *parent) :
     ui->setupUi(this);
     ui->stackedWidgetRegister->setCurrentIndex(0);
     userRole=1;
-    // ui->middleName_RegFormLineEdit->hide();
+    ui->middleName_RegFormLineEdit->hide();
+    ui->createLectureButton->hide();
 }
 
 Register::~Register()
@@ -123,12 +124,16 @@ void Register::on_studentRadioButton_clicked()
 {
     ui->studentIdRegFormLineEdit->setPlaceholderText("Enter Student ID: ");
     userRole=1;
+    ui->signUpNextButton->show();
+    ui->createLectureButton->hide();
 }
 
 void Register::on_lecturerRadioButton_clicked()
 {
     ui->studentIdRegFormLineEdit->setPlaceholderText("Enter Lecture Username: ");
     userRole=2;
+    ui->signUpNextButton->hide();
+    ui->createLectureButton->show();
 }
 
 void Register::on_middleNamecheckBox_stateChanged(int arg1)
@@ -317,4 +322,9 @@ void Register::on_filterSearchButton_clicked()
     }
 
 
+}
+
+void Register::on_createLectureButton_clicked()
+{
+    on_signUpButton_clicked();
 }
