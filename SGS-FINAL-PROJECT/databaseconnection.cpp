@@ -1033,7 +1033,7 @@ QSqlQuery databaseconnection::getLecturesByCourse(QString coureName)
                     "JOIN `lecturercourses` on `lecturercourses`.courseID = courses.courseCode "
                     "JOIN lecturer on lecturer.id = lecturercourses.lecturerID "
                     "WHERE courses.name Like '" + coureName + "%' "
-                    "GROUP BY lecturer.name");
+                    "");
 
     if(!(query1->exec()))
     {
