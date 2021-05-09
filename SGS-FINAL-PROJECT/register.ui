@@ -111,7 +111,7 @@ background: none;</string>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="personInfo">
     <widget class="QGroupBox" name="userInfogroupBox_2">
@@ -585,7 +585,7 @@ background: transparent;
        <rect>
         <x>11</x>
         <y>42</y>
-        <width>75</width>
+        <width>291</width>
         <height>16</height>
        </rect>
       </property>
@@ -665,7 +665,7 @@ color: #333;</string>
        <rect>
         <x>11</x>
         <y>179</y>
-        <width>72</width>
+        <width>251</width>
         <height>16</height>
        </rect>
       </property>
@@ -713,7 +713,7 @@ color: #333;</string>
        <rect>
         <x>10</x>
         <y>110</y>
-        <width>111</width>
+        <width>271</width>
         <height>20</height>
        </rect>
       </property>
@@ -848,58 +848,88 @@ color: #333;</string>
      <property name="title">
       <string/>
      </property>
-     <widget class="QWidget" name="layoutWidget1_6">
+     <widget class="QPushButton" name="createLectureButton">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>10</y>
-        <width>251</width>
-        <height>42</height>
+        <x>370</x>
+        <y>20</y>
+        <width>111</width>
+        <height>30</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <widget class="QPushButton" name="cancelSignUpButton">
-         <property name="styleSheet">
-          <string notr="true">color: #ffffff;
-border:0;
-height:30px;
-border-radius:5px;</string>
-         </property>
-         <property name="text">
-          <string>Sign instead</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Passsword.png</normaloff>:/icons White/Icons/White/Passsword.png</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="signUpNextButton">
-         <property name="styleSheet">
-          <string notr="true">background:#fbaf01;
+      <property name="styleSheet">
+       <string notr="true">background:#fbaf01;
 color: #ffffff;
 border:0;
 height:30px;
 border-radius:5px;</string>
-         </property>
-         <property name="text">
-          <string>Next</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Double Arrow RIGHT.png</normaloff>:/icons White/Icons/White/Double Arrow RIGHT.png</iconset>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-         <property name="default">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      </property>
+      <property name="text">
+       <string>  Create</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/icons White/Icons/White/Add User.png</normaloff>:/icons White/Icons/White/Add User.png</iconset>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="cancelSignUpButton">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>16</y>
+        <width>94</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #ffffff;
+border:0;
+height:30px;
+border-radius:5px;</string>
+      </property>
+      <property name="text">
+       <string>Sign instead</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/icons White/Icons/White/Passsword.png</normaloff>:/icons White/Icons/White/Passsword.png</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="signUpNextButton">
+      <property name="geometry">
+       <rect>
+        <x>368</x>
+        <y>16</y>
+        <width>111</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:#fbaf01;
+color: #ffffff;
+border:0;
+height:30px;
+border-radius:5px;</string>
+      </property>
+      <property name="text">
+       <string>Next</string>
+      </property>
+      <property name="icon">
+       <iconset resource="images.qrc">
+        <normaloff>:/icons White/Icons/White/Double Arrow RIGHT.png</normaloff>:/icons White/Icons/White/Double Arrow RIGHT.png</iconset>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
      </widget>
     </widget>
    </widget>
@@ -1251,6 +1281,34 @@ border-radius:5px;</string>
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>firstName_RegFormLineEdit</tabstop>
+  <tabstop>middleNamecheckBox</tabstop>
+  <tabstop>middleName_RegFormLineEdit</tabstop>
+  <tabstop>lastName_RegFormLineEdit</tabstop>
+  <tabstop>userName_RegFormLineEdit</tabstop>
+  <tabstop>password_RegFormLineEdit</tabstop>
+  <tabstop>passwordConfirm_RegFormLineEdit</tabstop>
+  <tabstop>confirmEmail_RegFormLineEdit_2</tabstop>
+  <tabstop>email_RegFormLineEdit</tabstop>
+  <tabstop>studentIdRegFormLineEdit</tabstop>
+  <tabstop>question_1_comboBox</tabstop>
+  <tabstop>firtstQuestionAnswer_RegFormLineEdit</tabstop>
+  <tabstop>question_2_comboBox</tabstop>
+  <tabstop>secondQuestionAnswer_RegFormLineEdit</tabstop>
+  <tabstop>question_3_comboBox</tabstop>
+  <tabstop>thirdQuestionAnswer_RegFormLineEdit</tabstop>
+  <tabstop>cancelSignUpButton</tabstop>
+  <tabstop>signUpNextButton</tabstop>
+  <tabstop>studentRadioButton</tabstop>
+  <tabstop>lecturerRadioButton</tabstop>
+  <tabstop>filterSearchButton</tabstop>
+  <tabstop>facultyComboBox</tabstop>
+  <tabstop>programComboBox</tabstop>
+  <tabstop>backSignUpButton</tabstop>
+  <tabstop>signUpButton</tabstop>
+  <tabstop>programSequenceTable_registerTableWidget</tabstop>
+ </tabstops>
  <resources>
   <include location="images.qrc"/>
  </resources>
