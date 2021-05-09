@@ -24,6 +24,10 @@ sgsApp::sgsApp(QWidget *parent)
     ui->stackedWidgetPages->setCurrentIndex(0);
 
     buttonClick = true;
+    for (int var = 0; var < arraySize; ++var)
+    {
+        ArrayDeleteLater[var] = NULL;
+    }
 
     qDebug()<<"about to connect";
 
@@ -770,14 +774,28 @@ void sgsApp::on_addCourseButton_clicked()
 
 void sgsApp::courseComments(int row)
 {
+                delete  layout;
+ //  if (layout)
+    int var = 0;
+    while (ArrayDeleteLater[var] != NULL)
+    {
+        delete ArrayDeleteLater[var];
+        ArrayDeleteLater[var] = NULL;
+
+        var++;
+    }
+
+
 
 
     QString courseCode = ui->searchResultCourseCommentTableWidget->item(row,0)->text();
     QString lectureName =  ui->searchResultCourseCommentTableWidget->item(row,2)->text();
+    qDebug()<<courseCode <<"    "<<lectureName;
     //Creating a grid layout...
-    QGridLayout *layout=new QGridLayout(this);
+    layout=new QGridLayout(this);
     QSqlQuery comments = connection->getComments(courseCode,lectureName);
 
+    int counter = 0 ;
 
     //running a loop to add the desired components to the scroll area...
     for(;comments.next();)
@@ -789,16 +807,21 @@ void sgsApp::courseComments(int row)
 
 
         //Label for Comment Body
-        QLabel * comment = new QLabel(date+"\t\t\t\t\t\t\t" +rate+"\n\n" + commentText);
+        QLabel  * comment = new QLabel(date+"\t\t\t\t\t\t\t" +rate+"\n\n" + commentText);
         comment->setStyleSheet("font-size:12px;line-height:24px;background:#fff; border-radius: 5px; padding:15px; margin-bottom:20px; color:#999;");
 
 
         layout->addWidget(comment);
+        ArrayDeleteLater[counter] = comment;
+        counter ++ ;
+        //delete  comment;
     }
 
 
     //sets Layout to ScrollArea
     ui->scrollAreaWidgetContents->setLayout(layout);
+    clickedCell = true;
+
 
 
 
@@ -823,6 +846,7 @@ void sgsApp::on_commentSearchCourseCODEButton_clicked()
 
 void sgsApp::on_searchResultCourseCommentTableWidget_cellClicked(int row, int column)
 {    qDebug()<<"YOU click the cell";
+
      courseComments(row);
 
 }
