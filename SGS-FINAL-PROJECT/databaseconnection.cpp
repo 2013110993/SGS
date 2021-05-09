@@ -21,9 +21,8 @@ void databaseconnection::connect()
     setConnection = QSqlDatabase::addDatabase("QMYSQL");
     setConnection.setHostName("127.0.0.1");
     //setConnection.setPort(3306);
-
-    setConnection.setPort(3336);
-    //setConnection.setPort(3366);
+    //setConnection.setPort(3336);
+    setConnection.setPort(3366);
 
 
     setConnection.setUserName("root");
