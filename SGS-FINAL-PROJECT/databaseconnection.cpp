@@ -1263,8 +1263,52 @@ bool databaseconnection::activateUser(QString userName, int role)
 
 }
 
-bool databaseconnection::deactivateUser(QString lecture, int role)
+bool databaseconnection::deactivateUser(QString userName, int role)
 {
+    QSqlQuery * query1 = new QSqlQuery;
 
+    if (role == 2)
+    {
+        query1->prepare("UPDATE users SET activeUser = 0 "
+                        "WHERE username = '" + userName + "'");
+
+        if(!(query1->exec()))
+        {
+            QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+            delete query1;
+            return false;
+
+        }
+        else
+        {
+            delete query1;
+            return true;
+
+        }
+    }
+
+    else
+    {
+
+
+        query1->prepare("UPDATE users SET activeUser = 0 "
+                        " WHERE id = " + userName );
+
+        if(!(query1->exec()))
+        {
+            QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+            delete query1;
+            return false;
+
+        }
+        else
+        {
+            delete query1;
+            return true;
+
+        }
+
+
+    }
 }
 
