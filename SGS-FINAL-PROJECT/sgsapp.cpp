@@ -860,6 +860,7 @@ void sgsApp::on_searchResultCourseCommentTableWidget_cellClicked(int row, int co
 void sgsApp::on_AddProgramSequence_Button_clicked()
 {
     ui->stackedWidgetPages->setCurrentIndex(5);
+    rowCount = 0;
 }
 
 //  Enabel add course form fillout sequence prog and faculty
@@ -893,7 +894,7 @@ void sgsApp::on_addCourseSequencepushButton_clicked()
 void sgsApp::on_updateCourse_pushButton_3_clicked()
 {
 
-int rowCount = 0;
+
 
     for(int i=0; i<1;i++)
     {
@@ -912,6 +913,7 @@ int rowCount = 0;
     Credits->setText(credits);
     Prerequisites->setText(prerequisites);
 
+    ui->draftTableWidget->insertRow(rowCount);
      ui->draftTableWidget->setItem(rowCount,0,Code);
      ui->draftTableWidget->setItem(rowCount,1,CourseName);
      ui->draftTableWidget->setItem(rowCount,2,Credits);
@@ -919,6 +921,7 @@ int rowCount = 0;
 
 
      rowCount++;
+     qDebug()<<"ROW COUNT: "<<rowCount;
 
      //clear lineEdit after submit
      ui->addCodeLineEdit->clear();
