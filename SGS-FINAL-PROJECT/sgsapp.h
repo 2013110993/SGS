@@ -119,5 +119,6 @@ private:
     const int arraySize = 500;
     QLabel *ArrayDeleteLater[500 ];
     QGridLayout *layout;
+    int rowCount;
 };
 #endif // SGSAPP_H
