@@ -21,8 +21,8 @@ void databaseconnection::connect()
     setConnection = QSqlDatabase::addDatabase("QMYSQL");
     setConnection.setHostName("127.0.0.1");
     //setConnection.setPort(3306);
-    setConnection.setPort(3366);
-    //setConnection.setPort(3336);
+    //setConnection.setPort(3366);
+    setConnection.setPort(3336);
     setConnection.setUserName("root");
     setConnection.setPassword("");
     setConnection.setDatabaseName("db");
@@ -1002,66 +1002,15 @@ QStringList databaseconnection::activate_DeactivateLecture(QString lectureName, 
 
     QSqlQuery * query1 = new QSqlQuery;
 
-    if (role == 2)
+    if (role == 2)  //enters if user role is Lecturer
     {
 
-    query1->prepare(" SELECT  lecturer.name, username, createdAt,roleId, activeuser FROM `lecturer` "
+        //Implement query1 (lecturer table)
+        query1->prepare(" SELECT  lecturer.name, username, createdAt,roleId, activeuser FROM `lecturer` "
                     "JOIN users on users.id = lecturer.id "
                     "WHERE lecturer.name like '" + lectureName + "%'" );
 
-    if(!(query1->exec()))
-    {
-        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
-    }
-    else
-    {
-
-        QString date;
-        while (query1->next())
-        {
-            result.append(query1->value(0).toString());
-            result.append(query1->value(1).toString());
-            date = query1->value(2).toString();
-            QRegExp separator("-|\\s|:|T");
-            QStringList list = date.split(separator, QString::SkipEmptyParts);
-
-            QString dateFormat = " ";
-            dateFormat.append( list[2]);
-            dateFormat.append("/");
-            dateFormat.append(list[1]);
-            dateFormat.append("/");
-            dateFormat.append(list[0]);
-            dateFormat.append(" ");
-            dateFormat.append(list[3]);
-            dateFormat.append(":");
-            dateFormat.append(list[4]);
-            dateFormat.append(":");
-
-            QString ulgy = list[5];
-            QStringList newFormat = ulgy.split(".", QString::SkipEmptyParts);
-            QString sec = newFormat[0];
-            dateFormat.append(sec);
-            result.append(dateFormat);
-
-            result.append(query1->value(3).toString());
-            result.append(query1->value(4).toString());
-
-
-        }
-
-    }
-
-    return result;
-    }
-
-    else
-    {
-
-        query1->prepare("SELECT  firstname, lastName, username, createdAt,roleId, activeuser FROM `users` "
-                        "JOIN person on person.id = users.personId "
-                        "  WHERE users.id = " + lectureName  );
-
-        if(!(query1->exec()))
+        if(!(query1->exec()))       // Executes a warning message box if query1 is not found
         {
             QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
         }
@@ -1069,18 +1018,15 @@ QStringList databaseconnection::activate_DeactivateLecture(QString lectureName, 
         {
 
             QString date;
-            while (query1->next())
+            while (query1->next()) //enters if lecturer id was found
             {
-                QString fullName;
-                fullName.append(query1->value(0).toString());
-                fullName.append(query1->value(1).toString());
-
-                result.append(fullName);
-                result.append(query1->value(2).toString());
-                date = query1->value(3).toString();
+                result.append(query1->value(0).toString()); //append value 0 which is lecturer.name
+                result.append(query1->value(1).toString()); //append value 1 which is username
+                date = query1->value(2).toString();  //QString receives the value of the date that the account was created
                 QRegExp separator("-|\\s|:|T");
-                QStringList list = date.split(separator, QString::SkipEmptyParts);
+                QStringList list = date.split(separator, QString::SkipEmptyParts);  //splits the actual date and time by / and :
 
+                //formats the order of the date
                 QString dateFormat = " ";
                 dateFormat.append( list[2]);
                 dateFormat.append("/");
@@ -1093,14 +1039,76 @@ QStringList databaseconnection::activate_DeactivateLecture(QString lectureName, 
                 dateFormat.append(list[4]);
                 dateFormat.append(":");
 
+                //add seconds to the date format
                 QString ulgy = list[5];
                 QStringList newFormat = ulgy.split(".", QString::SkipEmptyParts);
                 QString sec = newFormat[0];
                 dateFormat.append(sec);
                 result.append(dateFormat);
 
-                result.append(query1->value(4).toString());
-                result.append(query1->value(5).toString());
+                result.append(query1->value(3).toString()); //append value 3 which is roleId
+                result.append(query1->value(4).toString()); //append value 4 which is activeuser
+
+
+            }
+
+        }
+
+        return result;
+    }
+
+    //enters if user role is student(role == 1)
+    else
+    {
+
+        //implement query1 (users table)
+        query1->prepare("SELECT  firstname, lastName, username, createdAt,roleId, activeuser FROM `users` "
+                        "JOIN person on person.id = users.personId "
+                        "  WHERE users.id = " + lectureName  );
+
+        if(!(query1->exec()))   //runs if there's no error encountered at exectution time
+        {
+            QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());   // Warning Message box implemented
+        }
+        else
+        {
+            //Qstring date will be used to store actual date of the creation of user account
+            QString date;
+            //enters while loop is user ID was found
+            while (query1->next())
+            {
+                QString fullName;  //will receive the full name of user
+                fullName.append(query1->value(0).toString()); //append value 0 which is firstName to string
+                fullName.append(query1->value(1).toString()); //append value 1 which is lastName to string
+
+                result.append(fullName);  //fullName appends first and last name together
+                result.append(query1->value(2).toString()); //appends username to string
+                date = query1->value(3).toString(); //date is assigned to createdAt
+                QRegExp separator("-|\\s|:|T");
+                QStringList list = date.split(separator, QString::SkipEmptyParts); //used to split the date by / and :
+
+                //display the actual format of the date
+                QString dateFormat = " ";
+                dateFormat.append( list[2]);
+                dateFormat.append("/");
+                dateFormat.append(list[1]);
+                dateFormat.append("/");
+                dateFormat.append(list[0]);
+                dateFormat.append(" ");
+                dateFormat.append(list[3]);
+                dateFormat.append(":");
+                dateFormat.append(list[4]);
+                dateFormat.append(":");
+
+                //creates the seconds for the date format
+                QString ulgy = list[5];
+                QStringList newFormat = ulgy.split(".", QString::SkipEmptyParts);
+                QString sec = newFormat[0];
+                dateFormat.append(sec);
+                result.append(dateFormat);
+
+                result.append(query1->value(4).toString()); //append roleId to string
+                result.append(query1->value(5).toString()); //append activeuser to string
 
 
             }
