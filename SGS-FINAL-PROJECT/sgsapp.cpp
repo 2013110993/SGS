@@ -1036,3 +1036,8 @@ void sgsApp::on_studentSearchButton_clicked()
     programSequenceList();
     ui->stackedWidgetPages->setCurrentIndex(2);
 }
+
+void sgsApp::on_saveSequencepushButton_clicked()
+{
+
+}
