@@ -118,57 +118,59 @@ void Register::on_signUpNextButton_clicked()
 
 void Register::on_backSignUpButton_clicked()
 {
-    ui->stackedWidgetRegister->setCurrentIndex( ui->stackedWidgetRegister->currentIndex() -1 );
+    ui->stackedWidgetRegister->setCurrentIndex( ui->stackedWidgetRegister->currentIndex() -1 ); //go to previous widget
 }
 
-//Accout Types Radio Buttons
+//slot for the Student Radio Buttons
 void Register::on_studentRadioButton_clicked()
 {
-    ui->studentIdRegFormLineEdit->setPlaceholderText("Enter Student ID: ");
-    userRole=1;
-    ui->signUpNextButton->show();
-    ui->createLectureButton->hide();
+    ui->studentIdRegFormLineEdit->setPlaceholderText("Enter Student ID: "); //sets a place holder for the student user
+    userRole=1;   //userRole will be assgned to 1 (represents students)
+    ui->signUpNextButton->show();  //shows the sign up button
+    ui->createLectureButton->hide();  //hides the lecture button
 }
 
+//slot for the Lecturer Radio Buttons
 void Register::on_lecturerRadioButton_clicked()
 {
-    ui->studentIdRegFormLineEdit->setPlaceholderText("Enter Lecture Username: ");
+    ui->studentIdRegFormLineEdit->setPlaceholderText("Enter Lecture Username: ");  //sets a place holder for the lecturer line edit
     userRole=2;
-    ui->signUpNextButton->hide();
-    ui->createLectureButton->show();
+    ui->signUpNextButton->hide();  //hides sign up button for student
+    ui->createLectureButton->show();  //shows lecturer button
 }
 
+//slot for the _middleNamecheckBox Radio Buttons
 void Register::on_middleNamecheckBox_stateChanged(int arg1)
 {
     if(arg1)
     {
-        ui->middleName_RegFormLineEdit->show();
+        ui->middleName_RegFormLineEdit->show(); //show middle name line edit
     }
     else{
-        ui->middleName_RegFormLineEdit->hide();
+        ui->middleName_RegFormLineEdit->hide(); //hides the middle name line edit
     }
 }
 
+// slot for signUpButton()
 void Register::on_signUpButton_clicked()
 {
 
-    int currIndex = ui->programComboBox->currentIndex();       // program combo box
+    int currIndex = ui->programComboBox->currentIndex();   // program combo box
     int currIndex2 = ui->facultyComboBox->currentIndex();  //faculty combo box
     {
-
-
-        QString f = ui->firstName_RegFormLineEdit->text();
-        QString l = ui->lastName_RegFormLineEdit->text();
-        QString m =  ui->userName_RegFormLineEdit->text();
+       //built a list of Qstrings that will recieve the user's info
+        QString f = ui->firstName_RegFormLineEdit->text();  // f is receeives user's first name
+        QString l = ui->lastName_RegFormLineEdit->text();   // l recieves user's last name
+        QString m =  ui->userName_RegFormLineEdit->text();  // m receives user's username
         QString u =  ui->userName_RegFormLineEdit->text();
-        QString e =  ui->email_RegFormLineEdit->text();
-        QString p =  ui->password_RegFormLineEdit->text();
-        QString id =  ui->studentIdRegFormLineEdit->text();
+        QString e =  ui->email_RegFormLineEdit->text();     // e recieves user's email address
+        QString p =  ui->password_RegFormLineEdit->text();  // p receives user's password
+        QString id =  ui->studentIdRegFormLineEdit->text(); // id receives user's student id
         int ID ;
-        if (userRole == 2)
-            ID = 0;
+        if (userRole == 2)  //checks if userRole is 2(lecturer)
+            ID = 0;  //id will be assigned to 0
         else
-        ID = id.toInt();
+        ID = id.toInt(); //converts id which is a line edit, to a integer and pass its value to integer ID
 
         QString ques1 =  ui->firtstQuestionAnswer_RegFormLineEdit->text();
         QString ques2 =  ui->secondQuestionAnswer_RegFormLineEdit->text();
