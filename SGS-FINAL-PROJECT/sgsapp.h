@@ -27,8 +27,10 @@ public:
     void hideFeature();
     void closeDatabase(databaseconnection &dbObj);
 
+    friend void ActivateDeactivateUserAccount(databaseconnection *); //friend function with activate_Deactivateuser class
+
 signals:
-     void sendQuestion(QSqlQuery);
+    void sendQuestion(QSqlQuery);
 
 private slots:
     void on_signUpButton_clicked();

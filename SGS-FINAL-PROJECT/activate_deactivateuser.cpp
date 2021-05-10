@@ -8,6 +8,11 @@ Activate_DeactivateUser::Activate_DeactivateUser(QWidget *parent) :
     ui->setupUi(this);
 }
 
+void Activate_DeactivateUser::ActivateDeactivateUserAccount(databaseconnection *) //friend function with sgsapp class
+{
+
+}
+
 Activate_DeactivateUser::~Activate_DeactivateUser()
 {
     delete ui;

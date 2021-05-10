@@ -1,6 +1,6 @@
 #ifndef ACTIVATE_DEACTIVATEUSER_H
 #define ACTIVATE_DEACTIVATEUSER_H
-
+#include "databaseconnection.h"
 #include <QDialog>
 
 namespace Ui {
@@ -13,6 +13,9 @@ class Activate_DeactivateUser : public QDialog
 
 public:
     explicit Activate_DeactivateUser(QWidget *parent = nullptr);
+
+    void ActivateDeactivateUserAccount(databaseconnection *); //friend function with sgsapp class
+
     ~Activate_DeactivateUser();
 
 private slots:
