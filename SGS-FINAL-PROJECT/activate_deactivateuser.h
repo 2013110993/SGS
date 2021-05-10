@@ -18,6 +18,8 @@ public:
 private slots:
     void on_accountLostResetButton_clicked();
 
+    void on_lectureSearchButton_clicked();
+
 private:
     Ui::Activate_DeactivateUser *ui;
 };

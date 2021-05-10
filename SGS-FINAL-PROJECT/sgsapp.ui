@@ -26,7 +26,7 @@
    <string>Student Grading System</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset>
     <normaloff>:/images/logo.png</normaloff>:/images/logo.png</iconset>
   </property>
   <property name="styleSheet">
@@ -156,7 +156,7 @@ border-radius:5px;</string>
         <string>SIGN IN</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset>
          <normaloff>:/icons White/Icons/White/Single Arrow RIGHT.png</normaloff>:/icons White/Icons/White/Single Arrow RIGHT.png</iconset>
        </property>
       </widget>
@@ -176,7 +176,7 @@ border-radius:5px;</string>
         <string>SIGN UP</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset>
          <normaloff>:/icons White/Icons/White/Add User.png</normaloff>:/icons White/Icons/White/Add User.png</iconset>
        </property>
       </widget>
@@ -317,7 +317,7 @@ border-bottom-left-radius:0px;</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset>
          <normaloff>:/iconsGray/Icons/Gray/Eye ON.png</normaloff>:/iconsGray/Icons/Gray/Eye ON.png</iconset>
        </property>
       </widget>
@@ -478,9 +478,9 @@ border: 0;</string>
        <widget class="QPushButton" name="dashboard_pushButton">
         <property name="geometry">
          <rect>
-          <x>-30</x>
+          <x>20</x>
           <y>40</y>
-          <width>161</width>
+          <width>86</width>
           <height>16</height>
          </rect>
         </property>
@@ -494,7 +494,7 @@ border: 0;</string>
          <string>Dashboard</string>
         </property>
         <property name="icon">
-         <iconset resource="images.qrc">
+         <iconset>
           <normaloff>:/icons White/Icons/White/Dashboard.png</normaloff>:/icons White/Icons/White/Dashboard.png</iconset>
         </property>
        </widget>
@@ -513,9 +513,9 @@ border: 0;</string>
         <widget class="QPushButton" name="viewComments_Button">
          <property name="geometry">
           <rect>
-           <x>-30</x>
+           <x>20</x>
            <y>50</y>
-           <width>191</width>
+           <width>121</width>
            <height>16</height>
           </rect>
          </property>
@@ -532,7 +532,7 @@ border: 0;</string>
           <string>View Comments</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/commentWHITE.png</normaloff>:/icons White/Icons/White/commentWHITE.png</iconset>
          </property>
         </widget>
@@ -552,9 +552,9 @@ border: 0;</string>
         <widget class="QPushButton" name="addInstitution_Button">
          <property name="geometry">
           <rect>
-           <x>-20</x>
+           <x>10</x>
            <y>70</y>
-           <width>171</width>
+           <width>81</width>
            <height>16</height>
           </rect>
          </property>
@@ -574,10 +574,10 @@ border: 0;</string>
         <widget class="QPushButton" name="addCourse_Button">
          <property name="geometry">
           <rect>
-           <x>-10</x>
+           <x>10</x>
            <y>100</y>
-           <width>131</width>
-           <height>20</height>
+           <width>64</width>
+           <height>16</height>
           </rect>
          </property>
          <property name="toolTip">
@@ -596,10 +596,10 @@ border: 0;</string>
         <widget class="QPushButton" name="addUser_Button">
          <property name="geometry">
           <rect>
-           <x>-30</x>
+           <x>11</x>
            <y>161</y>
-           <width>181</width>
-           <height>20</height>
+           <width>102</width>
+           <height>16</height>
           </rect>
          </property>
          <property name="toolTip">
@@ -615,17 +615,17 @@ border: 0;</string>
           <string>User Account</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Add User.png</normaloff>:/icons White/Icons/White/Add User.png</iconset>
          </property>
         </widget>
         <widget class="QPushButton" name="disableUser_Button">
          <property name="geometry">
           <rect>
-           <x>-30</x>
+           <x>11</x>
            <y>191</y>
-           <width>211</width>
-           <height>20</height>
+           <width>151</width>
+           <height>16</height>
           </rect>
          </property>
          <property name="toolTip">
@@ -641,17 +641,17 @@ border: 0;</string>
           <string>Disable/Activate User</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Eye OFF.png</normaloff>:/icons White/Icons/White/Eye OFF.png</iconset>
          </property>
         </widget>
         <widget class="QPushButton" name="changePassword_Button">
          <property name="geometry">
           <rect>
-           <x>-20</x>
+           <x>10</x>
            <y>40</y>
-           <width>181</width>
-           <height>20</height>
+           <width>130</width>
+           <height>16</height>
           </rect>
          </property>
          <property name="toolTip">
@@ -667,17 +667,17 @@ border: 0;</string>
           <string>Change Password</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Edit.png</normaloff>:/icons White/Icons/White/Edit.png</iconset>
          </property>
         </widget>
         <widget class="QPushButton" name="AddProgramSequence_Button">
          <property name="geometry">
           <rect>
-           <x>-30</x>
+           <x>10</x>
            <y>130</y>
-           <width>211</width>
-           <height>20</height>
+           <width>111</width>
+           <height>16</height>
           </rect>
          </property>
          <property name="layoutDirection">
@@ -690,7 +690,7 @@ border: 0;</string>
           <string>Program Sequence</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
          </property>
         </widget>
@@ -698,9 +698,9 @@ border: 0;</string>
        <widget class="QPushButton" name="viewStudentProgramSequence_Button">
         <property name="geometry">
          <rect>
-          <x>-30</x>
+          <x>10</x>
           <y>110</y>
-          <width>191</width>
+          <width>141</width>
           <height>16</height>
          </rect>
         </property>
@@ -717,16 +717,16 @@ border: 0;</string>
          <string>Program Sequence</string>
         </property>
         <property name="icon">
-         <iconset resource="images.qrc">
+         <iconset>
           <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
         </property>
        </widget>
        <widget class="QPushButton" name="viewCourses_Button">
         <property name="geometry">
          <rect>
-          <x>-30</x>
+          <x>0</x>
           <y>150</y>
-          <width>171</width>
+          <width>121</width>
           <height>16</height>
          </rect>
         </property>
@@ -743,16 +743,16 @@ border: 0;</string>
          <string>View Courses</string>
         </property>
         <property name="icon">
-         <iconset resource="images.qrc">
+         <iconset>
           <normaloff>:/icons White/Icons/White/Student.png</normaloff>:/icons White/Icons/White/Student.png</iconset>
         </property>
        </widget>
        <widget class="QPushButton" name="AddLecturerCourse_Button">
         <property name="geometry">
          <rect>
-          <x>-30</x>
+          <x>10</x>
           <y>190</y>
-          <width>161</width>
+          <width>101</width>
           <height>16</height>
          </rect>
         </property>
@@ -766,7 +766,7 @@ border: 0;</string>
          <string>Add Course</string>
         </property>
         <property name="icon">
-         <iconset resource="images.qrc">
+         <iconset>
           <normaloff>:/icons White/Icons/White/Lecturer.png</normaloff>:/icons White/Icons/White/Lecturer.png</iconset>
         </property>
        </widget>
@@ -822,7 +822,7 @@ border:0;</string>
         <string> Logout</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset>
          <normaloff>:/icons White/Icons/White/Passsword.png</normaloff>:/icons White/Icons/White/Passsword.png</iconset>
        </property>
       </widget>
@@ -869,7 +869,7 @@ border:0;</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset>
          <normaloff>:/icons White/Icons/White/User.png</normaloff>:/icons White/Icons/White/User.png</iconset>
        </property>
       </widget>
@@ -956,7 +956,7 @@ background-repeat: no-repeat;</string>
        <string notr="true">border: 1px</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="DashboardPage">
        <widget class="QFrame" name="pageTitleCourseListPage_3">
@@ -1106,7 +1106,7 @@ border-radius: 5px;</string>
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="images.qrc">:/iconsGray/Icons/Gray/Student.png</pixmap>
+          <pixmap>:/iconsGray/Icons/Gray/Student.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -1210,7 +1210,7 @@ border-radius: 5px;</string>
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="images.qrc">:/iconsGray/Icons/Gray/Student.png</pixmap>
+          <pixmap>:/iconsGray/Icons/Gray/Student.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -1313,7 +1313,7 @@ border-radius: 5px;</string>
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="images.qrc">:/iconsGray/Icons/Gray/Student.png</pixmap>
+           <pixmap>:/iconsGray/Icons/Gray/Student.png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -1418,7 +1418,7 @@ border-radius: 5px;</string>
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="images.qrc">:/iconsGray/Icons/Gray/Student.png</pixmap>
+          <pixmap>:/iconsGray/Icons/Gray/Student.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -1521,7 +1521,7 @@ border-radius: 5px;</string>
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="images.qrc">:/iconsGray/Icons/Gray/Student.png</pixmap>
+           <pixmap>:/iconsGray/Icons/Gray/Student.png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -1947,7 +1947,7 @@ border-bottom-right-radius:0px;</string>
           <x>10</x>
           <y>130</y>
           <width>1151</width>
-          <height>381</height>
+          <height>411</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -2018,7 +2018,7 @@ border-bottom-right-radius:0px;</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>560</y>
+          <y>550</y>
           <width>1151</width>
           <height>261</height>
          </rect>
@@ -2062,6 +2062,42 @@ border-bottom-right-radius:0px;</string>
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
+        <widget class="QLineEdit" name="addCourseLecturer_RegFormLineEdit">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>1000</x>
+           <y>220</y>
+           <width>151</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:#ffffff;
+color: #333;
+border:0px;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Lecturer</string>
+         </property>
+        </widget>
         <widget class="QPushButton" name="updateCourse_pushButton">
          <property name="geometry">
           <rect>
@@ -2082,7 +2118,7 @@ border-radius:5px;</string>
           <string>Update</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Edit.png</normaloff>:/icons White/Icons/White/Edit.png</iconset>
          </property>
         </widget>
@@ -2494,6 +2530,88 @@ border:0px;</string>
           </item>
          </layout>
         </widget>
+        <widget class="QLabel" name="AddProgramSequenceFormTitle_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>1151</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#70808c;
+color:#fff;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:0px;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="studentSearchLineEdit">
+         <property name="geometry">
+          <rect>
+           <x>730</x>
+           <y>10</y>
+           <width>301</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#000;
+padding: 5px;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Search Student to view Program Sequence</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="studentSearchButton">
+         <property name="geometry">
+          <rect>
+           <x>1030</x>
+           <y>10</y>
+           <width>111</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#292f38;
+color: #ffffff;
+border:0;
+height:30px;
+border-top-left-radius:0px;
+border-top-right-radius:5px;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:5px;</string>
+         </property>
+         <property name="text">
+          <string>Search</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
+         </property>
+         <property name="autoDefault">
+          <bool>false</bool>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+        </widget>
        </widget>
        <widget class="QFrame" name="pageTitleCourseListPage_2">
         <property name="geometry">
@@ -2547,88 +2665,6 @@ border:0px;</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
-       </widget>
-       <widget class="QLabel" name="AddProgramSequenceFormTitle_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>530</y>
-          <width>1151</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:#70808c;
-color:#fff;
-border-bottom-left-radius:0px;
-border-bottom-right-radius:0px;</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="studentSearchButton">
-        <property name="geometry">
-         <rect>
-          <x>1040</x>
-          <y>540</y>
-          <width>111</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:#292f38;
-color: #ffffff;
-border:0;
-height:30px;
-border-top-left-radius:0px;
-border-top-right-radius:5px;
-border-bottom-left-radius:0px;
-border-bottom-right-radius:5px;</string>
-        </property>
-        <property name="text">
-         <string>Search</string>
-        </property>
-        <property name="icon">
-         <iconset resource="images.qrc">
-          <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
-        </property>
-        <property name="autoDefault">
-         <bool>false</bool>
-        </property>
-        <property name="default">
-         <bool>false</bool>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="studentSearchLineEdit">
-        <property name="geometry">
-         <rect>
-          <x>740</x>
-          <y>540</y>
-          <width>301</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color:#000;
-padding: 5px;</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="placeholderText">
-         <string>Search Student to view Program Sequence</string>
-        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="AddCourse">
@@ -2886,7 +2922,7 @@ border-radius:5px;</string>
           <string>Search</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
          </property>
          <property name="autoDefault">
@@ -2938,7 +2974,7 @@ border-radius:5px;</string>
           <string>Add</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
          </property>
          <property name="autoDefault">
@@ -3026,7 +3062,7 @@ border-radius:5px;</string>
           <string>Update</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Edit.png</normaloff>:/icons White/Icons/White/Edit.png</iconset>
          </property>
          <property name="autoDefault">
@@ -3195,7 +3231,7 @@ border-radius:5px;</string>
           <string>Add More</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Double Arrow LEFT.png</normaloff>:/icons White/Icons/White/Double Arrow LEFT.png</iconset>
          </property>
          <property name="autoDefault">
@@ -3439,7 +3475,7 @@ border-bottom-right-radius:5px;</string>
          <string>Search</string>
         </property>
         <property name="icon">
-         <iconset resource="images.qrc">
+         <iconset>
           <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
         </property>
         <property name="autoDefault">
@@ -3550,15 +3586,15 @@ padding: 5px;</string>
        <widget class="QLabel" name="courseCommentsName_2">
         <property name="geometry">
          <rect>
-          <x>670</x>
+          <x>620</x>
           <y>50</y>
-          <width>491</width>
+          <width>541</width>
           <height>41</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <pointsize>10</pointsize>
+          <pointsize>12</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -3573,10 +3609,10 @@ border-bottom-left-radius:0px;
 border-bottom-right-radius:0px;</string>
         </property>
         <property name="text">
-         <string>All Program Sequence</string>
+         <string>Draft:</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
        <widget class="QLabel" name="courseCommentsName_3">
@@ -3584,7 +3620,7 @@ border-bottom-right-radius:0px;</string>
          <rect>
           <x>10</x>
           <y>50</y>
-          <width>601</width>
+          <width>581</width>
           <height>41</height>
          </rect>
         </property>
@@ -3616,8 +3652,8 @@ border-bottom-right-radius:0px;</string>
          <rect>
           <x>10</x>
           <y>90</y>
-          <width>601</width>
-          <height>211</height>
+          <width>581</width>
+          <height>151</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -3646,7 +3682,7 @@ border:0px;</string>
           <string>ID:</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="idLineEdit">
+        <widget class="QLineEdit" name="LineEdit">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -3654,7 +3690,7 @@ border:0px;</string>
           <rect>
            <x>20</x>
            <y>40</y>
-           <width>151</width>
+           <width>41</width>
            <height>30</height>
           </rect>
          </property>
@@ -3680,7 +3716,7 @@ border-bottom:1px dotted #999;</string>
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Program Sequence ID #</string>
+          <string>ID</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="idLineEdit_2">
@@ -3689,7 +3725,7 @@ border-bottom:1px dotted #999;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>200</x>
+           <x>90</x>
            <y>40</y>
            <width>151</width>
            <height>30</height>
@@ -3720,10 +3756,10 @@ border-bottom:1px dotted #999;</string>
           <string>Sequence Name</string>
          </property>
         </widget>
-        <widget class="QLabel" name="idTagLable_2">
+        <widget class="QLabel" name="sequenceNameTagLable_2">
          <property name="geometry">
           <rect>
-           <x>200</x>
+           <x>90</x>
            <y>20</y>
            <width>161</width>
            <height>18</height>
@@ -3743,7 +3779,7 @@ border:0px;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>380</x>
+           <x>260</x>
            <y>40</y>
            <width>201</width>
            <height>30</height>
@@ -3774,10 +3810,10 @@ border-bottom:1px dotted #999;</string>
           <string>Sequence Name</string>
          </property>
         </widget>
-        <widget class="QLabel" name="idTagLable_3">
+        <widget class="QLabel" name="facultyTagLable">
          <property name="geometry">
           <rect>
-           <x>380</x>
+           <x>260</x>
            <y>20</y>
            <width>161</width>
            <height>18</height>
@@ -3797,9 +3833,9 @@ border:0px;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>120</y>
-           <width>151</width>
+           <x>490</x>
+           <y>40</y>
+           <width>81</width>
            <height>30</height>
           </rect>
          </property>
@@ -3825,15 +3861,15 @@ border-bottom:1px dotted #999;</string>
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Sequence Effective Semester</string>
+          <string>Effective Year</string>
          </property>
         </widget>
-        <widget class="QLabel" name="idTagLable_4">
+        <widget class="QLabel" name="yearTagLable">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>100</y>
-           <width>161</width>
+           <x>490</x>
+           <y>20</y>
+           <width>71</width>
            <height>18</height>
           </rect>
          </property>
@@ -3845,11 +3881,11 @@ border:0px;</string>
           <string>Year:</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="updateCourse_pushButton_2">
+        <widget class="QPushButton" name="addCourseSequencepushButton">
          <property name="geometry">
           <rect>
-           <x>480</x>
-           <y>170</y>
+           <x>470</x>
+           <y>100</y>
            <width>101</width>
            <height>32</height>
           </rect>
@@ -3862,53 +3898,21 @@ height:30px;
 border-radius:5px;</string>
          </property>
          <property name="text">
-          <string>Continue</string>
+          <string>Add Course</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Double Arrow RIGHT.png</normaloff>:/icons White/Icons/White/Double Arrow RIGHT.png</iconset>
          </property>
         </widget>
        </widget>
-       <widget class="QLabel" name="courseCommentsName_4">
+       <widget class="QFrame" name="addCourseSequenceframe">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>350</y>
-          <width>601</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">padding-left:5px;
-background:#70808c;
-color:#fff;
-border-top-left-radius:5px;
-border-top-right-radius:5px;
-border-bottom-left-radius:0px;
-border-bottom-right-radius:0px;</string>
-        </property>
-        <property name="text">
-         <string>Create New</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QFrame" name="frame_5">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>390</y>
-          <width>601</width>
-          <height>211</height>
+          <y>270</y>
+          <width>581</width>
+          <height>151</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -3924,7 +3928,7 @@ border-bottom-right-radius:0px;</string>
          <property name="geometry">
           <rect>
            <x>20</x>
-           <y>20</y>
+           <y>70</y>
            <width>161</width>
            <height>18</height>
           </rect>
@@ -3934,7 +3938,7 @@ border-bottom-right-radius:0px;</string>
 border:0px;</string>
          </property>
          <property name="text">
-          <string>ID:</string>
+          <string>Course Code:</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="idLineEdit_5">
@@ -3944,8 +3948,8 @@ border:0px;</string>
          <property name="geometry">
           <rect>
            <x>20</x>
-           <y>40</y>
-           <width>151</width>
+           <y>90</y>
+           <width>61</width>
            <height>30</height>
           </rect>
          </property>
@@ -3971,7 +3975,7 @@ border-bottom:1px dotted #999;</string>
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Program Sequence ID #</string>
+          <string>CODE</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="idLineEdit_6">
@@ -3980,9 +3984,9 @@ border-bottom:1px dotted #999;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>200</x>
-           <y>40</y>
-           <width>151</width>
+           <x>120</x>
+           <y>90</y>
+           <width>161</width>
            <height>30</height>
           </rect>
          </property>
@@ -4008,15 +4012,15 @@ border-bottom:1px dotted #999;</string>
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Sequence Name</string>
+          <string>Course Name</string>
          </property>
         </widget>
         <widget class="QLabel" name="idTagLable_6">
          <property name="geometry">
           <rect>
-           <x>200</x>
-           <y>20</y>
-           <width>161</width>
+           <x>120</x>
+           <y>70</y>
+           <width>141</width>
            <height>18</height>
           </rect>
          </property>
@@ -4025,7 +4029,7 @@ border-bottom:1px dotted #999;</string>
 border:0px;</string>
          </property>
          <property name="text">
-          <string>Program Sequence Name:</string>
+          <string>Course Name:</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="idLineEdit_7">
@@ -4034,9 +4038,9 @@ border:0px;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>380</x>
-           <y>40</y>
-           <width>201</width>
+           <x>310</x>
+           <y>90</y>
+           <width>41</width>
            <height>30</height>
           </rect>
          </property>
@@ -4062,15 +4066,15 @@ border-bottom:1px dotted #999;</string>
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Sequence Name</string>
+          <string>Credits</string>
          </property>
         </widget>
         <widget class="QLabel" name="idTagLable_7">
          <property name="geometry">
           <rect>
-           <x>380</x>
-           <y>20</y>
-           <width>161</width>
+           <x>310</x>
+           <y>70</y>
+           <width>41</width>
            <height>18</height>
           </rect>
          </property>
@@ -4079,7 +4083,24 @@ border-bottom:1px dotted #999;</string>
 border:0px;</string>
          </property>
          <property name="text">
-          <string>Faculty:</string>
+          <string>Credits:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="idTagLable_8">
+         <property name="geometry">
+          <rect>
+           <x>390</x>
+           <y>70</y>
+           <width>141</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666;
+border:0px;</string>
+         </property>
+         <property name="text">
+          <string>Pre-requisites</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="idLineEdit_8">
@@ -4088,9 +4109,9 @@ border:0px;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>120</y>
-           <width>151</width>
+           <x>390</x>
+           <y>90</y>
+           <width>181</width>
            <height>30</height>
           </rect>
          </property>
@@ -4116,50 +4137,101 @@ border-bottom:1px dotted #999;</string>
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Sequence Effective Semester</string>
+          <string>Pre-requisites</string>
          </property>
         </widget>
-        <widget class="QLabel" name="idTagLable_8">
+        <widget class="QLabel" name="courseCommentsName_4">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>100</y>
-           <width>161</width>
-           <height>18</height>
+           <x>0</x>
+           <y>0</y>
+           <width>581</width>
+           <height>51</height>
           </rect>
          </property>
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">color:#666;
-border:0px;</string>
+          <string notr="true">padding-left:5px;
+background:#70808c;
+color:#fff;
+border-top-left-radius:5px;
+border-top-right-radius:5px;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:0px;</string>
          </property>
          <property name="text">
-          <string>Year:</string>
+          <string>Add Course to Sequence</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
          </property>
         </widget>
         <widget class="QPushButton" name="updateCourse_pushButton_3">
          <property name="geometry">
           <rect>
-           <x>480</x>
-           <y>170</y>
-           <width>101</width>
+           <x>460</x>
+           <y>10</y>
+           <width>111</width>
            <height>32</height>
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background:#fbaf01;
+          <string notr="true">background:#292f38;
 color: #ffffff;
 border:0;
 height:30px;
 border-radius:5px;</string>
          </property>
          <property name="text">
-          <string>Add Sequence</string>
+          <string>Add to Sequence</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset>
            <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
          </property>
         </widget>
+       </widget>
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>90</y>
+          <width>541</width>
+          <height>721</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="programSequenceProgramName_2">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>90</y>
+          <width>541</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#333;border:1px solid #999;background:#fff;</string>
+        </property>
+        <property name="text">
+         <string>Bachelor Degree (Information Technology)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
       </widget>
      </widget>
@@ -4167,8 +4239,6 @@ border-radius:5px;</string>
    </widget>
   </widget>
  </widget>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

@@ -17,3 +17,10 @@ void Activate_DeactivateUser::on_accountLostResetButton_clicked()
 {
 
 }
+
+void Activate_DeactivateUser::on_lectureSearchButton_clicked()
+{
+    QString lectureName = ui->lectureSearchLineEdit->text();
+
+
+}

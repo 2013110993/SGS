@@ -98,7 +98,7 @@ private slots:
 
     void on_AddProgramSequence_Button_clicked();
 
-    void on_studentSearchButton_clicked();
+    void on_addCourseSequencepushButton_clicked();
 
 private:
     Ui::sgsApp *ui;
