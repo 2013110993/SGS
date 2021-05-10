@@ -50,6 +50,7 @@ void databaseconnection::connect()
     logSatus=false;
 }
 
+
 void databaseconnection::disconnect()
 {
     qDebug()<<"db removed";
@@ -765,8 +766,56 @@ QSqlQuery databaseconnection::getStudentsCourses()
     return course;
 }
 
-QSqlQuery databaseconnection::getStudentsCourses(QString)
+QSqlQuery databaseconnection::getStudentsCourses(QString studetnID)
 {
+
+    QSqlQuery *programSequence = new QSqlQuery;
+    QString programSequenceid;
+    QString admissionYr;
+    programSequence->prepare("SELECT  programSequenceid, admissionYear FROM student WHERE userid = " + studetnID);
+
+
+
+    if(!(programSequence->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",programSequence->lastError().text());
+    }
+
+    {
+        while(programSequence->next())
+        {
+            programSequenceid = programSequence->value(0).toString();
+            admissionYr = programSequence->value(1).toString();
+            programSeqID = programSequenceid;
+            qDebug()<<programSequenceid;
+            qDebug()<<admissionYr;
+        }
+
+    }
+
+
+    QSqlQuery * courses = new QSqlQuery;
+    courses->prepare("SELECT courseCode, name,credithour, studentcourses.courseGrade, prequisite, semester, pSYear FROM programsequencecourses  "
+                     "JOIN courses on courses.courseCode = programsequencecourses.courseID "
+                     "JOIN prequisites on prequisites.id = courses.courseCode  "
+                     "JOIN programsequence on programsequence.id = programsequencecourses.programSequenceid "
+                     "JOIN studentcourses on studentcourses.courseid = programsequencecourses.courseID "
+                     "WHERE programSequenceid = '" + programSequenceid +"' AND psyear = " + admissionYr +" AND studentid = " + studetnID);
+
+
+
+
+    if(!(courses->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter: ",programSequence->lastError().text());
+    }
+    QSqlQuery course = *courses;
+    delete programSequence;
+    delete courses;
+    return course;
+
+
+
 
 }
 

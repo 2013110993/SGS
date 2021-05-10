@@ -7,6 +7,7 @@
         <file>lock.png</file>
         <file>SGS LOGO.png</file>
         <file>SGS Logo Dashboard.png</file>
+        <file>Icon for Taskbar.png</file>
     </qresource>
     <qresource prefix="/icons White">
         <file>Icons/White/Add User.png</file>

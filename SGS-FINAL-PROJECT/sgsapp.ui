@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="images.qrc">
-    <normaloff>:/images/logo.png</normaloff>:/images/logo.png</iconset>
+    <normaloff>:/images/Icon for Taskbar.png</normaloff>:/images/Icon for Taskbar.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -513,10 +513,10 @@ border: 0;</string>
         <widget class="QPushButton" name="viewComments_Button">
          <property name="geometry">
           <rect>
-           <x>20</x>
+           <x>-80</x>
            <y>50</y>
-           <width>121</width>
-           <height>16</height>
+           <width>281</width>
+           <height>21</height>
           </rect>
          </property>
          <property name="toolTip">
@@ -552,9 +552,9 @@ border: 0;</string>
         <widget class="QPushButton" name="addInstitution_Button">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>70</y>
-           <width>81</width>
+           <x>-60</x>
+           <y>190</y>
+           <width>231</width>
            <height>16</height>
           </rect>
          </property>
@@ -574,9 +574,9 @@ border: 0;</string>
         <widget class="QPushButton" name="addCourse_Button">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>100</y>
-           <width>64</width>
+           <x>-50</x>
+           <y>160</y>
+           <width>191</width>
            <height>16</height>
           </rect>
          </property>
@@ -596,10 +596,10 @@ border: 0;</string>
         <widget class="QPushButton" name="addUser_Button">
          <property name="geometry">
           <rect>
-           <x>11</x>
-           <y>161</y>
-           <width>102</width>
-           <height>16</height>
+           <x>-90</x>
+           <y>70</y>
+           <width>291</width>
+           <height>21</height>
           </rect>
          </property>
          <property name="toolTip">
@@ -622,10 +622,10 @@ border: 0;</string>
         <widget class="QPushButton" name="disableUser_Button">
          <property name="geometry">
           <rect>
-           <x>11</x>
-           <y>191</y>
-           <width>151</width>
-           <height>16</height>
+           <x>-60</x>
+           <y>100</y>
+           <width>271</width>
+           <height>21</height>
           </rect>
          </property>
          <property name="toolTip">
@@ -648,9 +648,9 @@ border: 0;</string>
         <widget class="QPushButton" name="changePassword_Button">
          <property name="geometry">
           <rect>
-           <x>10</x>
+           <x>-70</x>
            <y>40</y>
-           <width>130</width>
+           <width>281</width>
            <height>16</height>
           </rect>
          </property>
@@ -674,9 +674,9 @@ border: 0;</string>
         <widget class="QPushButton" name="AddProgramSequence_Button">
          <property name="geometry">
           <rect>
-           <x>10</x>
+           <x>-50</x>
            <y>130</y>
-           <width>111</width>
+           <width>241</width>
            <height>16</height>
           </rect>
          </property>
@@ -698,9 +698,9 @@ border: 0;</string>
        <widget class="QPushButton" name="viewStudentProgramSequence_Button">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>-60</x>
           <y>110</y>
-          <width>141</width>
+          <width>261</width>
           <height>16</height>
          </rect>
         </property>
@@ -724,9 +724,9 @@ border: 0;</string>
        <widget class="QPushButton" name="viewCourses_Button">
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>-90</x>
           <y>150</y>
-          <width>121</width>
+          <width>291</width>
           <height>16</height>
          </rect>
         </property>
@@ -750,9 +750,9 @@ border: 0;</string>
        <widget class="QPushButton" name="AddLecturerCourse_Button">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>-100</x>
           <y>190</y>
-          <width>101</width>
+          <width>301</width>
           <height>16</height>
          </rect>
         </property>
@@ -956,7 +956,7 @@ background-repeat: no-repeat;</string>
        <string notr="true">border: 1px</string>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="DashboardPage">
        <widget class="QFrame" name="pageTitleCourseListPage_3">
@@ -1947,7 +1947,7 @@ border-bottom-right-radius:0px;</string>
           <x>10</x>
           <y>130</y>
           <width>1151</width>
-          <height>411</height>
+          <height>371</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -2018,7 +2018,7 @@ border-bottom-right-radius:0px;</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>550</y>
+          <y>570</y>
           <width>1151</width>
           <height>261</height>
          </rect>
@@ -2530,88 +2530,6 @@ border:0px;</string>
           </item>
          </layout>
         </widget>
-        <widget class="QLabel" name="AddProgramSequenceFormTitle_2">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>1151</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>14</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background:#70808c;
-color:#fff;
-border-bottom-left-radius:0px;
-border-bottom-right-radius:0px;</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="studentSearchLineEdit">
-         <property name="geometry">
-          <rect>
-           <x>730</x>
-           <y>10</y>
-           <width>301</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color:#000;
-padding: 5px;</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="placeholderText">
-          <string>Search Student to view Program Sequence</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="studentSearchButton">
-         <property name="geometry">
-          <rect>
-           <x>1030</x>
-           <y>10</y>
-           <width>111</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background:#292f38;
-color: #ffffff;
-border:0;
-height:30px;
-border-top-left-radius:0px;
-border-top-right-radius:5px;
-border-bottom-left-radius:0px;
-border-bottom-right-radius:5px;</string>
-         </property>
-         <property name="text">
-          <string>Search</string>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-         <property name="default">
-          <bool>false</bool>
-         </property>
-        </widget>
        </widget>
        <widget class="QFrame" name="pageTitleCourseListPage_2">
         <property name="geometry">
@@ -2665,6 +2583,88 @@ border-bottom-right-radius:5px;</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
+       </widget>
+       <widget class="QLabel" name="AddProgramSequenceFormTitle_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>510</y>
+          <width>1151</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#70808c;
+color:#fff;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:0px;</string>
+        </property>
+        <property name="text">
+         <string>Search Student: </string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="studentSearchButton">
+        <property name="geometry">
+         <rect>
+          <x>1030</x>
+          <y>520</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#292f38;
+color: #ffffff;
+border:0;
+height:30px;
+border-top-left-radius:0px;
+border-top-right-radius:5px;
+border-bottom-left-radius:0px;
+border-bottom-right-radius:5px;</string>
+        </property>
+        <property name="text">
+         <string>Search</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/icons White/Icons/White/Search.png</normaloff>:/icons White/Icons/White/Search.png</iconset>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+        <property name="default">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="studentSearchLineEdit">
+        <property name="geometry">
+         <rect>
+          <x>730</x>
+          <y>520</y>
+          <width>301</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:#000;
+padding: 5px;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Search Student to view Program Sequence</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="AddCourse">

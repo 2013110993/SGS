@@ -54,7 +54,10 @@ void Activate_DeactivateUser::on_lectureSearchButton_clicked() //search button s
         ui->createAt_Label->setText(result[counter]); //createdAt_label receives the date value
         counter++;
 
-        ui->role_2->setText(result[counter]); //role_2 receives the user's role
+        if (result[counter] == "1")//role_2 receives the user's role
+        ui->role_2->setText("Student");
+        else
+            ui->role_2->setText("Lecture");
         counter++;
 
         // is Active user is 1, it means the user is active

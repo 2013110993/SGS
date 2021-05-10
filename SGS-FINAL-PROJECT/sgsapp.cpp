@@ -42,12 +42,11 @@ sgsApp::~sgsApp()
 {
     closeDatabase(*(connection));
     delete connection;
-    //delete forgot;
-    //delete active_deactivate;
     delete ui;
 
 
 }
+
 
 void sgsApp::disableStudentFeature()
 {
@@ -55,37 +54,58 @@ void sgsApp::disableStudentFeature()
     ui->disableUser_Button->hide();
     ui->addUser_Button->hide();
     ui->addInstitution_Button->hide();
+    ui->AddLecturerCourse_Button->hide();
+    ui->AddProgramSequence_Button->hide();
+    ui->AddProgramSequenceFormTitle_2->hide();
+    ui->studentSearchButton->hide();
+    ui->studentSearchLineEdit->hide();
+
 }
 
 void sgsApp::hideFeature()
 {
+
+    ui->addCourseFrame->hide();
+    ui->viewCourses_Button->hide();
     ui->addCourse_Button->hide();
-    //ui->disableUser_Button->hide();
-    //ui->addUser_Button->hide();
-    //ui->addInstitution_Button->hide();
+    ui->AddProgramSequence_Button->hide();
+    ui->disableUser_Button->hide();
+    ui->addInstitution_Button->hide();
+
 
 }
 
+void sgsApp::disableAdminFeature()
+{
+
+    ui->AddLecturerCourse_Button->hide();
+    ui->viewCourses_Button->hide();
+
+}
 void sgsApp::closeDatabase(databaseconnection &dbObj)  //friend function
 {
-    //    dbObj.~databaseconnection();
-    //dbObj.disconnect();
     dbObj.disconnect();
 }
 
 void sgsApp::showFeature()
 {
+
+    ui->AddProgramSequence_Button->show();
+    ui->addCourseFrame->show();
+    ui->AddProgramSequenceFormTitle_2->show();
+    ui->studentSearchButton->show();
+    ui->studentSearchLineEdit->show();
     ui->addCourse_Button->show();
     ui->disableUser_Button->show();
     ui->addUser_Button->show();
     ui->addInstitution_Button->show();
+    ui->AddLecturerCourse_Button->show();
+    ui->viewCourses_Button->show();
 }
 
 void sgsApp::logout()
 {
-    qDebug()<<"showed";
     this->show();
-
 }
 
 //Register Button
@@ -93,27 +113,27 @@ void sgsApp::on_signUpButton_clicked()
 {
     //create a new instance of reg
 
-    reg = new Register(this);
-    qDebug()<< !(queries.next());
+       reg = new Register(this);
+       qDebug()<< !(queries.next());
 
-    if(!(queries.next()))
-    {
-        queries = connection->updateQuestion();
-    }
-    else
-    {
-        qDebug()<<queries.lastError();
-    }
+       if(!(queries.next()))
+       {
+           queries = connection->updateQuestion();
+       }
+       else
+       {
+           qDebug()<<queries.lastError();
+       }
 
-    if (queries.size() > 0)
-    {
-        connect(this,SIGNAL(sendQuestion(QSqlQuery)), reg , SLOT(recieveQuestion(QSqlQuery)));
-        emit sendQuestion(queries);
-    }
+       if (queries.size() > 0)
+       {
+           connect(this,SIGNAL(sendQuestion(QSqlQuery)), reg , SLOT(recieveQuestion(QSqlQuery)));
+           emit sendQuestion(queries);
+       }
 
-    //Modal Approach
-    reg->setModal(true);
-    reg->show();
+       //Modal Approach
+       reg->setModal(true);
+       reg->show();
 }
 
 
@@ -135,7 +155,6 @@ void sgsApp::on_signInButton_clicked()
     bool checking = connection->loginUser(username,password);
     qDebug()<<connection->getRole();
     int role =  connection->getRole().toInt();
-    qDebug()<<role;
     if (checking)
     {
         switch (role)
@@ -163,6 +182,7 @@ void sgsApp::on_signInButton_clicked()
             ui->stackedWidgetSGS->setCurrentIndex(1);
             ui->stackedWidgetPages->setCurrentIndex(0);
             showFeature();
+            disableAdminFeature();
             ui->userRoleLable->setText(username);
         }
             break;
@@ -304,71 +324,123 @@ void sgsApp::on_viewStudentProgramSequence_Button_clicked()
 void sgsApp::programSequenceList()
 {
     qDebug()<<connection->getRole();
+
     while (ui->programSequenceTableWidget->rowCount() > 0)
     {
         ui->programSequenceTableWidget->removeRow(0);
     }
-    QSqlQuery programCourses = connection->getStudentsCourses();
-    QStringList programSeqInfo = connection->getSequenceName();
-    ui->programSequenceProgramName->setText(programSeqInfo[0]);
-
-    ui->programSequenceFacultyName->setText(programSeqInfo[1]);
-
-    ui->programSequenceTableWidget->setColumnCount(7);
-    ui->programSequenceTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
-
-    QStringList header;
-    header << "Code"<< "Course Name" <<"Credits" << "Grade" <<"Pre-requisites" << "Semester" << "Year";
-
-    ui->programSequenceTableWidget->setHorizontalHeaderLabels(header);
-    ui->programSequenceTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
-
-    ui->programSequenceTableWidget->setAlternatingRowColors(true);
-    ui->programSequenceTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
-
-    int rowCount = 0;
-
-    for(; programCourses.next();){
-
-        ui->programSequenceTableWidget->insertRow(rowCount);
-        ui->programSequenceTableWidget->setColumnWidth(0,90);
-        ui->programSequenceTableWidget->setColumnWidth(1,270);
-        ui->programSequenceTableWidget->setColumnWidth(2,60);
-        ui->programSequenceTableWidget->setColumnWidth(3,90);
-        ui->programSequenceTableWidget->setColumnWidth(4,480);
-        ui->programSequenceTableWidget->setColumnWidth(5,70);
-        ui->programSequenceTableWidget->setColumnWidth(6,68);
-
-        QTableWidgetItem *courseCode = new QTableWidgetItem;
-        QTableWidgetItem *courseName = new QTableWidgetItem;
-        QTableWidgetItem *credits = new QTableWidgetItem;
-        QTableWidgetItem *grade = new QTableWidgetItem;
-        QTableWidgetItem *prerequisites = new QTableWidgetItem;
-        QTableWidgetItem *semester = new QTableWidgetItem;
-        QTableWidgetItem *year = new QTableWidgetItem;
-
-        courseCode->setText(programCourses.value(0).toString());
-        courseName->setText(programCourses.value(1).toString());
-        credits->setText(programCourses.value(2).toString());
-        if (programCourses.value(3).toString().isEmpty())
-            grade->setText("Pending");
-        else
-            grade->setText(programCourses.value(3).toString());
 
 
-        prerequisites->setText(programCourses.value(4).toString());
-        semester->setText(programCourses.value(5).toString());
-        year->setText(programCourses.value(6).toString());
+    QSqlQuery programCourses ;
+    QStringList programSeqInfo;
 
-        ui->programSequenceTableWidget->setItem(rowCount,0,courseCode);
-        ui->programSequenceTableWidget->setItem(rowCount,1,courseName);
-        ui->programSequenceTableWidget->setItem(rowCount,2,credits);
-        ui->programSequenceTableWidget->setItem(rowCount,3,grade);
-        ui->programSequenceTableWidget->setItem(rowCount,4,prerequisites);
-        ui->programSequenceTableWidget->setItem(rowCount,5,semester);
-        ui->programSequenceTableWidget->setItem(rowCount,6,year);
+    bool role = (connection->getRole() == "2" || connection->getRole() == "3");
+    bool administration_LineIsnotEmpty = ((role && !(ui->studentSearchLineEdit->text().isEmpty())) || !(connection->getRole() == "2" || connection->getRole() == "3" ) );
 
-        rowCount++;
+
+    //  bool role = (connection->getRole() == "2" || connection->getRole() == "3");
+    if (role)
+    {
+        ui->addCourseFrame->hide();
+        ui->AddProgramSequenceFormTitle_2->show();
+        ui->studentSearchButton->show();
+        ui->studentSearchLineEdit->show();
+    }
+
+    else
+    {
+        ui->addCourseFrame->show();
+        ui->AddProgramSequenceFormTitle_2->hide();
+        ui->studentSearchButton->hide();
+        ui->studentSearchLineEdit->hide();
+
+    }
+
+    if ( role && !(ui->studentSearchLineEdit->text().isEmpty()))
+    {
+
+        QString studentID = ui->studentSearchLineEdit->text();
+         qDebug()<<"ENTERDD TRUE"<<studentID;
+        programCourses =  connection->getStudentsCourses(studentID);
+
+        programSeqInfo = connection->getSequenceName();
+    }
+
+    else if (!(connection->getRole() == "2" || connection->getRole() == "3" ))
+    {
+        programCourses   = connection->getStudentsCourses();
+        programSeqInfo = connection->getSequenceName();
+    }
+
+
+
+    if (administration_LineIsnotEmpty)
+    {
+
+
+
+        ui->programSequenceProgramName->setText(programSeqInfo[0]);
+
+        ui->programSequenceFacultyName->setText(programSeqInfo[1]);
+
+        ui->programSequenceTableWidget->setColumnCount(7);
+        ui->programSequenceTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
+
+        QStringList header;
+        header << "Code"<< "Course Name" <<"Credits" << "Grade" <<"Pre-requisites" << "Semester" << "Year";
+
+        ui->programSequenceTableWidget->setHorizontalHeaderLabels(header);
+        ui->programSequenceTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
+
+        ui->programSequenceTableWidget->setAlternatingRowColors(true);
+        ui->programSequenceTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
+
+        int rowCount = 0;
+
+        for(; programCourses.next();){
+
+            ui->programSequenceTableWidget->insertRow(rowCount);
+            ui->programSequenceTableWidget->setColumnWidth(0,90);
+            ui->programSequenceTableWidget->setColumnWidth(1,270);
+            ui->programSequenceTableWidget->setColumnWidth(2,60);
+            ui->programSequenceTableWidget->setColumnWidth(3,90);
+            ui->programSequenceTableWidget->setColumnWidth(4,480);
+            ui->programSequenceTableWidget->setColumnWidth(5,70);
+            ui->programSequenceTableWidget->setColumnWidth(6,68);
+
+            QTableWidgetItem *courseCode = new QTableWidgetItem;
+            QTableWidgetItem *courseName = new QTableWidgetItem;
+            QTableWidgetItem *credits = new QTableWidgetItem;
+            QTableWidgetItem *grade = new QTableWidgetItem;
+            QTableWidgetItem *prerequisites = new QTableWidgetItem;
+            QTableWidgetItem *semester = new QTableWidgetItem;
+            QTableWidgetItem *year = new QTableWidgetItem;
+
+            courseCode->setText(programCourses.value(0).toString());
+            courseName->setText(programCourses.value(1).toString());
+            credits->setText(programCourses.value(2).toString());
+            if (programCourses.value(3).toString().isEmpty())
+                grade->setText("Pending");
+            else
+                grade->setText(programCourses.value(3).toString());
+
+
+            prerequisites->setText(programCourses.value(4).toString());
+            semester->setText(programCourses.value(5).toString());
+            year->setText(programCourses.value(6).toString());
+
+            ui->programSequenceTableWidget->setItem(rowCount,0,courseCode);
+            ui->programSequenceTableWidget->setItem(rowCount,1,courseName);
+            ui->programSequenceTableWidget->setItem(rowCount,2,credits);
+            ui->programSequenceTableWidget->setItem(rowCount,3,grade);
+            ui->programSequenceTableWidget->setItem(rowCount,4,prerequisites);
+            ui->programSequenceTableWidget->setItem(rowCount,5,semester);
+            ui->programSequenceTableWidget->setItem(rowCount,6,year);
+
+            rowCount++;
+            qDebug()<<"ROWSSS: "<<rowCount<< " HERE";
+        }
+
     }
 }
 
@@ -424,7 +496,7 @@ void sgsApp::viewCoursesTable()
         QTableWidgetItem *credits = new QTableWidgetItem;
         QTableWidgetItem *semester = new QTableWidgetItem;
         QTableWidgetItem *status = new QTableWidgetItem;
-        QTableWidgetItem *comments = new QTableWidgetItem;
+        //QTableWidgetItem *comments = new QTableWidgetItem;
 
         courseCode->setText(courses.value(0).toString());
         courseName->setText(courses.value(1).toString());
@@ -779,11 +851,13 @@ void sgsApp::on_addCourseButton_clicked()
 
 void sgsApp::courseComments(int row)
 {
-    delete  layout;
+
     //  if (layout)
     int var = 0;
     while (ArrayDeleteLater[var] != NULL)
     {
+        if (var == 0)
+            delete  layout;
         delete ArrayDeleteLater[var];
         ArrayDeleteLater[var] = NULL;
 
@@ -898,36 +972,36 @@ void sgsApp::on_updateCourse_pushButton_3_clicked()
 
     for(int i=0; i<1;i++)
     {
-    QString code = ui->addCodeLineEdit->text();
-    QString courseName = ui->addNameLineEdit->text();
-    QString credits = ui->addCreditLineEdit->text();
-    QString prerequisites = ui->addPrerequisiteLineEdit->text();
+        QString code = ui->addCodeLineEdit->text();
+        QString courseName = ui->addNameLineEdit->text();
+        QString credits = ui->addCreditLineEdit->text();
+        QString prerequisites = ui->addPrerequisiteLineEdit->text();
 
-    QTableWidgetItem *Code = new QTableWidgetItem;
-    QTableWidgetItem *CourseName = new QTableWidgetItem;
-    QTableWidgetItem *Credits = new QTableWidgetItem;
-    QTableWidgetItem *Prerequisites = new QTableWidgetItem;
+        QTableWidgetItem *Code = new QTableWidgetItem;
+        QTableWidgetItem *CourseName = new QTableWidgetItem;
+        QTableWidgetItem *Credits = new QTableWidgetItem;
+        QTableWidgetItem *Prerequisites = new QTableWidgetItem;
 
-    Code->setText(code);
-    CourseName->setText(courseName);
-    Credits->setText(credits);
-    Prerequisites->setText(prerequisites);
+        Code->setText(code);
+        CourseName->setText(courseName);
+        Credits->setText(credits);
+        Prerequisites->setText(prerequisites);
 
-    ui->draftTableWidget->insertRow(rowCount);
-     ui->draftTableWidget->setItem(rowCount,0,Code);
-     ui->draftTableWidget->setItem(rowCount,1,CourseName);
-     ui->draftTableWidget->setItem(rowCount,2,Credits);
-     ui->draftTableWidget->setItem(rowCount,3,Prerequisites);
+        ui->draftTableWidget->insertRow(rowCount);
+        ui->draftTableWidget->setItem(rowCount,0,Code);
+        ui->draftTableWidget->setItem(rowCount,1,CourseName);
+        ui->draftTableWidget->setItem(rowCount,2,Credits);
+        ui->draftTableWidget->setItem(rowCount,3,Prerequisites);
 
 
-     rowCount++;
-     qDebug()<<"ROW COUNT: "<<rowCount;
+        rowCount++;
+        qDebug()<<"ROW COUNT: "<<rowCount;
 
-     //clear lineEdit after submit
-     ui->addCodeLineEdit->clear();
-     ui->addNameLineEdit->clear();
-     ui->addCreditLineEdit->clear();
-     ui->addPrerequisiteLineEdit->clear();
+        //clear lineEdit after submit
+        ui->addCodeLineEdit->clear();
+        ui->addNameLineEdit->clear();
+        ui->addCreditLineEdit->clear();
+        ui->addPrerequisiteLineEdit->clear();
     }
 }
 
@@ -935,7 +1009,7 @@ void sgsApp::on_updateCourse_pushButton_3_clicked()
 void sgsApp::draftTable()
 {
 
-     ui->draftTableWidget->setColumnCount(4);
+    ui->draftTableWidget->setColumnCount(4);
     QStringList header;
     header <<"Code" <<  "Course Name"<< "Credits" << "Pre-requisites";
     ui->draftTableWidget->setHorizontalHeaderLabels(header);
@@ -951,8 +1025,14 @@ void sgsApp::draftTable()
 
 
 
-        ui->draftTableWidget->insertRow(rowCount);
+    ui->draftTableWidget->insertRow(rowCount);
 
-        ui->draftTableWidget->setColumnWidth(1,200);
+    ui->draftTableWidget->setColumnWidth(1,200);
 
+}
+
+void sgsApp::on_studentSearchButton_clicked()
+{
+    programSequenceList();
+    ui->stackedWidgetPages->setCurrentIndex(2);
 }
