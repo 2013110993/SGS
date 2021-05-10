@@ -25,6 +25,7 @@ sgsApp::sgsApp(QWidget *parent)
 
     //Default hide Add Course to admin page
     ui->addCourseSequenceframe->hide();
+    ui->draftProgSequenceFrame->hide();
 
     buttonClick = true;
     for (int var = 0; var < arraySize; ++var)
@@ -865,4 +866,22 @@ void sgsApp::on_AddProgramSequence_Button_clicked()
 void sgsApp::on_addCourseSequencepushButton_clicked()
 {
     ui->addCourseSequenceframe->show();
+    ui->draftProgSequenceFrame->show();
+
+    //disable LineEdit for Program Sequence ID,Name,faculty and year
+    ui->idLineEdit->setEnabled(false);
+    ui->seqNameLineEdit->setEnabled(false);
+    ui->facultyLineEdit->setEnabled(false);
+    ui->yearLineEdit->setEnabled(false);
+
+    //moving data from LindeEdit to Draft Form
+    QString id = ui->idLineEdit->text();
+    QString sequence = ui->seqNameLineEdit->text();
+    QString faculty = ui->facultyLineEdit->text();
+    QString year = ui->yearLineEdit->text();
+
+    ui->draftIDLineEdit->setText(id);
+    ui->draftSeqLineEdit->setText(sequence);
+    ui->draftFacultyLineEdit->setText(faculty);
+    ui->draftYearLineEdit->setText(year);
 }

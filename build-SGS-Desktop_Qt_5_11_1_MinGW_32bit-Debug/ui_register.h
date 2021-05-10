@@ -73,8 +73,7 @@ public:
     QRadioButton *studentRadioButton;
     QRadioButton *lecturerRadioButton;
     QGroupBox *Footer;
-    QWidget *layoutWidget1_6;
-    QHBoxLayout *horizontalLayout_3;
+    QPushButton *createLectureButton;
     QPushButton *cancelSignUpButton;
     QPushButton *signUpNextButton;
     QWidget *academic;
@@ -321,7 +320,7 @@ public:
 ""));
         firstName_RegForm = new QLabel(personalInfogroupBox);
         firstName_RegForm->setObjectName(QStringLiteral("firstName_RegForm"));
-        firstName_RegForm->setGeometry(QRect(11, 42, 75, 16));
+        firstName_RegForm->setGeometry(QRect(11, 42, 291, 16));
         firstName_RegForm->setFont(font1);
         firstName_RegForm->setStyleSheet(QStringLiteral("background-color:none;"));
         firstName_RegFormLineEdit = new QLineEdit(personalInfogroupBox);
@@ -341,7 +340,7 @@ public:
 "color: #333;"));
         lastName_RegForm = new QLabel(personalInfogroupBox);
         lastName_RegForm->setObjectName(QStringLiteral("lastName_RegForm"));
-        lastName_RegForm->setGeometry(QRect(11, 179, 72, 16));
+        lastName_RegForm->setGeometry(QRect(11, 179, 251, 16));
         lastName_RegForm->setFont(font1);
         lastName_RegForm->setStyleSheet(QStringLiteral("background-color:none;"));
         lastName_RegFormLineEdit = new QLineEdit(personalInfogroupBox);
@@ -353,7 +352,7 @@ public:
 "color: #333;"));
         middleNamecheckBox = new QCheckBox(personalInfogroupBox);
         middleNamecheckBox->setObjectName(QStringLiteral("middleNamecheckBox"));
-        middleNamecheckBox->setGeometry(QRect(10, 110, 111, 20));
+        middleNamecheckBox->setGeometry(QRect(10, 110, 271, 20));
         middleNamecheckBox->setFont(font1);
         middleNamecheckBox->setChecked(true);
         accountTypegroupBox = new QGroupBox(personInfo);
@@ -394,38 +393,40 @@ public:
         Footer->setMinimumSize(QSize(811, 60));
         Footer->setMaximumSize(QSize(800, 60));
         Footer->setStyleSheet(QStringLiteral("background:#3a444c;"));
-        layoutWidget1_6 = new QWidget(Footer);
-        layoutWidget1_6->setObjectName(QStringLiteral("layoutWidget1_6"));
-        layoutWidget1_6->setGeometry(QRect(220, 10, 251, 42));
-        horizontalLayout_3 = new QHBoxLayout(layoutWidget1_6);
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        cancelSignUpButton = new QPushButton(layoutWidget1_6);
-        cancelSignUpButton->setObjectName(QStringLiteral("cancelSignUpButton"));
-        cancelSignUpButton->setStyleSheet(QLatin1String("color: #ffffff;\n"
+        createLectureButton = new QPushButton(Footer);
+        createLectureButton->setObjectName(QStringLiteral("createLectureButton"));
+        createLectureButton->setGeometry(QRect(370, 20, 111, 30));
+        createLectureButton->setStyleSheet(QLatin1String("background:#fbaf01;\n"
+"color: #ffffff;\n"
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
         QIcon icon1;
-        icon1.addFile(QStringLiteral(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
-        cancelSignUpButton->setIcon(icon1);
-
-        horizontalLayout_3->addWidget(cancelSignUpButton);
-
-        signUpNextButton = new QPushButton(layoutWidget1_6);
+        icon1.addFile(QStringLiteral(":/icons White/Icons/White/Add User.png"), QSize(), QIcon::Normal, QIcon::Off);
+        createLectureButton->setIcon(icon1);
+        createLectureButton->setAutoDefault(false);
+        cancelSignUpButton = new QPushButton(Footer);
+        cancelSignUpButton->setObjectName(QStringLiteral("cancelSignUpButton"));
+        cancelSignUpButton->setGeometry(QRect(240, 16, 94, 30));
+        cancelSignUpButton->setStyleSheet(QLatin1String("color: #ffffff;\n"
+"border:0;\n"
+"height:30px;\n"
+"border-radius:5px;"));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/icons White/Icons/White/Passsword.png"), QSize(), QIcon::Normal, QIcon::Off);
+        cancelSignUpButton->setIcon(icon2);
+        signUpNextButton = new QPushButton(Footer);
         signUpNextButton->setObjectName(QStringLiteral("signUpNextButton"));
+        signUpNextButton->setGeometry(QRect(368, 16, 111, 30));
         signUpNextButton->setStyleSheet(QLatin1String("background:#fbaf01;\n"
 "color: #ffffff;\n"
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/icons White/Icons/White/Double Arrow RIGHT.png"), QSize(), QIcon::Normal, QIcon::Off);
-        signUpNextButton->setIcon(icon2);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/icons White/Icons/White/Double Arrow RIGHT.png"), QSize(), QIcon::Normal, QIcon::Off);
+        signUpNextButton->setIcon(icon3);
         signUpNextButton->setAutoDefault(false);
-
-        horizontalLayout_3->addWidget(signUpNextButton);
-
         stackedWidgetRegister->addWidget(personInfo);
         academic = new QWidget();
         academic->setObjectName(QStringLiteral("academic"));
@@ -444,9 +445,9 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon3;
-        icon3.addFile(QStringLiteral(":/icons White/Icons/White/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
-        filterSearchButton->setIcon(icon3);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/icons White/Icons/White/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
+        filterSearchButton->setIcon(icon4);
         filterSearchButton->setAutoDefault(false);
         layoutWidget1 = new QWidget(academicGroupBox);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
@@ -508,9 +509,9 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon4;
-        icon4.addFile(QStringLiteral(":/icons White/Icons/White/Single Arrow LEFT.png"), QSize(), QIcon::Normal, QIcon::Off);
-        backSignUpButton->setIcon(icon4);
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/icons White/Icons/White/Single Arrow LEFT.png"), QSize(), QIcon::Normal, QIcon::Off);
+        backSignUpButton->setIcon(icon5);
 
         horizontalLayout->addWidget(backSignUpButton);
 
@@ -521,9 +522,7 @@ public:
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
-        QIcon icon5;
-        icon5.addFile(QStringLiteral(":/icons White/Icons/White/Add User.png"), QSize(), QIcon::Normal, QIcon::Off);
-        signUpButton->setIcon(icon5);
+        signUpButton->setIcon(icon1);
         signUpButton->setAutoDefault(false);
 
         horizontalLayout->addWidget(signUpButton);
@@ -564,10 +563,36 @@ public:
         programSequenceYearSelected_label->setStyleSheet(QStringLiteral("color:#666;"));
         programSequenceYearSelected_label->setAlignment(Qt::AlignCenter);
         stackedWidgetRegister->addWidget(academic);
+        QWidget::setTabOrder(firstName_RegFormLineEdit, middleNamecheckBox);
+        QWidget::setTabOrder(middleNamecheckBox, middleName_RegFormLineEdit);
+        QWidget::setTabOrder(middleName_RegFormLineEdit, lastName_RegFormLineEdit);
+        QWidget::setTabOrder(lastName_RegFormLineEdit, userName_RegFormLineEdit);
+        QWidget::setTabOrder(userName_RegFormLineEdit, password_RegFormLineEdit);
+        QWidget::setTabOrder(password_RegFormLineEdit, passwordConfirm_RegFormLineEdit);
+        QWidget::setTabOrder(passwordConfirm_RegFormLineEdit, confirmEmail_RegFormLineEdit_2);
+        QWidget::setTabOrder(confirmEmail_RegFormLineEdit_2, email_RegFormLineEdit);
+        QWidget::setTabOrder(email_RegFormLineEdit, studentIdRegFormLineEdit);
+        QWidget::setTabOrder(studentIdRegFormLineEdit, question_1_comboBox);
+        QWidget::setTabOrder(question_1_comboBox, firtstQuestionAnswer_RegFormLineEdit);
+        QWidget::setTabOrder(firtstQuestionAnswer_RegFormLineEdit, question_2_comboBox);
+        QWidget::setTabOrder(question_2_comboBox, secondQuestionAnswer_RegFormLineEdit);
+        QWidget::setTabOrder(secondQuestionAnswer_RegFormLineEdit, question_3_comboBox);
+        QWidget::setTabOrder(question_3_comboBox, thirdQuestionAnswer_RegFormLineEdit);
+        QWidget::setTabOrder(thirdQuestionAnswer_RegFormLineEdit, cancelSignUpButton);
+        QWidget::setTabOrder(cancelSignUpButton, signUpNextButton);
+        QWidget::setTabOrder(signUpNextButton, studentRadioButton);
+        QWidget::setTabOrder(studentRadioButton, lecturerRadioButton);
+        QWidget::setTabOrder(lecturerRadioButton, filterSearchButton);
+        QWidget::setTabOrder(filterSearchButton, facultyComboBox);
+        QWidget::setTabOrder(facultyComboBox, programComboBox);
+        QWidget::setTabOrder(programComboBox, backSignUpButton);
+        QWidget::setTabOrder(backSignUpButton, signUpButton);
+        QWidget::setTabOrder(signUpButton, programSequenceTable_registerTableWidget);
 
         retranslateUi(Register);
 
-        stackedWidgetRegister->setCurrentIndex(1);
+        stackedWidgetRegister->setCurrentIndex(0);
+        createLectureButton->setDefault(false);
         signUpNextButton->setDefault(false);
         filterSearchButton->setDefault(false);
         signUpButton->setDefault(false);
@@ -611,6 +636,7 @@ public:
         studentRadioButton->setText(QApplication::translate("Register", "Student", nullptr));
         lecturerRadioButton->setText(QApplication::translate("Register", "Lecturer", nullptr));
         Footer->setTitle(QString());
+        createLectureButton->setText(QApplication::translate("Register", "  Create", nullptr));
         cancelSignUpButton->setText(QApplication::translate("Register", "Sign instead", nullptr));
         signUpNextButton->setText(QApplication::translate("Register", "Next", nullptr));
         academicGroupBox->setTitle(QApplication::translate("Register", "Academic Info", nullptr));

@@ -19,7 +19,6 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
-#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -34,53 +33,49 @@ public:
     QPushButton *forgotPasswordCancelButton;
     QGroupBox *Header;
     QLabel *label_2;
-    QStackedWidget *stackedWidgetResetPassword;
-    QWidget *page;
-    QGroupBox *accountTypegroupBox;
-    QLineEdit *lecturerForgotFormLineEdit;
-    QRadioButton *studentAccountTypeRadioButton;
-    QRadioButton *lecturerAccountTypeRadioButton;
-    QLineEdit *studentIdForgotFormLineEdit;
-    QPushButton *accountLostResetButton;
-    QWidget *page_2;
+    QPushButton *lectureSearchButton;
+    QLineEdit *lectureSearchLineEdit;
     QGroupBox *userInfogroupBox;
     QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout_5;
+    QPushButton *activateResetButton;
+    QPushButton *disactivateResetButton;
+    QWidget *layoutWidget_4;
+    QHBoxLayout *horizontalLayout_8;
+    QRadioButton *studentRadioButton;
+    QRadioButton *lecturerRadioButton;
+    QWidget *widget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
-    QLabel *UserName;
-    QLabel *UserName_label;
+    QLabel *Name;
+    QLabel *Name_label;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *RoleType;
-    QLabel *RoleType_Label;
+    QLabel *userName;
+    QLabel *userName_Label;
     QHBoxLayout *horizontalLayout_3;
+    QLabel *createAt;
+    QLabel *createAt_Label;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *role;
+    QLabel *role_2;
+    QHBoxLayout *horizontalLayout_7;
     QLabel *Activate;
     QLabel *Activate_Label;
-    QWidget *layoutWidget1;
-    QHBoxLayout *horizontalLayout_5;
-    QPushButton *checkAnswerResetButton;
-    QPushButton *checkAnswerResetButton_2;
-    QWidget *page_3;
-    QGroupBox *resetPasswordGroupBox;
-    QLineEdit *newPassword_forgotFormLineEdit;
-    QLineEdit *confirmPassword_forgotFormLineEdit;
 
     void setupUi(QDialog *Activate_DeactivateUser)
     {
         if (Activate_DeactivateUser->objectName().isEmpty())
             Activate_DeactivateUser->setObjectName(QStringLiteral("Activate_DeactivateUser"));
-        Activate_DeactivateUser->resize(341, 348);
-        QIcon icon;
-        icon.addFile(QStringLiteral(":/images/SGS LOGO.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Activate_DeactivateUser->setWindowIcon(icon);
+        Activate_DeactivateUser->resize(518, 487);
         Footer = new QGroupBox(Activate_DeactivateUser);
         Footer->setObjectName(QStringLiteral("Footer"));
-        Footer->setGeometry(QRect(0, 290, 341, 60));
+        Footer->setGeometry(QRect(0, 430, 521, 60));
         Footer->setMinimumSize(QSize(0, 0));
         Footer->setMaximumSize(QSize(16777215, 16777215));
         Footer->setStyleSheet(QStringLiteral("background:#3a444c;"));
         layoutWidget1_7 = new QWidget(Footer);
         layoutWidget1_7->setObjectName(QStringLiteral("layoutWidget1_7"));
-        layoutWidget1_7->setGeometry(QRect(50, 10, 251, 42));
+        layoutWidget1_7->setGeometry(QRect(130, 10, 251, 42));
         horizontalLayout_4 = new QHBoxLayout(layoutWidget1_7);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
@@ -95,7 +90,7 @@ public:
 
         Header = new QGroupBox(Activate_DeactivateUser);
         Header->setObjectName(QStringLiteral("Header"));
-        Header->setGeometry(QRect(0, 0, 341, 60));
+        Header->setGeometry(QRect(0, 0, 521, 61));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -108,7 +103,7 @@ public:
 "background-repeat: no-repeat;"));
         label_2 = new QLabel(Header);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(0, 20, 341, 20));
+        label_2->setGeometry(QRect(100, 20, 341, 20));
         label_2->setMinimumSize(QSize(0, 0));
         label_2->setMaximumSize(QSize(16777215, 16777215));
         QFont font;
@@ -119,181 +114,188 @@ public:
 "color:#ffffff;\n"
 "background: none;"));
         label_2->setAlignment(Qt::AlignCenter);
-        stackedWidgetResetPassword = new QStackedWidget(Activate_DeactivateUser);
-        stackedWidgetResetPassword->setObjectName(QStringLiteral("stackedWidgetResetPassword"));
-        stackedWidgetResetPassword->setGeometry(QRect(0, 70, 321, 211));
-        page = new QWidget();
-        page->setObjectName(QStringLiteral("page"));
-        accountTypegroupBox = new QGroupBox(page);
-        accountTypegroupBox->setObjectName(QStringLiteral("accountTypegroupBox"));
-        accountTypegroupBox->setGeometry(QRect(20, 30, 301, 141));
-        lecturerForgotFormLineEdit = new QLineEdit(accountTypegroupBox);
-        lecturerForgotFormLineEdit->setObjectName(QStringLiteral("lecturerForgotFormLineEdit"));
-        lecturerForgotFormLineEdit->setEnabled(true);
-        lecturerForgotFormLineEdit->setGeometry(QRect(10, 80, 281, 30));
-        lecturerForgotFormLineEdit->setMinimumSize(QSize(0, 30));
-        lecturerForgotFormLineEdit->setMaximumSize(QSize(16777215, 30));
-        lecturerForgotFormLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
-"color: #333;"));
-        studentAccountTypeRadioButton = new QRadioButton(accountTypegroupBox);
-        studentAccountTypeRadioButton->setObjectName(QStringLiteral("studentAccountTypeRadioButton"));
-        studentAccountTypeRadioButton->setGeometry(QRect(10, 50, 74, 20));
-        studentAccountTypeRadioButton->setChecked(true);
-        lecturerAccountTypeRadioButton = new QRadioButton(accountTypegroupBox);
-        lecturerAccountTypeRadioButton->setObjectName(QStringLiteral("lecturerAccountTypeRadioButton"));
-        lecturerAccountTypeRadioButton->setGeometry(QRect(94, 50, 76, 20));
-        studentIdForgotFormLineEdit = new QLineEdit(accountTypegroupBox);
-        studentIdForgotFormLineEdit->setObjectName(QStringLiteral("studentIdForgotFormLineEdit"));
-        studentIdForgotFormLineEdit->setEnabled(true);
-        studentIdForgotFormLineEdit->setGeometry(QRect(10, 80, 281, 30));
-        studentIdForgotFormLineEdit->setMinimumSize(QSize(0, 30));
-        studentIdForgotFormLineEdit->setMaximumSize(QSize(16777215, 30));
-        studentIdForgotFormLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
-"color: #333;"));
-        accountLostResetButton = new QPushButton(page);
-        accountLostResetButton->setObjectName(QStringLiteral("accountLostResetButton"));
-        accountLostResetButton->setGeometry(QRect(110, 180, 121, 30));
-        accountLostResetButton->setStyleSheet(QLatin1String("background:#fbaf01;\n"
+        lectureSearchButton = new QPushButton(Activate_DeactivateUser);
+        lectureSearchButton->setObjectName(QStringLiteral("lectureSearchButton"));
+        lectureSearchButton->setGeometry(QRect(350, 80, 111, 31));
+        lectureSearchButton->setStyleSheet(QLatin1String("background:#292f38;\n"
+"color: #ffffff;\n"
+"border:0;\n"
+"height:30px;\n"
+"border-top-left-radius:0px;\n"
+"border-top-right-radius:5px;\n"
+"border-bottom-left-radius:0px;\n"
+"border-bottom-right-radius:5px;"));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/icons White/Icons/White/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
+        lectureSearchButton->setIcon(icon);
+        lectureSearchButton->setAutoDefault(false);
+        lectureSearchLineEdit = new QLineEdit(Activate_DeactivateUser);
+        lectureSearchLineEdit->setObjectName(QStringLiteral("lectureSearchLineEdit"));
+        lectureSearchLineEdit->setGeometry(QRect(50, 80, 301, 31));
+        lectureSearchLineEdit->setStyleSheet(QLatin1String("color:#000;\n"
+"padding: 5px;"));
+        userInfogroupBox = new QGroupBox(Activate_DeactivateUser);
+        userInfogroupBox->setObjectName(QStringLiteral("userInfogroupBox"));
+        userInfogroupBox->setGeometry(QRect(30, 120, 451, 291));
+        layoutWidget = new QWidget(userInfogroupBox);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(80, 240, 271, 32));
+        horizontalLayout_5 = new QHBoxLayout(layoutWidget);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
+        activateResetButton = new QPushButton(layoutWidget);
+        activateResetButton->setObjectName(QStringLiteral("activateResetButton"));
+        activateResetButton->setStyleSheet(QLatin1String("background:#fbaf01;\n"
 "color: #ffffff;\n"
 "border:0;\n"
 "height:30px;\n"
 "border-radius:5px;"));
         QIcon icon1;
-        icon1.addFile(QStringLiteral(":/icons White/Icons/White/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
-        accountLostResetButton->setIcon(icon1);
-        accountLostResetButton->setAutoDefault(false);
-        stackedWidgetResetPassword->addWidget(page);
-        page_2 = new QWidget();
-        page_2->setObjectName(QStringLiteral("page_2"));
-        userInfogroupBox = new QGroupBox(page_2);
-        userInfogroupBox->setObjectName(QStringLiteral("userInfogroupBox"));
-        userInfogroupBox->setGeometry(QRect(10, 30, 301, 171));
-        layoutWidget = new QWidget(userInfogroupBox);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 20, 271, 91));
-        verticalLayout = new QVBoxLayout(layoutWidget);
+        icon1.addFile(QStringLiteral(":/icons White/Icons/White/Single Arrow RIGHT.png"), QSize(), QIcon::Normal, QIcon::Off);
+        activateResetButton->setIcon(icon1);
+        activateResetButton->setAutoDefault(false);
+
+        horizontalLayout_5->addWidget(activateResetButton);
+
+        disactivateResetButton = new QPushButton(layoutWidget);
+        disactivateResetButton->setObjectName(QStringLiteral("disactivateResetButton"));
+        disactivateResetButton->setStyleSheet(QLatin1String("background:#fbaf01;\n"
+"color: #ffffff;\n"
+"border:0;\n"
+"height:30px;\n"
+"border-radius:5px;"));
+        disactivateResetButton->setIcon(icon1);
+        disactivateResetButton->setAutoDefault(false);
+
+        horizontalLayout_5->addWidget(disactivateResetButton);
+
+        layoutWidget_4 = new QWidget(userInfogroupBox);
+        layoutWidget_4->setObjectName(QStringLiteral("layoutWidget_4"));
+        layoutWidget_4->setGeometry(QRect(120, 20, 221, 22));
+        horizontalLayout_8 = new QHBoxLayout(layoutWidget_4);
+        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        horizontalLayout_8->setContentsMargins(0, 0, 0, 0);
+        studentRadioButton = new QRadioButton(layoutWidget_4);
+        studentRadioButton->setObjectName(QStringLiteral("studentRadioButton"));
+        studentRadioButton->setChecked(true);
+
+        horizontalLayout_8->addWidget(studentRadioButton);
+
+        lecturerRadioButton = new QRadioButton(layoutWidget_4);
+        lecturerRadioButton->setObjectName(QStringLiteral("lecturerRadioButton"));
+
+        horizontalLayout_8->addWidget(lecturerRadioButton);
+
+        widget = new QWidget(userInfogroupBox);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(51, 51, 361, 161));
+        verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        UserName = new QLabel(layoutWidget);
-        UserName->setObjectName(QStringLiteral("UserName"));
+        Name = new QLabel(widget);
+        Name->setObjectName(QStringLiteral("Name"));
         QFont font1;
         font1.setBold(true);
         font1.setWeight(75);
-        UserName->setFont(font1);
-        UserName->setStyleSheet(QStringLiteral("background-color:none;"));
+        Name->setFont(font1);
+        Name->setStyleSheet(QStringLiteral("background-color:none;"));
 
-        horizontalLayout->addWidget(UserName);
+        horizontalLayout->addWidget(Name);
 
-        UserName_label = new QLabel(layoutWidget);
-        UserName_label->setObjectName(QStringLiteral("UserName_label"));
-        UserName_label->setFont(font1);
-        UserName_label->setStyleSheet(QStringLiteral("background-color:none;"));
+        Name_label = new QLabel(widget);
+        Name_label->setObjectName(QStringLiteral("Name_label"));
+        Name_label->setFont(font1);
+        Name_label->setStyleSheet(QStringLiteral("background-color:none;"));
 
-        horizontalLayout->addWidget(UserName_label);
+        horizontalLayout->addWidget(Name_label);
 
 
         verticalLayout->addLayout(horizontalLayout);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        RoleType = new QLabel(layoutWidget);
-        RoleType->setObjectName(QStringLiteral("RoleType"));
-        RoleType->setFont(font1);
-        RoleType->setStyleSheet(QStringLiteral("background-color:none;"));
+        userName = new QLabel(widget);
+        userName->setObjectName(QStringLiteral("userName"));
+        userName->setFont(font1);
+        userName->setStyleSheet(QStringLiteral("background-color:none;"));
 
-        horizontalLayout_2->addWidget(RoleType);
+        horizontalLayout_2->addWidget(userName);
 
-        RoleType_Label = new QLabel(layoutWidget);
-        RoleType_Label->setObjectName(QStringLiteral("RoleType_Label"));
-        RoleType_Label->setFont(font1);
-        RoleType_Label->setStyleSheet(QStringLiteral("background-color:none;"));
+        userName_Label = new QLabel(widget);
+        userName_Label->setObjectName(QStringLiteral("userName_Label"));
+        userName_Label->setFont(font1);
+        userName_Label->setStyleSheet(QStringLiteral("background-color:none;"));
 
-        horizontalLayout_2->addWidget(RoleType_Label);
+        horizontalLayout_2->addWidget(userName_Label);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        Activate = new QLabel(layoutWidget);
-        Activate->setObjectName(QStringLiteral("Activate"));
-        Activate->setFont(font1);
-        Activate->setStyleSheet(QStringLiteral("background-color:none;"));
+        createAt = new QLabel(widget);
+        createAt->setObjectName(QStringLiteral("createAt"));
+        createAt->setFont(font1);
+        createAt->setStyleSheet(QStringLiteral("background-color:none;"));
 
-        horizontalLayout_3->addWidget(Activate);
+        horizontalLayout_3->addWidget(createAt);
 
-        Activate_Label = new QLabel(layoutWidget);
-        Activate_Label->setObjectName(QStringLiteral("Activate_Label"));
-        Activate_Label->setFont(font1);
-        Activate_Label->setStyleSheet(QStringLiteral("background-color:none;"));
+        createAt_Label = new QLabel(widget);
+        createAt_Label->setObjectName(QStringLiteral("createAt_Label"));
+        createAt_Label->setFont(font1);
+        createAt_Label->setStyleSheet(QStringLiteral("background-color:none;"));
 
-        horizontalLayout_3->addWidget(Activate_Label);
+        horizontalLayout_3->addWidget(createAt_Label);
 
 
         verticalLayout->addLayout(horizontalLayout_3);
 
-        layoutWidget1 = new QWidget(userInfogroupBox);
-        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(10, 120, 271, 32));
-        horizontalLayout_5 = new QHBoxLayout(layoutWidget1);
-        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
-        checkAnswerResetButton = new QPushButton(layoutWidget1);
-        checkAnswerResetButton->setObjectName(QStringLiteral("checkAnswerResetButton"));
-        checkAnswerResetButton->setStyleSheet(QLatin1String("background:#fbaf01;\n"
-"color: #ffffff;\n"
-"border:0;\n"
-"height:30px;\n"
-"border-radius:5px;"));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/icons White/Icons/White/Single Arrow RIGHT.png"), QSize(), QIcon::Normal, QIcon::Off);
-        checkAnswerResetButton->setIcon(icon2);
-        checkAnswerResetButton->setAutoDefault(false);
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        role = new QLabel(widget);
+        role->setObjectName(QStringLiteral("role"));
+        role->setFont(font1);
+        role->setStyleSheet(QStringLiteral("background-color:none;"));
 
-        horizontalLayout_5->addWidget(checkAnswerResetButton);
+        horizontalLayout_6->addWidget(role);
 
-        checkAnswerResetButton_2 = new QPushButton(layoutWidget1);
-        checkAnswerResetButton_2->setObjectName(QStringLiteral("checkAnswerResetButton_2"));
-        checkAnswerResetButton_2->setStyleSheet(QLatin1String("background:#fbaf01;\n"
-"color: #ffffff;\n"
-"border:0;\n"
-"height:30px;\n"
-"border-radius:5px;"));
-        checkAnswerResetButton_2->setIcon(icon2);
-        checkAnswerResetButton_2->setAutoDefault(false);
+        role_2 = new QLabel(widget);
+        role_2->setObjectName(QStringLiteral("role_2"));
+        role_2->setFont(font1);
+        role_2->setStyleSheet(QStringLiteral("background-color:none;"));
 
-        horizontalLayout_5->addWidget(checkAnswerResetButton_2);
+        horizontalLayout_6->addWidget(role_2);
 
-        stackedWidgetResetPassword->addWidget(page_2);
-        page_3 = new QWidget();
-        page_3->setObjectName(QStringLiteral("page_3"));
-        resetPasswordGroupBox = new QGroupBox(page_3);
-        resetPasswordGroupBox->setObjectName(QStringLiteral("resetPasswordGroupBox"));
-        resetPasswordGroupBox->setGeometry(QRect(10, 30, 301, 131));
-        newPassword_forgotFormLineEdit = new QLineEdit(resetPasswordGroupBox);
-        newPassword_forgotFormLineEdit->setObjectName(QStringLiteral("newPassword_forgotFormLineEdit"));
-        newPassword_forgotFormLineEdit->setGeometry(QRect(10, 40, 281, 30));
-        newPassword_forgotFormLineEdit->setMinimumSize(QSize(0, 30));
-        newPassword_forgotFormLineEdit->setMaximumSize(QSize(16777215, 30));
-        newPassword_forgotFormLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
-"color: #333;"));
-        confirmPassword_forgotFormLineEdit = new QLineEdit(resetPasswordGroupBox);
-        confirmPassword_forgotFormLineEdit->setObjectName(QStringLiteral("confirmPassword_forgotFormLineEdit"));
-        confirmPassword_forgotFormLineEdit->setGeometry(QRect(10, 80, 281, 30));
-        confirmPassword_forgotFormLineEdit->setMinimumSize(QSize(0, 30));
-        confirmPassword_forgotFormLineEdit->setMaximumSize(QSize(16777215, 30));
-        confirmPassword_forgotFormLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
-"color: #333;"));
-        stackedWidgetResetPassword->addWidget(page_3);
+
+        verticalLayout->addLayout(horizontalLayout_6);
+
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
+        Activate = new QLabel(widget);
+        Activate->setObjectName(QStringLiteral("Activate"));
+        Activate->setFont(font1);
+        Activate->setStyleSheet(QStringLiteral("background-color:none;"));
+
+        horizontalLayout_7->addWidget(Activate);
+
+        Activate_Label = new QLabel(widget);
+        Activate_Label->setObjectName(QStringLiteral("Activate_Label"));
+        Activate_Label->setFont(font1);
+        Activate_Label->setStyleSheet(QStringLiteral("background-color:none;"));
+
+        horizontalLayout_7->addWidget(Activate_Label);
+
+
+        verticalLayout->addLayout(horizontalLayout_7);
+
 
         retranslateUi(Activate_DeactivateUser);
 
-        stackedWidgetResetPassword->setCurrentIndex(1);
-        accountLostResetButton->setDefault(false);
-        checkAnswerResetButton->setDefault(false);
-        checkAnswerResetButton_2->setDefault(false);
+        lectureSearchButton->setDefault(false);
+        activateResetButton->setDefault(false);
+        disactivateResetButton->setDefault(false);
 
 
         QMetaObject::connectSlotsByName(Activate_DeactivateUser);
@@ -306,24 +308,24 @@ public:
         forgotPasswordCancelButton->setText(QApplication::translate("Activate_DeactivateUser", "Cancel", nullptr));
         Header->setTitle(QString());
         label_2->setText(QApplication::translate("Activate_DeactivateUser", "Activate/Deactivate Accounts", nullptr));
-        accountTypegroupBox->setTitle(QApplication::translate("Activate_DeactivateUser", "Account Type", nullptr));
-        lecturerForgotFormLineEdit->setPlaceholderText(QApplication::translate("Activate_DeactivateUser", "Lecturer Username", nullptr));
-        studentAccountTypeRadioButton->setText(QApplication::translate("Activate_DeactivateUser", "Student", nullptr));
-        lecturerAccountTypeRadioButton->setText(QApplication::translate("Activate_DeactivateUser", "Lecturer", nullptr));
-        studentIdForgotFormLineEdit->setPlaceholderText(QApplication::translate("Activate_DeactivateUser", "Student ID #", nullptr));
-        accountLostResetButton->setText(QApplication::translate("Activate_DeactivateUser", "Search Account", nullptr));
-        userInfogroupBox->setTitle(QApplication::translate("Activate_DeactivateUser", "User Info", nullptr));
-        UserName->setText(QApplication::translate("Activate_DeactivateUser", "Name:", nullptr));
-        UserName_label->setText(QApplication::translate("Activate_DeactivateUser", "User Name", nullptr));
-        RoleType->setText(QApplication::translate("Activate_DeactivateUser", "Role:", nullptr));
-        RoleType_Label->setText(QApplication::translate("Activate_DeactivateUser", "Student ? Lecture", nullptr));
+        lectureSearchButton->setText(QApplication::translate("Activate_DeactivateUser", "Search", nullptr));
+        lectureSearchLineEdit->setText(QString());
+        lectureSearchLineEdit->setPlaceholderText(QApplication::translate("Activate_DeactivateUser", "Enter Full Lecture Name to find their Info.", nullptr));
+        userInfogroupBox->setTitle(QApplication::translate("Activate_DeactivateUser", "User Information", nullptr));
+        activateResetButton->setText(QApplication::translate("Activate_DeactivateUser", "Activate", nullptr));
+        disactivateResetButton->setText(QApplication::translate("Activate_DeactivateUser", "Deactivate", nullptr));
+        studentRadioButton->setText(QApplication::translate("Activate_DeactivateUser", "Student", nullptr));
+        lecturerRadioButton->setText(QApplication::translate("Activate_DeactivateUser", "Lecturer", nullptr));
+        Name->setText(QApplication::translate("Activate_DeactivateUser", "Name:", nullptr));
+        Name_label->setText(QApplication::translate("Activate_DeactivateUser", "Full Name", nullptr));
+        userName->setText(QApplication::translate("Activate_DeactivateUser", "UserName: ", nullptr));
+        userName_Label->setText(QApplication::translate("Activate_DeactivateUser", "Username", nullptr));
+        createAt->setText(QApplication::translate("Activate_DeactivateUser", "Create At:", nullptr));
+        createAt_Label->setText(QApplication::translate("Activate_DeactivateUser", "Date", nullptr));
+        role->setText(QApplication::translate("Activate_DeactivateUser", "Role", nullptr));
+        role_2->setText(QApplication::translate("Activate_DeactivateUser", "Lecture", nullptr));
         Activate->setText(QApplication::translate("Activate_DeactivateUser", "Activate:", nullptr));
-        Activate_Label->setText(QApplication::translate("Activate_DeactivateUser", "Student ? Lecture", nullptr));
-        checkAnswerResetButton->setText(QApplication::translate("Activate_DeactivateUser", "Activate", nullptr));
-        checkAnswerResetButton_2->setText(QApplication::translate("Activate_DeactivateUser", "Deactivate", nullptr));
-        resetPasswordGroupBox->setTitle(QApplication::translate("Activate_DeactivateUser", "Reset Password", nullptr));
-        newPassword_forgotFormLineEdit->setPlaceholderText(QApplication::translate("Activate_DeactivateUser", "(Enter new password)", nullptr));
-        confirmPassword_forgotFormLineEdit->setPlaceholderText(QApplication::translate("Activate_DeactivateUser", "( Confirm password)", nullptr));
+        Activate_Label->setText(QApplication::translate("Activate_DeactivateUser", "Activate ? Deativate", nullptr));
     } // retranslateUi
 
 };

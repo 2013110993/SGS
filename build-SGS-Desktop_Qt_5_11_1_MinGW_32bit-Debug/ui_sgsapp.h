@@ -212,16 +212,15 @@ public:
     QWidget *AddProgramSequence;
     QFrame *pageTitleCourseListPage_6;
     QLabel *pageNameLabel_2;
-    QLabel *courseCommentsName_2;
     QLabel *courseCommentsName_3;
     QFrame *frame_4;
     QLabel *idTagLable;
-    QLineEdit *LineEdit;
-    QLineEdit *idLineEdit_2;
+    QLineEdit *idLineEdit;
+    QLineEdit *seqNameLineEdit;
     QLabel *sequenceNameTagLable_2;
-    QLineEdit *idLineEdit_3;
+    QLineEdit *facultyLineEdit;
     QLabel *facultyTagLable;
-    QLineEdit *idLineEdit_4;
+    QLineEdit *yearLineEdit;
     QLabel *yearTagLable;
     QPushButton *addCourseSequencepushButton;
     QFrame *addCourseSequenceframe;
@@ -235,6 +234,12 @@ public:
     QLineEdit *idLineEdit_8;
     QLabel *courseCommentsName_4;
     QPushButton *updateCourse_pushButton_3;
+    QFrame *draftProgSequenceFrame;
+    QLineEdit *draftYearLineEdit;
+    QLineEdit *draftSeqLineEdit;
+    QLineEdit *draftFacultyLineEdit;
+    QLineEdit *draftIDLineEdit;
+    QLabel *courseCommentsName_2;
     QTableWidget *tableWidget;
 
     void setupUi(QMainWindow *sgsApp)
@@ -1469,18 +1474,6 @@ public:
         pageNameLabel_2->setLayoutDirection(Qt::LeftToRight);
         pageNameLabel_2->setStyleSheet(QStringLiteral("color:#999; border: 0px;"));
         pageNameLabel_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        courseCommentsName_2 = new QLabel(AddProgramSequence);
-        courseCommentsName_2->setObjectName(QStringLiteral("courseCommentsName_2"));
-        courseCommentsName_2->setGeometry(QRect(620, 50, 541, 41));
-        courseCommentsName_2->setFont(font9);
-        courseCommentsName_2->setStyleSheet(QLatin1String("padding-left:5px;\n"
-"background:#70808c;\n"
-"color:#fff;\n"
-"border-top-left-radius:5px;\n"
-"border-top-right-radius:5px;\n"
-"border-bottom-left-radius:0px;\n"
-"border-bottom-right-radius:0px;"));
-        courseCommentsName_2->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         courseCommentsName_3 = new QLabel(AddProgramSequence);
         courseCommentsName_3->setObjectName(QStringLiteral("courseCommentsName_3"));
         courseCommentsName_3->setGeometry(QRect(10, 50, 581, 41));
@@ -1504,23 +1497,23 @@ public:
         idTagLable->setGeometry(QRect(20, 20, 161, 18));
         idTagLable->setStyleSheet(QLatin1String("color:#666;\n"
 "border:0px;"));
-        LineEdit = new QLineEdit(frame_4);
-        LineEdit->setObjectName(QStringLiteral("LineEdit"));
-        LineEdit->setEnabled(true);
-        LineEdit->setGeometry(QRect(20, 40, 41, 30));
-        LineEdit->setMinimumSize(QSize(0, 30));
-        LineEdit->setMaximumSize(QSize(16777215, 30));
-        LineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
+        idLineEdit = new QLineEdit(frame_4);
+        idLineEdit->setObjectName(QStringLiteral("idLineEdit"));
+        idLineEdit->setEnabled(true);
+        idLineEdit->setGeometry(QRect(20, 40, 41, 30));
+        idLineEdit->setMinimumSize(QSize(0, 30));
+        idLineEdit->setMaximumSize(QSize(16777215, 30));
+        idLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
 "color: #333;\n"
 "border:0px;\n"
 "border-bottom:1px dotted #999;"));
-        idLineEdit_2 = new QLineEdit(frame_4);
-        idLineEdit_2->setObjectName(QStringLiteral("idLineEdit_2"));
-        idLineEdit_2->setEnabled(true);
-        idLineEdit_2->setGeometry(QRect(90, 40, 151, 30));
-        idLineEdit_2->setMinimumSize(QSize(0, 30));
-        idLineEdit_2->setMaximumSize(QSize(16777215, 30));
-        idLineEdit_2->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
+        seqNameLineEdit = new QLineEdit(frame_4);
+        seqNameLineEdit->setObjectName(QStringLiteral("seqNameLineEdit"));
+        seqNameLineEdit->setEnabled(true);
+        seqNameLineEdit->setGeometry(QRect(90, 40, 151, 30));
+        seqNameLineEdit->setMinimumSize(QSize(0, 30));
+        seqNameLineEdit->setMaximumSize(QSize(16777215, 30));
+        seqNameLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
 "color: #333;\n"
 "border:0px;\n"
 "border-bottom:1px dotted #999;"));
@@ -1529,13 +1522,13 @@ public:
         sequenceNameTagLable_2->setGeometry(QRect(90, 20, 161, 18));
         sequenceNameTagLable_2->setStyleSheet(QLatin1String("color:#666;\n"
 "border:0px;"));
-        idLineEdit_3 = new QLineEdit(frame_4);
-        idLineEdit_3->setObjectName(QStringLiteral("idLineEdit_3"));
-        idLineEdit_3->setEnabled(true);
-        idLineEdit_3->setGeometry(QRect(260, 40, 201, 30));
-        idLineEdit_3->setMinimumSize(QSize(0, 30));
-        idLineEdit_3->setMaximumSize(QSize(16777215, 30));
-        idLineEdit_3->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
+        facultyLineEdit = new QLineEdit(frame_4);
+        facultyLineEdit->setObjectName(QStringLiteral("facultyLineEdit"));
+        facultyLineEdit->setEnabled(true);
+        facultyLineEdit->setGeometry(QRect(260, 40, 201, 30));
+        facultyLineEdit->setMinimumSize(QSize(0, 30));
+        facultyLineEdit->setMaximumSize(QSize(16777215, 30));
+        facultyLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
 "color: #333;\n"
 "border:0px;\n"
 "border-bottom:1px dotted #999;"));
@@ -1544,13 +1537,13 @@ public:
         facultyTagLable->setGeometry(QRect(260, 20, 161, 18));
         facultyTagLable->setStyleSheet(QLatin1String("color:#666;\n"
 "border:0px;"));
-        idLineEdit_4 = new QLineEdit(frame_4);
-        idLineEdit_4->setObjectName(QStringLiteral("idLineEdit_4"));
-        idLineEdit_4->setEnabled(true);
-        idLineEdit_4->setGeometry(QRect(490, 40, 81, 30));
-        idLineEdit_4->setMinimumSize(QSize(0, 30));
-        idLineEdit_4->setMaximumSize(QSize(16777215, 30));
-        idLineEdit_4->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
+        yearLineEdit = new QLineEdit(frame_4);
+        yearLineEdit->setObjectName(QStringLiteral("yearLineEdit"));
+        yearLineEdit->setEnabled(true);
+        yearLineEdit->setGeometry(QRect(490, 40, 81, 30));
+        yearLineEdit->setMinimumSize(QSize(0, 30));
+        yearLineEdit->setMaximumSize(QSize(16777215, 30));
+        yearLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
 "color: #333;\n"
 "border:0px;\n"
 "border-bottom:1px dotted #999;"));
@@ -1657,9 +1650,71 @@ public:
 "height:30px;\n"
 "border-radius:5px;"));
         updateCourse_pushButton_3->setIcon(icon8);
-        tableWidget = new QTableWidget(AddProgramSequence);
+        draftProgSequenceFrame = new QFrame(AddProgramSequence);
+        draftProgSequenceFrame->setObjectName(QStringLiteral("draftProgSequenceFrame"));
+        draftProgSequenceFrame->setGeometry(QRect(620, 50, 541, 771));
+        draftProgSequenceFrame->setStyleSheet(QStringLiteral("background:#fff;"));
+        draftProgSequenceFrame->setFrameShape(QFrame::StyledPanel);
+        draftProgSequenceFrame->setFrameShadow(QFrame::Raised);
+        draftYearLineEdit = new QLineEdit(draftProgSequenceFrame);
+        draftYearLineEdit->setObjectName(QStringLiteral("draftYearLineEdit"));
+        draftYearLineEdit->setEnabled(true);
+        draftYearLineEdit->setGeometry(QRect(450, 40, 81, 30));
+        draftYearLineEdit->setMinimumSize(QSize(0, 30));
+        draftYearLineEdit->setMaximumSize(QSize(16777215, 30));
+        draftYearLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
+"color: #333;\n"
+"border:0px;\n"
+"border-bottom:1px dotted #999;"));
+        draftSeqLineEdit = new QLineEdit(draftProgSequenceFrame);
+        draftSeqLineEdit->setObjectName(QStringLiteral("draftSeqLineEdit"));
+        draftSeqLineEdit->setEnabled(true);
+        draftSeqLineEdit->setGeometry(QRect(80, 80, 151, 30));
+        draftSeqLineEdit->setMinimumSize(QSize(0, 30));
+        draftSeqLineEdit->setMaximumSize(QSize(16777215, 30));
+        draftSeqLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
+"color: #333;\n"
+"border:0px;\n"
+"border-bottom:1px dotted #999;"));
+        draftFacultyLineEdit = new QLineEdit(draftProgSequenceFrame);
+        draftFacultyLineEdit->setObjectName(QStringLiteral("draftFacultyLineEdit"));
+        draftFacultyLineEdit->setEnabled(true);
+        draftFacultyLineEdit->setGeometry(QRect(260, 80, 201, 30));
+        draftFacultyLineEdit->setMinimumSize(QSize(0, 30));
+        draftFacultyLineEdit->setMaximumSize(QSize(16777215, 30));
+        draftFacultyLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
+"color: #333;\n"
+"border:0px;\n"
+"border-bottom:1px dotted #999;"));
+        draftIDLineEdit = new QLineEdit(draftProgSequenceFrame);
+        draftIDLineEdit->setObjectName(QStringLiteral("draftIDLineEdit"));
+        draftIDLineEdit->setEnabled(true);
+        draftIDLineEdit->setGeometry(QRect(10, 40, 41, 30));
+        draftIDLineEdit->setMinimumSize(QSize(0, 30));
+        draftIDLineEdit->setMaximumSize(QSize(16777215, 30));
+        draftIDLineEdit->setStyleSheet(QLatin1String("background-color:#ffffff;\n"
+"color: #333;\n"
+"border:0px;\n"
+"border-bottom:1px dotted #999;"));
+        courseCommentsName_2 = new QLabel(draftProgSequenceFrame);
+        courseCommentsName_2->setObjectName(QStringLiteral("courseCommentsName_2"));
+        courseCommentsName_2->setGeometry(QRect(0, 0, 541, 41));
+        QFont font13;
+        font13.setPointSize(12);
+        font13.setBold(true);
+        font13.setWeight(75);
+        courseCommentsName_2->setFont(font13);
+        courseCommentsName_2->setStyleSheet(QLatin1String("padding-left:5px;\n"
+"background:#70808c;\n"
+"color:#fff;\n"
+"border-top-left-radius:5px;\n"
+"border-top-right-radius:5px;\n"
+"border-bottom-left-radius:0px;\n"
+"border-bottom-right-radius:0px;"));
+        courseCommentsName_2->setAlignment(Qt::AlignCenter);
+        tableWidget = new QTableWidget(draftProgSequenceFrame);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(620, 90, 541, 721));
+        tableWidget->setGeometry(QRect(0, 160, 541, 651));
         stackedWidgetPages->addWidget(AddProgramSequence);
         stackedWidgetSGS->addWidget(Dashboard);
         sgsApp->setCentralWidget(centralwidget);
@@ -1841,19 +1896,18 @@ public:
         commentSearchCourseCODEButton->setText(QApplication::translate("sgsApp", "Search", nullptr));
         commentsSearchCourseCodelineEdit->setPlaceholderText(QApplication::translate("sgsApp", "Search Course by Phrase of Full Name of Course", nullptr));
         pageNameLabel_2->setText(QApplication::translate("sgsApp", "/ Add Program Sequence", nullptr));
-        courseCommentsName_2->setText(QApplication::translate("sgsApp", "Program Sequence", nullptr));
         courseCommentsName_3->setText(QApplication::translate("sgsApp", "Create New", nullptr));
         idTagLable->setText(QApplication::translate("sgsApp", "ID:", nullptr));
-        LineEdit->setText(QString());
-        LineEdit->setPlaceholderText(QApplication::translate("sgsApp", "ID", nullptr));
-        idLineEdit_2->setText(QString());
-        idLineEdit_2->setPlaceholderText(QApplication::translate("sgsApp", "Sequence Name", nullptr));
+        idLineEdit->setText(QString());
+        idLineEdit->setPlaceholderText(QApplication::translate("sgsApp", "ID", nullptr));
+        seqNameLineEdit->setText(QString());
+        seqNameLineEdit->setPlaceholderText(QApplication::translate("sgsApp", "Sequence Name", nullptr));
         sequenceNameTagLable_2->setText(QApplication::translate("sgsApp", "Program Sequence Name:", nullptr));
-        idLineEdit_3->setText(QString());
-        idLineEdit_3->setPlaceholderText(QApplication::translate("sgsApp", "Sequence Name", nullptr));
+        facultyLineEdit->setText(QString());
+        facultyLineEdit->setPlaceholderText(QApplication::translate("sgsApp", "Faculty Name", nullptr));
         facultyTagLable->setText(QApplication::translate("sgsApp", "Faculty:", nullptr));
-        idLineEdit_4->setText(QString());
-        idLineEdit_4->setPlaceholderText(QApplication::translate("sgsApp", "Effective Year", nullptr));
+        yearLineEdit->setText(QString());
+        yearLineEdit->setPlaceholderText(QApplication::translate("sgsApp", "Effective Year", nullptr));
         yearTagLable->setText(QApplication::translate("sgsApp", "Year:", nullptr));
         addCourseSequencepushButton->setText(QApplication::translate("sgsApp", "Add Course", nullptr));
         idTagLable_5->setText(QApplication::translate("sgsApp", "Course Code:", nullptr));
@@ -1870,6 +1924,15 @@ public:
         idLineEdit_8->setPlaceholderText(QApplication::translate("sgsApp", "Pre-requisites", nullptr));
         courseCommentsName_4->setText(QApplication::translate("sgsApp", "Add Course to Sequence", nullptr));
         updateCourse_pushButton_3->setText(QApplication::translate("sgsApp", "Add to Sequence", nullptr));
+        draftYearLineEdit->setText(QString());
+        draftYearLineEdit->setPlaceholderText(QString());
+        draftSeqLineEdit->setText(QString());
+        draftSeqLineEdit->setPlaceholderText(QString());
+        draftFacultyLineEdit->setText(QString());
+        draftFacultyLineEdit->setPlaceholderText(QString());
+        draftIDLineEdit->setText(QString());
+        draftIDLineEdit->setPlaceholderText(QString());
+        courseCommentsName_2->setText(QApplication::translate("sgsApp", "Draft:", nullptr));
     } // retranslateUi
 
 };
