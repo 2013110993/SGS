@@ -3859,14 +3859,14 @@ border:0px;</string>
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background:#fbaf01;
+          <string notr="true">background:#292f38;
 color: #ffffff;
 border:0;
 height:30px;
 border-radius:5px;</string>
          </property>
          <property name="text">
-          <string>Add Course</string>
+          <string>Add Courses</string>
          </property>
          <property name="icon">
           <iconset resource="images.qrc">
@@ -3909,7 +3909,7 @@ border:0px;</string>
           <string>Course Code:</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="idLineEdit_5">
+        <widget class="QLineEdit" name="addCodeLineEdit">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -3946,7 +3946,7 @@ border-bottom:1px dotted #999;</string>
           <string>CODE</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="idLineEdit_6">
+        <widget class="QLineEdit" name="addNameLineEdit">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -4000,7 +4000,7 @@ border:0px;</string>
           <string>Course Name:</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="idLineEdit_7">
+        <widget class="QLineEdit" name="addCreditLineEdit">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -4071,7 +4071,7 @@ border:0px;</string>
           <string>Pre-requisites</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="idLineEdit_8">
+        <widget class="QLineEdit" name="addPrerequisiteLineEdit">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -4190,7 +4190,7 @@ border-radius:5px;</string>
          <property name="geometry">
           <rect>
            <x>450</x>
-           <y>40</y>
+           <y>50</y>
            <width>81</width>
            <height>30</height>
           </rect>
@@ -4301,7 +4301,7 @@ border-bottom:1px dotted #999;</string>
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>40</y>
+           <y>50</y>
            <width>41</width>
            <height>30</height>
           </rect>
@@ -4337,7 +4337,7 @@ border-bottom:1px dotted #999;</string>
            <x>0</x>
            <y>0</y>
            <width>541</width>
-           <height>41</height>
+           <height>51</height>
           </rect>
          </property>
          <property name="font">
@@ -4363,14 +4363,38 @@ border-bottom-right-radius:0px;</string>
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QTableWidget" name="tableWidget">
+        <widget class="QTableWidget" name="draftTableWidget">
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>160</y>
+           <y>130</y>
            <width>541</width>
-           <height>651</height>
+           <height>631</height>
           </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="saveSequencepushButton">
+         <property name="geometry">
+          <rect>
+           <x>430</x>
+           <y>10</y>
+           <width>101</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#fbaf01;
+color: #ffffff;
+border:0;
+height:30px;
+border-radius:5px;</string>
+         </property>
+         <property name="text">
+          <string>Save</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Upload.png</normaloff>:/icons White/Icons/White/Upload.png</iconset>
          </property>
         </widget>
        </widget>

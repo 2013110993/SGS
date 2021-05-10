@@ -102,6 +102,10 @@ private slots:
 
     void on_addCourseSequencepushButton_clicked();
 
+    void on_updateCourse_pushButton_3_clicked();
+
+    void draftTable();
+
 private:
     Ui::sgsApp *ui;
     forgotPassword * forgot;

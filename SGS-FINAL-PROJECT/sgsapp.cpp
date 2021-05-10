@@ -68,7 +68,7 @@ void sgsApp::hideFeature()
 
 void sgsApp::closeDatabase(databaseconnection &dbObj)  //friend function
 {
-//    dbObj.~databaseconnection();
+    //    dbObj.~databaseconnection();
     //dbObj.disconnect();
     dbObj.disconnect();
 }
@@ -84,7 +84,7 @@ void sgsApp::showFeature()
 void sgsApp::logout()
 {
     qDebug()<<"showed";
-        this->show();
+    this->show();
 
 }
 
@@ -107,8 +107,8 @@ void sgsApp::on_signUpButton_clicked()
 
     if (queries.size() > 0)
     {
-     connect(this,SIGNAL(sendQuestion(QSqlQuery)), reg , SLOT(recieveQuestion(QSqlQuery)));
-     emit sendQuestion(queries);
+        connect(this,SIGNAL(sendQuestion(QSqlQuery)), reg , SLOT(recieveQuestion(QSqlQuery)));
+        emit sendQuestion(queries);
     }
 
     //Modal Approach
@@ -121,62 +121,62 @@ void sgsApp::on_signUpButton_clicked()
 //Login Button
 void sgsApp::on_signInButton_clicked()
 {
-        QString username = ui->usernameInput->text();
-        QString password = ui->passwordInput->text();
+    QString username = ui->usernameInput->text();
+    QString password = ui->passwordInput->text();
 
-            // ///////////////////////////////////////
-           //       Hardcode Login to test
-           // /////////////////////////////////////////
-//        if (username == "admin" && password == "admin")
-//           {
-//               ui->stackedWidgetSGS->setCurrentIndex(1);
-//           }
+    // ///////////////////////////////////////
+    //       Hardcode Login to test
+    // /////////////////////////////////////////
+    //        if (username == "admin" && password == "admin")
+    //           {
+    //               ui->stackedWidgetSGS->setCurrentIndex(1);
+    //           }
 
-        bool checking = connection->loginUser(username,password);
-        qDebug()<<connection->getRole();
-        int role =  connection->getRole().toInt();
-        qDebug()<<role;
-        if (checking)
+    bool checking = connection->loginUser(username,password);
+    qDebug()<<connection->getRole();
+    int role =  connection->getRole().toInt();
+    qDebug()<<role;
+    if (checking)
+    {
+        switch (role)
         {
-            switch (role)
-            {
-            case 1:
-            {
-                ui->stackedWidgetSGS->setCurrentIndex(1);
-                ui->stackedWidgetPages->setCurrentIndex(0);
-                showFeature();
-                disableStudentFeature();
-                ui->userRoleLable->setText(username);
-            }
-                break;
-            case 2:
-            {
-                ui->stackedWidgetSGS->setCurrentIndex(1);
-                ui->stackedWidgetPages->setCurrentIndex(0);
-                showFeature();
-                hideFeature();
-                ui->userRoleLable->setText(username);
-            }
-                break;
-            case 3:
-            {
-                ui->stackedWidgetSGS->setCurrentIndex(1);
-                ui->stackedWidgetPages->setCurrentIndex(0);
-                showFeature();
-                ui->userRoleLable->setText(username);
-            }
-                break;
-            default:
-                qDebug()<<"error! ! 404";
-            }
-
-
+        case 1:
+        {
+            ui->stackedWidgetSGS->setCurrentIndex(1);
+            ui->stackedWidgetPages->setCurrentIndex(0);
+            showFeature();
+            disableStudentFeature();
+            ui->userRoleLable->setText(username);
+        }
+            break;
+        case 2:
+        {
+            ui->stackedWidgetSGS->setCurrentIndex(1);
+            ui->stackedWidgetPages->setCurrentIndex(0);
+            showFeature();
+            hideFeature();
+            ui->userRoleLable->setText(username);
+        }
+            break;
+        case 3:
+        {
+            ui->stackedWidgetSGS->setCurrentIndex(1);
+            ui->stackedWidgetPages->setCurrentIndex(0);
+            showFeature();
+            ui->userRoleLable->setText(username);
+        }
+            break;
+        default:
+            qDebug()<<"error! ! 404";
         }
 
-        else {
-            ui->loginErrorLabel->setText("~ Invalid Credentials! ~");
-            ui->loginErrorLabel->setStyleSheet("border:1px solid #b50009; color:#b50009;height:30px;border-radius:5px;");
-           }
+
+    }
+
+    else {
+        ui->loginErrorLabel->setText("~ Invalid Credentials! ~");
+        ui->loginErrorLabel->setStyleSheet("border:1px solid #b50009; color:#b50009;height:30px;border-radius:5px;");
+    }
 }
 
 void sgsApp::on_forgotPasswordButton_clicked()
@@ -256,14 +256,14 @@ void sgsApp::on_addUser_Button_clicked()
 
     }
     else {
-          qDebug()<<"debug queries.next";;
+        qDebug()<<"debug queries.next";;
         qDebug()<<queries.lastError();
     }
 
     if (queries.size() > 0)
     {
-     connect(this,SIGNAL(sendQuestion(QSqlQuery)), registerNewStudent , SLOT(recieveQuestion(QSqlQuery)));
-     emit sendQuestion(queries);
+        connect(this,SIGNAL(sendQuestion(QSqlQuery)), registerNewStudent , SLOT(recieveQuestion(QSqlQuery)));
+        emit sendQuestion(queries);
     }
 
     registerNewStudent->show();
@@ -276,19 +276,19 @@ void sgsApp::on_dashboard_pushButton_clicked()
     //Navigate tho Dashboard Page
     ui->stackedWidgetPages->setCurrentIndex(0);
     //New functionality comming soon
-//    if (buttonClick)
-//    {
-//        buttonClick = false;
-//        qDebug("clicked");
-//          ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow LEFT.png"));
-//          hideFeature();
-//    }
-//    else
-//    {
-//        ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow RIGHT.png"));
-//        buttonClick = true;
-//        showFeature();
-//    }
+    //    if (buttonClick)
+    //    {
+    //        buttonClick = false;
+    //        qDebug("clicked");
+    //          ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow LEFT.png"));
+    //          hideFeature();
+    //    }
+    //    else
+    //    {
+    //        ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow RIGHT.png"));
+    //        buttonClick = true;
+    //        showFeature();
+    //    }
 }
 
 
@@ -330,14 +330,14 @@ void sgsApp::programSequenceList()
 
     for(; programCourses.next();){
 
-         ui->programSequenceTableWidget->insertRow(rowCount);
-         ui->programSequenceTableWidget->setColumnWidth(0,90);
-         ui->programSequenceTableWidget->setColumnWidth(1,270);
-         ui->programSequenceTableWidget->setColumnWidth(2,60);
-         ui->programSequenceTableWidget->setColumnWidth(3,90);
-         ui->programSequenceTableWidget->setColumnWidth(4,480);
-         ui->programSequenceTableWidget->setColumnWidth(5,70);
-         ui->programSequenceTableWidget->setColumnWidth(6,68);
+        ui->programSequenceTableWidget->insertRow(rowCount);
+        ui->programSequenceTableWidget->setColumnWidth(0,90);
+        ui->programSequenceTableWidget->setColumnWidth(1,270);
+        ui->programSequenceTableWidget->setColumnWidth(2,60);
+        ui->programSequenceTableWidget->setColumnWidth(3,90);
+        ui->programSequenceTableWidget->setColumnWidth(4,480);
+        ui->programSequenceTableWidget->setColumnWidth(5,70);
+        ui->programSequenceTableWidget->setColumnWidth(6,68);
 
         QTableWidgetItem *courseCode = new QTableWidgetItem;
         QTableWidgetItem *courseName = new QTableWidgetItem;
@@ -351,7 +351,7 @@ void sgsApp::programSequenceList()
         courseName->setText(programCourses.value(1).toString());
         credits->setText(programCourses.value(2).toString());
         if (programCourses.value(3).toString().isEmpty())
-        grade->setText("Pending");
+            grade->setText("Pending");
         else
             grade->setText(programCourses.value(3).toString());
 
@@ -409,13 +409,13 @@ void sgsApp::viewCoursesTable()
 
     for(;courses.next() ; ){
 
-         ui->viewCoursesTableWidget->insertRow(rowCount);
-         ui->viewCoursesTableWidget->setColumnWidth(0,85);
-         ui->viewCoursesTableWidget->setColumnWidth(1,195);
-         ui->viewCoursesTableWidget->setColumnWidth(2,70);
-         ui->viewCoursesTableWidget->setColumnWidth(3,80);
-         ui->viewCoursesTableWidget->setColumnWidth(4,100);
-         ui->viewCoursesTableWidget->setColumnWidth(5,108);
+        ui->viewCoursesTableWidget->insertRow(rowCount);
+        ui->viewCoursesTableWidget->setColumnWidth(0,85);
+        ui->viewCoursesTableWidget->setColumnWidth(1,195);
+        ui->viewCoursesTableWidget->setColumnWidth(2,70);
+        ui->viewCoursesTableWidget->setColumnWidth(3,80);
+        ui->viewCoursesTableWidget->setColumnWidth(4,100);
+        ui->viewCoursesTableWidget->setColumnWidth(5,108);
 
 
 
@@ -433,7 +433,7 @@ void sgsApp::viewCoursesTable()
 
 
         if (courses.value(3).toString().isEmpty())
-        status->setText("Pending!");
+            status->setText("Pending!");
         else
             status->setText("Complete: "+ courses.value(3).toString());
 
@@ -474,13 +474,13 @@ void sgsApp::viewLecturerCoursesTable()
 
     for(; lectureCourses.next();)
     {
-         ui->lecturerCoursesListTableWidget->insertRow(rowCount);
+        ui->lecturerCoursesListTableWidget->insertRow(rowCount);
 
-         ui->lecturerCoursesListTableWidget->setColumnWidth(0,250);
-         ui->lecturerCoursesListTableWidget->setColumnWidth(1,110);
-         ui->lecturerCoursesListTableWidget->setColumnWidth(2,375);
-         ui->lecturerCoursesListTableWidget->setColumnWidth(3,100);
-         ui->lecturerCoursesListTableWidget->setColumnWidth(4,180);
+        ui->lecturerCoursesListTableWidget->setColumnWidth(0,250);
+        ui->lecturerCoursesListTableWidget->setColumnWidth(1,110);
+        ui->lecturerCoursesListTableWidget->setColumnWidth(2,375);
+        ui->lecturerCoursesListTableWidget->setColumnWidth(3,100);
+        ui->lecturerCoursesListTableWidget->setColumnWidth(4,180);
 
         QTableWidgetItem *courseName = new QTableWidgetItem;
         QTableWidgetItem *credits = new QTableWidgetItem;
@@ -540,8 +540,8 @@ void sgsApp::on_viewCoursesTableWidget_cellClicked(int row, int column)
     ui->courseViewCourseTable->setText(courseName);
     ui->pendingViewCourseTable->setText(status);
 
-        qDebug()<< ui->viewCoursesTableWidget->item(row,4)->text() ;
-        qDebug()<<( ui->viewCoursesTableWidget->item(row,4)->text() != "Pending!");
+    qDebug()<< ui->viewCoursesTableWidget->item(row,4)->text() ;
+    qDebug()<<( ui->viewCoursesTableWidget->item(row,4)->text() != "Pending!");
     if(( ui->viewCoursesTableWidget->item(row,4)->text() != "Pending!"))
     {
         QStringList commentSec = connection->getComment(ui->viewCoursesTableWidget->item(row,0)->text());
@@ -559,7 +559,7 @@ void sgsApp::on_viewCoursesTableWidget_cellClicked(int row, int column)
         ui->ratingViewCourseTable->setText(" ");
         ui->userCommentViewCourseTable->setText(" ");
 
-     }
+    }
 
 
 
@@ -610,7 +610,7 @@ void sgsApp::on_updateCourse_pushButton_clicked()
     QStringList list;
     list.append(courseCode);
 
-     list.append(grade);
+    list.append(grade);
 
     list.append(rating);
     list.append(ui->addLectureComboBox->currentText());
@@ -624,7 +624,7 @@ void sgsApp::on_updateCourse_pushButton_clicked()
     bool checking = connection->setCourseGrade(list);
 
     if (checking)
-          programSequenceList();
+        programSequenceList();
 
 
 }
@@ -693,11 +693,11 @@ void sgsApp::viewSearchCourseCommentTable()
 
     for(; courses.next();)
     {
-         ui->searchResultCourseCommentTableWidget->insertRow(rowCount);
+        ui->searchResultCourseCommentTableWidget->insertRow(rowCount);
 
-         ui->searchResultCourseCommentTableWidget->setColumnWidth(0,75);
-         ui->searchResultCourseCommentTableWidget->setColumnWidth(1,200);
-         ui->searchResultCourseCommentTableWidget->setColumnWidth(0,150);
+        ui->searchResultCourseCommentTableWidget->setColumnWidth(0,75);
+        ui->searchResultCourseCommentTableWidget->setColumnWidth(1,200);
+        ui->searchResultCourseCommentTableWidget->setColumnWidth(0,150);
 
 
 
@@ -715,7 +715,7 @@ void sgsApp::viewSearchCourseCommentTable()
 
 
 
-}
+    }
 }
 
 void sgsApp::on_filterSearchButton_clicked()
@@ -779,8 +779,8 @@ void sgsApp::on_addCourseButton_clicked()
 
 void sgsApp::courseComments(int row)
 {
-                delete  layout;
- //  if (layout)
+    delete  layout;
+    //  if (layout)
     int var = 0;
     while (ArrayDeleteLater[var] != NULL)
     {
@@ -805,9 +805,9 @@ void sgsApp::courseComments(int row)
     //running a loop to add the desired components to the scroll area...
     for(;comments.next();)
     {
-         QString date= "Posted: " + comments.value(0).toString() + " ";
-         QString commentText =comments.value(1).toString() ;
-         QString rate= "Rating: "+ comments.value(2).toString() + " ";
+        QString date= "Posted: " + comments.value(0).toString() + " ";
+        QString commentText =comments.value(1).toString() ;
+        QString rate= "Rating: "+ comments.value(2).toString() + " ";
 
 
 
@@ -884,4 +884,69 @@ void sgsApp::on_addCourseSequencepushButton_clicked()
     ui->draftSeqLineEdit->setText(sequence);
     ui->draftFacultyLineEdit->setText(faculty);
     ui->draftYearLineEdit->setText(year);
+
+    //Create Table
+    draftTable();
+}
+
+//Adding Course to Sequence Table
+void sgsApp::on_updateCourse_pushButton_3_clicked()
+{
+
+int rowCount = 0;
+
+    for(int i=0; i<1;i++)
+    {
+    QString code = ui->addCodeLineEdit->text();
+    QString courseName = ui->addNameLineEdit->text();
+    QString credits = ui->addCreditLineEdit->text();
+    QString prerequisites = ui->addPrerequisiteLineEdit->text();
+
+    QTableWidgetItem *Code = new QTableWidgetItem;
+    QTableWidgetItem *CourseName = new QTableWidgetItem;
+    QTableWidgetItem *Credits = new QTableWidgetItem;
+    QTableWidgetItem *Prerequisites = new QTableWidgetItem;
+
+    Code->setText(code);
+    CourseName->setText(courseName);
+    Credits->setText(credits);
+    Prerequisites->setText(prerequisites);
+
+     ui->draftTableWidget->setItem(rowCount,0,Code);
+     ui->draftTableWidget->setItem(rowCount,1,CourseName);
+     ui->draftTableWidget->setItem(rowCount,2,Credits);
+     ui->draftTableWidget->setItem(rowCount,3,Prerequisites);
+
+
+     rowCount++;
+
+     //clear lineEdit after submit
+     ui->addCodeLineEdit->clear();
+    }
+}
+
+//Generate draft Table
+void sgsApp::draftTable()
+{
+
+     ui->draftTableWidget->setColumnCount(4);
+    QStringList header;
+    header <<"Code" <<  "Course Name"<< "Credits" << "Pre-requisites";
+    ui->draftTableWidget->setHorizontalHeaderLabels(header);
+    ui->draftTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
+
+    ui->draftTableWidget->verticalHeader()->setVisible(false);
+
+
+    ui->draftTableWidget->setAlternatingRowColors(true);
+    ui->draftTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
+
+    int rowCount = 0;
+
+
+
+        ui->draftTableWidget->insertRow(rowCount);
+
+        ui->draftTableWidget->setColumnWidth(1,200);
+
 }
