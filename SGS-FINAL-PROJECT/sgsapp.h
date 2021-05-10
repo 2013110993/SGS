@@ -26,6 +26,7 @@ public:
     void showFeature();
     void hideFeature();
     void closeDatabase(databaseconnection &dbObj);
+    void disableAdminFeature();
 
     friend void ActivateDeactivateUserAccount(databaseconnection *); //friend function with activate_Deactivateuser class
 
@@ -105,6 +106,10 @@ private slots:
     void on_updateCourse_pushButton_3_clicked();
 
     void draftTable();
+
+    void on_studentSearchButton_clicked();
+
+    void on_saveSequencepushButton_clicked();
 
 private:
     Ui::sgsApp *ui;

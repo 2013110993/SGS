@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Reset Passord</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/images/Icon for Taskbar.png</normaloff>:/images/Icon for Taskbar.png</iconset>
+  </property>
   <widget class="QGroupBox" name="Footer">
    <property name="geometry">
     <rect>
@@ -295,7 +299,7 @@ border-radius:5px;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>51</x>
