@@ -638,6 +638,7 @@ void sgsApp::on_disableUser_Button_clicked()
 {
     //create a new instance of reg
     active_deactivate = new Activate_DeactivateUser(this);
+    active_deactivate->ActivateDeactivateUserAccount(connection);
     //Modal Approach
     active_deactivate->setModal(true);
     active_deactivate->show();

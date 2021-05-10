@@ -23,8 +23,13 @@ private slots:
 
     void on_lectureSearchButton_clicked();
 
+    void on_activateResetButton_clicked();
+
+    void on_disactivateResetButton_clicked();
+
 private:
     Ui::Activate_DeactivateUser *ui;
+    databaseconnection *databaseExtern;
 };
 
 #endif // ACTIVATE_DEACTIVATEUSER_H

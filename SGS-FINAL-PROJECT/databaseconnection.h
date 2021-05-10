@@ -24,6 +24,8 @@ public:
     bool loginUser(QString, QString);
     bool isconnected();
     bool isCourseGraded(QString);
+    bool activateUser(QString, int);
+    bool deactivateUser(QString, int);
 
     void connect();
     void disconnect();
@@ -52,13 +54,15 @@ public:
     QSqlQuery getLecturesByCourse(QString);
     QSqlQuery getComments(QString, QString);
     QSqlQuery getLectureCourse ();
-    QSqlQuery activate_DeactivateLecture(QString);
+
 
     QString getRole();
     QString getUserId();
 
     QStringList getComment(QString);
     QStringList getSequenceName();
+    QStringList activate_DeactivateLecture(QString, int);
+
 
 
     //friend functions

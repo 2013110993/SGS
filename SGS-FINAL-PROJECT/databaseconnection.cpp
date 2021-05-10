@@ -21,8 +21,8 @@ void databaseconnection::connect()
     setConnection = QSqlDatabase::addDatabase("QMYSQL");
     setConnection.setHostName("127.0.0.1");
     //setConnection.setPort(3306);
-    //setConnection.setPort(3366);
-    setConnection.setPort(3336);
+    setConnection.setPort(3366);
+    //setConnection.setPort(3336);
     setConnection.setUserName("root");
     setConnection.setPassword("");
     setConnection.setDatabaseName("db");
@@ -996,32 +996,119 @@ QSqlQuery databaseconnection::getLectureCourse()
 
 }
 
-QSqlQuery databaseconnection::activate_DeactivateLecture(QString lectureName)
+QStringList databaseconnection::activate_DeactivateLecture(QString lectureName, int role)
 {
-
+    QStringList result;
 
     QSqlQuery * query1 = new QSqlQuery;
-    query1->prepare("SELECT name, username, createdAt,roleId, activeuser FROM `lecturer` "
+
+    if (role == 2)
+    {
+
+    query1->prepare(" SELECT  lecturer.name, username, createdAt,roleId, activeuser FROM `lecturer` "
                     "JOIN users on users.id = lecturer.id "
-                    " WHERE name like '" + lectureName + "%'" );
+                    "WHERE lecturer.name like '" + lectureName + "%'" );
 
     if(!(query1->exec()))
     {
         QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
     }
-
-    while (query1->next())
+    else
     {
-        query1->value(0).toString();
-        query1->value(1).toString();
-        query1->value(2).toString();
-        query1->value(3).toString();
-        query1->value(4).toString();
-    }
-    QSqlQuery lectureInfo = * query1;
 
-    delete query1;
-    return lectureInfo;
+        QString date;
+        while (query1->next())
+        {
+            result.append(query1->value(0).toString());
+            result.append(query1->value(1).toString());
+            date = query1->value(2).toString();
+            QRegExp separator("-|\\s|:|T");
+            QStringList list = date.split(separator, QString::SkipEmptyParts);
+
+            QString dateFormat = " ";
+            dateFormat.append( list[2]);
+            dateFormat.append("/");
+            dateFormat.append(list[1]);
+            dateFormat.append("/");
+            dateFormat.append(list[0]);
+            dateFormat.append(" ");
+            dateFormat.append(list[3]);
+            dateFormat.append(":");
+            dateFormat.append(list[4]);
+            dateFormat.append(":");
+
+            QString ulgy = list[5];
+            QStringList newFormat = ulgy.split(".", QString::SkipEmptyParts);
+            QString sec = newFormat[0];
+            dateFormat.append(sec);
+            result.append(dateFormat);
+
+            result.append(query1->value(3).toString());
+            result.append(query1->value(4).toString());
+
+
+        }
+
+    }
+
+    return result;
+    }
+
+    else
+    {
+
+        query1->prepare("SELECT  firstname, lastName, username, createdAt,roleId, activeuser FROM `users` "
+                        "JOIN person on person.id = users.personId "
+                        "  WHERE users.id = " + lectureName  );
+
+        if(!(query1->exec()))
+        {
+            QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+        }
+        else
+        {
+
+            QString date;
+            while (query1->next())
+            {
+                QString fullName;
+                fullName.append(query1->value(0).toString());
+                fullName.append(query1->value(1).toString());
+
+                result.append(fullName);
+                result.append(query1->value(2).toString());
+                date = query1->value(3).toString();
+                QRegExp separator("-|\\s|:|T");
+                QStringList list = date.split(separator, QString::SkipEmptyParts);
+
+                QString dateFormat = " ";
+                dateFormat.append( list[2]);
+                dateFormat.append("/");
+                dateFormat.append(list[1]);
+                dateFormat.append("/");
+                dateFormat.append(list[0]);
+                dateFormat.append(" ");
+                dateFormat.append(list[3]);
+                dateFormat.append(":");
+                dateFormat.append(list[4]);
+                dateFormat.append(":");
+
+                QString ulgy = list[5];
+                QStringList newFormat = ulgy.split(".", QString::SkipEmptyParts);
+                QString sec = newFormat[0];
+                dateFormat.append(sec);
+                result.append(dateFormat);
+
+                result.append(query1->value(4).toString());
+                result.append(query1->value(5).toString());
+
+
+            }
+
+        }
+
+        return result;
+    }
 
 
 
@@ -1122,6 +1209,62 @@ bool databaseconnection::isCourseGraded(QString courseID)
 
 
 
+
+}
+
+bool databaseconnection::activateUser(QString userName, int role)
+{
+
+    QSqlQuery * query1 = new QSqlQuery;
+
+    if (role == 2)
+    {
+        query1->prepare("UPDATE users SET activeUser = 1 "
+                        "WHERE username = '" + userName + "'");
+
+        if(!(query1->exec()))
+        {
+            QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+            delete query1;
+            return false;
+
+        }
+        else
+        {
+            delete query1;
+            return true;
+
+        }
+    }
+
+    else
+    {
+
+
+        query1->prepare("UPDATE users SET activeUser = 1 "
+                        " WHERE id = " + userName );
+
+        if(!(query1->exec()))
+        {
+            QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+            delete query1;
+            return false;
+
+        }
+        else
+        {
+            delete query1;
+            return true;
+
+        }
+
+
+    }
+
+}
+
+bool databaseconnection::deactivateUser(QString lecture, int role)
+{
 
 }
 

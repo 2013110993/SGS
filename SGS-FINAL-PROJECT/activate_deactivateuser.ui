@@ -13,10 +13,6 @@
   <property name="windowTitle">
    <string>Reset Passord</string>
   </property>
-  <property name="windowIcon">
-   <iconset resource="images.qrc">
-    <normaloff>:/images/SGS LOGO.png</normaloff>:/images/SGS LOGO.png</iconset>
-  </property>
   <widget class="QGroupBox" name="Footer">
    <property name="geometry">
     <rect>
@@ -221,7 +217,7 @@ padding: 5px;</string>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
-      <widget class="QPushButton" name="checkAnswerResetButton">
+      <widget class="QPushButton" name="activateResetButton">
        <property name="styleSheet">
         <string notr="true">background:#fbaf01;
 color: #ffffff;
@@ -245,7 +241,7 @@ border-radius:5px;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="checkAnswerResetButton_2">
+      <widget class="QPushButton" name="disactivateResetButton">
        <property name="styleSheet">
         <string notr="true">background:#fbaf01;
 color: #ffffff;
@@ -270,12 +266,41 @@ border-radius:5px;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="layoutWidget_2">
+   <widget class="QWidget" name="layoutWidget_4">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>50</y>
-      <width>351</width>
+      <x>120</x>
+      <y>20</y>
+      <width>221</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
+     <item>
+      <widget class="QRadioButton" name="studentRadioButton">
+       <property name="text">
+        <string>Student</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="lecturerRadioButton">
+       <property name="text">
+        <string>Lecturer</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>51</x>
+      <y>51</y>
+      <width>361</width>
       <height>161</height>
      </rect>
     </property>
@@ -283,7 +308,7 @@ border-radius:5px;</string>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QLabel" name="UserName">
+        <widget class="QLabel" name="Name">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -299,7 +324,7 @@ border-radius:5px;</string>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="UserName_label">
+        <widget class="QLabel" name="Name_label">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -310,7 +335,7 @@ border-radius:5px;</string>
           <string notr="true">background-color:none;</string>
          </property>
          <property name="text">
-          <string>User Name</string>
+          <string>Full Name</string>
          </property>
         </widget>
        </item>
@@ -319,7 +344,7 @@ border-radius:5px;</string>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QLabel" name="RoleType">
+        <widget class="QLabel" name="userName">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -330,12 +355,12 @@ border-radius:5px;</string>
           <string notr="true">background-color:none;</string>
          </property>
          <property name="text">
-          <string>Role:</string>
+          <string>UserName: </string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="RoleType_Label">
+        <widget class="QLabel" name="userName_Label">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -346,7 +371,7 @@ border-radius:5px;</string>
           <string notr="true">background-color:none;</string>
          </property>
          <property name="text">
-          <string>Student ? Lecture</string>
+          <string>Username</string>
          </property>
         </widget>
        </item>
@@ -354,6 +379,78 @@ border-radius:5px;</string>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="createAt">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:none;</string>
+         </property>
+         <property name="text">
+          <string>Create At:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="createAt_Label">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:none;</string>
+         </property>
+         <property name="text">
+          <string>Date</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QLabel" name="role">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:none;</string>
+         </property>
+         <property name="text">
+          <string>Role</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="role_2">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:none;</string>
+         </property>
+         <property name="text">
+          <string>Lecture</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
        <item>
         <widget class="QLabel" name="Activate">
          <property name="font">
