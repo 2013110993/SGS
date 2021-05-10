@@ -20,8 +20,9 @@ void databaseconnection::connect()
 {
     setConnection = QSqlDatabase::addDatabase("QMYSQL");
     setConnection.setHostName("127.0.0.1");
-    setConnection.setPort(3306);
+    //setConnection.setPort(3306);
     //setConnection.setPort(3366);
+    setConnection.setPort(3336);
     setConnection.setUserName("root");
     setConnection.setPassword("");
     setConnection.setDatabaseName("db");
@@ -422,15 +423,15 @@ QSqlQuery databaseconnection::getLecturerInfo(QString lecturer)
 QSqlQuery databaseconnection::getFaculty()
 {
     QSqlQuery * query1 = new QSqlQuery;
-    query1->prepare("SELECT faculty FROM academicprogram GROUP BY faculty");
+    query1->prepare("SELECT faculty FROM academicprogram GROUP BY faculty");  //fetch query and assigns it to the query1
 
-    if(!(query1->exec()))
+    if(!(query1->exec()))  //checks if query1 does not execute
     {
-        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());  //display warning message box
     }
-    QSqlQuery query = *query1;
-    delete query1;
-    return query;
+    QSqlQuery query = *query1;  //query is assigned to the query1 pointer
+    delete query1;  //deletes query1 from the heap
+    return query;  //returns query
 }
 
 QSqlQuery databaseconnection::getProgramSequences(QString faculty, QString program)

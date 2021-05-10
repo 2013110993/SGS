@@ -39,29 +39,30 @@ void Register::on_cancelSignUpButton_clicked()
 void Register::on_signUpNextButton_clicked()
 {
     //EMAIL VALIDATION
-    QLineEdit *fNameLineEdit = new QLineEdit;
-    QLineEdit *emailLineEdit = new QLineEdit;
-    QLineEdit *confirmEmailLineEdit = new QLineEdit;
-    fNameLineEdit = ui->firstName_RegFormLineEdit;
-    emailLineEdit = ui->email_RegFormLineEdit;
-    confirmEmailLineEdit = ui->confirmEmail_RegFormLineEdit_2;  //
+    QLineEdit *fNameLineEdit = new QLineEdit;   //new QlineEdit for the firstName
+    QLineEdit *emailLineEdit = new QLineEdit;   //new QlineEdir for the last Name
+    QLineEdit *confirmEmailLineEdit = new QLineEdit;    //new QLineEdit for the email confirmation
+    fNameLineEdit = ui->firstName_RegFormLineEdit;      //fNameLineEdit is assigned to the value the user's first name
+    emailLineEdit = ui->email_RegFormLineEdit;      //emailLineEdit is assigned to the value the user's email
+    confirmEmailLineEdit = ui->confirmEmail_RegFormLineEdit_2;      //confirmEmailLineEdit is assigned to the value the user's email confirmation
     QRegularExpression rx("\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b",
                           QRegularExpression::CaseInsensitiveOption);
-    emailLineEdit->setValidator(new QRegularExpressionValidator(rx, this));
+    emailLineEdit->setValidator(new QRegularExpressionValidator(rx, this));     //check if it's an acceptable email.
 
     //question validations
-    int currIndex = ui->question_1_comboBox->currentIndex();       //first question combo box
+    int currIndex = ui->question_1_comboBox->currentIndex();       //currIndex is assigned to the first question combo box
     QString questionText = ui->firtstQuestionAnswer_RegFormLineEdit->text(); //first question answer line edit
 
-    int currIndex2 = ui->question_2_comboBox->currentIndex();       //second question combo box
+    int currIndex2 = ui->question_2_comboBox->currentIndex();       //currIndex2 is assigned to the second question combo box
     QString questionText2 = ui->secondQuestionAnswer_RegFormLineEdit->text(); //second question answer line edit
 
     int currIndex3 = ui->question_3_comboBox->currentIndex();       //third question combo box
     QString questionText3 = ui->thirdQuestionAnswer_RegFormLineEdit->text(); //third question answer line edit
 
-    //checks for any empty data in inside the form
+    //exception handling
     try
     {
+        //checks for any empty data in inside the form
         if (fNameLineEdit->text() == NULL || ui->lastName_RegFormLineEdit->text() == NULL || ui->userName_RegFormLineEdit->text()==NULL ||
                 ui->password_RegFormLineEdit->text() == NULL || ui->passwordConfirm_RegFormLineEdit->text() == NULL ||
                 ui->confirmEmail_RegFormLineEdit_2->text() == NULL || ui->email_RegFormLineEdit->text() == NULL ||
@@ -71,40 +72,41 @@ void Register::on_signUpNextButton_clicked()
                 ui->thirdQuestionAnswer_RegFormLineEdit->text() == NULL || ui->studentIdRegFormLineEdit->text() == NULL
                 )
         {
-            throw "Fill in the missing Data";
+            throw "Fill in the missing Data";  //throws excpetion if there's any missing date
         }
-        else if (ui->password_RegFormLineEdit->text() != ui->passwordConfirm_RegFormLineEdit->text())
+        else if (ui->password_RegFormLineEdit->text() != ui->passwordConfirm_RegFormLineEdit->text())  //checks if password matches the password confirmation
         {
-            throw "Password MissMatched!";
+            throw "Password MissMatched!";  //throws this exception
         }
-        else if (!emailLineEdit->hasAcceptableInput())            //displays warning message box if email format is incorrect
+        else if (!emailLineEdit->hasAcceptableInput())  //checks if email format is incorrect
         {
-           throw "Email Format is Incorrect";
+           throw "Email Format is Incorrect";  //throws exception if email is incorrect
         }
-        else if (emailLineEdit->text() != confirmEmailLineEdit->text()) //displays warning message box if the email line edit is not equal to confirm email line edit
+        else if (emailLineEdit->text() != confirmEmailLineEdit->text()) //checks if the email line edit is not equal to confirm email line edit
         {
-           throw "Email Format does not match!";
+           throw "Email Format does not match!"; //throws exception if email does not match
         }
         else if(currIndex == currIndex2 || currIndex == currIndex3 || currIndex2 == currIndex3) //checks if questions are repeated
         {
-           throw "Questions are repeated!";
+           throw "Questions are repeated!";  //throws exception if questions are repeated
         }
-        else
+        else  //enters if no issue was encountered
         {
 
+            //faculties is assigned to the value that the databaseconnection class's function getFaculty() returns
              QSqlQuery faculties = connection->getFaculty();
              while(faculties.next())
              {
-                 QString faculty = faculties.value(0).toString();
-                 ui->facultyComboBox->addItem(faculty);
+                 QString faculty = faculties.value(0).toString(); //faculty recieves the value(0) from the QSqlQuery faculties
+                 ui->facultyComboBox->addItem(faculty); //adds all the faculties to the faculty combo box
              }
-             ui->stackedWidgetRegister->setCurrentIndex(1); //executes if there's no error
+             ui->stackedWidgetRegister->setCurrentIndex(1); //executes if there's no error(moves on to the next procedure)
         }
     }
-    catch (const char *message)
+    catch (const char *message)  //catch the exception as a char
     {
         QMessageBox messagebox;
-        messagebox.warning(NULL,"Error",message);
+        messagebox.warning(NULL,"Error",message); //displays the exception message in a warning message box
     }
 
     //Generate Table for ProgramSequence
