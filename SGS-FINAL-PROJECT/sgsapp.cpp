@@ -922,6 +922,9 @@ int rowCount = 0;
 
      //clear lineEdit after submit
      ui->addCodeLineEdit->clear();
+     ui->addNameLineEdit->clear();
+     ui->addCreditLineEdit->clear();
+     ui->addPrerequisiteLineEdit->clear();
     }
 }
 
