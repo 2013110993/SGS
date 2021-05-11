@@ -1041,3 +1041,77 @@ void sgsApp::on_saveSequencepushButton_clicked()
 {
 
 }
+
+void sgsApp::on_printReport_pushButton_clicked()
+{
+        {
+            if(ui->programSequenceTableWidget->rowCount() > 0)
+            {
+                // Notify user that ther is no content to process
+                QMessageBox::warning(this,"ERROR 404", "Nothing that can be process, Please open a document to process!");
+            }
+
+             //connect(ui->textEdit, SIGNAL(textChanged()), this, SLOT(isTextChanged()));
+
+             if(!(ui->programSequenceTableWidget->rowCount() > 0))
+             {
+                QString fileName = windowTitle();
+                QStringList onlyFileTitle = fileName.split(QRegExp("\\."), QString::SkipEmptyParts);
+
+                //Create a file
+                QFile newFile(onlyFileTitle.at(0)+ "_statistics.sta");
+
+                //keep track of current file directory
+                QString newFilePath = QDir::currentPath();
+
+                //Check if file can be opened
+                if(!newFile.open(QIODevice::WriteOnly| QIODevice::Text ))
+                {
+                    QMessageBox::warning(this, tr("Error"), tr("The file could not be opened."));
+                   // setFileName(QString());
+
+                }
+                else
+                {
+                    // current date/time based on current system
+                    time_t now = time(0);
+
+                    // convert now to string form
+                    char* dt = ctime(&now);
+
+                    // Creating file to output
+                    QTextStream outFile(&newFile);
+
+                    //Taking content of current window
+                   // QString newText = ui->textEdit->toPlainText();
+                    //int docWordCount =  ui->textEdit->toPlainText().split(QRegExp("(\\s|\\n|\\r)+"), QString::SkipEmptyParts).count();
+                    //QList<Word> wordList = currentList(newText);
+                    //int docUniqueWordCount = wordList.count();
+
+                    // sort qlist
+                   // std::sort(wordList.begin(), wordList.end(), std::greater<Word>());
+
+
+                    //Writing to file
+                    outFile<<"Statistical data for "<<"\""<<onlyFileTitle.at(0)<<".txt"<<"\""<<"\n";
+                    outFile<<"Generated date: "<<dt;
+                    outFile<<"Total word count: "<<docWordCount<<"\n";
+                    outFile<<"Unique word count: "<<docUniqueWordCount<<"\n";
+                    outFile<<"Word Frequency:"<<"\n\n";
+
+                    //Writing to file: the word frequency
+                   // for(int count = 0; count < wordList.count();count++)
+                    {
+                   //     outFile<<wordList.at(count).getText()<<" "<<wordList.at(count).getFrequency()<<"\n";
+                    }
+                    newFile.flush();
+                    newFile.close();
+
+                    //Notify user that file has been created
+                    QMessageBox::about(this,"File created",QString("The following file was created: %1 \nIt is found at: %2")
+                                       .arg(onlyFileTitle.at(0)+"_statistics.sta")
+                                       .arg(newFilePath));
+                }
+            }
+        }
+}

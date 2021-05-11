@@ -111,6 +111,8 @@ private slots:
 
     void on_saveSequencepushButton_clicked();
 
+    void on_printReport_pushButton_clicked();
+
 private:
     Ui::sgsApp *ui;
     forgotPassword * forgot;
