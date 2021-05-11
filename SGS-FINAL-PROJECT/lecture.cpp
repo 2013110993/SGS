@@ -12,5 +12,5 @@ lecture::lecture()
 
 QSqlQuery lecture::getLecturerCourses(databaseconnection &dbobj)
 {
-    return dbobj.getLectureCourse();
+    return dbobj.getLectureCourse();        //returns lecturer courses from function getLectureCourse()
 }

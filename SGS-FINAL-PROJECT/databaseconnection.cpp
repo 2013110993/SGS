@@ -1353,28 +1353,32 @@ bool databaseconnection::addProgramSequence(QString programSeqId, QString progra
     qDebug()<<programName;
     qDebug()<<faculty;
 
-    QSqlQuery * query1 = new QSqlQuery;
+    QSqlQuery * query1 = new QSqlQuery;  //new query created inside heap
+
+    //query1 inserts specific values into the academic program table
     query1->prepare("INSERT INTO academicprogram (id, name, faculty) "
                     "VALUES (:id,:name,:faculty) " );
 
 
 
+    //binds query1 values
     query1->bindValue(":id", programSeqId);
     query1->bindValue(":name", programName);
     query1->bindValue(":faculty", faculty);
 
     if(!(query1->exec()))
     {
-        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());    //displays warning message if query1 does not execute
         delete query1;
         return false;
 
     }
     else
     {
-        QSqlQuery * query2 = new QSqlQuery;
+        QSqlQuery * query2 = new QSqlQuery;     //new query created inside the heap
         query2 = new QSqlQuery;
 
+        //query2 inserts specific values into the programsequnce table
         query2->prepare(" INSERT INTO `programsequence`(`id`, `code`, `pSYear`, `academicProgramID`) "
                         "VALUES (:id,:code,:pSYear, :academicProgramID) " );
         query2->bindValue(":id", programSeqId);
@@ -1387,7 +1391,6 @@ bool databaseconnection::addProgramSequence(QString programSeqId, QString progra
             QMessageBox::warning(NULL,"We encounter an error: ",query2->lastError().text());
             delete query2;
             return false;
-
         }
         else
         {
@@ -1400,27 +1403,27 @@ bool databaseconnection::addProgramSequence(QString programSeqId, QString progra
                 QSqlQuery * query3 = new QSqlQuery;
                 query3 = new QSqlQuery;
 
-                if (!checkisCourseAval(courseCodes[var]))
+                if (!checkisCourseAval(courseCodes[var]))       //checks if  course is not available
                 {
+                    //query3 inserts specific values to table courses
                     query3->prepare("INSERT INTO `courses`(`id`, `name`, `semester`, `creditHour`, `courseCode`) "
                                     "VALUES (:id,:name,:semester, :creditHour, :courseCode) " );
+                    //binds query3
                     query3->bindValue(":id", courseCodes[var]);
                     query3->bindValue(":name", courseName[var]);
                     query3->bindValue(":creditHour", credits[var]);
                     query3->bindValue(":courseCode", courseCodes[var]);
                     query3->bindValue(":semester", semester[var]);
 
-                    if(!(query3->exec()))
+                    if(!(query3->exec()))       //checks if query3 does no eecute
                     {
                         QMessageBox::warning(NULL,"We encounter an error: ",query3->lastError().text());
                         delete query3;
-                        return false;
-
+                        return false;  //returns false if query does not execute
                     }
 
-
                     QSqlQuery * query4 = new QSqlQuery;
-                    query4 = new QSqlQuery;
+                    query4 = new QSqlQuery;         //creates new qsqlquery inside the heap
 
                     query4->prepare("INSERT INTO `prequisites`(`id`, `prequisite`) "
                                     "VALUES (:id,:prequisite) " );
@@ -1428,14 +1431,11 @@ bool databaseconnection::addProgramSequence(QString programSeqId, QString progra
                     query4->bindValue(":prequisite", prerequisites[var]);
                     if(!(query4->exec()))
                     {
-                        QMessageBox::warning(NULL,"We encounter an error: ",query4->lastError().text());
+                        QMessageBox::warning(NULL,"We encounter an error: ",query4->lastError().text()); //displays warning message box if query4 does not execte
                         delete query4;
                         return false;
                     }
-
-
                 }
-
 
                 QSqlQuery *progCourse;
                 progCourse = new QSqlQuery;
@@ -1445,13 +1445,15 @@ bool databaseconnection::addProgramSequence(QString programSeqId, QString progra
                 progCourse->bindValue(":programSequenceid", programSeqId);
                 progCourse->bindValue(":courseID", courseCodes[var]);
 
-                if(!(progCourse->exec()))
+                if(!(progCourse->exec()))           //checks if progCourse does not execute
                 {
                     QMessageBox::warning(NULL,"We encounter an error: ",progCourse->lastError().text());
                     delete progCourse;
-                    return false;
+                    return false;           //returns false means query4 did not executed
 
                 }
+
+                //release all QSqlQueries from the heap since they are no longer neeeded
                 delete query1;
                 delete query2;
                 delete query3;
@@ -1469,14 +1471,16 @@ bool databaseconnection::addProgramSequence(QString programSeqId, QString progra
 
 }
 
-bool databaseconnection::checkisCourseAval(QString CourseID)
+bool databaseconnection::checkisCourseAval(QString CourseID)  //function will checks if course is available
 {
     QSqlQuery *query1;
     query1 = new QSqlQuery;
+
+    //fetch values from table courses
     query1->prepare(" SELECT `id` FROM `courses`  "
                     " WHERE `courseCode` = " + CourseID );
 
-    if(!(query1->exec()))
+    if(!(query1->exec())) //checks if query1 execute fails
     {
         // QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
         delete query1;
@@ -1486,7 +1490,7 @@ bool databaseconnection::checkisCourseAval(QString CourseID)
     else
     {
         delete query1;
-        return true;
+        return true;        //returns true if query execute succeeded
 
     }
 }

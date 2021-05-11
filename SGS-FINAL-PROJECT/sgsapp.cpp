@@ -1153,7 +1153,7 @@ void sgsApp::on_saveSequencepushButton_clicked()
 
 }
 
-void sgsApp::on_printReport_pushButton_clicked()
+void sgsApp::on_printReport_pushButton_clicked()        //print program sequenece for student
 {
     //including library from QT
 #if defined(QT_PRINTSUPPORT_LIB) && QT_CONFIG (printer)
@@ -1167,7 +1167,7 @@ void sgsApp::on_printReport_pushButton_clicked()
 #endif
 }
 
-void sgsApp::on_lecturePrintReport_pushButton_clicked()
+void sgsApp::on_lecturePrintReport_pushButton_clicked() //print program sequence for lecturer
 {
     //including library from QT
 #if defined(QT_PRINTSUPPORT_LIB) && QT_CONFIG (printer)
@@ -1181,16 +1181,16 @@ void sgsApp::on_lecturePrintReport_pushButton_clicked()
 #endif
 }
 
-void sgsApp::on_englishTranslationRadioButton_clicked()
+void sgsApp::on_englishTranslationRadioButton_clicked() //radio button for english translation
 {
 
 
-    a->removeTranslator(translator); qDebug()<<"UNCLICKed";
+    a->removeTranslator(translator); qDebug()<<"UNCLICKed";  //removes spanish  translation
 
 }
 
-void sgsApp::on_spanishTranslationRadioButton_clicked()
+void sgsApp::on_spanishTranslationRadioButton_clicked()     //radio button for spanish translaation
 {
 
-    a->installTranslator(translator); qDebug()<<"CLICKed";
+    a->installTranslator(translator); qDebug()<<"CLICKed";      //adds spansih translation
 }
