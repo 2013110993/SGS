@@ -948,6 +948,19 @@ void sgsApp::on_searchResultCourseCommentTableWidget_cellClicked(int row, int co
 void sgsApp::on_AddProgramSequence_Button_clicked()
 {
     ui->stackedWidgetPages->setCurrentIndex(5);
+    ui->addCourseSequenceframe->hide();
+    ui->draftTableWidget->hide();
+    //enable LineEdit for Program Sequence ID,Name,faculty and year
+    ui->idLineEdit->setEnabled(true);
+    ui->seqNameLineEdit->setEnabled(true);
+    ui->facultyLineEdit->setEnabled(true);
+    ui->yearLineEdit->setEnabled(true);
+
+    while (ui->draftTableWidget->rowCount() > 0)
+    {
+        ui->draftTableWidget->removeRow(0);
+    }
+
     rowCount = 0;
 }
 
@@ -955,7 +968,7 @@ void sgsApp::on_AddProgramSequence_Button_clicked()
 void sgsApp::on_addCourseSequencepushButton_clicked()
 {
 
-
+    ui->draftTableWidget->show();
     //moving data from LindeEdit to Draft Form
     QString id = ui->idLineEdit->text();
     QString sequence = ui->seqNameLineEdit->text();
@@ -992,12 +1005,15 @@ void sgsApp::on_addCourseSequencepushButton_clicked()
 //Adding Course to Sequence Table
 void sgsApp::on_updateCourse_pushButton_3_clicked()
 {
+    //    //Create Table
+    //    draftTable();
 
     QString code = ui->addCodeLineEdit->text();
     QString courseName = ui->addNameLineEdit->text();
     QString credits = ui->addCreditLineEdit->text();
     QString prerequisites = ui->addPrerequisiteLineEdit->text();
-    if ( !(code.isEmpty() || courseName.isEmpty() || credits.isEmpty() || prerequisites.isEmpty()))
+    QString semester = ui->addSemesterLineEdit->text();
+    if ( !(code.isEmpty() || courseName.isEmpty() || credits.isEmpty() || semester.isEmpty()))
     {
 
         for(int i=0; i<1;i++)
@@ -1007,21 +1023,27 @@ void sgsApp::on_updateCourse_pushButton_3_clicked()
             QTableWidgetItem *CourseName = new QTableWidgetItem;
             QTableWidgetItem *Credits = new QTableWidgetItem;
             QTableWidgetItem *Prerequisites = new QTableWidgetItem;
+            QTableWidgetItem *Semester = new QTableWidgetItem;
 
             Code->setText(code);
             CourseName->setText(courseName);
             Credits->setText(credits);
-            Prerequisites->setText(prerequisites);
+            if(prerequisites.isEmpty())
+            Prerequisites->setText("NONE");
+            else
+             Prerequisites->setText(prerequisites);
+            Semester->setText(semester);
+
+//            if (rowCount == 0)
 
             ui->draftTableWidget->insertRow(rowCount);
             ui->draftTableWidget->setItem(rowCount,0,Code);
             ui->draftTableWidget->setItem(rowCount,1,CourseName);
             ui->draftTableWidget->setItem(rowCount,2,Credits);
             ui->draftTableWidget->setItem(rowCount,3,Prerequisites);
-
+            ui->draftTableWidget->setItem(rowCount,4,Semester);
 
             rowCount++;
-            qDebug()<<"ROW COUNT: "<<rowCount;
 
             //clear lineEdit after submit
             ui->addCodeLineEdit->clear();
@@ -1040,9 +1062,9 @@ void sgsApp::on_updateCourse_pushButton_3_clicked()
 void sgsApp::draftTable()
 {
 
-    ui->draftTableWidget->setColumnCount(4);
+    ui->draftTableWidget->setColumnCount(5);
     QStringList header;
-    header <<"Code" <<  "Course Name"<< "Credits" << "Pre-requisites";
+    header <<"Code" <<  "Course Name"<< "Credits" << "Pre-requisites" << "Semester";
     ui->draftTableWidget->setHorizontalHeaderLabels(header);
     ui->draftTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
 
@@ -1051,12 +1073,6 @@ void sgsApp::draftTable()
 
     ui->draftTableWidget->setAlternatingRowColors(true);
     ui->draftTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
-
-    int rowCount = 0;
-
-
-
-    ui->draftTableWidget->insertRow(rowCount);
 
     ui->draftTableWidget->setColumnWidth(1,200);
 
@@ -1070,13 +1086,42 @@ void sgsApp::on_studentSearchButton_clicked()
 
 void sgsApp::on_saveSequencepushButton_clicked()
 {
-    if(ui->draftTableWidget->rowCount() > 1)
+    if(!(ui->draftTableWidget->rowCount() > 0))
     {
-        qDebug()<<"test1";
+        QMessageBox::critical(this,"ERROR","Please add more course to this program Sequences, It can't go empty");
     }
-    else {
-         QMessageBox::critical(this,"ERROR","Please add more course to this program Sequences, It can't go empty");
+    else
+    {
+        QString programSeqId = ui->draftIDLineEdit->text();
+        QString programName = ui->draftSeqLineEdit->text();
+        QString faculty = ui->draftFacultyLineEdit->text();
+        QString Year = ui->draftYearLineEdit->text();
+
+        QStringList courseCodes;
+        QStringList courseName;
+        QStringList credits;
+        QStringList prerequisites;
+        QStringList semester;
+
+        qDebug()<<programSeqId<<"   "<<programName<< "   "<<faculty<<"   "<<Year;
+        int size = ui->draftTableWidget->rowCount();
+
+        int counter = 0;
+        while (counter < size)
+        {
+            courseCodes.append(ui->draftTableWidget->item(counter,0)->text());
+            courseName.append(ui->draftTableWidget->item(counter,1)->text());
+            credits.append(ui->draftTableWidget->item(counter,2)->text());
+            prerequisites.append(ui->draftTableWidget->item(counter,3)->text());
+            semester.append(ui->draftTableWidget->item(counter,4)->text());
+            counter++;
+        }
+
+        connection->addProgramSequence(programSeqId,programName,faculty,Year,courseCodes,courseName,credits,prerequisites,semester);
     }
+
+
+
 
 }
 
@@ -1112,12 +1157,12 @@ void sgsApp::on_englishTranslationRadioButton_clicked()
 {
 
 
-       a->removeTranslator(translator); qDebug()<<"UNCLICKed";
+    a->removeTranslator(translator); qDebug()<<"UNCLICKed";
 
 }
 
 void sgsApp::on_spanishTranslationRadioButton_clicked()
 {
 
-       a->installTranslator(translator); qDebug()<<"CLICKed";
+    a->installTranslator(translator); qDebug()<<"CLICKed";
 }

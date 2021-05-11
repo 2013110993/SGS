@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     a = new QApplication (argc, argv);
     translator = new QTranslator;
     translator->load(":/language_es.qm");
-   // a->installTranslator(translator);
+    a->installTranslator(translator);
 
     connection = new databaseconnection;
     connection->connect();

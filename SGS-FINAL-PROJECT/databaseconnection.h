@@ -26,6 +26,9 @@ public:
     bool isCourseGraded(QString);
     bool activateUser(QString, int);
     bool deactivateUser(QString, int);
+    bool addProgramSequence(QString,QString,QString,QString,QStringList,QStringList,QStringList,QStringList,QStringList);
+
+    bool checkisCourseAval(QString);
 
     void connect();
     void disconnect();

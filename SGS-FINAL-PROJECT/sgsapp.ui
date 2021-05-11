@@ -46,7 +46,7 @@
      <string notr="true">color:#fff;</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="loginScreen">
      <property name="styleSheet">
@@ -985,7 +985,7 @@ background-repeat: no-repeat;</string>
        <string notr="true">border: 1px</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="DashboardPage">
        <widget class="QFrame" name="pageTitleCourseListPage_3">
@@ -3921,7 +3921,7 @@ border-radius:5px;</string>
           <x>10</x>
           <y>270</y>
           <width>581</width>
-          <height>151</height>
+          <height>341</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -4047,8 +4047,8 @@ border:0px;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>310</x>
-           <y>90</y>
+           <x>20</x>
+           <y>170</y>
            <width>41</width>
            <height>30</height>
           </rect>
@@ -4081,8 +4081,8 @@ border-bottom:1px dotted #999;</string>
         <widget class="QLabel" name="idTagLable_7">
          <property name="geometry">
           <rect>
-           <x>310</x>
-           <y>70</y>
+           <x>20</x>
+           <y>150</y>
            <width>41</width>
            <height>18</height>
           </rect>
@@ -4098,8 +4098,8 @@ border:0px;</string>
         <widget class="QLabel" name="idTagLable_8">
          <property name="geometry">
           <rect>
-           <x>390</x>
-           <y>70</y>
+           <x>100</x>
+           <y>150</y>
            <width>141</width>
            <height>18</height>
           </rect>
@@ -4118,8 +4118,8 @@ border:0px;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>390</x>
-           <y>90</y>
+           <x>100</x>
+           <y>170</y>
            <width>181</width>
            <height>30</height>
           </rect>
@@ -4203,6 +4203,60 @@ border-radius:5px;</string>
          <property name="icon">
           <iconset resource="images.qrc">
            <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="addSemesterLineEdit">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>260</y>
+           <width>91</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:#ffffff;
+color: #333;
+border:0px;
+border-bottom:1px dotted #999;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Semester</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="SemesterTagLable">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>240</y>
+           <width>81</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666;
+border:0px;</string>
+         </property>
+         <property name="text">
+          <string>Semester</string>
          </property>
         </widget>
        </widget>
