@@ -18,10 +18,7 @@ sgsApp::sgsApp(QWidget *parent)
     , ui(new Ui::sgsApp)
 
 {
-
-
     ui->setupUi(this);
-
     connection = new databaseconnection;
 
     //Default landing Page for StackedWidget
@@ -34,30 +31,29 @@ sgsApp::sgsApp(QWidget *parent)
     ui->addCourseSequenceframe->hide();
     ui->draftProgSequenceFrame->hide();
 
-    buttonClick = true;
+    buttonClick = true;  //sets buttonCLick to true
     for (int var = 0; var < arraySize; ++var)
     {
-        ArrayDeleteLater[var] = NULL;
+        ArrayDeleteLater[var] = NULL; //sets Qlabel Array pointer values to Null
     }
     holder = NULL;
 
     qDebug()<<"about to connect";
 
-
 }
 
+//desctructor
 sgsApp::~sgsApp()
 {
-    closeDatabase(*(connection));
-    delete connection;
+    closeDatabase(*(connection));  //calls function closeDatabase to close the database
+    delete connection;  //release connection from the heap
     delete ui;
-
-
 }
 
-
+//funtion disables all student Features
 void sgsApp::disableStudentFeature()
 {
+    //hides everything linked with the student features
     ui->addCourse_Button->hide();
     ui->disableUser_Button->hide();
     ui->addUser_Button->hide();
@@ -70,34 +66,33 @@ void sgsApp::disableStudentFeature()
 
 }
 
+//function hide features
 void sgsApp::hideFeature()
 {
-
-    ui->addCourseFrame->hide();
+    ui->addCourseFrame->hide();   //hides the course update/frame
     ui->viewCourses_Button->hide();
     ui->addCourse_Button->hide();
     ui->AddProgramSequence_Button->hide();
     ui->disableUser_Button->hide();
     ui->addInstitution_Button->hide();
-
-
 }
 
-void sgsApp::disableAdminFeature()
+void sgsApp::disableAdminFeature() //disableAdminFeature() function disbales the Admin features
 {
 
     ui->AddLecturerCourse_Button->hide();
-    ui->viewCourses_Button->hide();
+    ui->viewCourses_Button->hide();  //disbales button to view courses
 
 }
-void sgsApp::closeDatabase(databaseconnection &dbObj)  //friend function
+void sgsApp::closeDatabase(databaseconnection &dbObj)  // function closes database
 {
-    dbObj.disconnect();
+    dbObj.disconnect();  //calls function disconnect() from the databaseconnection class
 }
 
+//this function show the features that are disbaled
 void sgsApp::showFeature()
 {
-
+    //show available features
     ui->AddProgramSequence_Button->show();
     ui->addCourseFrame->show();
     ui->AddProgramSequenceFormTitle_2->show();
@@ -113,16 +108,21 @@ void sgsApp::showFeature()
 
 void sgsApp::logout()
 {
-    this->show();
+    this->show();  //logouts from the sgsapp
 }
 
-//Register Button
+//Register Button slot
 void sgsApp::on_signUpButton_clicked()
 {
     //create a new instance of reg
+    reg = new Register(this);
+    qDebug()<< !(queries.next());
+
+
 
     reg = new Register(this);
     qDebug()<< !(queries.next());
+
 
     if(!(queries.next()))
     {
@@ -133,23 +133,22 @@ void sgsApp::on_signUpButton_clicked()
         qDebug()<<queries.lastError();
     }
 
-    if (queries.size() > 0)
+
+    if(queries.size() > 0)
     {
-        connect(this,SIGNAL(sendQuestion(QSqlQuery)), reg , SLOT(recieveQuestion(QSqlQuery)));
+        connect(this,SIGNAL(sendQuestion(QSqlQuery)), reg , SLOT(recieveQuestion(QSqlQuery)));  //create connection with signal sendQuestion(QSqlQuery) from this class and connect it to slot recieveQuestion(QSqlQuery) from register class
         emit sendQuestion(queries);
     }
 
     //Modal Approach
     reg->setModal(true);
-    reg->show();
+    reg->show();  //displays register form
 }
 
-
-
-//Login Button
+//Login Button slot
 void sgsApp::on_signInButton_clicked()
 {
-    QString username = ui->usernameInput->text();
+    QString username = ui->usernameInput->text();  //QString username is assigned to the user's username input
     QString password = ui->passwordInput->text();
 
     // ///////////////////////////////////////
@@ -160,60 +159,60 @@ void sgsApp::on_signInButton_clicked()
     //               ui->stackedWidgetSGS->setCurrentIndex(1);
     //           }
 
-    bool checking = connection->loginUser(username,password);
+    bool checking = connection->loginUser(username,password);  //checking is assigned to the returned value that loginUser(username, password) function returns(either true or flase since it's a bool)
     qDebug()<<connection->getRole();
-    int role =  connection->getRole().toInt();
+    int role =  connection->getRole().toInt();  //role recieves the returned value that getRole() functions returns(integer)
     if (checking)
     {
         switch (role)
         {
-        case 1:
+        case 1:  //case 1 enters if role is 1
         {
-            ui->stackedWidgetSGS->setCurrentIndex(1);
+            ui->stackedWidgetSGS->setCurrentIndex(1);  //sets the stackwidgetSGS widget to index 1
             ui->stackedWidgetPages->setCurrentIndex(0);
-            showFeature();
-            disableStudentFeature();
+            showFeature();   //calls function showFeatures() this functions will enable a list of features for the student
+            disableStudentFeature();    //disables features that aren't accessible for the student
             ui->userRoleLable->setText(username);
         }
             break;
-        case 2:
+        case 2: //case 2 enters if role is 2
         {
             ui->stackedWidgetSGS->setCurrentIndex(1);
-            ui->stackedWidgetPages->setCurrentIndex(0);
-            showFeature();
-            hideFeature();
+            ui->stackedWidgetPages->setCurrentIndex(0); //widget stackedWidgetPages is set to index 0(first page)
+            showFeature();  //show lecturer features
+            hideFeature();  //hide features that aren't accessible for the lecturer
             ui->userRoleLable->setText(username);
         }
             break;
-        case 3:
+        case 3:     //case 3 enters if role is 3
         {
-            ui->stackedWidgetSGS->setCurrentIndex(1);
+            ui->stackedWidgetSGS->setCurrentIndex(1);       //sets the stackwidgetSGS widget to index 1
             ui->stackedWidgetPages->setCurrentIndex(0);
-            showFeature();
-            disableAdminFeature();
+            showFeature();          //shows the features available for the admin
+            disableAdminFeature();  //disbales the features that admin is not allowed to access
             ui->userRoleLable->setText(username);
         }
             break;
-        default:
+        default:   //reaches to default if role was not found in neither of the cases
             qDebug()<<"error! ! 404";
         }
 
 
     }
-
+    //enters if !checking
     else {
-        ui->loginErrorLabel->setText("~ Invalid Credentials! ~");
-        ui->loginErrorLabel->setStyleSheet("border:1px solid #b50009; color:#b50009;height:30px;border-radius:5px;");
+        ui->loginErrorLabel->setText("~ Invalid Credentials! ~");       //displays a login  error message
+        ui->loginErrorLabel->setStyleSheet("border:1px solid #b50009; color:#b50009;height:30px;border-radius:5px;");   //sets the style for the login error label
     }
 }
 
 void sgsApp::on_forgotPasswordButton_clicked()
 {
-    //create a new instance of reg
-    forgot = new forgotPassword(this);
+
+    forgot = new forgotPassword(this); //create a new instance of forgotpassword
     //Modal Approach
     forgot->setModal(true);
-    forgot->show();
+    forgot->show();     //shows the dialog of forgotPassord class
 
 }
 
@@ -223,16 +222,16 @@ void sgsApp::on_passwordShowButton_clicked()
     //Checks which echo mode and switch it
     if(ui->passwordInput->echoMode() == QLineEdit::Password )
     {
-        ui->passwordInput->setEchoMode(QLineEdit::Normal);
-        ui->passwordShowButton->setIcon(QIcon(":/iconsGray/Icons/Gray/Eye OFF.png"));
+        ui->passwordInput->setEchoMode(QLineEdit::Normal);  //sets password echo Mode to normal
+        ui->passwordShowButton->setIcon(QIcon(":/iconsGray/Icons/Gray/Eye OFF.png"));  // sets icon to represents password echomode is turned off
     }else{
-        ui->passwordInput->setEchoMode(QLineEdit::Password);
-        ui->passwordShowButton->setIcon(QIcon(":/iconsGray/Icons/Gray/Eye ON.png"));
+        ui->passwordInput->setEchoMode(QLineEdit::Password);        //encrypts the password text of the user
+        ui->passwordShowButton->setIcon(QIcon(":/iconsGray/Icons/Gray/Eye ON.png"));        //sets icon to represents password echomode is turned on
     }
 
 }
 
-
+//
 void sgsApp::on_logoutTopBarButton_clicked()
 {
     ui->stackedWidgetSGS->setCurrentIndex(0);
@@ -260,24 +259,25 @@ void sgsApp::on_suspendSetting_pushButton_clicked()
 //New Buttons
 void sgsApp::on_logoutButton_clicked()
 {
-    ui->stackedWidgetSGS->setCurrentIndex(0);
+    ui->stackedWidgetSGS->setCurrentIndex(0);  //moves stacked widget back to index 0
 }
 
 void sgsApp::on_changePassword_Button_clicked()
 {
-    //create a new instance of reg
-    forgot = new forgotPassword(this);
+
+    forgot = new forgotPassword(this); //create a new instance of forgotPassword
     //Modal Approach
     forgot->setModal(true);
-    forgot->show();
+    forgot->show();     //shows the forgot passowrd form
 }
 
+//add user button slot
 void sgsApp::on_addUser_Button_clicked()
 {
     //reg = new Register(this);
     Register * registerNewStudent = new Register(this);
     //Modal approach
-    if(!(queries.next()))
+    if(!(queries.next())) //if query is empty
     {
         queries = connection->updateQuestion();
         qDebug()<<"here1";
@@ -288,13 +288,14 @@ void sgsApp::on_addUser_Button_clicked()
         qDebug()<<queries.lastError();
     }
 
-    if (queries.size() > 0)
+    if (queries.size() > 0)     //checks if the size of query is greater than 0
     {
+        //this connection connects SIGNAL sendQuestion(QSqlQuery)) from  this class to SLOT recieveQuestion(QSqlQuery) from the Register class
         connect(this,SIGNAL(sendQuestion(QSqlQuery)), registerNewStudent , SLOT(recieveQuestion(QSqlQuery)));
         emit sendQuestion(queries);
     }
 
-    registerNewStudent->show();
+    registerNewStudent->show(); //shows Register form
 
 }
 
@@ -302,7 +303,7 @@ void sgsApp::on_addUser_Button_clicked()
 void sgsApp::on_dashboard_pushButton_clicked()
 {
     //Navigate tho Dashboard Page
-    ui->stackedWidgetPages->setCurrentIndex(0);
+    ui->stackedWidgetPages->setCurrentIndex(0); //goas back to dashbard of the sgsapp (main menu)
     //New functionality comming soon
     //    if (buttonClick)
     //    {
@@ -320,12 +321,12 @@ void sgsApp::on_dashboard_pushButton_clicked()
 }
 
 
-
+//slot for the Program Sequence Button
 void sgsApp::on_viewStudentProgramSequence_Button_clicked()
 {
 
-    programSequenceList();
-    ui->stackedWidgetPages->setCurrentIndex(2);
+    programSequenceList();  //calls function  programSequenceList()
+    ui->stackedWidgetPages->setCurrentIndex(2);     //stacked widget is moved to page 3
 }
 
 //Generating the Program Sequence QTableWidget
@@ -333,22 +334,25 @@ void sgsApp::programSequenceList()
 {
     qDebug()<<connection->getRole();
 
-    while (ui->programSequenceTableWidget->rowCount() > 0)
+    while (ui->programSequenceTableWidget->rowCount() > 0)  //checks if tableWidget of Porgram sequence is no 0 or less
     {
-        ui->programSequenceTableWidget->removeRow(0);
+        ui->programSequenceTableWidget->removeRow(0);       //removes row
     }
 
 
     QSqlQuery programCourses ;
     QStringList programSeqInfo;
 
-    bool role = (connection->getRole() == "2" || connection->getRole() == "3");
+    bool role = (connection->getRole() == "2" || connection->getRole() == "3");     //role is assigned to true if User's UserRole is equal to 2 or 3
+
+    //administration_LineIsnotEmpty is iassigned to true if role is true and student search is not empty or if user's UserRole is not equal to 2 or 3
     bool administration_LineIsnotEmpty = ((role && !(ui->studentSearchLineEdit->text().isEmpty())) || !(connection->getRole() == "2" || connection->getRole() == "3" ) );
 
 
     //  bool role = (connection->getRole() == "2" || connection->getRole() == "3");
-    if (role)
+    if (role)   //checks if role is true
     {
+        //hides and shows specific features for the admin and lecturer
         ui->addCourseFrame->hide();
         ui->AddProgramSequenceFormTitle_2->show();
         ui->studentSearchButton->show();
@@ -357,6 +361,7 @@ void sgsApp::programSequenceList()
 
     else
     {
+        //hides and shows features for the student
         ui->addCourseFrame->show();
         ui->AddProgramSequenceFormTitle_2->hide();
         ui->studentSearchButton->hide();
@@ -364,40 +369,38 @@ void sgsApp::programSequenceList()
 
     }
 
-    if ( role && !(ui->studentSearchLineEdit->text().isEmpty()))
+    if ( role && !(ui->studentSearchLineEdit->text().isEmpty()))  //checks if role is true and student search line edit is not empty
     {
 
-        QString studentID = ui->studentSearchLineEdit->text();
+        QString studentID = ui->studentSearchLineEdit->text();      //studentId Qstring is assigned to the user's search line edit
+        //QString studentID = ui->studentSearchLineEdit->text();
+
         qDebug()<<"ENTERDD TRUE"<<studentID;
         programCourses =  connection->getStudentsCourses(studentID);
 
-        programSeqInfo = connection->getSequenceName();
+        programSeqInfo = connection->getSequenceName();     //QstringList programSeqInfo is assigned to the returned value of the function getSequenceName() from the databaseconnection class
     }
 
     else if (!(connection->getRole() == "2" || connection->getRole() == "3" ))
     {
         programCourses   = connection->getStudentsCourses();
-        programSeqInfo = connection->getSequenceName();
+        programSeqInfo = connection->getSequenceName(); //programSeqInfo is assigned to the returned value which is a QstringList that includes programseuquence name and faculty name
     }
 
-
-
-    if (administration_LineIsnotEmpty)
+    if (administration_LineIsnotEmpty) //checks if administration_LineIsnotEmpty is true
     {
+        ui->programSequenceProgramName->setText(programSeqInfo[0]); //programSequenceProgramName's text is assigned to the first value fo the QStringList programSeqInfo
 
-
-
-        ui->programSequenceProgramName->setText(programSeqInfo[0]);
-
-        ui->programSequenceFacultyName->setText(programSeqInfo[1]);
+        ui->programSequenceFacultyName->setText(programSeqInfo[1]); // programSequenceFacultyName's text is assigned to the second value of the QStringList programSeqInfo
 
         ui->programSequenceTableWidget->setColumnCount(7);
-        ui->programSequenceTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
+        ui->programSequenceTableWidget->setStyleSheet("background:#f1f1f1;color:#333;"); //sets the style for the program sequence table widget
 
         QStringList header;
-        header << "Code"<< "Course Name" <<"Credits" << "Grade" <<"Pre-requisites" << "Semester" << "Year";
+        header << "Code"<< "Course Name" <<"Credits" << "Grade" <<"Pre-requisites" << "Semester" << "Year";     //Qstring List header recieves the header format for the table
 
-        ui->programSequenceTableWidget->setHorizontalHeaderLabels(header);
+        ui->programSequenceTableWidget->setHorizontalHeaderLabels(header);  //programSequenceTableWidget header format implemented
+        //sets the style for header of the table
         ui->programSequenceTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
 
         ui->programSequenceTableWidget->setAlternatingRowColors(true);
@@ -405,43 +408,45 @@ void sgsApp::programSequenceList()
 
         int rowCount = 0;
 
-        for(; programCourses.next();){
-
-            ui->programSequenceTableWidget->insertRow(rowCount);
+        for(; programCourses.next();)
+        {
+            //sets the columns for the table widget
+            ui->programSequenceTableWidget->insertRow(rowCount);        //insert row for the table
             ui->programSequenceTableWidget->setColumnWidth(0,90);
-            ui->programSequenceTableWidget->setColumnWidth(1,270);
+            ui->programSequenceTableWidget->setColumnWidth(1,270);      //sets the second column for the table
             ui->programSequenceTableWidget->setColumnWidth(2,60);
             ui->programSequenceTableWidget->setColumnWidth(3,90);
             ui->programSequenceTableWidget->setColumnWidth(4,480);
             ui->programSequenceTableWidget->setColumnWidth(5,70);
             ui->programSequenceTableWidget->setColumnWidth(6,68);
 
-            QTableWidgetItem *courseCode = new QTableWidgetItem;
+            //a List of QTableWidgetItems created on the heap
+            QTableWidgetItem *courseCode = new QTableWidgetItem;        //course code item implemented inside the heap
             QTableWidgetItem *courseName = new QTableWidgetItem;
             QTableWidgetItem *credits = new QTableWidgetItem;
             QTableWidgetItem *grade = new QTableWidgetItem;
             QTableWidgetItem *prerequisites = new QTableWidgetItem;
             QTableWidgetItem *semester = new QTableWidgetItem;
-            QTableWidgetItem *year = new QTableWidgetItem;
+            QTableWidgetItem *year = new QTableWidgetItem;      //new year table widget item created inside the heap
 
-            courseCode->setText(programCourses.value(0).toString());
+            courseCode->setText(programCourses.value(0).toString());        //course code recieves the value of the QStringList programCourses first value
             courseName->setText(programCourses.value(1).toString());
             credits->setText(programCourses.value(2).toString());
-            if (programCourses.value(3).toString().isEmpty())
+            if (programCourses.value(3).toString().isEmpty())       //checks if value 3 of the programCourses is empty
                 grade->setText("Pending");
             else
-                grade->setText(programCourses.value(3).toString());
+                grade->setText(programCourses.value(3).toString());     //grade's text is assigned to the value 3 of programCourses
 
 
-            prerequisites->setText(programCourses.value(4).toString());
+            prerequisites->setText(programCourses.value(4).toString());     //prerequisites's text is assigned to programCourses first value
             semester->setText(programCourses.value(5).toString());
             year->setText(programCourses.value(6).toString());
 
-            ui->programSequenceTableWidget->setItem(rowCount,0,courseCode);
+            ui->programSequenceTableWidget->setItem(rowCount,0,courseCode); //set first item to the table Widget which is the course code
             ui->programSequenceTableWidget->setItem(rowCount,1,courseName);
             ui->programSequenceTableWidget->setItem(rowCount,2,credits);
             ui->programSequenceTableWidget->setItem(rowCount,3,grade);
-            ui->programSequenceTableWidget->setItem(rowCount,4,prerequisites);
+            ui->programSequenceTableWidget->setItem(rowCount,4,prerequisites); //set fourth item to the table Widget which is the prerequisites
             ui->programSequenceTableWidget->setItem(rowCount,5,semester);
             ui->programSequenceTableWidget->setItem(rowCount,6,year);
 
@@ -452,24 +457,27 @@ void sgsApp::programSequenceList()
     }
 }
 
+//slot for view courses button
 void sgsApp::on_viewCourses_Button_clicked()
 {
 
     //Navigate to View Course Page
-    ui->stackedWidgetPages->setCurrentIndex(1);
+    ui->stackedWidgetPages->setCurrentIndex(1);     //stacked widget page moves to second page
 
     //Function to display view course table
-    viewCoursesTable();
+    viewCoursesTable();     //call function viewcoursetable
 }
+
+//function viewcoursetable
 void sgsApp::viewCoursesTable()
 {
 
-    while (ui->viewCoursesTableWidget->rowCount() > 0)
+    while (ui->viewCoursesTableWidget->rowCount() > 0) //checks if viewCoursesTableWidget is greater than 0
     {
         ui->viewCoursesTableWidget->removeRow(0);
     }
 
-    QSqlQuery courses = connection->getStudentsCourses();
+    QSqlQuery courses = connection->getStudentsCourses();  //courses is assigned to the returned value of getStudentsCourses() function
 
 
 
@@ -477,9 +485,9 @@ void sgsApp::viewCoursesTable()
     ui->viewCoursesTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
 
     QStringList header;
-    header << "Code"<< "Course Name" <<"Credits" << "Semester" << "Status" << "Comments";
+    header << "Code"<< "Course Name" <<"Credits" << "Semester" << "Status" << "Comments";   //header recieves the column name for the table
 
-    ui->viewCoursesTableWidget->setHorizontalHeaderLabels(header);
+    ui->viewCoursesTableWidget->setHorizontalHeaderLabels(header);  //header is placed horizontal
     ui->viewCoursesTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
 
     ui->viewCoursesTableWidget->setAlternatingRowColors(true);
@@ -489,6 +497,7 @@ void sgsApp::viewCoursesTable()
 
     for(;courses.next() ; ){
 
+        //inserts row and column for the viewTableWdiget table
         ui->viewCoursesTableWidget->insertRow(rowCount);
         ui->viewCoursesTableWidget->setColumnWidth(0,85);
         ui->viewCoursesTableWidget->setColumnWidth(1,195);
@@ -498,7 +507,7 @@ void sgsApp::viewCoursesTable()
         ui->viewCoursesTableWidget->setColumnWidth(5,108);
 
 
-
+        //create QTableWidgetItems for the table
         QTableWidgetItem *courseCode = new QTableWidgetItem;
         QTableWidgetItem *courseName = new QTableWidgetItem;
         QTableWidgetItem *credits = new QTableWidgetItem;
@@ -506,16 +515,16 @@ void sgsApp::viewCoursesTable()
         QTableWidgetItem *status = new QTableWidgetItem;
         //QTableWidgetItem *comments = new QTableWidgetItem;
 
-        courseCode->setText(courses.value(0).toString());
+        courseCode->setText(courses.value(0).toString()); //course code is assigned to the first value of Courses
         courseName->setText(courses.value(1).toString());
         credits->setText(courses.value(2).toString());
-        semester->setText(courses.value(5).toString());
+        semester->setText(courses.value(5).toString()); //semester is assigned to the sixth value of Courses
 
 
-        if (courses.value(3).toString().isEmpty())
+        if (courses.value(3).toString().isEmpty())      //checks if courses' third value is empty
             status->setText("Pending!");
         else
-            status->setText("Complete: "+ courses.value(3).toString());
+            status->setText("Complete: "+ courses.value(3).toString());     //status's text is assigned to "complete" along with the fourth value of the query Courses
 
         ui->viewCoursesTableWidget->setItem(rowCount,0,courseCode);
         ui->viewCoursesTableWidget->setItem(rowCount,1,courseName);
@@ -531,16 +540,16 @@ void sgsApp::viewCoursesTable()
 //Generate Lecturer Cours List Table
 void sgsApp::viewLecturerCoursesTable()
 {
-    while (ui->lecturerCoursesListTableWidget->rowCount() > 0)
+    while (ui->lecturerCoursesListTableWidget->rowCount() > 0)      //runs while lecturerCoursesListTableWidget is greater than 0
     {
         ui->lecturerCoursesListTableWidget->removeRow(0);
     }
-    ui->lecturerCoursesListTableWidget->setColumnCount(5);
+    ui->lecturerCoursesListTableWidget->setColumnCount(5);      //sets 5 columns
     ui->lecturerCoursesListTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
 
     QStringList header;
-    header << "Course Name"<< "Credit" << "Pre-requisites" <<"Semester" << "Year";
-    ui->lecturerCoursesListTableWidget->setHorizontalHeaderLabels(header);
+    header << "Course Name"<< "Credit" << "Pre-requisites" <<"Semester" << "Year";  //header recieves the heading of all columns
+    ui->lecturerCoursesListTableWidget->setHorizontalHeaderLabels(header); //sets the header horizontal
     ui->lecturerCoursesListTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
 
     ui->lecturerCoursesListTableWidget->verticalHeader()->setVisible(false);
@@ -550,37 +559,40 @@ void sgsApp::viewLecturerCoursesTable()
     ui->lecturerCoursesListTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
 
     int rowCount = 0;
-    QSqlQuery lectureCourses = lecture.getLecturerCourses(*(connection));
+    QSqlQuery lectureCourses = lecture.getLecturerCourses(*(connection));       //lectureCourses is assigned to the returned value of the function getLecturerCourses(*(connection))
 
     for(; lectureCourses.next();)
     {
-        ui->lecturerCoursesListTableWidget->insertRow(rowCount);
+        ui->lecturerCoursesListTableWidget->insertRow(rowCount); //creates row
 
+        // sets the column for the lecturerCoursesListTableWidget table
         ui->lecturerCoursesListTableWidget->setColumnWidth(0,250);
         ui->lecturerCoursesListTableWidget->setColumnWidth(1,110);
         ui->lecturerCoursesListTableWidget->setColumnWidth(2,375);
-        ui->lecturerCoursesListTableWidget->setColumnWidth(3,100);
+        ui->lecturerCoursesListTableWidget->setColumnWidth(3,100); //sets the fourth column for the table widget
         ui->lecturerCoursesListTableWidget->setColumnWidth(4,180);
 
+        //List of all the QTableWidgetItem for the table widget
         QTableWidgetItem *courseName = new QTableWidgetItem;
         QTableWidgetItem *credits = new QTableWidgetItem;
         QTableWidgetItem *prerequisites = new QTableWidgetItem;
         QTableWidgetItem *semester = new QTableWidgetItem;
-        QTableWidgetItem *year = new QTableWidgetItem;
+        QTableWidgetItem *year = new QTableWidgetItem;      //year is created inside the heap
 
 
-        courseName->setText(lectureCourses.value(0).toString());
+        courseName->setText(lectureCourses.value(0).toString());        //courseName's text is assigned to the first value of lectureCourses
         credits->setText(lectureCourses.value(1).toString());
         prerequisites->setText(lectureCourses.value(2).toString());
         semester->setText(lectureCourses.value(3).toString());
-        year->setText(lectureCourses.value(4).toString());
+        year->setText(lectureCourses.value(4).toString());          //year's text is assigned to the fifth value of lectureCourses
 
 
+        //insert the each item to the lecturerCoursesListTableWidget table widget
         ui->lecturerCoursesListTableWidget->setItem(rowCount,0,courseName);
         ui->lecturerCoursesListTableWidget->setItem(rowCount,1,credits);
         ui->lecturerCoursesListTableWidget->setItem(rowCount,2,prerequisites);
         ui->lecturerCoursesListTableWidget->setItem(rowCount,3,semester);
-        ui->lecturerCoursesListTableWidget->setItem(rowCount,4,year);
+        ui->lecturerCoursesListTableWidget->setItem(rowCount,4,year);       //last item passed to the table is year
 
         rowCount++;
     }
@@ -590,16 +602,16 @@ void sgsApp::viewLecturerCoursesTable()
 
 void sgsApp::on_lecturerCoursesListTableWidget_cellClicked(int row, int column)
 {
-    QString courseName = ui->lecturerCoursesListTableWidget->item(row,0)->text();
+    QString courseName = ui->lecturerCoursesListTableWidget->item(row,0)->text();       //courseName recieves the lecturerCoursesListTableWidget first item
     QString credits =  ui->lecturerCoursesListTableWidget->item(row,1)->text();
     QString semester = ui->lecturerCoursesListTableWidget->item(row,3)->text();
-    QString year = ui->lecturerCoursesListTableWidget->item(row,4)->text();
+    QString year = ui->lecturerCoursesListTableWidget->item(row,4)->text();     //year recieves the lecturerCoursesListTableWidget fourth item
 
-
-    ui->updateCourseName->setText(courseName);
+    //QLine Edit List
+    ui->updateCourseName->setText(courseName);      //Line Edit updateCourseName's text is assigned coursename's value
     ui->updatePrerequisites->setText(credits);
     ui->updateSemester->setText(semester);
-    ui->updateYear->setText(year);
+    ui->updateYear->setText(year);          //Line Edit updateYear's text is assigned year's value
 }
 
 //View Lecturer Page
@@ -615,27 +627,27 @@ void sgsApp::on_AddLecturerCourse_Button_clicked()
 
 void sgsApp::on_viewCoursesTableWidget_cellClicked(int row, int column)
 {
-    QString courseName = ui->viewCoursesTableWidget->item(row,1)->text();
+    QString courseName = ui->viewCoursesTableWidget->item(row,1)->text();  //courseName is assigned to the first item of viewCoursesTableWidget
     QString status =  ui->viewCoursesTableWidget->item(row,4)->text();
     ui->courseViewCourseTable->setText(courseName);
-    ui->pendingViewCourseTable->setText(status);
+    ui->pendingViewCourseTable->setText(status);            // pendingViewCourseTable's text recieves value status
 
     qDebug()<< ui->viewCoursesTableWidget->item(row,4)->text() ;
     qDebug()<<( ui->viewCoursesTableWidget->item(row,4)->text() != "Pending!");
-    if(( ui->viewCoursesTableWidget->item(row,4)->text() != "Pending!"))
+    if(( ui->viewCoursesTableWidget->item(row,4)->text() != "Pending!"))        //checks viewCoursesTableWidget item is not equal to "Pending"
     {
-        QStringList commentSec = connection->getComment(ui->viewCoursesTableWidget->item(row,0)->text());
+        QStringList commentSec = connection->getComment(ui->viewCoursesTableWidget->item(row,0)->text()); //commentSec is assigned to the returned value of function getComment(ui->viewCoursesTableWidget->item(row,0)->text())
 
         ui->commentTimeStapViewCourseTable->setText(commentSec[1]);
         ui->ratingViewCourseTable->setText(commentSec[2]);
-        ui->userCommentViewCourseTable->setText(commentSec[0]);
+        ui->userCommentViewCourseTable->setText(commentSec[0]);     //userCommentViewCourseTable receieves the first value of commentSec QstringList
 
 
 
     }
     else
     {
-        ui->commentTimeStapViewCourseTable->setText(" ");
+        ui->commentTimeStapViewCourseTable->setText(" ");       //commentTimeStapViewCourseTable's text is cleared
         ui->ratingViewCourseTable->setText(" ");
         ui->userCommentViewCourseTable->setText(" ");
 
@@ -648,28 +660,28 @@ void sgsApp::on_viewCoursesTableWidget_cellClicked(int row, int column)
 
 void sgsApp::on_programSequenceTableWidget_cellClicked(int row, int column)
 {
-    QString courseCode = ui->programSequenceTableWidget->item(row,0)->text();
+    QString courseCode = ui->programSequenceTableWidget->item(row,0)->text();       //courseCode recieves programSequenceTableWidget item
     QString courseName =  ui->programSequenceTableWidget->item(row,1)->text();
     QString credits = ui->programSequenceTableWidget->item(row,2)->text();
     QString prerequisites = ui->programSequenceTableWidget->item(row,4)->text();
     QString semester = ui->programSequenceTableWidget->item(row,5)->text();
     QString year = ui->programSequenceTableWidget->item(row,6)->text();
-    QSqlQuery lecture = connection->getLectureName(courseCode);
+    QSqlQuery lecture = connection->getLectureName(courseCode);     //lecture is assigned to the returned value of function getLectureName(courseCode);
 
     ui->courseCode_CourseGradeLable->setText(courseCode);
     ui->courseName_courseGradeLable->setText(courseName);
     ui->credit_CourseGradeLable->setText(credits);
-    ui->allPrerequisites_CourseGradeLable->setText(prerequisites);
+    ui->allPrerequisites_CourseGradeLable->setText(prerequisites);  //sets allPrerequisites_CourseGradeLable's text from prerequisites's value
     ui->semester_CourseGradeLable->setText(semester);
     ui->courseYear_CourseGradeLable->setText(year);
 
-    ui->addLectureComboBox->clear();
+    ui->addLectureComboBox->clear();        //clear addLectureComboBox combo box
     while (lecture.next())
     {
-        QString lectureName = lecture.value(0).toString();
+        QString lectureName = lecture.value(0).toString();      //lectureName is assigned to the first value of sqlquery lecture
         lectureName.append(" ");
         lectureName = lectureName.append(lecture.value(1).toString());
-        ui->addLectureComboBox->addItem(lectureName);
+        ui->addLectureComboBox->addItem(lectureName);       //adds item to addLectureComboBox
     }
 
 }
@@ -677,20 +689,20 @@ void sgsApp::on_programSequenceTableWidget_cellClicked(int row, int column)
 void sgsApp::on_updateCourse_pushButton_clicked()
 {
 
-    QString courseCode =  ui->courseCode_CourseGradeLable->text();
+    QString courseCode =  ui->courseCode_CourseGradeLable->text();      //courseCode is assigned to courseCode_CourseGradeLable's text
     QString courseName =  ui->courseName_courseGradeLable->text();
     QString credits = ui->credit_CourseGradeLable->text();
     QString grade = ui->addCourseGradecomboBox->currentText();
-    QString rating = ui->addCourseRatingcomboBox->currentText();
+    QString rating = ui->addCourseRatingcomboBox->currentText();            //rating is assigned addCourseRatingcomboBox current text
     QString prerequisites = ui->allPrerequisites_CourseGradeLable->text();
     QString semester = ui->semester_CourseGradeLable->text();
     QString year =  ui->courseYear_CourseGradeLable->text();
     QString comment =  ui->addCourseComment_plainTextEdit->toPlainText();
 
     QStringList list;
-    list.append(courseCode);
+    list.append(courseCode);            //appends coursCode
 
-    list.append(grade);
+    list.append(grade);         //appends grade to list QstringList
 
     list.append(rating);
     list.append(ui->addLectureComboBox->currentText());
@@ -701,10 +713,10 @@ void sgsApp::on_updateCourse_pushButton_clicked()
 
 
 
-    bool checking = connection->setCourseGrade(list);
+    bool checking = connection->setCourseGrade(list);       //checking is assigned to the returned value of function setCourseGrade(list)
 
-    if (checking)
-        programSequenceList();
+    if (checking)               //checks if checking is true
+        programSequenceList();  //calls programSequenceList() function
 
 
 }
@@ -720,39 +732,28 @@ void sgsApp::on_disableUser_Button_clicked()
     //create a new instance of reg
     active_deactivate = new Activate_DeactivateUser(this);
     active_deactivate->ActivateDeactivateUserAccount(connection);
+
     //Modal Approach
     active_deactivate->setModal(true);
     active_deactivate->show();
 }
 
-
-
-
-
 //View Comments Page
 void sgsApp::on_viewComments_Button_clicked()
-{
-    //Navigate to View Course Page
-    ui->stackedWidgetPages->setCurrentIndex(4);
-
-
-
+{  
+    ui->stackedWidgetPages->setCurrentIndex(4);  //Navigate to View Course Page
 }
+
 void sgsApp::viewSearchCourseCommentTable()
 {
 
-    while (ui->searchResultCourseCommentTableWidget->rowCount() > 0)
+    while (ui->searchResultCourseCommentTableWidget->rowCount() > 0)  //runs while searchResultCourseCommentTableWidget is greater than 0
     {
         ui->searchResultCourseCommentTableWidget->removeRow(0);
     }
 
     QString courseName = ui->commentsSearchCourseCodelineEdit->text();
-    QSqlQuery courses = connection->getLecturesByCourse(courseName);
-
-
-
-
-
+    QSqlQuery courses = connection->getLecturesByCourse(courseName);        //courses is assigned to the returned value of function getLecturesByCourse(courseName)
 
 
     ui->searchResultCourseCommentTableWidget->setColumnCount(3);
@@ -773,49 +774,44 @@ void sgsApp::viewSearchCourseCommentTable()
 
     for(; courses.next();)
     {
-        ui->searchResultCourseCommentTableWidget->insertRow(rowCount);
+        ui->searchResultCourseCommentTableWidget->insertRow(rowCount);          //inserts row to table widget
 
+        //set columns for table widget
         ui->searchResultCourseCommentTableWidget->setColumnWidth(0,75);
         ui->searchResultCourseCommentTableWidget->setColumnWidth(1,200);
         ui->searchResultCourseCommentTableWidget->setColumnWidth(0,150);
 
 
-
+        //List of QTableWidgetItem created inside the heap for the table
         QTableWidgetItem *courseCode = new QTableWidgetItem;
         QTableWidgetItem *courseName = new QTableWidgetItem;
         QTableWidgetItem *lecturer = new QTableWidgetItem;
 
         courseCode->setText(courses.value(0).toString());
-        courseName->setText(courses.value(1).toString());
+        courseName->setText(courses.value(1).toString());        //courseName is assigned to the second vlue of the sqlquery courses
         lecturer->setText(courses.value(2).toString());
 
+        //sets the items to searchResultCourseCommentTableWidget table widget
         ui->searchResultCourseCommentTableWidget->setItem(rowCount,0,courseCode);
         ui->searchResultCourseCommentTableWidget->setItem(rowCount,1,courseName);
         ui->searchResultCourseCommentTableWidget->setItem(rowCount,2,lecturer);
-
-
-
     }
 }
 
 void sgsApp::on_filterSearchButton_clicked()
 {
-    QString courseCode = ui->CourseCodelineEdit->text();
+    QString courseCode = ui->CourseCodelineEdit->text();        //courseCode is assigned to the CourseCodelineEdit's text
     QSqlQuery info = connection->getLectureCourses(courseCode);
-
 
     while(info.next())
     {
-        ui->courseResultInfoLabel->setText(info.value(0).toString());
+        ui->courseResultInfoLabel->setText(info.value(0).toString());   //courseResultInfoLabel receives the first value of sqlquery info
     }
-
-
-
 }
 
 void sgsApp::on_addButton_clicked()
 {
-    if (ui->courseResultInfoLabel->text().isEmpty())
+    if (ui->courseResultInfoLabel->text().isEmpty())        //checks if courseResultInfoLabel is empty
     {
         QMessageBox::warning(NULL,"We encounter an Error : ","Please add a course before proceeding to the next step");
 
@@ -823,7 +819,7 @@ void sgsApp::on_addButton_clicked()
     else
     {
         QString courseCode = ui->CourseCodelineEdit->text();
-        QSqlQuery info = connection->getLectureCourses(courseCode);
+        QSqlQuery info = connection->getLectureCourses(courseCode);     //info is asigned to the returned value of function getLectureCourses(courseCode);
         QString credit;
         QString prerequisites;
         QString semester;
@@ -831,13 +827,14 @@ void sgsApp::on_addButton_clicked()
         while(info.next())
         {
             ui->updateCourseName->setText(info.value(0).toString());
-            ui->updatePrerequisites->setText(prerequisites = info.value(2).toString());
+            ui->updatePrerequisites->setText(prerequisites = info.value(2).toString()); //updatePrerequisites recieves the value of prerequisites
         }
 
     }
 
 }
 
+//slot for the add course button
 void sgsApp::on_addCourseButton_clicked()
 {
     if (ui->updateYear->text().isEmpty() || ui->updateSemester->text().isEmpty())
@@ -848,15 +845,16 @@ void sgsApp::on_addCourseButton_clicked()
 
     else
     {
-        QString courseID = ui->CourseCodelineEdit->text();
+        QString courseID = ui->CourseCodelineEdit->text();      //courseID is assigned to CourseCodelineEdit's value
         QString year = ui->updateYear->text();
         year.append("-");
         year.append(ui->updateSemester->text());
-        connection->addLectureCourse(courseID,year);
+        connection->addLectureCourse(courseID,year);     //calls function addLectureCourse(courseID,year) from the databaseconnection class
     }
-    viewLecturerCoursesTable();
+    viewLecturerCoursesTable();     //calls viewLecturerCoursesTable() function
 }
 
+//function for course comment
 void sgsApp::courseComments(int row)
 {
 
@@ -867,13 +865,16 @@ void sgsApp::courseComments(int row)
     {
         qDebug()<<"Entered";
         if (var == 0)
+
+            delete  layout;         //release layout from heap
+
         {
             layout = NULL;
         }
 
 
         delete ArrayDeleteLater[var];
-        ArrayDeleteLater[var] = NULL;
+        ArrayDeleteLater[var] = NULL;       //ArrayDeleteLater Array is assigned to Null
 
         var++;
     }
@@ -886,8 +887,10 @@ void sgsApp::courseComments(int row)
     qDebug()<<courseCode <<"    "<<lectureName;
     //Creating a grid layout...
     layout=new QGridLayout(this);
+
+    QSqlQuery comments = connection->getComments(courseCode,lectureName);       //comments is assigned to the returned value of function getComments(courseCode,lectureName)
     holder = layout;
-    QSqlQuery comments = connection->getComments(courseCode,lectureName);
+
 
     int counter = 0 ;
 
@@ -896,7 +899,7 @@ void sgsApp::courseComments(int row)
     {
         QString date= "Posted: " + comments.value(0).toString() + " ";
         QString commentText =comments.value(1).toString() ;
-        QString rate= "Rating: "+ comments.value(2).toString() + " ";
+        QString rate= "Rating: "+ comments.value(2).toString() + " ";           //rate is assigned to string "Rating" and third value of comments
 
 
 
@@ -913,7 +916,7 @@ void sgsApp::courseComments(int row)
 
     //sets Layout to ScrollArea
     ui->scrollAreaWidgetContents->setLayout(layout);
-    clickedCell = true;
+    clickedCell = true;         //clickedCell sets to true
 
 
 
@@ -923,7 +926,7 @@ void sgsApp::courseComments(int row)
 
 void sgsApp::on_commentSearchCourseCODEButton_clicked()
 {
-    QString courseName = ui->commentsSearchCourseCodelineEdit->text();
+    QString courseName = ui->commentsSearchCourseCodelineEdit->text();      //courseName is assigned to the value of commentsSearchCourseCodelineEdit
     if (courseName.isEmpty())
     {
         QMessageBox::warning(NULL,"Error, No course Input", "We cannot Search the course without you entering a course Name:");
@@ -932,7 +935,7 @@ void sgsApp::on_commentSearchCourseCODEButton_clicked()
     else {
 
         //Display search Table
-        viewSearchCourseCommentTable();
+        viewSearchCourseCommentTable();     //calls function  viewSearchCourseCommentTable() if courseName is not empty
     }
 }
 
@@ -1016,8 +1019,20 @@ void sgsApp::on_updateCourse_pushButton_3_clicked()
     if ( !(code.isEmpty() || courseName.isEmpty() || credits.isEmpty() || semester.isEmpty()))
     {
 
+        QString code = ui->addCodeLineEdit->text();
+        QString courseName = ui->addNameLineEdit->text();       //courseName recieves the user's addNameLineEdit text
+        QString credits = ui->addCreditLineEdit->text();
+        QString prerequisites = ui->addPrerequisiteLineEdit->text();
+
+        QTableWidgetItem *Code = new QTableWidgetItem;
+        QTableWidgetItem *CourseName = new QTableWidgetItem;
+        QTableWidgetItem *Credits = new QTableWidgetItem;           //Credit created inside heap
+        QTableWidgetItem *Prerequisites = new QTableWidgetItem;
+
+
         for(int i=0; i<1;i++)
         {
+
 
             QTableWidgetItem *Code = new QTableWidgetItem;
             QTableWidgetItem *CourseName = new QTableWidgetItem;
@@ -1034,7 +1049,15 @@ void sgsApp::on_updateCourse_pushButton_3_clicked()
              Prerequisites->setText(prerequisites);
             Semester->setText(semester);
 
+
+        ui->draftTableWidget->insertRow(rowCount);
+        ui->draftTableWidget->setItem(rowCount,0,Code);
+        ui->draftTableWidget->setItem(rowCount,1,CourseName);       //sets the QTableWidgetItem courseName to draftTableWidget
+        ui->draftTableWidget->setItem(rowCount,2,Credits);
+        ui->draftTableWidget->setItem(rowCount,3,Prerequisites);
+
 //            if (rowCount == 0)
+
 
             ui->draftTableWidget->insertRow(rowCount);
             ui->draftTableWidget->setItem(rowCount,0,Code);
@@ -1064,7 +1087,11 @@ void sgsApp::draftTable()
 
     ui->draftTableWidget->setColumnCount(5);
     QStringList header;
+
+    header <<"Code" <<  "Course Name"<< "Credits" << "Pre-requisites";      //list of column names
+
     header <<"Code" <<  "Course Name"<< "Credits" << "Pre-requisites" << "Semester";
+
     ui->draftTableWidget->setHorizontalHeaderLabels(header);
     ui->draftTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
 
@@ -1072,16 +1099,17 @@ void sgsApp::draftTable()
 
 
     ui->draftTableWidget->setAlternatingRowColors(true);
-    ui->draftTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
+    ui->draftTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");        //sets the style for draftTableWidget
 
     ui->draftTableWidget->setColumnWidth(1,200);
 
 }
 
+//slot for student search button
 void sgsApp::on_studentSearchButton_clicked()
 {
-    programSequenceList();
-    ui->stackedWidgetPages->setCurrentIndex(2);
+    programSequenceList();      //calls function programsequenceList()
+    ui->stackedWidgetPages->setCurrentIndex(2);         //stackedWidgetPages moves to thrid page
 }
 
 void sgsApp::on_saveSequencepushButton_clicked()
