@@ -11,8 +11,9 @@ using namespace std;
 #include "databaseconnection.h"
 
 
-extern databaseconnection * connection;
+extern databaseconnection * connection;  //extern pointer connection can be used globally.
 
+//constructor
 Register::Register(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Register)
@@ -24,9 +25,10 @@ Register::Register(QWidget *parent) :
     ui->createLectureButton->hide();
 }
 
+//destructor
 Register::~Register()
 {
-    delete ui;
+    delete ui;  //deletes ui
 }
 
 void Register::on_cancelSignUpButton_clicked()
@@ -80,27 +82,27 @@ void Register::on_signUpNextButton_clicked()
         }
         else if (!emailLineEdit->hasAcceptableInput())  //checks if email format is incorrect
         {
-           throw "Email Format is Incorrect";  //throws exception if email is incorrect
+            throw "Email Format is Incorrect";  //throws exception if email is incorrect
         }
         else if (emailLineEdit->text() != confirmEmailLineEdit->text()) //checks if the email line edit is not equal to confirm email line edit
         {
-           throw "Email Format does not match!"; //throws exception if email does not match
+            throw "Email Format does not match!"; //throws exception if email does not match
         }
         else if(currIndex == currIndex2 || currIndex == currIndex3 || currIndex2 == currIndex3) //checks if questions are repeated
         {
-           throw "Questions are repeated!";  //throws exception if questions are repeated
+            throw "Questions are repeated!";  //throws exception if questions are repeated
         }
         else  //enters if no issue was encountered
         {
 
             //faculties is assigned to the value that the databaseconnection class's function getFaculty() returns
-             QSqlQuery faculties = connection->getFaculty();
-             while(faculties.next())
-             {
-                 QString faculty = faculties.value(0).toString(); //faculty recieves the value(0) from the QSqlQuery faculties
-                 ui->facultyComboBox->addItem(faculty); //adds all the faculties to the faculty combo box
-             }
-             ui->stackedWidgetRegister->setCurrentIndex(1); //executes if there's no error(moves on to the next procedure)
+            QSqlQuery faculties = connection->getFaculty();
+            while(faculties.next())
+            {
+                QString faculty = faculties.value(0).toString(); //faculty recieves the value(0) from the QSqlQuery faculties
+                ui->facultyComboBox->addItem(faculty); //adds all the faculties to the faculty combo box
+            }
+            ui->stackedWidgetRegister->setCurrentIndex(1); //executes if there's no error(moves on to the next procedure)
         }
     }
     catch (const char *message)  //catch the exception as a char
@@ -158,7 +160,7 @@ void Register::on_signUpButton_clicked()
     int currIndex = ui->programComboBox->currentIndex();   // program combo box
     int currIndex2 = ui->facultyComboBox->currentIndex();  //faculty combo box
     {
-       //built a list of Qstrings that will recieve the user's info
+        //built a list of Qstrings that will recieve the user's info
         QString f = ui->firstName_RegFormLineEdit->text();  // f is receeives user's first name
         QString l = ui->lastName_RegFormLineEdit->text();   // l recieves user's last name
         QString m =  ui->userName_RegFormLineEdit->text();  // m receives user's username
@@ -170,15 +172,15 @@ void Register::on_signUpButton_clicked()
         if (userRole == 2)  //checks if userRole is 2(lecturer)
             ID = 0;  //id will be assigned to 0
         else
-        ID = id.toInt(); //converts id which is a line edit, to a integer and pass its value to integer ID
+            ID = id.toInt(); //converts id which is a line edit, to a integer and pass its value to integer ID
 
-        QString ques1 =  ui->firtstQuestionAnswer_RegFormLineEdit->text();
-        QString ques2 =  ui->secondQuestionAnswer_RegFormLineEdit->text();
-        QString ques3 =  ui->thirdQuestionAnswer_RegFormLineEdit->text();
+        QString ques1 =  ui->firtstQuestionAnswer_RegFormLineEdit->text();  // Qstring ques1 receives user's first question answer line edit
+        QString ques2 =  ui->secondQuestionAnswer_RegFormLineEdit->text();  // ques2 receives user's second question answer line edit
+        QString ques3 =  ui->thirdQuestionAnswer_RegFormLineEdit->text();   // ques3 receives user's third question answer line edit
 
-        int quesId1 =  ui->question_1_comboBox->currentIndex();
-        int quesId2 =  ui->question_2_comboBox->currentIndex();
-        int quesId3 =  ui->question_3_comboBox->currentIndex();
+        int quesId1 =  ui->question_1_comboBox->currentIndex(); // quesId1 is assigned to user's question choice inside inside question_1_combo_box
+        int quesId2 =  ui->question_2_comboBox->currentIndex(); // quesId2 is assigned to user's question choice inside inside question_2_combo_box
+        int quesId3 =  ui->question_3_comboBox->currentIndex(); // quesId3 is assigned to user's question choice inside inside question_3_combo_box
 
 
         //databaseconnection * connection = new databaseconnection;
@@ -197,11 +199,11 @@ void Register::on_signUpButton_clicked()
             qDebug()<<program;
             qDebug()<<year;
         }
-       // else
-      //  {
-            //user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
-      //  }
-      //  //connection->insertNewUser(*user);
+        // else
+        //  {
+        //user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
+        //  }
+        //  //connection->insertNewUser(*user);
         this->close();
 
     }
@@ -226,99 +228,114 @@ void Register::recieveQuestion(QSqlQuery question)
 //Generating Table for Program Sequence List
 void Register::on_registerTableWidget_ProgramSequenceTable()
 {
-//    ui->programSequenceTable_registerTableWidget->setColumnCount(3);
-//    ui->programSequenceTable_registerTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
+    //    ui->programSequenceTable_registerTableWidget->setColumnCount(3);
+    //    ui->programSequenceTable_registerTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
 
-//    QStringList header;
-//    header << "Program"<< "Faculty" <<"Sequence";
+    //    QStringList header;
+    //    header << "Program"<< "Faculty" <<"Sequence";
 
-//    ui->programSequenceTable_registerTableWidget->setHorizontalHeaderLabels(header);
-//    ui->programSequenceTable_registerTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
+    //    ui->programSequenceTable_registerTableWidget->setHorizontalHeaderLabels(header);
+    //    ui->programSequenceTable_registerTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
 
-//    int rowCount = 0;
+    //    int rowCount = 0;
 
-//    for(int i = 0; i< 10; i++){
+    //    for(int i = 0; i< 10; i++){
 
-//         ui->programSequenceTable_registerTableWidget->insertRow(rowCount);
-//         ui->programSequenceTable_registerTableWidget->setColumnWidth(0,150);
-//         ui->programSequenceTable_registerTableWidget->setColumnWidth(1,530);
-//         ui->programSequenceTable_registerTableWidget->setColumnWidth(2,60);
+    //         ui->programSequenceTable_registerTableWidget->insertRow(rowCount);
+    //         ui->programSequenceTable_registerTableWidget->setColumnWidth(0,150);
+    //         ui->programSequenceTable_registerTableWidget->setColumnWidth(1,530);
+    //         ui->programSequenceTable_registerTableWidget->setColumnWidth(2,60);
 
-//        QTableWidgetItem *program = new QTableWidgetItem;
-//        QTableWidgetItem *faculty = new QTableWidgetItem;
-//        QTableWidgetItem *programSequence = new QTableWidgetItem;
+    //        QTableWidgetItem *program = new QTableWidgetItem;
+    //        QTableWidgetItem *faculty = new QTableWidgetItem;
+    //        QTableWidgetItem *programSequence = new QTableWidgetItem;
 
-//        program->setText("Bachelor Degree");
-//        faculty->setText("Faculty of Science & Technology Math, Physics and IT Department");
-//        programSequence->setText("2019-1");
+    //        program->setText("Bachelor Degree");
+    //        faculty->setText("Faculty of Science & Technology Math, Physics and IT Department");
+    //        programSequence->setText("2019-1");
 
-//        ui->programSequenceTable_registerTableWidget->setItem(rowCount,0,program);
-//        ui->programSequenceTable_registerTableWidget->setItem(rowCount,1,faculty);
-//        ui->programSequenceTable_registerTableWidget->setItem(rowCount,2,programSequence);
+    //        ui->programSequenceTable_registerTableWidget->setItem(rowCount,0,program);
+    //        ui->programSequenceTable_registerTableWidget->setItem(rowCount,1,faculty);
+    //        ui->programSequenceTable_registerTableWidget->setItem(rowCount,2,programSequence);
 
-//        rowCount++;
-//    }
+    //        rowCount++;
+    //    }
 
 }
 
 
-
+//table slot for programSequenceTable_registerTableWidget_cellClicked
 void Register::on_programSequenceTable_registerTableWidget_cellClicked(int row, int column)
 {
+    //insert information to table
     QString program = ui->programSequenceTable_registerTableWidget->item(row,0)->text();
     QString faculty =  ui->programSequenceTable_registerTableWidget->item(row,1)->text();
     QString programSequence = ui->programSequenceTable_registerTableWidget->item(row,2)->text();
 
 
-    ui->facultySelected_label->setText(faculty);
+
+    ui->facultySelected_label->setText(faculty); // facultyselected is assigned the user's faculty data
     ui->programSelected_label->setText(program);
-    ui->programSequenceYearSelected_label->setText(programSequence);
+    ui->programSequenceYearSelected_label->setText(programSequence); // programSequenceYearSelected_label is assigned the user's programSequence data
 
 }
 
-
+// search button slot
 void Register::on_filterSearchButton_clicked()
 {
+    int programIndex = ui->programComboBox->currentIndex();  //programIndex is assigned to the user's choice of program from the programComboBox
+
     while (ui->programSequenceTable_registerTableWidget->rowCount() > 0)
     {
         ui->programSequenceTable_registerTableWidget->removeRow(0);
     }
 
-    QString faculty = ui->facultyComboBox->currentText();
-    QString program = ui->programComboBox->currentText();
+    QString faculty = ui->facultyComboBox->currentText(); //faculty is assigned to facultyCombox's current text
+    QString program = ui->programComboBox->currentText(); // program is assigned to programComboBox's current text
+
+    if(programIndex == 1) // cehcks if program index is Associate
+        program = "Associate";
+    else
+        program = "Bachelor";  //assigns program to string Bachelor since programIndex is not 1
+
     qDebug()<<faculty;
     qDebug()<<program;
-//    databaseconnection database;
+    //    databaseconnection database;
+
+    /*
+     * programSequences is assigned to the value that getProgramSequence(faculty, program) function returns
+     * getProgramSequences(faculty,program) belongs to databaseconnection class and returns a query
+     */
     QSqlQuery programSequences = connection->getProgramSequences(faculty,program);
     ui->programSequenceTable_registerTableWidget->reset();
 
     ui->programSequenceTable_registerTableWidget->setColumnCount(3);
-    ui->programSequenceTable_registerTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
+    ui->programSequenceTable_registerTableWidget->setStyleSheet("background:#f1f1f1;color:#333;"); // adding style to the programSequenceTable_registerTableWidge
 
     QStringList header;
-    header << "Program"<< "Faculty" <<"Sequence";
+    header << "Program"<< "Faculty" <<"Sequence";  // the table format
 
-    ui->programSequenceTable_registerTableWidget->setHorizontalHeaderLabels(header);
+    ui->programSequenceTable_registerTableWidget->setHorizontalHeaderLabels(header);  //programSequenceTable_registerTableWidget recieves header QStringList as the horizontal header label
     ui->programSequenceTable_registerTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
 
-    int rowCount = 0;
+    int rowCount = 0;  //integer created to keep track of the row
 
     for(; programSequences.next();){
 
-         ui->programSequenceTable_registerTableWidget->insertRow(rowCount);
-         ui->programSequenceTable_registerTableWidget->setColumnWidth(0,590);
-         ui->programSequenceTable_registerTableWidget->setColumnWidth(1,70);
-         ui->programSequenceTable_registerTableWidget->setColumnWidth(2,70);
+        ui->programSequenceTable_registerTableWidget->insertRow(rowCount); // row implemented inside programSequenceTable_registerTableWidget
+        ui->programSequenceTable_registerTableWidget->setColumnWidth(0,590);
+        ui->programSequenceTable_registerTableWidget->setColumnWidth(1,70);    // sets the width of the column 2 inisde table
+        ui->programSequenceTable_registerTableWidget->setColumnWidth(2,70);
 
-        QTableWidgetItem *program = new QTableWidgetItem;
+        QTableWidgetItem *program = new QTableWidgetItem;  //new QTableWidgetItem pointer created in the heap for the program
         QTableWidgetItem *faculty = new QTableWidgetItem;
-        QTableWidgetItem *programSequence = new QTableWidgetItem;
+        QTableWidgetItem *programSequence = new QTableWidgetItem; //new QTableWidgetItem pointer created in the heap for the program sequence
 
-        program->setText(programSequences.value(0).toString());
+        program->setText(programSequences.value(0).toString());    //sets the text for the program QTableWidget
         faculty->setText(programSequences.value(1).toString());
-        programSequence->setText(programSequences.value(2).toString());
+        programSequence->setText(programSequences.value(2).toString()); //sets the text for the programSequence QTableWidget
 
-        ui->programSequenceTable_registerTableWidget->setItem(rowCount,0,program);
+        ui->programSequenceTable_registerTableWidget->setItem(rowCount,0,program);  //push program value to the table widget programSequenceTable_registerTableWidget
         ui->programSequenceTable_registerTableWidget->setItem(rowCount,1,faculty);
         ui->programSequenceTable_registerTableWidget->setItem(rowCount,2,programSequence);
 
@@ -327,8 +344,8 @@ void Register::on_filterSearchButton_clicked()
 
 
 }
-
+//slot for createLectureButton
 void Register::on_createLectureButton_clicked()
 {
-    on_signUpButton_clicked();
+    on_signUpButton_clicked();  //calls button slot signUPButton()
 }
