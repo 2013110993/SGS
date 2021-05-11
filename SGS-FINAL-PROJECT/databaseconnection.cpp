@@ -23,8 +23,8 @@ void databaseconnection::connect()
     //setConnection.setPort(3306);
 
     //setConnection.setPort(3366);
-    setConnection.setPort(3336);
-    // setConnection.setPort(3366);
+    //setConnection.setPort(3336);
+    setConnection.setPort(3366);
     setConnection.setUserName("root");
     setConnection.setPassword("");
     setConnection.setDatabaseName("db");

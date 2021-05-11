@@ -4,8 +4,15 @@
 #include <QtSql>
 #include <QTableWidget>
 #include <QWidget>
+#include <QPrinter>
+#include <QPrintDialog>
+#include <QFileDialog>
+#include <QTranslator>
 
-//extern databaseconnection * connection;
+
+extern QApplication *a;
+extern QTranslator *translator;
+
 sgsApp::sgsApp(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::sgsApp)
@@ -32,6 +39,7 @@ sgsApp::sgsApp(QWidget *parent)
     {
         ArrayDeleteLater[var] = NULL;
     }
+    holder = NULL;
 
     qDebug()<<"about to connect";
 
@@ -113,27 +121,27 @@ void sgsApp::on_signUpButton_clicked()
 {
     //create a new instance of reg
 
-       reg = new Register(this);
-       qDebug()<< !(queries.next());
+    reg = new Register(this);
+    qDebug()<< !(queries.next());
 
-       if(!(queries.next()))
-       {
-           queries = connection->updateQuestion();
-       }
-       else
-       {
-           qDebug()<<queries.lastError();
-       }
+    if(!(queries.next()))
+    {
+        queries = connection->updateQuestion();
+    }
+    else
+    {
+        qDebug()<<queries.lastError();
+    }
 
-       if (queries.size() > 0)
-       {
-           connect(this,SIGNAL(sendQuestion(QSqlQuery)), reg , SLOT(recieveQuestion(QSqlQuery)));
-           emit sendQuestion(queries);
-       }
+    if (queries.size() > 0)
+    {
+        connect(this,SIGNAL(sendQuestion(QSqlQuery)), reg , SLOT(recieveQuestion(QSqlQuery)));
+        emit sendQuestion(queries);
+    }
 
-       //Modal Approach
-       reg->setModal(true);
-       reg->show();
+    //Modal Approach
+    reg->setModal(true);
+    reg->show();
 }
 
 
@@ -360,7 +368,7 @@ void sgsApp::programSequenceList()
     {
 
         QString studentID = ui->studentSearchLineEdit->text();
-         qDebug()<<"ENTERDD TRUE"<<studentID;
+        qDebug()<<"ENTERDD TRUE"<<studentID;
         programCourses =  connection->getStudentsCourses(studentID);
 
         programSeqInfo = connection->getSequenceName();
@@ -852,12 +860,18 @@ void sgsApp::on_addCourseButton_clicked()
 void sgsApp::courseComments(int row)
 {
 
+    delete holder;
     //  if (layout)
     int var = 0;
     while (ArrayDeleteLater[var] != NULL)
     {
+        qDebug()<<"Entered";
         if (var == 0)
-            delete  layout;
+        {
+            layout = NULL;
+        }
+
+
         delete ArrayDeleteLater[var];
         ArrayDeleteLater[var] = NULL;
 
@@ -872,6 +886,7 @@ void sgsApp::courseComments(int row)
     qDebug()<<courseCode <<"    "<<lectureName;
     //Creating a grid layout...
     layout=new QGridLayout(this);
+    holder = layout;
     QSqlQuery comments = connection->getComments(courseCode,lectureName);
 
     int counter = 0 ;
@@ -893,7 +908,6 @@ void sgsApp::courseComments(int row)
         layout->addWidget(comment);
         ArrayDeleteLater[counter] = comment;
         counter ++ ;
-        //delete  comment;
     }
 
 
@@ -940,14 +954,7 @@ void sgsApp::on_AddProgramSequence_Button_clicked()
 //  Enabel add course form fillout sequence prog and faculty
 void sgsApp::on_addCourseSequencepushButton_clicked()
 {
-    ui->addCourseSequenceframe->show();
-    ui->draftProgSequenceFrame->show();
 
-    //disable LineEdit for Program Sequence ID,Name,faculty and year
-    ui->idLineEdit->setEnabled(false);
-    ui->seqNameLineEdit->setEnabled(false);
-    ui->facultyLineEdit->setEnabled(false);
-    ui->yearLineEdit->setEnabled(false);
 
     //moving data from LindeEdit to Draft Form
     QString id = ui->idLineEdit->text();
@@ -955,53 +962,77 @@ void sgsApp::on_addCourseSequencepushButton_clicked()
     QString faculty = ui->facultyLineEdit->text();
     QString year = ui->yearLineEdit->text();
 
-    ui->draftIDLineEdit->setText(id);
-    ui->draftSeqLineEdit->setText(sequence);
-    ui->draftFacultyLineEdit->setText(faculty);
-    ui->draftYearLineEdit->setText(year);
+    if ( !(id.isEmpty() || sequence.isEmpty() || faculty.isEmpty() || year.isEmpty()))
+    {
+        ui->addCourseSequenceframe->show();
+        ui->draftProgSequenceFrame->show();
 
-    //Create Table
-    draftTable();
+        //disable LineEdit for Program Sequence ID,Name,faculty and year
+        ui->idLineEdit->setEnabled(false);
+        ui->seqNameLineEdit->setEnabled(false);
+        ui->facultyLineEdit->setEnabled(false);
+        ui->yearLineEdit->setEnabled(false);
+
+        ui->draftIDLineEdit->setText(id);
+        ui->draftSeqLineEdit->setText(sequence);
+        ui->draftFacultyLineEdit->setText(faculty);
+        ui->draftYearLineEdit->setText(year);
+
+        //Create Table
+        draftTable();
+
+    }
+    else
+    {
+        QMessageBox::critical(this,"ERROR","Please fill in the Missing data for the Program Sequence being added ");
+    }
+
 }
 
 //Adding Course to Sequence Table
 void sgsApp::on_updateCourse_pushButton_3_clicked()
 {
 
-
-
-    for(int i=0; i<1;i++)
+    QString code = ui->addCodeLineEdit->text();
+    QString courseName = ui->addNameLineEdit->text();
+    QString credits = ui->addCreditLineEdit->text();
+    QString prerequisites = ui->addPrerequisiteLineEdit->text();
+    if ( !(code.isEmpty() || courseName.isEmpty() || credits.isEmpty() || prerequisites.isEmpty()))
     {
-        QString code = ui->addCodeLineEdit->text();
-        QString courseName = ui->addNameLineEdit->text();
-        QString credits = ui->addCreditLineEdit->text();
-        QString prerequisites = ui->addPrerequisiteLineEdit->text();
 
-        QTableWidgetItem *Code = new QTableWidgetItem;
-        QTableWidgetItem *CourseName = new QTableWidgetItem;
-        QTableWidgetItem *Credits = new QTableWidgetItem;
-        QTableWidgetItem *Prerequisites = new QTableWidgetItem;
+        for(int i=0; i<1;i++)
+        {
 
-        Code->setText(code);
-        CourseName->setText(courseName);
-        Credits->setText(credits);
-        Prerequisites->setText(prerequisites);
+            QTableWidgetItem *Code = new QTableWidgetItem;
+            QTableWidgetItem *CourseName = new QTableWidgetItem;
+            QTableWidgetItem *Credits = new QTableWidgetItem;
+            QTableWidgetItem *Prerequisites = new QTableWidgetItem;
 
-        ui->draftTableWidget->insertRow(rowCount);
-        ui->draftTableWidget->setItem(rowCount,0,Code);
-        ui->draftTableWidget->setItem(rowCount,1,CourseName);
-        ui->draftTableWidget->setItem(rowCount,2,Credits);
-        ui->draftTableWidget->setItem(rowCount,3,Prerequisites);
+            Code->setText(code);
+            CourseName->setText(courseName);
+            Credits->setText(credits);
+            Prerequisites->setText(prerequisites);
+
+            ui->draftTableWidget->insertRow(rowCount);
+            ui->draftTableWidget->setItem(rowCount,0,Code);
+            ui->draftTableWidget->setItem(rowCount,1,CourseName);
+            ui->draftTableWidget->setItem(rowCount,2,Credits);
+            ui->draftTableWidget->setItem(rowCount,3,Prerequisites);
 
 
-        rowCount++;
-        qDebug()<<"ROW COUNT: "<<rowCount;
+            rowCount++;
+            qDebug()<<"ROW COUNT: "<<rowCount;
 
-        //clear lineEdit after submit
-        ui->addCodeLineEdit->clear();
-        ui->addNameLineEdit->clear();
-        ui->addCreditLineEdit->clear();
-        ui->addPrerequisiteLineEdit->clear();
+            //clear lineEdit after submit
+            ui->addCodeLineEdit->clear();
+            ui->addNameLineEdit->clear();
+            ui->addCreditLineEdit->clear();
+            ui->addPrerequisiteLineEdit->clear();
+        }
+    }
+    else
+    {
+        QMessageBox::critical(this,"ERROR","Please fill in the Missing for the Course being added ");
     }
 }
 
@@ -1039,79 +1070,54 @@ void sgsApp::on_studentSearchButton_clicked()
 
 void sgsApp::on_saveSequencepushButton_clicked()
 {
+    if(ui->draftTableWidget->rowCount() > 1)
+    {
+        qDebug()<<"test1";
+    }
+    else {
+         QMessageBox::critical(this,"ERROR","Please add more course to this program Sequences, It can't go empty");
+    }
 
 }
 
 void sgsApp::on_printReport_pushButton_clicked()
 {
-        {
-            if(ui->programSequenceTableWidget->rowCount() > 0)
-            {
-                // Notify user that ther is no content to process
-                QMessageBox::warning(this,"ERROR 404", "Nothing that can be process, Please open a document to process!");
-            }
+    //including library from QT
+#if defined(QT_PRINTSUPPORT_LIB) && QT_CONFIG (printer)
+    QPrinter printDev;
+#if QT_CONFIG (printdialog)
+    //Creating dialog for printing
+    QPrintDialog dialog(&printDev, this);
+    if (dialog.exec() == QDialog::Rejected)
+        return;
+#endif
+#endif
+}
 
-             //connect(ui->textEdit, SIGNAL(textChanged()), this, SLOT(isTextChanged()));
+void sgsApp::on_lecturePrintReport_pushButton_clicked()
+{
+    //including library from QT
+#if defined(QT_PRINTSUPPORT_LIB) && QT_CONFIG (printer)
+    QPrinter printDev;
+#if QT_CONFIG (printdialog)
+    //Creating dialog for printing
+    QPrintDialog dialog(&printDev, this);
+    if (dialog.exec() == QDialog::Rejected)
+        return;
+#endif
+#endif
+}
 
-             if(!(ui->programSequenceTableWidget->rowCount() > 0))
-             {
-                QString fileName = windowTitle();
-                QStringList onlyFileTitle = fileName.split(QRegExp("\\."), QString::SkipEmptyParts);
-
-                //Create a file
-                QFile newFile(onlyFileTitle.at(0)+ "_statistics.sta");
-
-                //keep track of current file directory
-                QString newFilePath = QDir::currentPath();
-
-                //Check if file can be opened
-                if(!newFile.open(QIODevice::WriteOnly| QIODevice::Text ))
-                {
-                    QMessageBox::warning(this, tr("Error"), tr("The file could not be opened."));
-                   // setFileName(QString());
-
-                }
-                else
-                {
-                    // current date/time based on current system
-                    time_t now = time(0);
-
-                    // convert now to string form
-                    char* dt = ctime(&now);
-
-                    // Creating file to output
-                    QTextStream outFile(&newFile);
-
-                    //Taking content of current window
-                   // QString newText = ui->textEdit->toPlainText();
-                    //int docWordCount =  ui->textEdit->toPlainText().split(QRegExp("(\\s|\\n|\\r)+"), QString::SkipEmptyParts).count();
-                    //QList<Word> wordList = currentList(newText);
-                    //int docUniqueWordCount = wordList.count();
-
-                    // sort qlist
-                   // std::sort(wordList.begin(), wordList.end(), std::greater<Word>());
+void sgsApp::on_englishTranslationRadioButton_clicked()
+{
 
 
-                    //Writing to file
-                    outFile<<"Statistical data for "<<"\""<<onlyFileTitle.at(0)<<".txt"<<"\""<<"\n";
-                    outFile<<"Generated date: "<<dt;
-                    outFile<<"Total word count: "<<docWordCount<<"\n";
-                    outFile<<"Unique word count: "<<docUniqueWordCount<<"\n";
-                    outFile<<"Word Frequency:"<<"\n\n";
+       a->removeTranslator(translator); qDebug()<<"UNCLICKed";
 
-                    //Writing to file: the word frequency
-                   // for(int count = 0; count < wordList.count();count++)
-                    {
-                   //     outFile<<wordList.at(count).getText()<<" "<<wordList.at(count).getFrequency()<<"\n";
-                    }
-                    newFile.flush();
-                    newFile.close();
+}
 
-                    //Notify user that file has been created
-                    QMessageBox::about(this,"File created",QString("The following file was created: %1 \nIt is found at: %2")
-                                       .arg(onlyFileTitle.at(0)+"_statistics.sta")
-                                       .arg(newFilePath));
-                }
-            }
-        }
+void sgsApp::on_spanishTranslationRadioButton_clicked()
+{
+
+       a->installTranslator(translator); qDebug()<<"CLICKed";
 }
