@@ -382,6 +382,35 @@ border:0px;</string>
        <enum>QFrame::Raised</enum>
       </property>
      </widget>
+     <widget class="QWidget" name="layoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>1000</x>
+        <y>610</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QRadioButton" name="englishTranslationRadioButton">
+         <property name="text">
+          <string>English</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="spanishTranslationRadioButton">
+         <property name="text">
+          <string>Español</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
     <widget class="QWidget" name="Dashboard">
      <property name="minimumSize">
@@ -2062,42 +2091,6 @@ border-bottom-right-radius:0px;</string>
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QLineEdit" name="addCourseLecturer_RegFormLineEdit">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>1000</x>
-           <y>220</y>
-           <width>151</width>
-           <height>30</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:#ffffff;
-color: #333;
-border:0px;</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="placeholderText">
-          <string>Lecturer</string>
-         </property>
-        </widget>
         <widget class="QPushButton" name="updateCourse_pushButton">
          <property name="geometry">
           <rect>
@@ -2530,6 +2523,30 @@ border:0px;</string>
           </item>
          </layout>
         </widget>
+        <widget class="QPushButton" name="printReport_pushButton">
+         <property name="geometry">
+          <rect>
+           <x>1000</x>
+           <y>210</y>
+           <width>141</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:#fbaf01;
+color: #ffffff;
+border:0;
+height:30px;
+border-radius:5px;</string>
+         </property>
+         <property name="text">
+          <string>Print Report</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/icons White/Icons/White/Download.png</normaloff>:/icons White/Icons/White/Download.png</iconset>
+         </property>
+        </widget>
        </widget>
        <widget class="QFrame" name="pageTitleCourseListPage_2">
         <property name="geometry">
@@ -2557,9 +2574,9 @@ border:0px;</string>
         <widget class="QLabel" name="pageNameLabel_3">
          <property name="geometry">
           <rect>
-           <x>920</x>
+           <x>700</x>
            <y>0</y>
-           <width>211</width>
+           <width>431</width>
            <height>31</height>
           </rect>
          </property>
@@ -2664,6 +2681,30 @@ padding: 5px;</string>
         </property>
         <property name="placeholderText">
          <string>Search Student to view Program Sequence</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="lecturePrintReport_pushButton">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>520</y>
+          <width>141</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#fbaf01;
+color: #ffffff;
+border:0;
+height:30px;
+border-radius:5px;</string>
+        </property>
+        <property name="text">
+         <string>Print Report</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/icons White/Icons/White/Download.png</normaloff>:/icons White/Icons/White/Download.png</iconset>
         </property>
        </widget>
       </widget>
@@ -3556,9 +3597,9 @@ padding: 5px;</string>
         <widget class="QLabel" name="pageNameLabel_2">
          <property name="geometry">
           <rect>
-           <x>960</x>
+           <x>830</x>
            <y>0</y>
-           <width>191</width>
+           <width>321</width>
            <height>31</height>
           </rect>
          </property>
@@ -3880,7 +3921,7 @@ border-radius:5px;</string>
           <x>10</x>
           <y>270</y>
           <width>581</width>
-          <height>151</height>
+          <height>341</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -4006,8 +4047,8 @@ border:0px;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>310</x>
-           <y>90</y>
+           <x>20</x>
+           <y>170</y>
            <width>41</width>
            <height>30</height>
           </rect>
@@ -4040,8 +4081,8 @@ border-bottom:1px dotted #999;</string>
         <widget class="QLabel" name="idTagLable_7">
          <property name="geometry">
           <rect>
-           <x>310</x>
-           <y>70</y>
+           <x>20</x>
+           <y>150</y>
            <width>41</width>
            <height>18</height>
           </rect>
@@ -4057,8 +4098,8 @@ border:0px;</string>
         <widget class="QLabel" name="idTagLable_8">
          <property name="geometry">
           <rect>
-           <x>390</x>
-           <y>70</y>
+           <x>100</x>
+           <y>150</y>
            <width>141</width>
            <height>18</height>
           </rect>
@@ -4077,8 +4118,8 @@ border:0px;</string>
          </property>
          <property name="geometry">
           <rect>
-           <x>390</x>
-           <y>90</y>
+           <x>100</x>
+           <y>170</y>
            <width>181</width>
            <height>30</height>
           </rect>
@@ -4162,6 +4203,60 @@ border-radius:5px;</string>
          <property name="icon">
           <iconset resource="images.qrc">
            <normaloff>:/icons White/Icons/White/Add.png</normaloff>:/icons White/Icons/White/Add.png</iconset>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="addSemesterLineEdit">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>260</y>
+           <width>91</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:#ffffff;
+color: #333;
+border:0px;
+border-bottom:1px dotted #999;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Semester</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="SemesterTagLable">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>240</y>
+           <width>81</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:#666;
+border:0px;</string>
+         </property>
+         <property name="text">
+          <string>Semester</string>
          </property>
         </widget>
        </widget>

@@ -11,6 +11,9 @@
 #include "activate_deactivateuser.h"
 #include "lecture.h"
 
+
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class sgsApp; }
 QT_END_NAMESPACE
@@ -111,6 +114,14 @@ private slots:
 
     void on_saveSequencepushButton_clicked();
 
+    void on_printReport_pushButton_clicked();
+
+    void on_lecturePrintReport_pushButton_clicked();
+
+    void on_englishTranslationRadioButton_clicked();
+
+    void on_spanishTranslationRadioButton_clicked();
+
 private:
     Ui::sgsApp *ui;
     forgotPassword * forgot;
@@ -125,5 +136,7 @@ private:
     QLabel *ArrayDeleteLater[500 ];
     QGridLayout *layout;
     int rowCount;
+    QGridLayout *holder;
+    //QTranslator translator;
 };
 #endif // SGSAPP_H

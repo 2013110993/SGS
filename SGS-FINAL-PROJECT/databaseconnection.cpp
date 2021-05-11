@@ -24,7 +24,7 @@ void databaseconnection::connect()
     //setConnection.setPort(3306);
     //setConnection.setPort(3366);
     setConnection.setPort(3336);
-    // setConnection.setPort(3366);
+    //setConnection.setPort(3366);
     setConnection.setUserName("root");
     setConnection.setPassword("");
     setConnection.setDatabaseName("db");
@@ -1045,8 +1045,8 @@ QStringList databaseconnection::activate_DeactivateLecture(QString lectureName, 
 
         //Implement query1 (lecturer table)
         query1->prepare(" SELECT  lecturer.name, username, createdAt,roleId, activeuser FROM `lecturer` "
-                    "JOIN users on users.id = lecturer.id "
-                    "WHERE lecturer.name like '" + lectureName + "%'" );
+                        "JOIN users on users.id = lecturer.id "
+                        "WHERE lecturer.name like '" + lectureName + "%'" );
 
         if(!(query1->exec()))       // Executes a warning message box if query1 is not found
         {
@@ -1308,7 +1308,7 @@ bool databaseconnection::deactivateUser(QString userName, int role)
 
     if (role == 2)  //enters if role is 2
     {
-       //fetch query1 values from users table
+        //fetch query1 values from users table
         query1->prepare("UPDATE users SET activeUser = 0 "
                         "WHERE username = '" + userName + "'");
 
@@ -1343,6 +1343,151 @@ bool databaseconnection::deactivateUser(QString userName, int role)
             delete query1;
             return true;        //returns true if query executes
         }
+    }
+}
+
+bool databaseconnection::addProgramSequence(QString programSeqId, QString programName, QString faculty, QString Year, QStringList courseCodes,
+                                            QStringList courseName, QStringList credits, QStringList prerequisites,QStringList semester)
+{
+    qDebug()<<programSeqId;
+    qDebug()<<programName;
+    qDebug()<<faculty;
+
+    QSqlQuery * query1 = new QSqlQuery;
+    query1->prepare("INSERT INTO academicprogram (id, name, faculty) "
+                    "VALUES (:id,:name,:faculty) " );
+
+
+
+    query1->bindValue(":id", programSeqId);
+    query1->bindValue(":name", programName);
+    query1->bindValue(":faculty", faculty);
+
+    if(!(query1->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+        delete query1;
+        return false;
+
+    }
+    else
+    {
+        QSqlQuery * query2 = new QSqlQuery;
+        query2 = new QSqlQuery;
+
+        query2->prepare(" INSERT INTO `programsequence`(`id`, `code`, `pSYear`, `academicProgramID`) "
+                        "VALUES (:id,:code,:pSYear, :academicProgramID) " );
+        query2->bindValue(":id", programSeqId);
+        query2->bindValue(":code", programSeqId);
+        query2->bindValue(":pSYear", Year);
+        query2->bindValue(":academicProgramID", programSeqId);
+
+        if(!(query2->exec()))
+        {
+            QMessageBox::warning(NULL,"We encounter an error: ",query2->lastError().text());
+            delete query2;
+            return false;
+
+        }
+        else
+        {
+            // QStringList courseCodes, QStringList courseName, QStringList credits, QStringList prerequisites,
+
+            for (int var = 0; var < courseCodes.size(); ++var)
+            {
+                qDebug()<<"FOR: "<<var;
+
+                QSqlQuery * query3 = new QSqlQuery;
+                query3 = new QSqlQuery;
+
+                if (!checkisCourseAval(courseCodes[var]))
+                {
+                    query3->prepare("INSERT INTO `courses`(`id`, `name`, `semester`, `creditHour`, `courseCode`) "
+                                    "VALUES (:id,:name,:semester, :creditHour, :courseCode) " );
+                    query3->bindValue(":id", courseCodes[var]);
+                    query3->bindValue(":name", courseName[var]);
+                    query3->bindValue(":creditHour", credits[var]);
+                    query3->bindValue(":courseCode", courseCodes[var]);
+                    query3->bindValue(":semester", semester[var]);
+
+                    if(!(query3->exec()))
+                    {
+                        QMessageBox::warning(NULL,"We encounter an error: ",query3->lastError().text());
+                        delete query3;
+                        return false;
+
+                    }
+
+
+                    QSqlQuery * query4 = new QSqlQuery;
+                    query4 = new QSqlQuery;
+
+                    query4->prepare("INSERT INTO `prequisites`(`id`, `prequisite`) "
+                                    "VALUES (:id,:prequisite) " );
+                    query4->bindValue(":id", courseCodes[var]);
+                    query4->bindValue(":prequisite", prerequisites[var]);
+                    if(!(query4->exec()))
+                    {
+                        QMessageBox::warning(NULL,"We encounter an error: ",query4->lastError().text());
+                        delete query4;
+                        return false;
+                    }
+
+
+                }
+
+
+                QSqlQuery *progCourse;
+                progCourse = new QSqlQuery;
+
+                progCourse->prepare("INSERT INTO `programsequencecourses`(`programSequenceid`, `courseID`)  "
+                                "VALUES (:programSequenceid,:courseID) " );
+                progCourse->bindValue(":programSequenceid", programSeqId);
+                progCourse->bindValue(":courseID", courseCodes[var]);
+
+                if(!(progCourse->exec()))
+                {
+                    QMessageBox::warning(NULL,"We encounter an error: ",progCourse->lastError().text());
+                    delete progCourse;
+                    return false;
+
+                }
+                delete query1;
+                delete query2;
+                delete query3;
+                delete progCourse;
+
+            }
+            //  return true;
+
+        }
+
+
+        return true;
+
+    }
+
+}
+
+bool databaseconnection::checkisCourseAval(QString CourseID)
+{
+    QSqlQuery *query1;
+    query1 = new QSqlQuery;
+    query1->prepare(" SELECT `id` FROM `courses`  "
+                    " WHERE `courseCode` = " + CourseID );
+
+    if(!(query1->exec()))
+    {
+        // QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+        delete query1;
+        return false;
+
+    }
+    else
+    {
+        delete query1;
+        return true;
+
     }
 }
 
