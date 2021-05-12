@@ -122,6 +122,8 @@ void forgotPassword::on_accountLostResetButton_clicked()
                     ui->securityQuestionsForgotFormcomboBox->addItem(accountInfo.value(2).toString());  //adds security questions to securityQuestionsForgotFormcomboBox combo box
                     var ++;
                 }
+                ui->stackedWidgetResetPassword->setCurrentIndex(1);
+                ui->accountLostResetButton->hide();
                 ui->securityQuestiongroupBox->show();
             }
             else

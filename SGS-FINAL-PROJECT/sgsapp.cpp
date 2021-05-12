@@ -77,6 +77,7 @@ void sgsApp::disableStudentFeature()
     ui->AddProgramSequenceFormTitle_2->hide();
     ui->studentSearchButton->hide();
     ui->studentSearchLineEdit->hide();
+    ui->lecturePrintReport_pushButton->hide();
 
 }
 
@@ -114,6 +115,7 @@ void sgsApp::showFeature()
     ui->addUser_Button->show();
     ui->AddLecturerCourse_Button->show();
     ui->viewCourses_Button->show();
+    ui->lecturePrintReport_pushButton->show();
 }
 
 void sgsApp::logout()
@@ -523,8 +525,13 @@ void sgsApp::programSequenceList()
 
         qDebug()<<"ENTERDD TRUE"<<studentID;
         programCourses =  connection->getStudentsCourses(studentID);
-
+        if(programCourses.size() > 0 )
         programSeqInfo = connection->getSequenceName();     //QstringList programSeqInfo is assigned to the returned value of the function getSequenceName() from the databaseconnection class
+        else
+        {
+            QMessageBox::critical(NULL,"NO STUDENT FOUND ON DATABASE","NO SUCH STUDENT WAS FOUND ON THE DATABASE, PLEASE CHECK THAT THE STUDENT ID IS A VALID ONE!");
+
+        }
     }
 
     else if (!(connection->getRole() == "2" || connection->getRole() == "3" ))
@@ -533,6 +540,7 @@ void sgsApp::programSequenceList()
         programSeqInfo = connection->getSequenceName(); //programSeqInfo is assigned to the returned value which is a QstringList that includes programseuquence name and faculty name
     }
 
+    if(programSeqInfo.size() > 0 )
     if (administration_LineIsnotEmpty) //checks if administration_LineIsnotEmpty is true
     {
         ui->programSequenceProgramName->setText(programSeqInfo[0]); //programSequenceProgramName's text is assigned to the first value fo the QStringList programSeqInfo
@@ -1170,17 +1178,12 @@ void sgsApp::on_updateCourse_pushButton_3_clicked()
         QString credits = ui->addCreditLineEdit->text();
         QString prerequisites = ui->addPrerequisiteLineEdit->text();
 
-        QTableWidgetItem *Code = new QTableWidgetItem;
-        QTableWidgetItem *CourseName = new QTableWidgetItem;
-        QTableWidgetItem *Credits = new QTableWidgetItem;           //Credit created inside heap
-        QTableWidgetItem *Prerequisites = new QTableWidgetItem;
-
 
         for(int i=0; i<1;i++)
         {
 
 
-            QTableWidgetItem *Code = new QTableWidgetItem;
+            QTableWidgetItem *Code = new QTableWidgetItem;  //Credit created inside heap
             QTableWidgetItem *CourseName = new QTableWidgetItem;
             QTableWidgetItem *Credits = new QTableWidgetItem;
             QTableWidgetItem *Prerequisites = new QTableWidgetItem;
@@ -1196,21 +1199,12 @@ void sgsApp::on_updateCourse_pushButton_3_clicked()
             Semester->setText(semester);
 
 
+
             ui->draftTableWidget->insertRow(rowCount);
             ui->draftTableWidget->setItem(rowCount,0,Code);
             ui->draftTableWidget->setItem(rowCount,1,CourseName);       //sets the QTableWidgetItem courseName to draftTableWidget
             ui->draftTableWidget->setItem(rowCount,2,Credits);
             ui->draftTableWidget->setItem(rowCount,3,Prerequisites);
-
-            //            if (rowCount == 0)
-
-
-            ui->draftTableWidget->insertRow(rowCount);
-            ui->draftTableWidget->setItem(rowCount,0,Code);
-            ui->draftTableWidget->setItem(rowCount,1,CourseName);
-            ui->draftTableWidget->setItem(rowCount,2,Credits);
-            ui->draftTableWidget->setItem(rowCount,3,Prerequisites);
-            ui->draftTableWidget->setItem(rowCount,4,Semester);
 
             rowCount++;
 

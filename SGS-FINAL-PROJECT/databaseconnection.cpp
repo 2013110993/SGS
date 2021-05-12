@@ -474,7 +474,8 @@ QSqlQuery databaseconnection::getUserInfo(QString lostAccount, int role)
         query1->prepare("SELECT questionId, answer,  questions FROM  questions, securityquestions WHERE securityquestions.questionId = questions.id "
                         "AND securityquestions.userId = " + getUserId());
 
-        query1->exec();     //executes query1
+        if (!query1->exec())     //executes query1
+            qDebug()<<"ERRPRROORER0";
     }
 
 
@@ -859,10 +860,12 @@ QSqlQuery databaseconnection::getStudentsCourses(QString studetnID)
 
 
 
+
     if(!(programSequence->exec()))      //checks if programSequence executes
     {
         QMessageBox::warning(NULL,"We encounter an error: ",programSequence->lastError().text());
     }
+
 
     {
         while(programSequence->next())  //runs the QSQLQuery programSequence
@@ -892,6 +895,8 @@ QSqlQuery databaseconnection::getStudentsCourses(QString studetnID)
     delete programSequence;
     delete courses;
     return course;          //returns the qsqlquery courses
+
+
 }
 
 QSqlQuery databaseconnection::getLectureCourses(QString courseID)
