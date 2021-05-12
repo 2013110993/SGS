@@ -64,6 +64,7 @@ void sgsApp::disableStudentFeature()
     ui->AddProgramSequenceFormTitle_2->hide();
     ui->studentSearchButton->hide();
     ui->studentSearchLineEdit->hide();
+    ui->lecturePrintReport_pushButton->hide();
 
 }
 
@@ -101,6 +102,7 @@ void sgsApp::showFeature()
     ui->addUser_Button->show();
     ui->AddLecturerCourse_Button->show();
     ui->viewCourses_Button->show();
+    ui->lecturePrintReport_pushButton->show();
 }
 
 void sgsApp::logout()
@@ -396,8 +398,13 @@ void sgsApp::programSequenceList()
 
         qDebug()<<"ENTERDD TRUE"<<studentID;
         programCourses =  connection->getStudentsCourses(studentID);
-
+        if(programCourses.size() > 0 )
         programSeqInfo = connection->getSequenceName();     //QstringList programSeqInfo is assigned to the returned value of the function getSequenceName() from the databaseconnection class
+        else
+        {
+            QMessageBox::critical(NULL,"NO STUDENT FOUND ON DATABASE","NO SUCH STUDENT WAS FOUND ON THE DATABASE, PLEASE CHECK THAT THE STUDENT ID IS A VALID ONE!");
+
+        }
     }
 
     else if (!(connection->getRole() == "2" || connection->getRole() == "3" ))
@@ -406,6 +413,7 @@ void sgsApp::programSequenceList()
         programSeqInfo = connection->getSequenceName(); //programSeqInfo is assigned to the returned value which is a QstringList that includes programseuquence name and faculty name
     }
 
+    if(programSeqInfo.size() > 0 )
     if (administration_LineIsnotEmpty) //checks if administration_LineIsnotEmpty is true
     {
         ui->programSequenceProgramName->setText(programSeqInfo[0]); //programSequenceProgramName's text is assigned to the first value fo the QStringList programSeqInfo
