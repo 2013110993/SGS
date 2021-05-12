@@ -19,6 +19,7 @@ public:
     databaseconnection();
     ~databaseconnection();
 
+
     bool setStudentsCoursePerSequence(QSqlQuery);
     bool setCourseGrade(QStringList);
     bool loginUser(QString, QString);
@@ -71,6 +72,9 @@ public:
     //friend functions
     friend void closeDatabase(databaseconnection &);
     friend QSqlQuery getLecturerCourses(databaseconnection &);
+
+    QStringList pending_completed();
+    QStringList commented_Course();
 
 private:
     bool connected;

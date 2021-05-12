@@ -984,66 +984,12 @@ background-repeat: no-repeat;</string>
          </property>
         </widget>
        </widget>
-       <widget class="QLabel" name="TMPlabel_5">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>230</y>
-          <width>531</width>
-          <height>431</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:#fff;
-color: #000;
-border-radius: 5px;</string>
-        </property>
-        <property name="text">
-         <string>Widget 4</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="TMPlabel_6">
-        <property name="geometry">
-         <rect>
-          <x>610</x>
-          <y>230</y>
-          <width>531</width>
-          <height>431</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:#fff;
-color: #000;
-border-radius: 5px;</string>
-        </property>
-        <property name="text">
-         <string>Widget 5</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
        <widget class="QFrame" name="frame_Widget1">
         <property name="geometry">
          <rect>
           <x>40</x>
           <y>80</y>
-          <width>201</width>
+          <width>361</width>
           <height>121</height>
          </rect>
         </property>
@@ -1092,8 +1038,8 @@ border-radius: 5px;</string>
           <rect>
            <x>60</x>
            <y>20</y>
-           <width>141</width>
-           <height>41</height>
+           <width>251</width>
+           <height>22</height>
           </rect>
          </property>
          <property name="font">
@@ -1117,7 +1063,7 @@ border-radius: 5px;</string>
         <widget class="QLabel" name="widget1courseComplete">
          <property name="geometry">
           <rect>
-           <x>0</x>
+           <x>80</x>
            <y>70</y>
            <width>201</width>
            <height>41</height>
@@ -1145,9 +1091,9 @@ border-radius: 5px;</string>
        <widget class="QFrame" name="frame_Widget2">
         <property name="geometry">
          <rect>
-          <x>490</x>
+          <x>400</x>
           <y>80</y>
-          <width>201</width>
+          <width>351</width>
           <height>121</height>
          </rect>
         </property>
@@ -1196,8 +1142,8 @@ border-radius: 5px;</string>
           <rect>
            <x>60</x>
            <y>20</y>
-           <width>141</width>
-           <height>41</height>
+           <width>271</width>
+           <height>22</height>
           </rect>
          </property>
          <property name="font">
@@ -1221,7 +1167,7 @@ border-radius: 5px;</string>
         <widget class="QLabel" name="widget2TitleCoursePending">
          <property name="geometry">
           <rect>
-           <x>0</x>
+           <x>90</x>
            <y>70</y>
            <width>201</width>
            <height>41</height>
@@ -1353,9 +1299,9 @@ border-radius: 5px;</string>
        <widget class="QFrame" name="frame_Widget2_3">
         <property name="geometry">
          <rect>
-          <x>940</x>
+          <x>750</x>
           <y>80</y>
-          <width>201</width>
+          <width>391</width>
           <height>121</height>
          </rect>
         </property>
@@ -1404,7 +1350,7 @@ border-radius: 5px;</string>
           <rect>
            <x>60</x>
            <y>20</y>
-           <width>141</width>
+           <width>331</width>
            <height>41</height>
           </rect>
          </property>
@@ -1426,10 +1372,10 @@ border-radius: 5px;</string>
           <set>Qt::AlignCenter</set>
          </property>
         </widget>
-        <widget class="QLabel" name="widget2TitleCoursePending_5">
+        <widget class="QLabel" name="widget2TitleCourseCommented">
          <property name="geometry">
           <rect>
-           <x>0</x>
+           <x>110</x>
            <y>70</y>
            <width>201</width>
            <height>41</height>
@@ -1557,6 +1503,28 @@ border-radius: 5px;</string>
           </property>
          </widget>
         </widget>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>41</x>
+          <y>271</y>
+          <width>541</width>
+          <height>341</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="pending_complete_Graph_GridLayout"/>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>600</x>
+          <y>270</y>
+          <width>541</width>
+          <height>341</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="commentGraph_GridLayout"/>
        </widget>
       </widget>
       <widget class="QWidget" name="CoursesPage">

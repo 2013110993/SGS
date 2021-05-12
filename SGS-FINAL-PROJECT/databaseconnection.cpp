@@ -16,6 +16,91 @@ databaseconnection::~databaseconnection()
     setConnection.close();  //close the database
 }
 
+QStringList databaseconnection::pending_completed()
+{
+        QStringList data;
+
+        QSqlQuery *pending_complete = new QSqlQuery;
+
+
+        pending_complete->prepare(" SELECT COUNT(courseid) AS PendingCourse FROM studentcourses "
+                                 "WHERE `studentid` = '" +getUserId() +"' AND courseGrade IS NULL; ");
+
+        if(!(pending_complete->exec()))  //checks if query does not execute
+            qDebug()<<"Back Fire";
+        else
+        {
+            while(pending_complete->next())
+            {
+                QString pendingCourse = pending_complete->value(0).toString();    //name is assigned to the first value of program sequence query
+
+                data.append(pendingCourse);      //appends the name of pending courses
+
+                QSqlQuery *complete = new QSqlQuery;
+
+                complete->prepare("SELECT COUNT(courseGrade) AS PendingCourse FROM studentcourses "
+                                  "WHERE `studentid` = '" +getUserId() +"' AND courseGrade IS NOT NULL; ");
+                if(!(complete->exec()))  //checks if query does not execute
+                    qDebug()<<"Back Fire";
+                else
+                {
+                    while(complete->next())
+                    {
+                        QString completeCourse = complete->value(0).toString();    //name is assigned to the first value of program sequence query
+
+                        data.append(completeCourse);      //appends the name of pending courses
+
+                    }
+
+                }
+                delete complete;
+            }
+
+        }
+
+        delete pending_complete; //release programSequence from heap
+
+        for (int var = 0; var < data.size(); ++var)
+        {
+            qDebug()<<data[var]<<" HERE ";
+        }
+
+        return data;    //returns QstringList data
+
+
+}
+
+QStringList databaseconnection::commented_Course()
+{
+    QStringList data;
+
+        QSqlQuery *coursecomments = new QSqlQuery;
+
+
+        coursecomments->prepare("SELECT timeStamp FROM coursecomments "
+                                "WHERE `studentID` = '" +getUserId() +"'");
+
+        if(!(coursecomments->exec()))  //checks if query does not execute
+            qDebug()<<"Back Fire";
+        else
+        {
+            while(coursecomments->next())
+            {
+                QString month = coursecomments->value(0).toString();    //name is assigned to the first value of comment timeStamp
+                QRegExp separator("-|\\s|:|T");
+                QStringList list = month.split(separator, QString::SkipEmptyParts);
+
+                data.append(list[1]);      //appends the name of commented month
+            }
+
+        }
+
+        delete coursecomments; //release coursecomments from heap
+
+        return data;    //returns QstringList data
+
+}
+
 void databaseconnection::connect()
 {
     //set the connections for the database

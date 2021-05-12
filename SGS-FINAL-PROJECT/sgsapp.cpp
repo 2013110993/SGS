@@ -8,8 +8,18 @@
 #include <QPrintDialog>
 #include <QFileDialog>
 #include <QTranslator>
+
 #include <QtCharts>
 #include <QBarset>
+#include <QGraphicsView>
+#include<QPieSeries>
+#include<QBarSeries>
+#include<QChartView>
+#include<QtCharts/QChartView>
+#include<QtCharts/QPieSeries>
+#include<QtCharts/QPieSlice>
+
+
 using namespace QtCharts;
 
 QT_CHARTS_USE_NAMESPACE
@@ -21,6 +31,7 @@ sgsApp::sgsApp(QWidget *parent)
     , ui(new Ui::sgsApp)
 
 {
+
     ui->setupUi(this);
     connection = new databaseconnection;
 
@@ -41,6 +52,8 @@ sgsApp::sgsApp(QWidget *parent)
     }
     holder = NULL;
 
+    releasetView = NULL;
+    PieReleasetView = NULL;
     qDebug()<<"about to connect";
 
 }
@@ -57,10 +70,8 @@ sgsApp::~sgsApp()
 void sgsApp::disableStudentFeature()
 {
     //hides everything linked with the student features
-    ui->addCourse_Button->hide();
     ui->disableUser_Button->hide();
     ui->addUser_Button->hide();
-    ui->addInstitution_Button->hide();
     ui->AddLecturerCourse_Button->hide();
     ui->AddProgramSequence_Button->hide();
     ui->AddProgramSequenceFormTitle_2->hide();
@@ -74,10 +85,8 @@ void sgsApp::hideFeature()
 {
     ui->addCourseFrame->hide();   //hides the course update/frame
     ui->viewCourses_Button->hide();
-    ui->addCourse_Button->hide();
     ui->AddProgramSequence_Button->hide();
     ui->disableUser_Button->hide();
-    ui->addInstitution_Button->hide();
 }
 
 void sgsApp::disableAdminFeature() //disableAdminFeature() function disbales the Admin features
@@ -101,10 +110,8 @@ void sgsApp::showFeature()
     ui->AddProgramSequenceFormTitle_2->show();
     ui->studentSearchButton->show();
     ui->studentSearchLineEdit->show();
-    ui->addCourse_Button->show();
     ui->disableUser_Button->show();
     ui->addUser_Button->show();
-    ui->addInstitution_Button->show();
     ui->AddLecturerCourse_Button->show();
     ui->viewCourses_Button->show();
 }
@@ -172,7 +179,8 @@ void sgsApp::on_signInButton_clicked()
         case 1:  //case 1 enters if role is 1
         {
             ui->stackedWidgetSGS->setCurrentIndex(1);  //sets the stackwidgetSGS widget to index 1
-            ui->stackedWidgetPages->setCurrentIndex(0);
+            on_dashboard_pushButton_clicked();
+            //ui->stackedWidgetPages->setCurrentIndex(0);
             showFeature();   //calls function showFeatures() this functions will enable a list of features for the student
             disableStudentFeature();    //disables features that aren't accessible for the student
             ui->userRoleLable->setText(username);
@@ -181,7 +189,8 @@ void sgsApp::on_signInButton_clicked()
         case 2: //case 2 enters if role is 2
         {
             ui->stackedWidgetSGS->setCurrentIndex(1);
-            ui->stackedWidgetPages->setCurrentIndex(0); //widget stackedWidgetPages is set to index 0(first page)
+            on_dashboard_pushButton_clicked();
+            //ui->stackedWidgetPages->setCurrentIndex(0); //widget stackedWidgetPages is set to index 0(first page)
             showFeature();  //show lecturer features
             hideFeature();  //hide features that aren't accessible for the lecturer
             ui->userRoleLable->setText(username);
@@ -190,7 +199,8 @@ void sgsApp::on_signInButton_clicked()
         case 3:     //case 3 enters if role is 3
         {
             ui->stackedWidgetSGS->setCurrentIndex(1);       //sets the stackwidgetSGS widget to index 1
-            ui->stackedWidgetPages->setCurrentIndex(0);
+            on_dashboard_pushButton_clicked();
+            //ui->stackedWidgetPages->setCurrentIndex(0);
             showFeature();          //shows the features available for the admin
             disableAdminFeature();  //disbales the features that admin is not allowed to access
             ui->userRoleLable->setText(username);
@@ -305,45 +315,156 @@ void sgsApp::on_addUser_Button_clicked()
 //DASHBOARD PAGES
 void sgsApp::on_dashboard_pushButton_clicked()
 {
-    //Navigate tho Dashboard Page
-    ui->stackedWidgetPages->setCurrentIndex(0);
+    int commentedvar[4]= {0};
+    int commentCourse = 0;
+
+    if(releasetView != NULL)
+        delete releasetView;
+
+    if(PieReleasetView != NULL)
+        delete PieReleasetView;
+    QString January= "January", February= "February", March = "March", April = "April", May="May", June = "June";
+    QString July = "July", August = "August", September = "September", October = "October", November = "November", December = "December";
+
+    QStringList Months;
+    Months.append(January);
+    Months.append(February);
+    Months.append(March);
+    Months.append(April);
+    Months.append(May);
+    Months.append(June);
+    Months.append(July);
+    Months.append(August);
+    Months.append(September);
+    Months.append(October);
+    Months.append(November);
+    Months.append(December);
+
+    time_t t = time(NULL);
+    tm* timePtr = localtime(&t);
+
+    qDebug() << "seconds= " << timePtr->tm_sec << endl;
+    qDebug() << "minutes = " << timePtr->tm_min << endl;
+    qDebug() << "hours = " << timePtr->tm_hour << endl;
+    qDebug() << "day of month = " << timePtr->tm_mday << endl;
+    qDebug() << "month of year = " << timePtr->tm_mon<< endl;
+    qDebug() << "year = " << timePtr->tm_year << endl;
+    qDebug() << "weekday = " << timePtr->tm_wday << endl;
+    qDebug() << "day of year = " << timePtr->tm_yday << endl;
+    qDebug() << "daylight savings = " << timePtr->tm_isdst << endl;
+
+    int MonthOfTheYear = timePtr->tm_mon;
+
+    int counter = 0;
+    switch (MonthOfTheYear)
+    {
+    case 0:
+        counter = 9;
+        break;
+    case 1:
+        counter = 10;
+        break;
+    case 2:
+        counter = 11;
+        break;
+
+    default:
+        counter = MonthOfTheYear - 3;
+    }
+
+    QStringList categories;
+    QStringList Commentss = connection->commented_Course();
+    for(int var = 0;var < 4; var++)
+    {
+        if(counter > 11)
+            counter = 0;
+        for(int i = 0; i < Commentss.size(); i++)
+        {
+            if(counter == (Commentss[i].toInt()-1))
+            {
+                commentedvar[var]++;
+                commentCourse++;
+            }
+
+        } //end nested for loop
+        categories<<Months[counter];
+        counter++;
+    }
 
     //step 1 create our barset objects or pointers
-    QBarSet *set0 = new QBarSet("Jane");
-    QBarSet *set1 = new QBarSet("John");
+    QBarSet *set0 = new QBarSet("Comments");
 
-    *set0 << 1 << 2;
-    *set1 << 3 << 4;
+    *set0 << commentedvar[0] << commentedvar[1]<< commentedvar[2]<< commentedvar[3];
+    //*set1 << 3 << 4;
 
     //step 2
     QBarSeries *series = new QBarSeries();
     series->append(set0);
-    series->append(set1);
 
     //step 3 create Qchart object
-    QChart *chart = new QChart();
-    chart->addSeries(series);
-    chart->setTitle("simple bar chart example");
-    chart->setAnimationOptions(QChart::SeriesAnimations);
+    QChart *Barchart = new QChart();
+    Barchart->addSeries(series);
+    Barchart->setTitle("simple bar chart example");
+    Barchart->setAnimationOptions(QChart::SeriesAnimations);
 
     //step4
-    QStringList categories;
-    categories<< "Jan" << "Feb";
     QBarCategoryAxis *axis = new QBarCategoryAxis();
     axis->append(categories);
-    chart->createDefaultAxes();
-    chart->setAxisX(axis, series);
+    Barchart->createDefaultAxes();
+    Barchart->setAxisX(axis, series);
 
     //step5: Add a legend to our chart
-    chart->legend()->setVisible(true);
-    chart->legend()->setAlignment(Qt::AlignBottom);
+    Barchart->legend()->setVisible(true);
+    Barchart->legend()->setAlignment(Qt::AlignBottom);
 
     //step6: view our chart and we will turn on antialiasing for the chartView
-    QChartView *chartView = new QChartView(chart);
-    chartView->setRenderHint(QPainter::Antialiasing);
 
-    chartView->show();
+    QChartView *BarchartView = new QChartView(Barchart);
+    BarchartView->setRenderHint(QPainter::Antialiasing);
 
+    releasetView = BarchartView;
+
+    //show charts for comment
+    ui->commentGraph_GridLayout->addWidget(BarchartView);
+
+    //PieChart
+
+    //QPieLegendMarker()
+    //QPieLegendMarker *pieLegend = new QPieLegendMarker();
+    QStringList allCourses = connection->pending_completed();
+
+    ui->widget1courseComplete->setText(allCourses[1]);
+    ui->widget2TitleCoursePending->setText(allCourses[0]);
+    ui->widget2TitleCourseCommented->setText(QString::number(commentCourse));
+
+    QPieSeries *Pieseries = new QPieSeries();
+    Pieseries->append("Pending Courses", allCourses[0].toInt());
+    Pieseries->append("Complete", allCourses[1].toInt());
+
+    QPieSlice *PieSlice2 = Pieseries->slices().at(0);
+    PieSlice2->setExploded();
+    PieSlice2->setLabelVisible();
+    PieSlice2->setPen(QPen(Qt::darkBlue, 2));
+    QPieSlice *PieSlice = Pieseries->slices().at(1);
+    PieSlice->setExploded();
+    PieSlice->setLabelVisible();
+    PieSlice->setPen(QPen(Qt::darkGreen, 2));
+    PieSlice->setPen(QPen(Qt::darkGreen, 1));
+    PieSlice->setBrush(Qt::green);
+
+    QChart *PieChart = new QChart();
+    PieChart->addSeries(Pieseries);
+    PieChart->setTitle("Completed Course Vs Pending Course");
+    PieChart->legend()->hide();
+    QChartView *PieChartView = new QChartView(PieChart);
+    PieChartView->setRenderHint(QPainter::Antialiasing);
+
+    PieReleasetView = PieChartView;
+    //show Pie chart
+    ui->pending_complete_Graph_GridLayout->addWidget(PieChartView);
+
+    //Navigate tho Dashboard Page
+    ui->stackedWidgetPages->setCurrentIndex(0);
 }
 
 //slot for the Program Sequence Button
@@ -1069,19 +1190,19 @@ void sgsApp::on_updateCourse_pushButton_3_clicked()
             CourseName->setText(courseName);
             Credits->setText(credits);
             if(prerequisites.isEmpty())
-            Prerequisites->setText("NONE");
+                Prerequisites->setText("NONE");
             else
-             Prerequisites->setText(prerequisites);
+                Prerequisites->setText(prerequisites);
             Semester->setText(semester);
 
 
-        ui->draftTableWidget->insertRow(rowCount);
-        ui->draftTableWidget->setItem(rowCount,0,Code);
-        ui->draftTableWidget->setItem(rowCount,1,CourseName);       //sets the QTableWidgetItem courseName to draftTableWidget
-        ui->draftTableWidget->setItem(rowCount,2,Credits);
-        ui->draftTableWidget->setItem(rowCount,3,Prerequisites);
+            ui->draftTableWidget->insertRow(rowCount);
+            ui->draftTableWidget->setItem(rowCount,0,Code);
+            ui->draftTableWidget->setItem(rowCount,1,CourseName);       //sets the QTableWidgetItem courseName to draftTableWidget
+            ui->draftTableWidget->setItem(rowCount,2,Credits);
+            ui->draftTableWidget->setItem(rowCount,3,Prerequisites);
 
-//            if (rowCount == 0)
+            //            if (rowCount == 0)
 
 
             ui->draftTableWidget->insertRow(rowCount);

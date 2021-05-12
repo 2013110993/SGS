@@ -10,8 +10,10 @@
 #include "forgotpassword.h"
 #include "activate_deactivateuser.h"
 #include "lecture.h"
+#include<QChartView>
+using namespace QtCharts;
 
-
+QT_CHARTS_USE_NAMESPACE
 
 
 QT_BEGIN_NAMESPACE
@@ -137,6 +139,8 @@ private:
     QGridLayout *layout;
     int rowCount;
     QGridLayout *holder;
+    QChartView *releasetView;
+    QChartView *PieReleasetView;
     //QTranslator translator;
 };
 #endif // SGSAPP_H
