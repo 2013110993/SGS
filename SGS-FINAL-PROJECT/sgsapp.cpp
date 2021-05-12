@@ -54,10 +54,8 @@ sgsApp::~sgsApp()
 void sgsApp::disableStudentFeature()
 {
     //hides everything linked with the student features
-    ui->addCourse_Button->hide();
     ui->disableUser_Button->hide();
     ui->addUser_Button->hide();
-    ui->addInstitution_Button->hide();
     ui->AddLecturerCourse_Button->hide();
     ui->AddProgramSequence_Button->hide();
     ui->AddProgramSequenceFormTitle_2->hide();
@@ -71,10 +69,8 @@ void sgsApp::hideFeature()
 {
     ui->addCourseFrame->hide();   //hides the course update/frame
     ui->viewCourses_Button->hide();
-    ui->addCourse_Button->hide();
     ui->AddProgramSequence_Button->hide();
     ui->disableUser_Button->hide();
-    ui->addInstitution_Button->hide();
 }
 
 void sgsApp::disableAdminFeature() //disableAdminFeature() function disbales the Admin features
@@ -98,10 +94,8 @@ void sgsApp::showFeature()
     ui->AddProgramSequenceFormTitle_2->show();
     ui->studentSearchButton->show();
     ui->studentSearchLineEdit->show();
-    ui->addCourse_Button->show();
     ui->disableUser_Button->show();
     ui->addUser_Button->show();
-    ui->addInstitution_Button->show();
     ui->AddLecturerCourse_Button->show();
     ui->viewCourses_Button->show();
 }
@@ -1024,17 +1018,12 @@ void sgsApp::on_updateCourse_pushButton_3_clicked()
         QString credits = ui->addCreditLineEdit->text();
         QString prerequisites = ui->addPrerequisiteLineEdit->text();
 
-        QTableWidgetItem *Code = new QTableWidgetItem;
-        QTableWidgetItem *CourseName = new QTableWidgetItem;
-        QTableWidgetItem *Credits = new QTableWidgetItem;           //Credit created inside heap
-        QTableWidgetItem *Prerequisites = new QTableWidgetItem;
-
 
         for(int i=0; i<1;i++)
         {
 
 
-            QTableWidgetItem *Code = new QTableWidgetItem;
+            QTableWidgetItem *Code = new QTableWidgetItem;  //Credit created inside heap
             QTableWidgetItem *CourseName = new QTableWidgetItem;
             QTableWidgetItem *Credits = new QTableWidgetItem;
             QTableWidgetItem *Prerequisites = new QTableWidgetItem;
@@ -1044,27 +1033,17 @@ void sgsApp::on_updateCourse_pushButton_3_clicked()
             CourseName->setText(courseName);
             Credits->setText(credits);
             if(prerequisites.isEmpty())
-            Prerequisites->setText("NONE");
+                Prerequisites->setText("NONE");
             else
-             Prerequisites->setText(prerequisites);
+                Prerequisites->setText(prerequisites);
             Semester->setText(semester);
-
-
-        ui->draftTableWidget->insertRow(rowCount);
-        ui->draftTableWidget->setItem(rowCount,0,Code);
-        ui->draftTableWidget->setItem(rowCount,1,CourseName);       //sets the QTableWidgetItem courseName to draftTableWidget
-        ui->draftTableWidget->setItem(rowCount,2,Credits);
-        ui->draftTableWidget->setItem(rowCount,3,Prerequisites);
-
-//            if (rowCount == 0)
 
 
             ui->draftTableWidget->insertRow(rowCount);
             ui->draftTableWidget->setItem(rowCount,0,Code);
-            ui->draftTableWidget->setItem(rowCount,1,CourseName);
+            ui->draftTableWidget->setItem(rowCount,1,CourseName);       //sets the QTableWidgetItem courseName to draftTableWidget
             ui->draftTableWidget->setItem(rowCount,2,Credits);
             ui->draftTableWidget->setItem(rowCount,3,Prerequisites);
-            ui->draftTableWidget->setItem(rowCount,4,Semester);
 
             rowCount++;
 

@@ -22,8 +22,8 @@ void databaseconnection::connect()
     setConnection = QSqlDatabase::addDatabase("QMYSQL");
     setConnection.setHostName("127.0.0.1");
     //setConnection.setPort(3306);
-    //setConnection.setPort(3366);
-    setConnection.setPort(3336);
+    setConnection.setPort(3366);
+    //setConnection.setPort(3336);
     //setConnection.setPort(3366);
     setConnection.setUserName("root");
     setConnection.setPassword("");
@@ -389,7 +389,8 @@ QSqlQuery databaseconnection::getUserInfo(QString lostAccount, int role)
         query1->prepare("SELECT questionId, answer,  questions FROM  questions, securityquestions WHERE securityquestions.questionId = questions.id "
                         "AND securityquestions.userId = " + getUserId());
 
-        query1->exec();     //executes query1
+        if (!query1->exec())     //executes query1
+            qDebug()<<"ERRPRROORER0";
     }
 
 
