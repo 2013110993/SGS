@@ -322,6 +322,11 @@ void sgsApp::on_dashboard_pushButton_clicked()
     {
     case 1:
     {
+        ui->frame_Widget1->show();
+        ui->frame_Widget2->show();
+        ui->frame_Widget2_3->show();
+
+
         int commentedvar[4]= {0};
         int commentCourse = 0;
 
@@ -463,6 +468,13 @@ void sgsApp::on_dashboard_pushButton_clicked()
     }
     case 2:
     {
+        if(PieReleasetView != NULL)
+        {
+            delete PieReleasetView;
+            PieReleasetView = NULL;
+        }
+
+        //ui->pending_complete_Graph_GridLayout->hide();
         if( releasetView != NULL)
             delete releasetView;
         QStringList nameCourse;
