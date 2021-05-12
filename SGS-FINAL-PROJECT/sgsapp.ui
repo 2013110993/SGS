@@ -985,7 +985,7 @@ background-repeat: no-repeat;</string>
        <string notr="true">border: 1px</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="DashboardPage">
        <widget class="QFrame" name="pageTitleCourseListPage_3">

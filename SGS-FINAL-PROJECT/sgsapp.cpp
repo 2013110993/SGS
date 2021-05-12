@@ -8,8 +8,11 @@
 #include <QPrintDialog>
 #include <QFileDialog>
 #include <QTranslator>
+#include <QtCharts>
+#include <QBarset>
+using namespace QtCharts;
 
-
+QT_CHARTS_USE_NAMESPACE
 extern QApplication *a;
 extern QTranslator *translator;
 
@@ -303,23 +306,45 @@ void sgsApp::on_addUser_Button_clicked()
 void sgsApp::on_dashboard_pushButton_clicked()
 {
     //Navigate tho Dashboard Page
-    ui->stackedWidgetPages->setCurrentIndex(0); //goas back to dashbard of the sgsapp (main menu)
-    //New functionality comming soon
-    //    if (buttonClick)
-    //    {
-    //        buttonClick = false;
-    //        qDebug("clicked");
-    //          ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow LEFT.png"));
-    //          hideFeature();
-    //    }
-    //    else
-    //    {
-    //        ui->dashboard_pushButton->setIcon(QIcon(":/icons White/Icons/White/Single Arrow RIGHT.png"));
-    //        buttonClick = true;
-    //        showFeature();
-    //    }
-}
+    ui->stackedWidgetPages->setCurrentIndex(0);
 
+    //step 1 create our barset objects or pointers
+    QBarSet *set0 = new QBarSet("Jane");
+    QBarSet *set1 = new QBarSet("John");
+
+    *set0 << 1 << 2;
+    *set1 << 3 << 4;
+
+    //step 2
+    QBarSeries *series = new QBarSeries();
+    series->append(set0);
+    series->append(set1);
+
+    //step 3 create Qchart object
+    QChart *chart = new QChart();
+    chart->addSeries(series);
+    chart->setTitle("simple bar chart example");
+    chart->setAnimationOptions(QChart::SeriesAnimations);
+
+    //step4
+    QStringList categories;
+    categories<< "Jan" << "Feb";
+    QBarCategoryAxis *axis = new QBarCategoryAxis();
+    axis->append(categories);
+    chart->createDefaultAxes();
+    chart->setAxisX(axis, series);
+
+    //step5: Add a legend to our chart
+    chart->legend()->setVisible(true);
+    chart->legend()->setAlignment(Qt::AlignBottom);
+
+    //step6: view our chart and we will turn on antialiasing for the chartView
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+
+    chartView->show();
+
+}
 
 //slot for the Program Sequence Button
 void sgsApp::on_viewStudentProgramSequence_Button_clicked()
