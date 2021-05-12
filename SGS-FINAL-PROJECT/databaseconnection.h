@@ -57,8 +57,11 @@ public:
     QSqlQuery getCourses();
     QSqlQuery getLecturesByCourse(QString);
     QSqlQuery getComments(QString, QString);
-    QSqlQuery getLectureCourse ();
+    QSqlQuery getLectureCourse();
 
+    //overload functions
+    QSqlQuery getRatingComment();
+    QSqlQuery getRatingComment(QString, QString);
 
     QString getRole();
     QString getUserId();

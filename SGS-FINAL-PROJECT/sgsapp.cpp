@@ -317,153 +317,242 @@ void sgsApp::on_addUser_Button_clicked()
 //DASHBOARD PAGES
 void sgsApp::on_dashboard_pushButton_clicked()
 {
-    int commentedvar[4]= {0};
-    int commentCourse = 0;
 
-    if(releasetView != NULL)
-        delete releasetView;
-
-    if(PieReleasetView != NULL)
-        delete PieReleasetView;
-    QString January= "January", February= "February", March = "March", April = "April", May="May", June = "June";
-    QString July = "July", August = "August", September = "September", October = "October", November = "November", December = "December";
-
-    QStringList Months;
-    Months.append(January);
-    Months.append(February);
-    Months.append(March);
-    Months.append(April);
-    Months.append(May);
-    Months.append(June);
-    Months.append(July);
-    Months.append(August);
-    Months.append(September);
-    Months.append(October);
-    Months.append(November);
-    Months.append(December);
-
-    time_t t = time(NULL);
-    tm* timePtr = localtime(&t);
-
-    qDebug() << "seconds= " << timePtr->tm_sec << endl;
-    qDebug() << "minutes = " << timePtr->tm_min << endl;
-    qDebug() << "hours = " << timePtr->tm_hour << endl;
-    qDebug() << "day of month = " << timePtr->tm_mday << endl;
-    qDebug() << "month of year = " << timePtr->tm_mon<< endl;
-    qDebug() << "year = " << timePtr->tm_year << endl;
-    qDebug() << "weekday = " << timePtr->tm_wday << endl;
-    qDebug() << "day of year = " << timePtr->tm_yday << endl;
-    qDebug() << "daylight savings = " << timePtr->tm_isdst << endl;
-
-    int MonthOfTheYear = timePtr->tm_mon;
-
-    int counter = 0;
-    switch (MonthOfTheYear)
+    switch (connection->getRole().toInt())
     {
-    case 0:
-        counter = 9;
-        break;
     case 1:
-        counter = 10;
-        break;
-    case 2:
-        counter = 11;
-        break;
-
-    default:
-        counter = MonthOfTheYear - 3;
-    }
-
-    QStringList categories;
-    QStringList Commentss = connection->commented_Course();
-    for(int var = 0;var < 4; var++)
     {
-        if(counter > 11)
-            counter = 0;
-        for(int i = 0; i < Commentss.size(); i++)
+        int commentedvar[4]= {0};
+        int commentCourse = 0;
+
+        if(releasetView != NULL)
+            delete releasetView;
+
+        if(PieReleasetView != NULL)
+            delete PieReleasetView;
+        QString January= "January", February= "February", March = "March", April = "April", May="May", June = "June";
+        QString July = "July", August = "August", September = "September", October = "October", November = "November", December = "December";
+
+        QStringList Months;
+        Months.append(January);
+        Months.append(February);
+        Months.append(March);
+        Months.append(April);
+        Months.append(May);
+        Months.append(June);
+        Months.append(July);
+        Months.append(August);
+        Months.append(September);
+        Months.append(October);
+        Months.append(November);
+        Months.append(December);
+
+        time_t t = time(NULL);
+        tm* timePtr = localtime(&t);
+
+        int MonthOfTheYear = timePtr->tm_mon;
+
+        int counter = 0;
+        switch (MonthOfTheYear)
         {
-            if(counter == (Commentss[i].toInt()-1))
+        case 0:
+            counter = 9;
+            break;
+        case 1:
+            counter = 10;
+            break;
+        case 2:
+            counter = 11;
+            break;
+
+        default:
+            counter = MonthOfTheYear - 3;
+        }
+
+        QStringList categories;
+        QStringList Commentss = connection->commented_Course();
+        for(int var = 0;var < 4; var++)
+        {
+            if(counter > 11)
+                counter = 0;
+            for(int i = 0; i < Commentss.size(); i++)
             {
-                commentedvar[var]++;
-                commentCourse++;
+                if(counter == (Commentss[i].toInt()-1))
+                {
+                    commentedvar[var]++;
+                    commentCourse++;
+                }
+
+            } //end nested for loop
+            categories<<Months[counter];
+            counter++;
+        }
+
+        //step 1 create our barset objects or pointers
+        QBarSet *set0 = new QBarSet("Comments");
+
+        *set0 << commentedvar[0] << commentedvar[1]<< commentedvar[2]<< commentedvar[3];
+        //*set1 << 3 << 4;
+
+        //step 2
+        QBarSeries *series = new QBarSeries();
+        series->append(set0);
+
+        //step 3 create Qchart object
+        QChart *Barchart = new QChart();
+        Barchart->addSeries(series);
+        Barchart->setTitle("simple bar chart example");
+        Barchart->setAnimationOptions(QChart::SeriesAnimations);
+
+        //step4
+        QBarCategoryAxis *axis = new QBarCategoryAxis();
+        axis->append(categories);
+        Barchart->createDefaultAxes();
+        Barchart->setAxisX(axis, series);
+
+        //step5: Add a legend to our chart
+        Barchart->legend()->setVisible(true);
+        Barchart->legend()->setAlignment(Qt::AlignBottom);
+
+        //step6: view our chart and we will turn on antialiasing for the chartView
+
+        QChartView *BarchartView = new QChartView(Barchart);
+        BarchartView->setRenderHint(QPainter::Antialiasing);
+
+        releasetView = BarchartView;
+
+        //show charts for comment
+        ui->commentGraph_GridLayout->addWidget(BarchartView);
+
+        //PieChart
+
+        //QPieLegendMarker()
+        //QPieLegendMarker *pieLegend = new QPieLegendMarker();
+        QStringList allCourses = connection->pending_completed();
+
+        ui->widget1courseComplete->setText(allCourses[1]);
+        ui->widget2TitleCoursePending->setText(allCourses[0]);
+        ui->widget2TitleCourseCommented->setText(QString::number(commentCourse));
+
+        QPieSeries *Pieseries = new QPieSeries();
+        Pieseries->append("Pending Courses", allCourses[0].toInt());
+        Pieseries->append("Complete", allCourses[1].toInt());
+
+        QPieSlice *PieSlice2 = Pieseries->slices().at(0);
+        PieSlice2->setExploded();
+        PieSlice2->setLabelVisible();
+        PieSlice2->setPen(QPen(Qt::darkBlue, 2));
+        QPieSlice *PieSlice = Pieseries->slices().at(1);
+        PieSlice->setExploded();
+        PieSlice->setLabelVisible();
+        PieSlice->setPen(QPen(Qt::darkGreen, 2));
+        PieSlice->setPen(QPen(Qt::darkGreen, 1));
+        PieSlice->setBrush(Qt::green);
+
+        QChart *PieChart = new QChart();
+        PieChart->addSeries(Pieseries);
+        PieChart->setTitle("Completed Course Vs Pending Course");
+        PieChart->legend()->hide();
+        QChartView *PieChartView = new QChartView(PieChart);
+        PieChartView->setRenderHint(QPainter::Antialiasing);
+
+        PieReleasetView = PieChartView;
+        //show Pie chart
+        ui->pending_complete_Graph_GridLayout->addWidget(PieChartView);
+        break;
+    }
+    case 2:
+    {
+        if( releasetView != NULL)
+            delete releasetView;
+        QStringList nameCourse;
+        QStringList ratings;
+        ratings.append("Ugly");
+        ratings.append("Bad");
+        ratings.append("Fair");
+        ratings.append("Good");
+        ratings.append("Excellent");
+
+        QStringList *categories;
+        QBarCategoryAxis *axisX = new QBarCategoryAxis();
+
+        QSqlQuery test = connection->getRatingComment();
+        QBarSeries *series = new QBarSeries();
+        for(int a = 0; a < nameCourse.size(); a++)
+        {
+            nameCourse[a] = "";
+        }
+        if (test.size() > 0)
+        {
+            while(test.next())
+            {
+                QBarSet *set0 = new QBarSet(test.value(0).toString());
+                categories = new QStringList;
+                int countCourses[15] = {0};
+                int counterLec = 0;
+
+                for (int var = 0; var < ratings.size(); ++var)
+                {
+                    categories->append(ratings[var]);
+                    QSqlQuery data = connection->getRatingComment(test.value(0).toString(), ratings[var]);
+                    if(data.size() > 0)
+                    {
+                        while(data.next())
+                        {
+                            countCourses[var] = data.value(0).toInt();
+                            qDebug()<<countCourses[var]<<" aki";
+                            counterLec++;
+                        }
+                    }
+                    else
+                    {
+                        countCourses[var] = 0;
+                    }
+                }
+                qDebug()<<test.value(0).toString();
+                qDebug()<<test.value(1).toString();
+                *set0 << countCourses[0] << countCourses[1] << countCourses[2] << countCourses[3] << countCourses[4];
+                series->append(set0);
+                axisX->append(*(categories));
             }
 
-        } //end nested for loop
-        categories<<Months[counter];
-        counter++;
+        }
+
+        ui->frame_Widget1->hide();
+        ui->frame_Widget2->hide();
+        ui->frame_Widget2_3->hide();
+
+
+        QChart *chart = new QChart();
+        chart->addSeries(series);
+        chart->setTitle("Simple barchart example");
+        chart->setAnimationOptions(QChart::SeriesAnimations);
+
+
+        chart->addAxis(axisX, Qt::AlignBottom);
+        series->attachAxis(axisX);
+
+        QValueAxis *axisY = new QValueAxis();
+        axisY->setRange(0,15);
+        chart->addAxis(axisY, Qt::AlignLeft);
+        series->attachAxis(axisY);
+        chart->legend()->setVisible(true);
+        chart->legend()->setAlignment(Qt::AlignBottom);
+
+        QChartView *chartView = new QChartView(chart);
+        chartView->setRenderHint(QPainter::Antialiasing);
+
+
+        releasetView = chartView;
+
+        //show charts for comment
+        ui->commentGraph_GridLayout->addWidget(chartView);
+
+
     }
 
-    //step 1 create our barset objects or pointers
-    QBarSet *set0 = new QBarSet("Comments");
+    }
 
-    *set0 << commentedvar[0] << commentedvar[1]<< commentedvar[2]<< commentedvar[3];
-    //*set1 << 3 << 4;
-
-    //step 2
-    QBarSeries *series = new QBarSeries();
-    series->append(set0);
-
-    //step 3 create Qchart object
-    QChart *Barchart = new QChart();
-    Barchart->addSeries(series);
-    Barchart->setTitle("simple bar chart example");
-    Barchart->setAnimationOptions(QChart::SeriesAnimations);
-
-    //step4
-    QBarCategoryAxis *axis = new QBarCategoryAxis();
-    axis->append(categories);
-    Barchart->createDefaultAxes();
-    Barchart->setAxisX(axis, series);
-
-    //step5: Add a legend to our chart
-    Barchart->legend()->setVisible(true);
-    Barchart->legend()->setAlignment(Qt::AlignBottom);
-
-    //step6: view our chart and we will turn on antialiasing for the chartView
-
-    QChartView *BarchartView = new QChartView(Barchart);
-    BarchartView->setRenderHint(QPainter::Antialiasing);
-
-    releasetView = BarchartView;
-
-    //show charts for comment
-    ui->commentGraph_GridLayout->addWidget(BarchartView);
-
-    //PieChart
-
-    //QPieLegendMarker()
-    //QPieLegendMarker *pieLegend = new QPieLegendMarker();
-    QStringList allCourses = connection->pending_completed();
-
-    ui->widget1courseComplete->setText(allCourses[1]);
-    ui->widget2TitleCoursePending->setText(allCourses[0]);
-    ui->widget2TitleCourseCommented->setText(QString::number(commentCourse));
-
-    QPieSeries *Pieseries = new QPieSeries();
-    Pieseries->append("Pending Courses", allCourses[0].toInt());
-    Pieseries->append("Complete", allCourses[1].toInt());
-
-    QPieSlice *PieSlice2 = Pieseries->slices().at(0);
-    PieSlice2->setExploded();
-    PieSlice2->setLabelVisible();
-    PieSlice2->setPen(QPen(Qt::darkBlue, 2));
-    QPieSlice *PieSlice = Pieseries->slices().at(1);
-    PieSlice->setExploded();
-    PieSlice->setLabelVisible();
-    PieSlice->setPen(QPen(Qt::darkGreen, 2));
-    PieSlice->setPen(QPen(Qt::darkGreen, 1));
-    PieSlice->setBrush(Qt::green);
-
-    QChart *PieChart = new QChart();
-    PieChart->addSeries(Pieseries);
-    PieChart->setTitle("Completed Course Vs Pending Course");
-    PieChart->legend()->hide();
-    QChartView *PieChartView = new QChartView(PieChart);
-    PieChartView->setRenderHint(QPainter::Antialiasing);
-
-    PieReleasetView = PieChartView;
-    //show Pie chart
-    ui->pending_complete_Graph_GridLayout->addWidget(PieChartView);
 
     //Navigate tho Dashboard Page
     ui->stackedWidgetPages->setCurrentIndex(0);
@@ -526,7 +615,7 @@ void sgsApp::programSequenceList()
         qDebug()<<"ENTERDD TRUE"<<studentID;
         programCourses =  connection->getStudentsCourses(studentID);
         if(programCourses.size() > 0 )
-        programSeqInfo = connection->getSequenceName();     //QstringList programSeqInfo is assigned to the returned value of the function getSequenceName() from the databaseconnection class
+            programSeqInfo = connection->getSequenceName();     //QstringList programSeqInfo is assigned to the returned value of the function getSequenceName() from the databaseconnection class
         else
         {
             QMessageBox::critical(NULL,"NO STUDENT FOUND ON DATABASE","NO SUCH STUDENT WAS FOUND ON THE DATABASE, PLEASE CHECK THAT THE STUDENT ID IS A VALID ONE!");
@@ -541,74 +630,74 @@ void sgsApp::programSequenceList()
     }
 
     if(programSeqInfo.size() > 0 )
-    if (administration_LineIsnotEmpty) //checks if administration_LineIsnotEmpty is true
-    {
-        ui->programSequenceProgramName->setText(programSeqInfo[0]); //programSequenceProgramName's text is assigned to the first value fo the QStringList programSeqInfo
-
-        ui->programSequenceFacultyName->setText(programSeqInfo[1]); // programSequenceFacultyName's text is assigned to the second value of the QStringList programSeqInfo
-
-        ui->programSequenceTableWidget->setColumnCount(7);
-        ui->programSequenceTableWidget->setStyleSheet("background:#f1f1f1;color:#333;"); //sets the style for the program sequence table widget
-
-        QStringList header;
-        header << "Code"<< "Course Name" <<"Credits" << "Grade" <<"Pre-requisites" << "Semester" << "Year";     //Qstring List header recieves the header format for the table
-
-        ui->programSequenceTableWidget->setHorizontalHeaderLabels(header);  //programSequenceTableWidget header format implemented
-        //sets the style for header of the table
-        ui->programSequenceTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
-
-        ui->programSequenceTableWidget->setAlternatingRowColors(true);
-        ui->programSequenceTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
-
-        int rowCount = 0;
-
-        for(; programCourses.next();)
+        if (administration_LineIsnotEmpty) //checks if administration_LineIsnotEmpty is true
         {
-            //sets the columns for the table widget
-            ui->programSequenceTableWidget->insertRow(rowCount);        //insert row for the table
-            ui->programSequenceTableWidget->setColumnWidth(0,90);
-            ui->programSequenceTableWidget->setColumnWidth(1,270);      //sets the second column for the table
-            ui->programSequenceTableWidget->setColumnWidth(2,60);
-            ui->programSequenceTableWidget->setColumnWidth(3,90);
-            ui->programSequenceTableWidget->setColumnWidth(4,480);
-            ui->programSequenceTableWidget->setColumnWidth(5,70);
-            ui->programSequenceTableWidget->setColumnWidth(6,68);
+            ui->programSequenceProgramName->setText(programSeqInfo[0]); //programSequenceProgramName's text is assigned to the first value fo the QStringList programSeqInfo
 
-            //a List of QTableWidgetItems created on the heap
-            QTableWidgetItem *courseCode = new QTableWidgetItem;        //course code item implemented inside the heap
-            QTableWidgetItem *courseName = new QTableWidgetItem;
-            QTableWidgetItem *credits = new QTableWidgetItem;
-            QTableWidgetItem *grade = new QTableWidgetItem;
-            QTableWidgetItem *prerequisites = new QTableWidgetItem;
-            QTableWidgetItem *semester = new QTableWidgetItem;
-            QTableWidgetItem *year = new QTableWidgetItem;      //new year table widget item created inside the heap
+            ui->programSequenceFacultyName->setText(programSeqInfo[1]); // programSequenceFacultyName's text is assigned to the second value of the QStringList programSeqInfo
 
-            courseCode->setText(programCourses.value(0).toString());        //course code recieves the value of the QStringList programCourses first value
-            courseName->setText(programCourses.value(1).toString());
-            credits->setText(programCourses.value(2).toString());
-            if (programCourses.value(3).toString().isEmpty())       //checks if value 3 of the programCourses is empty
-                grade->setText("Pending");
-            else
-                grade->setText(programCourses.value(3).toString());     //grade's text is assigned to the value 3 of programCourses
+            ui->programSequenceTableWidget->setColumnCount(7);
+            ui->programSequenceTableWidget->setStyleSheet("background:#f1f1f1;color:#333;"); //sets the style for the program sequence table widget
+
+            QStringList header;
+            header << "Code"<< "Course Name" <<"Credits" << "Grade" <<"Pre-requisites" << "Semester" << "Year";     //Qstring List header recieves the header format for the table
+
+            ui->programSequenceTableWidget->setHorizontalHeaderLabels(header);  //programSequenceTableWidget header format implemented
+            //sets the style for header of the table
+            ui->programSequenceTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
+
+            ui->programSequenceTableWidget->setAlternatingRowColors(true);
+            ui->programSequenceTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
+
+            int rowCount = 0;
+
+            for(; programCourses.next();)
+            {
+                //sets the columns for the table widget
+                ui->programSequenceTableWidget->insertRow(rowCount);        //insert row for the table
+                ui->programSequenceTableWidget->setColumnWidth(0,90);
+                ui->programSequenceTableWidget->setColumnWidth(1,270);      //sets the second column for the table
+                ui->programSequenceTableWidget->setColumnWidth(2,60);
+                ui->programSequenceTableWidget->setColumnWidth(3,90);
+                ui->programSequenceTableWidget->setColumnWidth(4,480);
+                ui->programSequenceTableWidget->setColumnWidth(5,70);
+                ui->programSequenceTableWidget->setColumnWidth(6,68);
+
+                //a List of QTableWidgetItems created on the heap
+                QTableWidgetItem *courseCode = new QTableWidgetItem;        //course code item implemented inside the heap
+                QTableWidgetItem *courseName = new QTableWidgetItem;
+                QTableWidgetItem *credits = new QTableWidgetItem;
+                QTableWidgetItem *grade = new QTableWidgetItem;
+                QTableWidgetItem *prerequisites = new QTableWidgetItem;
+                QTableWidgetItem *semester = new QTableWidgetItem;
+                QTableWidgetItem *year = new QTableWidgetItem;      //new year table widget item created inside the heap
+
+                courseCode->setText(programCourses.value(0).toString());        //course code recieves the value of the QStringList programCourses first value
+                courseName->setText(programCourses.value(1).toString());
+                credits->setText(programCourses.value(2).toString());
+                if (programCourses.value(3).toString().isEmpty())       //checks if value 3 of the programCourses is empty
+                    grade->setText("Pending");
+                else
+                    grade->setText(programCourses.value(3).toString());     //grade's text is assigned to the value 3 of programCourses
 
 
-            prerequisites->setText(programCourses.value(4).toString());     //prerequisites's text is assigned to programCourses first value
-            semester->setText(programCourses.value(5).toString());
-            year->setText(programCourses.value(6).toString());
+                prerequisites->setText(programCourses.value(4).toString());     //prerequisites's text is assigned to programCourses first value
+                semester->setText(programCourses.value(5).toString());
+                year->setText(programCourses.value(6).toString());
 
-            ui->programSequenceTableWidget->setItem(rowCount,0,courseCode); //set first item to the table Widget which is the course code
-            ui->programSequenceTableWidget->setItem(rowCount,1,courseName);
-            ui->programSequenceTableWidget->setItem(rowCount,2,credits);
-            ui->programSequenceTableWidget->setItem(rowCount,3,grade);
-            ui->programSequenceTableWidget->setItem(rowCount,4,prerequisites); //set fourth item to the table Widget which is the prerequisites
-            ui->programSequenceTableWidget->setItem(rowCount,5,semester);
-            ui->programSequenceTableWidget->setItem(rowCount,6,year);
+                ui->programSequenceTableWidget->setItem(rowCount,0,courseCode); //set first item to the table Widget which is the course code
+                ui->programSequenceTableWidget->setItem(rowCount,1,courseName);
+                ui->programSequenceTableWidget->setItem(rowCount,2,credits);
+                ui->programSequenceTableWidget->setItem(rowCount,3,grade);
+                ui->programSequenceTableWidget->setItem(rowCount,4,prerequisites); //set fourth item to the table Widget which is the prerequisites
+                ui->programSequenceTableWidget->setItem(rowCount,5,semester);
+                ui->programSequenceTableWidget->setItem(rowCount,6,year);
 
-            rowCount++;
-            qDebug()<<"ROWSSS: "<<rowCount<< " HERE";
+                rowCount++;
+                qDebug()<<"ROWSSS: "<<rowCount<< " HERE";
+            }
+
         }
-
-    }
 }
 
 //slot for view courses button
@@ -1012,29 +1101,17 @@ void sgsApp::on_addCourseButton_clicked()
 void sgsApp::courseComments(int row)
 {
 
-    delete holder;
-    //  if (layout)
-    int var = 0;
-    while (ArrayDeleteLater[var] != NULL)
-    {
-        qDebug()<<"Entered";
-        if (var == 0)
+    if((holder!=NULL))
+        delete holder; //release layout from heap
 
-            delete  layout;         //release layout from heap
-
+        int var = 0;
+        while (ArrayDeleteLater[var] != NULL)
         {
-            layout = NULL;
+            delete ArrayDeleteLater[var];
+            ArrayDeleteLater[var] = NULL;       //ArrayDeleteLater Array is assigned to Null
+
+            var++;
         }
-
-
-        delete ArrayDeleteLater[var];
-        ArrayDeleteLater[var] = NULL;       //ArrayDeleteLater Array is assigned to Null
-
-        var++;
-    }
-
-
-
 
     QString courseCode = ui->searchResultCourseCommentTableWidget->item(row,0)->text();
     QString lectureName =  ui->searchResultCourseCommentTableWidget->item(row,2)->text();

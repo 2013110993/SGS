@@ -18,54 +18,54 @@ databaseconnection::~databaseconnection()
 
 QStringList databaseconnection::pending_completed()
 {
-        QStringList data;
+    QStringList data;
 
-        QSqlQuery *pending_complete = new QSqlQuery;
+    QSqlQuery *pending_complete = new QSqlQuery;
 
 
-        pending_complete->prepare(" SELECT COUNT(courseid) AS PendingCourse FROM studentcourses "
+    pending_complete->prepare(" SELECT COUNT(courseid) AS PendingCourse FROM studentcourses "
                                  "WHERE `studentid` = '" +getUserId() +"' AND courseGrade IS NULL; ");
 
-        if(!(pending_complete->exec()))  //checks if query does not execute
-            qDebug()<<"Back Fire";
-        else
+    if(!(pending_complete->exec()))  //checks if query does not execute
+        qDebug()<<"Back Fire";
+    else
+    {
+        while(pending_complete->next())
         {
-            while(pending_complete->next())
-            {
-                QString pendingCourse = pending_complete->value(0).toString();    //name is assigned to the first value of program sequence query
+            QString pendingCourse = pending_complete->value(0).toString();    //name is assigned to the first value of program sequence query
 
-                data.append(pendingCourse);      //appends the name of pending courses
+            data.append(pendingCourse);      //appends the name of pending courses
 
-                QSqlQuery *complete = new QSqlQuery;
+            QSqlQuery *complete = new QSqlQuery;
 
-                complete->prepare("SELECT COUNT(courseGrade) AS PendingCourse FROM studentcourses "
+            complete->prepare("SELECT COUNT(courseGrade) AS PendingCourse FROM studentcourses "
                                   "WHERE `studentid` = '" +getUserId() +"' AND courseGrade IS NOT NULL; ");
-                if(!(complete->exec()))  //checks if query does not execute
-                    qDebug()<<"Back Fire";
-                else
+            if(!(complete->exec()))  //checks if query does not execute
+                qDebug()<<"Back Fire";
+            else
+            {
+                while(complete->next())
                 {
-                    while(complete->next())
-                    {
-                        QString completeCourse = complete->value(0).toString();    //name is assigned to the first value of program sequence query
+                    QString completeCourse = complete->value(0).toString();    //name is assigned to the first value of program sequence query
 
-                        data.append(completeCourse);      //appends the name of pending courses
-
-                    }
+                    data.append(completeCourse);      //appends the name of pending courses
 
                 }
-                delete complete;
+
             }
-
+            delete complete;
         }
 
-        delete pending_complete; //release programSequence from heap
+    }
 
-        for (int var = 0; var < data.size(); ++var)
-        {
-            qDebug()<<data[var]<<" HERE ";
-        }
+    delete pending_complete; //release programSequence from heap
 
-        return data;    //returns QstringList data
+    for (int var = 0; var < data.size(); ++var)
+    {
+        qDebug()<<data[var]<<" HERE ";
+    }
+
+    return data;    //returns QstringList data
 
 
 }
@@ -74,30 +74,30 @@ QStringList databaseconnection::commented_Course()
 {
     QStringList data;
 
-        QSqlQuery *coursecomments = new QSqlQuery;
+    QSqlQuery *coursecomments = new QSqlQuery;
 
 
-        coursecomments->prepare("SELECT timeStamp FROM coursecomments "
+    coursecomments->prepare("SELECT timeStamp FROM coursecomments "
                                 "WHERE `studentID` = '" +getUserId() +"'");
 
-        if(!(coursecomments->exec()))  //checks if query does not execute
-            qDebug()<<"Back Fire";
-        else
+    if(!(coursecomments->exec()))  //checks if query does not execute
+        qDebug()<<"Back Fire";
+    else
+    {
+        while(coursecomments->next())
         {
-            while(coursecomments->next())
-            {
-                QString month = coursecomments->value(0).toString();    //name is assigned to the first value of comment timeStamp
-                QRegExp separator("-|\\s|:|T");
-                QStringList list = month.split(separator, QString::SkipEmptyParts);
+            QString month = coursecomments->value(0).toString();    //name is assigned to the first value of comment timeStamp
+            QRegExp separator("-|\\s|:|T");
+            QStringList list = month.split(separator, QString::SkipEmptyParts);
 
-                data.append(list[1]);      //appends the name of commented month
-            }
-
+            data.append(list[1]);      //appends the name of commented month
         }
 
-        delete coursecomments; //release coursecomments from heap
+    }
 
-        return data;    //returns QstringList data
+    delete coursecomments; //release coursecomments from heap
+
+    return data;    //returns QstringList data
 
 }
 
@@ -1122,6 +1122,38 @@ QSqlQuery databaseconnection::getLectureCourse()
     delete query1;          //release query1 from heap because it's no longer needed
     return lectureCourses;
 
+}
+
+QSqlQuery databaseconnection::getRatingComment()
+{
+    QSqlQuery * query1 = new QSqlQuery;
+    query1->prepare("SELECT `courseid` FROM `coursecomments` "
+                        "WHERE `lecturerid` = '" + getUserId() + "' "
+                        "GROUP By courseid ");
+    if(!(query1->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+    }
+    QSqlQuery coursesInfo = *query1;
+    delete query1;
+    return coursesInfo;
+
+}
+
+QSqlQuery databaseconnection::getRatingComment(QString courseId, QString rating)
+{
+    QSqlQuery * query1 = new QSqlQuery;
+    query1->prepare("SELECT COUNT(`courseRating`) FROM `coursecomments`  "
+                        "WHERE `lecturerid` = '" + getUserId() + "' "
+                        "and courseRating = '"+ rating +"' "
+"AND courseID = '" + courseId + "' ");
+    if(!(query1->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+    }
+    QSqlQuery coursesInfo = *query1;
+    delete query1;
+    return coursesInfo;
 }
 
 QStringList databaseconnection::activate_DeactivateLecture(QString lectureName, int role)
