@@ -6,6 +6,7 @@ using namespace std;
 
 #include "register.h"
 #include "ui_register.h"
+#include "lecture.h"
 #include<QMessageBox>
 #include <QDebug>
 #include "databaseconnection.h"
@@ -21,7 +22,6 @@ Register::Register(QWidget *parent) :
     ui->setupUi(this);
     ui->stackedWidgetRegister->setCurrentIndex(0);
     userRole=1;
-    ui->middleName_RegFormLineEdit->hide();
     ui->createLectureButton->hide();
 }
 
@@ -111,9 +111,6 @@ void Register::on_signUpNextButton_clicked()
         messagebox.warning(NULL,"Error",message); //displays the exception message in a warning message box
     }
 
-    //Generate Table for ProgramSequence
-    on_registerTableWidget_ProgramSequenceTable();
-
 }
 
 //Register Back page
@@ -163,8 +160,7 @@ void Register::on_signUpButton_clicked()
         //built a list of Qstrings that will recieve the user's info
         QString f = ui->firstName_RegFormLineEdit->text();  // f is receeives user's first name
         QString l = ui->lastName_RegFormLineEdit->text();   // l recieves user's last name
-        QString m =  ui->userName_RegFormLineEdit->text();  // m receives user's username
-        QString u =  ui->userName_RegFormLineEdit->text();
+        QString u =  ui->userName_RegFormLineEdit->text();  // m receives user's username
         QString e =  ui->email_RegFormLineEdit->text();     // e recieves user's email address
         QString p =  ui->password_RegFormLineEdit->text();  // p receives user's password
         QString id =  ui->studentIdRegFormLineEdit->text(); // id receives user's student id
@@ -177,15 +173,21 @@ void Register::on_signUpButton_clicked()
         QString ques1 =  ui->firtstQuestionAnswer_RegFormLineEdit->text();  // Qstring ques1 receives user's first question answer line edit
         QString ques2 =  ui->secondQuestionAnswer_RegFormLineEdit->text();  // ques2 receives user's second question answer line edit
         QString ques3 =  ui->thirdQuestionAnswer_RegFormLineEdit->text();   // ques3 receives user's third question answer line edit
+        QString middleName ;
 
         int quesId1 =  ui->question_1_comboBox->currentIndex(); // quesId1 is assigned to user's question choice inside inside question_1_combo_box
         int quesId2 =  ui->question_2_comboBox->currentIndex(); // quesId2 is assigned to user's question choice inside inside question_2_combo_box
         int quesId3 =  ui->question_3_comboBox->currentIndex(); // quesId3 is assigned to user's question choice inside inside question_3_combo_box
+        if (ui->middleNamecheckBox->isChecked())
+          middleName   = ui->middleName_RegFormLineEdit->text();
+        else
+            middleName = "";
 
+        if(userRole == 2)
+            user = new lecture(f,middleName,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
 
-        //databaseconnection * connection = new databaseconnection;
-
-        user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
+        else
+            user = new student(f,middleName,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
 
         connection->insertNewUser(*user);
         if(userRole == 1)
@@ -199,11 +201,7 @@ void Register::on_signUpButton_clicked()
             qDebug()<<program;
             qDebug()<<year;
         }
-        // else
-        //  {
-        //user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
-        //  }
-        //  //connection->insertNewUser(*user);
+
         this->close();
 
     }
@@ -224,45 +222,6 @@ void Register::recieveQuestion(QSqlQuery question)
     }
 
 }
-
-//Generating Table for Program Sequence List
-void Register::on_registerTableWidget_ProgramSequenceTable()
-{
-    //    ui->programSequenceTable_registerTableWidget->setColumnCount(3);
-    //    ui->programSequenceTable_registerTableWidget->setStyleSheet("background:#f1f1f1;color:#333;");
-
-    //    QStringList header;
-    //    header << "Program"<< "Faculty" <<"Sequence";
-
-    //    ui->programSequenceTable_registerTableWidget->setHorizontalHeaderLabels(header);
-    //    ui->programSequenceTable_registerTableWidget->horizontalHeader()->setStyleSheet("background:#70808c;");
-
-    //    int rowCount = 0;
-
-    //    for(int i = 0; i< 10; i++){
-
-    //         ui->programSequenceTable_registerTableWidget->insertRow(rowCount);
-    //         ui->programSequenceTable_registerTableWidget->setColumnWidth(0,150);
-    //         ui->programSequenceTable_registerTableWidget->setColumnWidth(1,530);
-    //         ui->programSequenceTable_registerTableWidget->setColumnWidth(2,60);
-
-    //        QTableWidgetItem *program = new QTableWidgetItem;
-    //        QTableWidgetItem *faculty = new QTableWidgetItem;
-    //        QTableWidgetItem *programSequence = new QTableWidgetItem;
-
-    //        program->setText("Bachelor Degree");
-    //        faculty->setText("Faculty of Science & Technology Math, Physics and IT Department");
-    //        programSequence->setText("2019-1");
-
-    //        ui->programSequenceTable_registerTableWidget->setItem(rowCount,0,program);
-    //        ui->programSequenceTable_registerTableWidget->setItem(rowCount,1,faculty);
-    //        ui->programSequenceTable_registerTableWidget->setItem(rowCount,2,programSequence);
-
-    //        rowCount++;
-    //    }
-
-}
-
 
 //table slot for programSequenceTable_registerTableWidget_cellClicked
 void Register::on_programSequenceTable_registerTableWidget_cellClicked(int row, int column)

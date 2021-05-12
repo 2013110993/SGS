@@ -814,7 +814,7 @@ void sgsApp::viewLecturerCoursesTable()
     ui->lecturerCoursesListTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
 
     int rowCount = 0;
-    QSqlQuery lectureCourses = lecture.getLecturerCourses(*(connection));       //lectureCourses is assigned to the returned value of the function getLecturerCourses(*(connection))
+    QSqlQuery lectureCourses = lecture->getLecturerCourses(*(connection));       //lectureCourses is assigned to the returned value of the function getLecturerCourses(*(connection))
 
     for(; lectureCourses.next();)
     {

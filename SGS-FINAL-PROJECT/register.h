@@ -34,8 +34,6 @@ private slots:
 
     void recieveQuestion(QSqlQuery);
 
-    void on_registerTableWidget_ProgramSequenceTable();
-
     void on_programSequenceTable_registerTableWidget_cellClicked(int row, int column);
 
 
@@ -45,7 +43,7 @@ private slots:
 
 private:
     Ui::Register *ui;
-    student * user;
+    users * user;
     int userRole;
     QSqlQuery * queries;
 };

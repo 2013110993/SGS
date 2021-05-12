@@ -6,10 +6,9 @@
 #include "register.h"
 
 #include "databaseconnection.h"
-
+#include "lecture.h"
 #include "forgotpassword.h"
 #include "activate_deactivateuser.h"
-#include "lecture.h"
 #include<QChartView>
 using namespace QtCharts;
 
@@ -131,7 +130,7 @@ private:
     Activate_DeactivateUser *active_deactivate;
     databaseconnection * connection;
     QSqlQuery queries;
-    lecture lecture;
+    lecture *lecture;
     bool buttonClick;
     bool clickedCell;
     const int arraySize = 500;

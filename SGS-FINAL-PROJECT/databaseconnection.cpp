@@ -150,16 +150,20 @@ void databaseconnection::disconnect()
 
 }
 
-void databaseconnection::insertNewUser(student &student)
+void databaseconnection::insertNewUser(users &student)
 {
     // creates an entry in the database for a new student
-    int id = student.getID();
+
+    int id = student.getUBID();
     qDebug()<<id;
     setUserId(QString::number(id));
 
     //List of Qstring for the user's requirements
     QString fname = student.getFName();
     QString lname = student.getLName();
+    QString mName = student.getMName();
+    qDebug()<<mName;
+
     QString username = student.getUserName();
     QString password = student.getPassword();       //password recieves the returned value of function getPassword
     QString email = student.getEmail();
@@ -176,12 +180,14 @@ void databaseconnection::insertNewUser(student &student)
 
 
     //inserts value to the person table from query
-    query.prepare("INSERT INTO person ( firstname, lastname) "
-                  "VALUES ( :firstname, :lastname)");
+    query.prepare("INSERT INTO person ( firstname, lastname,middleName) "
+                  "VALUES ( :firstname, :lastname, :middleName)");
     query.bindValue(":firstname", fname);
     query.bindValue(":lastname", lname);
+    query.bindValue(":middleName", mName);
 
-    if(!query.exec())
+    bool insertedNewUser = query.exec();
+    if(!insertedNewUser)
     {
         qDebug()<<query.lastError().text();
         qDebug()<<"got serious probs";
@@ -218,7 +224,7 @@ void databaseconnection::insertNewUser(student &student)
     quesId[1] = student.getQuesId2();
     quesId[2] = student.getQuesId3();
 
-    if(query.exec())      //checks if query executes
+    if(insertedNewUser)      //checks if query executes
     {
         qDebug()<<"Going to insert into users";
         QSqlQuery query3;

@@ -35,7 +35,7 @@ public:
     void disconnect();
     void searchAllStudent();
     void searchStudent();
-    void insertNewUser(student &student);
+    void insertNewUser(users &student);
     void logoutUser();
     void resetPassword();
     void suspendUser();
