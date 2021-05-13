@@ -1,5 +1,4 @@
 #include "databaseconnection.h"
-#include "dashboardstudent.h"
 
 databaseconnection::databaseconnection()
 {

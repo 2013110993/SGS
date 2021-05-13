@@ -6,8 +6,6 @@
 #include <QSqlDatabase>
 #include <QMessageBox>
 #include "student.h"
-#include "dashboard.h"
-#include "dashboardstudent.h"
 //#include "sgsapp.h"
 
 
@@ -82,8 +80,6 @@ public:
 private:
     bool connected;
     bool logSatus;
-    Dashboard *dash;
-    Dashboard createDash;
     QString currentUserID;
     QString UserRole;
     int const questionAsk = 3;
