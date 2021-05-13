@@ -1360,6 +1360,7 @@ void sgsApp::on_updateCourse_pushButton_3_clicked()
             ui->draftTableWidget->setItem(rowCount,1,CourseName);       //sets the QTableWidgetItem courseName to draftTableWidget
             ui->draftTableWidget->setItem(rowCount,2,Credits);
             ui->draftTableWidget->setItem(rowCount,3,Prerequisites);
+            ui->draftTableWidget->setItem(rowCount,4,Semester);
 
             rowCount++;
 
@@ -1383,9 +1384,9 @@ void sgsApp::draftTable()
     ui->draftTableWidget->setColumnCount(5);
     QStringList header;
 
-    header <<"Code" <<  "Course Name"<< "Credits" << "Pre-requisites";      //list of column names
 
-    header <<"Code" <<  "Course Name"<< "Credits" << "Pre-requisites" << "Semester";
+    header <<"Code" <<  "Course Name"<< "Credits" << "Pre-requisites" << "Semester"; //list of column names
+
 
     ui->draftTableWidget->setHorizontalHeaderLabels(header);
     ui->draftTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section {background:#333;height:30px; color:#fff;}");
@@ -1409,6 +1410,7 @@ void sgsApp::on_studentSearchButton_clicked()
 
 void sgsApp::on_saveSequencepushButton_clicked()
 {
+    bool success = false;
     if(!(ui->draftTableWidget->rowCount() > 0))
     {
         QMessageBox::critical(this,"ERROR","Please add more course to this program Sequences, It can't go empty");
@@ -1440,11 +1442,16 @@ void sgsApp::on_saveSequencepushButton_clicked()
             counter++;
         }
 
-        connection->addProgramSequence(programSeqId,programName,faculty,Year,courseCodes,courseName,credits,prerequisites,semester);
+       success =  connection->addProgramSequence(programSeqId,programName,faculty,Year,courseCodes,courseName,credits,prerequisites,semester);
     }
 
 
-
+    if(success)
+        QMessageBox::information(NULL,"SUCCESS","THE PROGRAM HAS SUCCESSFULLY BEING ADDED");
+    else
+    {
+        QMessageBox::critical(NULL,"FAILED","Failed to add the program sequences you entered");
+    }
 
 }
 

@@ -111,7 +111,7 @@ void databaseconnection::connect()
     //setConnection.setPort(3366);
     setConnection.setUserName("root");
     setConnection.setPassword("");
-    setConnection.setDatabaseName("db");
+    setConnection.setDatabaseName("studentGradingSystem");
     connected = setConnection.open();
 
     //exception handling
@@ -1517,6 +1517,8 @@ bool databaseconnection::deactivateUser(QString userName, int role)
 
 bool databaseconnection::addProgramSequence(QString programSeqId, QString programName, QString faculty, QString Year, QStringList courseCodes,
                                             QStringList courseName, QStringList credits, QStringList prerequisites,QStringList semester)
+
+//programSeqId,programName,faculty,Year,courseCodes,courseName,credits,prerequisites,semester);
 {
     qDebug()<<programSeqId;
     qDebug()<<programName;
@@ -1545,7 +1547,7 @@ bool databaseconnection::addProgramSequence(QString programSeqId, QString progra
     else
     {
         QSqlQuery * query2 = new QSqlQuery;     //new query created inside the heap
-        query2 = new QSqlQuery;
+
 
         //query2 inserts specific values into the programsequnce table
         query2->prepare(" INSERT INTO `programsequence`(`id`, `code`, `pSYear`, `academicProgramID`) "
@@ -1570,7 +1572,6 @@ bool databaseconnection::addProgramSequence(QString programSeqId, QString progra
                 qDebug()<<"FOR: "<<var;
 
                 QSqlQuery * query3 = new QSqlQuery;
-                query3 = new QSqlQuery;
 
                 if (!checkisCourseAval(courseCodes[var]))       //checks if  course is not available
                 {
@@ -1591,8 +1592,7 @@ bool databaseconnection::addProgramSequence(QString programSeqId, QString progra
                         return false;  //returns false if query does not execute
                     }
 
-                    QSqlQuery * query4 = new QSqlQuery;
-                    query4 = new QSqlQuery;         //creates new qsqlquery inside the heap
+                    QSqlQuery * query4 = new QSqlQuery;//creates new qsqlquery inside the heap
 
                     query4->prepare("INSERT INTO `prequisites`(`id`, `prequisite`) "
                                     "VALUES (:id,:prequisite) " );
@@ -1604,6 +1604,7 @@ bool databaseconnection::addProgramSequence(QString programSeqId, QString progra
                         delete query4;
                         return false;
                     }
+                      delete query4;
                 }
 
                 QSqlQuery *progCourse;
@@ -1623,14 +1624,13 @@ bool databaseconnection::addProgramSequence(QString programSeqId, QString progra
                 }
 
                 //release all QSqlQueries from the heap since they are no longer neeeded
-                delete query1;
-                delete query2;
+
                 delete query3;
                 delete progCourse;
 
             }
-            //  return true;
-
+            delete query1;
+            delete query2;
         }
 
 
@@ -1647,7 +1647,7 @@ bool databaseconnection::checkisCourseAval(QString CourseID)  //function will ch
 
     //fetch values from table courses
     query1->prepare(" SELECT `id` FROM `courses`  "
-                    " WHERE `courseCode` = " + CourseID );
+                    " WHERE `id` = '" + CourseID + "'" );
 
     if(!(query1->exec())) //checks if query1 execute fails
     {
@@ -1658,8 +1658,21 @@ bool databaseconnection::checkisCourseAval(QString CourseID)  //function will ch
     }
     else
     {
-        delete query1;
-        return true;        //returns true if query execute succeeded
+       if(query1->size() > 0)
+       {
+            qDebug()<<"FOUND";
+             qDebug()<<query1->value(0).toString();
+             delete query1;
+             return true;  //returns true if query execute succeeded
+
+       }
+       else
+       {
+           delete query1;
+           return false;        //returns false if query execute succeeded
+
+       }
+
 
     }
 }
