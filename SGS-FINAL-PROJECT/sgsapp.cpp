@@ -465,6 +465,9 @@ void sgsApp::on_dashboard_pushButton_clicked()
     {
         if( releasetView != NULL)
             delete releasetView;
+
+        if(PieReleasetView != NULL)
+            delete PieReleasetView;
         QStringList nameCourse;
         QStringList ratings;
         ratings.append("Ugly");
@@ -525,7 +528,7 @@ void sgsApp::on_dashboard_pushButton_clicked()
 
         QChart *chart = new QChart();
         chart->addSeries(series);
-        chart->setTitle("Simple barchart example");
+        chart->setTitle("Rating Graph");
         chart->setAnimationOptions(QChart::SeriesAnimations);
 
 
@@ -1104,14 +1107,14 @@ void sgsApp::courseComments(int row)
     if((holder!=NULL))
         delete holder; //release layout from heap
 
-        int var = 0;
-        while (ArrayDeleteLater[var] != NULL)
-        {
-            delete ArrayDeleteLater[var];
-            ArrayDeleteLater[var] = NULL;       //ArrayDeleteLater Array is assigned to Null
+    int var = 0;
+    while (ArrayDeleteLater[var] != NULL)
+    {
+        delete ArrayDeleteLater[var];
+        ArrayDeleteLater[var] = NULL;       //ArrayDeleteLater Array is assigned to Null
 
-            var++;
-        }
+        var++;
+    }
 
     QString courseCode = ui->searchResultCourseCommentTableWidget->item(row,0)->text();
     QString lectureName =  ui->searchResultCourseCommentTableWidget->item(row,2)->text();
