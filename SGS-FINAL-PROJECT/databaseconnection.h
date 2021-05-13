@@ -56,6 +56,7 @@ public:
     QSqlQuery getLecturesByCourse(QString);
     QSqlQuery getComments(QString, QString);
     QSqlQuery getLectureCourse();
+    QStringList getTotalUsersPieChart();
 
     //overload functions
     QSqlQuery getRatingComment();

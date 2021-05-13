@@ -107,8 +107,8 @@ void databaseconnection::connect()
     setConnection.setHostName("127.0.0.1");
     //setConnection.setPort(3306);
     //setConnection.setPort(3366);
-    //setConnection.setPort(3336);
-    setConnection.setPort(3366);
+    setConnection.setPort(3336);
+    //setConnection.setPort(3366);
     setConnection.setUserName("root");
     setConnection.setPassword("");
     setConnection.setDatabaseName("db");
@@ -1126,6 +1126,48 @@ QSqlQuery databaseconnection::getLectureCourse()
 
     delete query1;          //release query1 from heap because it's no longer needed
     return lectureCourses;
+
+}
+
+QStringList databaseconnection::getTotalUsersPieChart()
+{
+
+    QStringList StudentLecturerAmount;
+    QSqlQuery * query1 = new QSqlQuery;
+    query1->prepare("SELECT COUNT(roleId) FROM `users` WHERE roleId = 1");
+    if(!(query1->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",query1->lastError().text());
+    }
+    else
+    {
+        while(query1->next())
+        {
+            StudentLecturerAmount.append(query1->value(0).toString());
+        }
+    }
+    delete query1;
+
+
+    QSqlQuery * query2 = new QSqlQuery;
+    query2->prepare("SELECT COUNT(roleId) FROM `users` WHERE roleId = 2");
+    if(!(query2->exec()))
+    {
+        QMessageBox::warning(NULL,"We encounter an error: ",query2->lastError().text());
+    }
+    else
+    {
+        while(query2->next())
+        {
+            StudentLecturerAmount.append(query2->value(0).toString());
+        }
+    }
+    delete query2;
+
+    return  StudentLecturerAmount;
+
+
+
 
 }
 

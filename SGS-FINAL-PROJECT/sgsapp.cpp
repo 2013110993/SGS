@@ -322,6 +322,10 @@ void sgsApp::on_dashboard_pushButton_clicked()
     {
     case 1:
     {
+        ui->widget1Title->setText("Course Completed");
+        ui->widget2Title->setText("Pending Course");
+        ui->widget2Title_5->setText("Total Comments");
+
         ui->frame_Widget1->show();
         ui->frame_Widget2->show();
         ui->frame_Widget2_3->show();
@@ -406,7 +410,7 @@ void sgsApp::on_dashboard_pushButton_clicked()
         //step 3 create Qchart object
         QChart *Barchart = new QChart();
         Barchart->addSeries(series);
-        Barchart->setTitle("simple bar chart example");
+        Barchart->setTitle("Comment Graph");
         Barchart->setAnimationOptions(QChart::SeriesAnimations);
 
         //step4
@@ -429,16 +433,14 @@ void sgsApp::on_dashboard_pushButton_clicked()
         //show charts for comment
         ui->commentGraph_GridLayout->addWidget(BarchartView);
 
-        //PieChart
 
-        //QPieLegendMarker()
-        //QPieLegendMarker *pieLegend = new QPieLegendMarker();
         QStringList allCourses = connection->pending_completed();
 
         ui->widget1courseComplete->setText(allCourses[1]);
         ui->widget2TitleCoursePending->setText(allCourses[0]);
         ui->widget2TitleCourseCommented->setText(QString::number(commentCourse));
 
+        //PieChart
         QPieSeries *Pieseries = new QPieSeries();
         Pieseries->append("Pending Courses", allCourses[0].toInt());
         Pieseries->append("Complete", allCourses[1].toInt());
@@ -468,6 +470,10 @@ void sgsApp::on_dashboard_pushButton_clicked()
     }
     case 2:
     {
+        ui->frame_Widget1->hide();
+        ui->frame_Widget2->hide();
+        ui->frame_Widget2_3->hide();
+
         if(PieReleasetView != NULL)
         {
             delete PieReleasetView;
@@ -476,10 +482,11 @@ void sgsApp::on_dashboard_pushButton_clicked()
 
         //ui->pending_complete_Graph_GridLayout->hide();
         if( releasetView != NULL)
+        {
             delete releasetView;
+            releasetView = NULL;
+        }
 
-        if(PieReleasetView != NULL)
-            delete PieReleasetView;
         QStringList nameCourse;
         QStringList ratings;
         ratings.append("Ugly");
@@ -533,11 +540,6 @@ void sgsApp::on_dashboard_pushButton_clicked()
 
         }
 
-        ui->frame_Widget1->hide();
-        ui->frame_Widget2->hide();
-        ui->frame_Widget2_3->hide();
-
-
         QChart *chart = new QChart();
         chart->addSeries(series);
         chart->setTitle("Rating Graph");
@@ -562,6 +564,67 @@ void sgsApp::on_dashboard_pushButton_clicked()
 
         //show charts for comment
         ui->commentGraph_GridLayout->addWidget(chartView);
+        break;
+
+
+    }
+    case 3:
+    {
+
+        if(PieReleasetView != NULL)
+        {
+            delete PieReleasetView;
+            PieReleasetView = NULL;
+        }
+        if( releasetView != NULL)
+        {
+            delete releasetView;
+            releasetView = NULL;
+        }
+
+        QStringList totalUser = connection->getTotalUsersPieChart();
+        QPieSeries *Pieseries = new QPieSeries();
+        Pieseries->append("Students", totalUser[0].toInt());
+        Pieseries->append("Lecturers", totalUser[1].toInt());
+
+        QPieSlice *PieSlice2 = Pieseries->slices().at(0);
+        PieSlice2->setExploded();
+        PieSlice2->setLabelVisible();
+        PieSlice2->setPen(QPen(Qt::darkBlue, 2));
+        QPieSlice *PieSlice = Pieseries->slices().at(1);
+        PieSlice->setExploded();
+        PieSlice->setLabelVisible();
+        PieSlice->setPen(QPen(Qt::darkGreen, 2));
+        PieSlice->setPen(QPen(Qt::darkGreen, 1));
+        PieSlice->setBrush(Qt::green);
+
+        QChart *PieChart = new QChart();
+        PieChart->addSeries(Pieseries);
+        PieChart->setTitle("Total Student Vs Total Lecturer");
+        PieChart->legend()->hide();
+        QChartView *PieChartView = new QChartView(PieChart);
+        PieChartView->setRenderHint(QPainter::Antialiasing);
+
+        PieReleasetView = PieChartView;
+        //show Pie chart
+        ui->pending_complete_Graph_GridLayout->addWidget(PieChartView);
+
+        ui->widget1Title->setText("Total Students");
+        ui->widget2Title->setText("Total Lecturers");
+        ui->widget2Title_5->setText("Total Users");
+
+        ui->widget1courseComplete->setText(totalUser[0]);
+        ui->widget2TitleCoursePending->setText(totalUser[1]);
+
+        int totalUserss = totalUser[0].toInt();
+        totalUserss += totalUser[1].toInt();
+
+        ui->widget2TitleCourseCommented->setText(QString::number(totalUserss));
+
+        ui->frame_Widget1->show();
+        ui->frame_Widget2->show();
+        ui->frame_Widget2_3->show();
+        break;
 
 
     }
