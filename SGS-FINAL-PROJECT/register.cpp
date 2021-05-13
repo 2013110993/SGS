@@ -179,7 +179,7 @@ void Register::on_signUpButton_clicked()
         int quesId2 =  ui->question_2_comboBox->currentIndex(); // quesId2 is assigned to user's question choice inside inside question_2_combo_box
         int quesId3 =  ui->question_3_comboBox->currentIndex(); // quesId3 is assigned to user's question choice inside inside question_3_combo_box
         if (ui->middleNamecheckBox->isChecked())
-          middleName   = ui->middleName_RegFormLineEdit->text();
+            middleName   = ui->middleName_RegFormLineEdit->text();
         else
             middleName = "";
 
@@ -189,7 +189,7 @@ void Register::on_signUpButton_clicked()
         else
             user = new student(f,middleName,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
 
-        connection->insertNewUser(*user);
+        bool success = connection->insertNewUser(*user);
         if(userRole == 1)
         {
             //user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
@@ -202,6 +202,18 @@ void Register::on_signUpButton_clicked()
             qDebug()<<year;
         }
 
+        if(success && userRole == 1)
+        {
+            QMessageBox::information(NULL,"Success","Successfully created your user account");
+        }
+        else if(success && userRole == 2)
+        {
+            QMessageBox::information(NULL,"Success","Successfully created your lecture account, please wait for 2-3 working days to process your account to be activated.");
+        }
+        else
+        {
+             QMessageBox::critical(NULL,"Success","Successfully created your user account");
+        }
         this->close();
 
     }

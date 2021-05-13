@@ -33,7 +33,7 @@ public:
     void disconnect();
     void searchAllStudent();
     void searchStudent();
-    void insertNewUser(users &student);
+    bool insertNewUser(users &student);
     void logoutUser();
     void resetPassword();
     void suspendUser();

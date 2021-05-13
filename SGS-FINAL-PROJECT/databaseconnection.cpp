@@ -107,10 +107,10 @@ void databaseconnection::connect()
     setConnection.setHostName("127.0.0.1");
     //setConnection.setPort(3306);
     //setConnection.setPort(3366);
-    setConnection.setPort(3336);
-    //setConnection.setPort(3366);
-    setConnection.setUserName("root");
-    setConnection.setPassword("");
+    //setConnection.setPort(3336);
+    setConnection.setPort(3366);
+    setConnection.setUserName("sgs");
+    setConnection.setPassword("d_xoIY7UXo(hYA6P");
     setConnection.setDatabaseName("studentGradingSystem");
     connected = setConnection.open();
 
@@ -149,25 +149,22 @@ void databaseconnection::disconnect()
 
 }
 
-void databaseconnection::insertNewUser(users &student)
+bool databaseconnection::insertNewUser(users &student)
 {
     // creates an entry in the database for a new student
-
+    bool executed = false;
     int id = student.getUBID();
-    qDebug()<<id;
     setUserId(QString::number(id));
 
     //List of Qstring for the user's requirements
     QString fname = student.getFName();
     QString lname = student.getLName();
     QString mName = student.getMName();
-    qDebug()<<mName;
 
     QString username = student.getUserName();
     QString password = student.getPassword();       //password recieves the returned value of function getPassword
     QString email = student.getEmail();
     QString roleID = student.getRole();
-    qDebug()<<roleID<<"ROle ASDsad";
     QString studentID;
     if (roleID == "2")              //checks if roleId is 2(represents lecturer)
         studentID = "";
@@ -189,7 +186,6 @@ void databaseconnection::insertNewUser(users &student)
     if(!insertedNewUser)
     {
         qDebug()<<query.lastError().text();
-        qDebug()<<"got serious probs";
     }
 
     QSqlQuery newQuery ;
@@ -201,13 +197,10 @@ void databaseconnection::insertNewUser(users &student)
         while (newQuery.next())
         {
             userID = newQuery.value(0).toString();      //userID is assigned to the first value of newQuery
-
-            qDebug()<<"got id from person ";
-            qDebug()<<userID;
-            qDebug()<<" ^got id from person  ";
         }
     }
-    else {
+    else
+    {
         qDebug()<<"got serious probs2";
     }
 
@@ -306,13 +299,13 @@ void databaseconnection::insertNewUser(users &student)
             // VALUES ('[value-1]','[value-2]')
         }
 
-
+       executed = true;
     }
     else
     {
         QMessageBox::warning(NULL,"ERROR",query.lastError().text());        //warning message box is displayed if query does not execute
     }
-
+    return executed;
 }
 
 bool databaseconnection::loginUser(QString username, QString password)
@@ -335,7 +328,6 @@ bool databaseconnection::loginUser(QString username, QString password)
                 setUserId(userID);  //calls function setUserId and passes userId as argument
                 role = query.value(1).toString();
                 qDebug()<<getUserId();
-                qDebug() <<"role "<< role <<" here";
                 setRole(role);   //setRole() is called and Qstring role is passed as argument
             }
 
@@ -406,7 +398,6 @@ void databaseconnection::logoutUser()
                    "VALUES (:id,:lastLogin)");
 
     query3.bindValue(":id",getUserId());
-    qDebug()<<ct;
     query3.bindValue(":lastLogin",ct);
     if(query3.exec())           //checks if query3 executes
     {

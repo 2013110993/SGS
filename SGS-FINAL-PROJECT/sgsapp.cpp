@@ -563,8 +563,8 @@ void sgsApp::on_dashboard_pushButton_clicked()
         releasetView = chartView;
 
         //show charts for comment
-        ui->commentGraph_GridLayout->addWidget(chartView);
-        break;
+         ui->pending_complete_Graph_GridLayout->addWidget(chartView);
+         break;
 
 
     }
