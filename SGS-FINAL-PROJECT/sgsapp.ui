@@ -507,7 +507,7 @@ border: 0;</string>
        <widget class="QPushButton" name="dashboard_pushButton">
         <property name="geometry">
          <rect>
-          <x>1</x>
+          <x>10</x>
           <y>74</y>
           <width>86</width>
           <height>16</height>
@@ -543,7 +543,7 @@ border: 0;</string>
        <widget class="QPushButton" name="viewStudentProgramSequence_Button">
         <property name="geometry">
          <rect>
-          <x>1</x>
+          <x>0</x>
           <y>127</y>
           <width>136</width>
           <height>16</height>
