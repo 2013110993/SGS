@@ -88,6 +88,7 @@ void sgsApp::hideFeature()
     ui->viewCourses_Button->hide();
     ui->AddProgramSequence_Button->hide();
     ui->disableUser_Button->hide();
+    ui->addUser_Button->hide();
 }
 
 void sgsApp::disableAdminFeature() //disableAdminFeature() function disbales the Admin features
@@ -120,7 +121,9 @@ void sgsApp::showFeature()
 
 void sgsApp::logout()
 {
-    this->show();  //logouts from the sgsapp
+    ui->usernameInput->setText("");//clears username and password
+    ui->passwordInput->setText("");
+    ui->stackedWidgetSGS->setCurrentIndex(0); //logouts from the sgsapp
 }
 
 //Register Button slot
@@ -274,7 +277,7 @@ void sgsApp::on_suspendSetting_pushButton_clicked()
 //New Buttons
 void sgsApp::on_logoutButton_clicked()
 {
-    ui->stackedWidgetSGS->setCurrentIndex(0);  //moves stacked widget back to index 0
+    logout();  //moves stacked widget back to index 0
 }
 
 void sgsApp::on_changePassword_Button_clicked()

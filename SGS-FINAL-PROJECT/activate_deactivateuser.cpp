@@ -57,7 +57,7 @@ void Activate_DeactivateUser::on_lectureSearchButton_clicked() //search button s
         if (result[counter] == "1")//role_2 receives the user's role
         ui->role_2->setText("Student");
         else
-            ui->role_2->setText("Lecture");
+            ui->role_2->setText("Lecturer");
         counter++;
 
         // is Active user is 1, it means the user is active
