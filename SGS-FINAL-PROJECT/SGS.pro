@@ -13,12 +13,6 @@ SOURCES += \
     register.cpp \
     main.cpp \
     sgsapp.cpp \
-    academicprogram.cpp \
-    coursecomments.cpp \
-    courses.cpp \
-    coursesequence.cpp \
-    dashboard.cpp \
-    dashboardstudent.cpp \
     databaseconnection.cpp \
     lecture.cpp \
     users.cpp \
@@ -29,12 +23,6 @@ HEADERS += \
     forgotpassword.h \
     register.h \
     sgsapp.h \
-    academicprogram.h \
-    coursecomments.h \
-    courses.h \
-    coursesequence.h \
-    dashboard.h \
-    dashboardstudent.h \
     databaseconnection.h \
     lecture.h \
     users.h \
@@ -45,8 +33,6 @@ FORMS += \
     forgotpassword.ui \
     register.ui \
     sgsapp.ui \
-    dashboard.ui \
-    dashboardstudent.ui \
     activate_deactivateuser.ui
 
 # Default rules for deployment.

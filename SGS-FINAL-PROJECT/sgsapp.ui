@@ -928,7 +928,7 @@ background-repeat: no-repeat;</string>
        <string notr="true">border: 1px</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="DashboardPage">
        <widget class="QFrame" name="pageTitleCourseListPage_3">
@@ -2075,11 +2075,6 @@ border:0px;</string>
             </item>
             <item>
              <property name="text">
-              <string>A-</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
               <string>B</string>
              </property>
             </item>
@@ -2096,6 +2091,21 @@ border:0px;</string>
             <item>
              <property name="text">
               <string>F</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>WP</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>WF</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>W</string>
              </property>
             </item>
             <item>

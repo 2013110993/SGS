@@ -38,6 +38,11 @@ void users::setRole(QString defualt)
     role = defualt;     //assigns user's role
 }
 
+int users::getUBID()
+{
+    return UBid;
+}
+
 void users::setUserName(QString username)
 {
     userName = username;        //assigns user's username

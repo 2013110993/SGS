@@ -322,6 +322,11 @@ void sgsApp::on_dashboard_pushButton_clicked()
     {
     case 1:
     {
+        ui->frame_Widget1->show();
+        ui->frame_Widget2->show();
+        ui->frame_Widget2_3->show();
+
+
         int commentedvar[4]= {0};
         int commentCourse = 0;
 
@@ -463,6 +468,13 @@ void sgsApp::on_dashboard_pushButton_clicked()
     }
     case 2:
     {
+        if(PieReleasetView != NULL)
+        {
+            delete PieReleasetView;
+            PieReleasetView = NULL;
+        }
+
+        //ui->pending_complete_Graph_GridLayout->hide();
         if( releasetView != NULL)
             delete releasetView;
 
@@ -805,7 +817,7 @@ void sgsApp::viewLecturerCoursesTable()
     ui->lecturerCoursesListTableWidget->setStyleSheet("alternate-background-color: #eee9e9; color:#333;");
 
     int rowCount = 0;
-    QSqlQuery lectureCourses = lecture.getLecturerCourses(*(connection));       //lectureCourses is assigned to the returned value of the function getLecturerCourses(*(connection))
+    QSqlQuery lectureCourses = lecture->getLecturerCourses(*(connection));       //lectureCourses is assigned to the returned value of the function getLecturerCourses(*(connection))
 
     for(; lectureCourses.next();)
     {
