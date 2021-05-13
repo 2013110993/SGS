@@ -153,9 +153,6 @@ void Register::on_middleNamecheckBox_stateChanged(int arg1)
 // slot for signUpButton()
 void Register::on_signUpButton_clicked()
 {
-
-    int currIndex = ui->programComboBox->currentIndex();   // program combo box
-    int currIndex2 = ui->facultyComboBox->currentIndex();  //faculty combo box
     {
         //built a list of Qstrings that will recieve the user's info
         QString f = ui->firstName_RegFormLineEdit->text();  // f is receeives user's first name
@@ -192,7 +189,6 @@ void Register::on_signUpButton_clicked()
         bool success = connection->insertNewUser(*user);
         if(userRole == 1)
         {
-            //user = new student(f,m,l,u,f,e,p,ID," ", 'm',QString::number(userRole),quesId1,quesId2,quesId3,ques1,ques2,ques3);
             QString faculty = ui->facultySelected_label->text();
             QString program = ui->programSelected_label->text();
             QString year = ui->programSequenceYearSelected_label->text();

@@ -1518,8 +1518,8 @@ bool databaseconnection::addProgramSequence(QString programSeqId, QString progra
     QSqlQuery * query1 = new QSqlQuery;  //new query created inside heap
 
     //query1 inserts specific values into the academic program table
-    query1->prepare("INSERT INTO academicprogram (id, name, faculty) "
-                    "VALUES (:id,:name,:faculty) " );
+    query1->prepare("INSERT INTO academicprogram (id, name, faculty,code) "
+                    "VALUES (:id,:name,:faculty,:code) " );
 
 
 
@@ -1527,6 +1527,7 @@ bool databaseconnection::addProgramSequence(QString programSeqId, QString progra
     query1->bindValue(":id", programSeqId);
     query1->bindValue(":name", programName);
     query1->bindValue(":faculty", faculty);
+     query1->bindValue(":code", programSeqId+Year);
 
     if(!(query1->exec()))
     {
