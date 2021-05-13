@@ -447,7 +447,7 @@ border-radius:5px;</string>
           <string notr="true">background-color:none;</string>
          </property>
          <property name="text">
-          <string>Lecture</string>
+          <string>Lecturer</string>
          </property>
         </widget>
        </item>
